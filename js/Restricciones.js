@@ -1,4 +1,4 @@
-var inputNumero = document.getElementById("Telefono");
+/*var inputNumero = document.getElementById("Telefono");
 inputNumero.addEventListener("input", function () {
     var valor = inputNumero.value;
     valor = valor.replace(/[^0-9]/g, "");
@@ -6,7 +6,7 @@ inputNumero.addEventListener("input", function () {
         valor = valor.slice(0, 10);
     }
     inputNumero.value = valor;
-});
+});*/
 
 function validarEmail(elemento){
 

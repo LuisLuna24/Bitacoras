@@ -6,12 +6,13 @@
 }
 /*==============Header==============*/
 .header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
     height: 55px;
     background: #f7efe1;
+    z-index: 100;
 }
 
 .header_Contenedor {
@@ -26,111 +27,15 @@
     height: 100%;
 }
 
-/*==============Signin==============*/
-.Singin {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(#62a60e44,#61a60e44),url("../img/FondoGis.webp")no-repeat;
-    background-position: center;
-    background-size: cover;
-    
-}
-.Singin_Contenedor {
-    width: 800px;
-    height: 500px;
-    background:#f7efe1 ;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-@media (max-width:767px){
-    .Singin{
-        height: auto;
-    }
-    .Singin_Contenedor {
-        width: 90%;
-        height: auto;
-    }
-}
-
-.Singin_Imagen {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(#00000088,#00000088),url("../img/laboratorio.webp")no-repeat;
-    background-size: cover;
-    background-position: center;
-    color: #f7efe1;
-    text-align: center;
-    gap: 30px;
-    padding: 20px;
-}
-
-.Singin_Imagen h2{
-    font-size: 2em;
-}
-
-.Singin_Imagen a{
-    color: #61a60e;
-}
-
-.Singin_Datos {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    gap: 15px;
-}
-
-.Singin_Datos h1{
-    font-size: 2em;
-}
-
-.Singin_Boton input{
-    width: 200px;
-    height: 30px;
-    font-size: 1.1em;
-    font-weight: 800;
-    color:#000000;
-    border-radius: 25px;
-    border: none;
-    border:solid 2px #0032a0;
-    transition: 0.5s;
-    background: transparent;
-}
-
-.Singin_Boton input:hover{
-    transform: translateY(-8px);
-    background-color: #0032a0;
-    color: #f7efe1;
-}
-
-.Singin_Boton input:active{
-    transform: translateY(2px);
-}
-
-.Datos_Sesion {
-    width: 100%;
+/*==============input==============*/
+.Secion_Datos,select {
     font-family: 'Segoe UI', sans-serif;
     margin: 1em 0 1em 0;
     width: 100%;
     position: relative;
   }
   
-  .Datos_Sesion input {
+  .Secion_Datos input,select {
     font-size: 100%;
     padding: 0.8em;
     outline: none;
@@ -140,7 +45,7 @@
     width: 100%;
   }
   
-  .Datos_Sesion label {
+  .Secion_Datos label {
     font-size: 100%;
     position: absolute;
     left: 0;
@@ -149,209 +54,178 @@
     pointer-events: none;
     transition: all 0.3s ease;
     color: rgb(100, 100, 100);
-    border-radius: 25px;
   }
   
-  .Datos_Sesion :is(input:focus, input:valid)~label {
+  .Secion_Datos :is(input:focus, input:valid)~label {
     transform: translateY(-50%) scale(.9);
     margin: 0em;
     margin-left: 1.3em;
     padding: 0.4em;
-    background-color: #f7efe1;
+    background-color: #e8e8e8;
   }
   
-  .Datos_Sesion :is(input:focus, input:valid) {
-    border-color: #0032a0;
+  .Secion_Datos :is(input:focus, input:valid) {
+    border-color: rgb(150, 150, 200);
   }
 
-  .Singin_Correo{
+  /*==============Secion==============*/
+
+ .Secion{
     width: 100%;
-  }
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
 
-  .Singin_Contraseña{
-    width: 100%;
-  }
-
-  /*==============Signup==============*/
-
-.Singup_Contenedor {
+.Seccion_Contenedor{
     width: 800px;
     height: 500px;
-    background:#f7efe1 ;
+    border-radius: 20px;
+    overflow: hidden;
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-    border-radius: 15px;
-    overflow: hidden;
-    
+    background: #e8e8e8;
 }
 
 @media (max-width:767px){
-    .Singup_Contenedor {
-        width: 90%;
+    .Seccion_Contenedor{
+        width: 95%;
         height: auto;
     }
-    .Datos_Usuario{
-        flex-direction: column;
-        gap: 0;
-    }
-    .Valida_Contraseñas{
-        flex-direction: column;
-        gap: 0;
+    .Secion{
+        height: auto;
+
     }
 }
+/*==============Bienbenida==============*/
+.Bienbenida {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#00000086, #00000086),url('../img/laboratorio.webp')no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
 
-.Singup_Datos {
+@media (max-width:767px){
+    .Bienbenida{
+        background-attachment: scroll;
+    }
+}
+.Bienbenida_Logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.Bienbenida_Logo img{
+    width: 150px;
+}
+
+.Bienbenida_Titulo {
+    text-align: center;
+    color: #f7efe1;
+    font-size: 2em;
+}
+.Bienbenida_Boton {
+    color: #e8e8e8;
+    font-size: 1.2em;
+    font-weight: 800;   
+}
+.Bienbenida_Boton a{
+    text-decoration: none;
+    color: #75b841; 
+}
+
+/*==============Bienbenida==============*/
+.Longup{
+    display: none;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+
+.Longup_Form{
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 20px;
-    display: none;
-    text-align: center;
-    width: 100%;
+    justify-content: center;
 }
 
-.Singup_Datos h1{
-    font-size: 2em;
-}
-
-.Valida_Contraseñas,.Datos_Usuario{
+.Longup_Datos{
     width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     gap: 10px;
 }
 
-.Singin_Boton{
+.Longin{
     width: 100%;
-    display: grid;
-    place-items: center;
-}
-
-
-/*==============Footer==============*/
-.Footer{
-    position: sticky;
-    bottom: 0;
-}
-
-
-.Fotter_Contenedor {
-    width: 100%;
-    height: 50px;
-    background: #1a1c20;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    padding: 5px;
-    font-family: 'Montserrat' , sans-serif;
+    padding: 20px;
 }
-.Footer_Logo {
+.Longin_Form {
     width: 100%;
-    height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    color: #f7efe1;
+    justify-content: center;
+}
+.Longin_Titulo {
+    font-size: 1.5em;
+    text-align: center;
+}
+.Longin_Boton {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.Footer_Logo img{
-    height: 100%;
+.Longin_Boton input {
+    width: 70%;
+    height: 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(200, 200, 200);
+    color: rgb(100, 100, 100);
+    font-size: 1.5em;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.5s ease;
 }
 
-@media(max-width:767px){
-    .Fotter_Contenedor{
-        height: auto;
-    }
+.Longin_Boton input:hover{
+    background-color: rgb(150, 150, 200);
+    color: rgb(200, 200, 200);
+    transform: translateY(-8px);
+}
 
-    .Footer_Logo {
-        height: auto;
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .Footer_Logo img{
-        height: 40px;
-        
-    }
-
+.Longin_Boton input:active{
+    transform: translateY(0px);
 }
 
 .Registro_bt{
     pointer-events: none;
     opacity: 0.6;
-}
-
-.corr_null{
-    pointer-events: none;
-    opacity: 0.6;
-}
-
-.Error{
-    color: red;
-    font-size: 0.8em;
-}
-
-
-/*======================Alerta===========================*/
-.Alerta {
-    width: 100%;
-    height: 100%;
-    background: #00000052;
-    position: absolute;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-}
-.Alerta_Contenedor {
-    width: 350px;
-    height: 200px;
-    background-color: #f7efe1;
-    border-radius:15px;
-    padding: 20px;
-    display: grid;
-    place-items: center;
-    
-}
-.Alerta_Titulo {
-    text-align: center;
-    color: #61a60e;
-}
-
-.Alerta_Titulo h2{
-    font-size: 3em;
-    color: #0032a0;
-}
-.Alerta_Boton {
-    width: 100%;
-    display: grid;
-    place-items: center;
-}
-
-.Alerta_Boton input{
-    width: 200px;
-    height: 30px;
-    font-size: 1.1em;
-    font-weight: 800;
-    color:#000000;
-    border-radius: 25px;
-    border: none;
-    border:solid 2px #0032a0;
-    transition: 0.5s;
-    background: transparent;
-}
-
-.Alerta_Boton input:hover{
-    transform: translateY(-8px);
-    background-color: #0032a0;
-    color: #f7efe1;
-}
-
-.Alerta_Boton input:active{
-    transform: translateY(2px);
 }
 
 
@@ -381,4 +255,12 @@
 
 .eye img{
     width: 20px;
+}
+
+
+#NombreA{
+    text-transform: capitalize;
+}
+#ApellidoA{
+    text-transform: capitalize;
 }

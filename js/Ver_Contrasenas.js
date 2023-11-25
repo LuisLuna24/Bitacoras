@@ -1,7 +1,7 @@
 $(document).ready(function(){
-    $('.Datos_Sesion').on('click','#Singin_eye',function(eye){
+    $('.Secion_Datos').on('click','#Singin_eye',function(eye){
         eye.preventDefault();
-        var campoPassword = document.getElementById("Singin_Contraseña");
+        var campoPassword = document.getElementById("Longin_Contrasena");
         var eye=document.getElementById("eye_img");
         if(campoPassword.type=="password"){
             campoPassword.type = "text";
@@ -14,7 +14,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $('.Datos_Sesion').on('click','#Singup1_eye',function(eye){
+    $('.Secion_Datos').on('click','#Singup1_eye',function(eye){
         eye.preventDefault();
         var campoPassword1 = document.getElementById("Contraseña1");
         var eye1=document.getElementById("eye1_img");
@@ -29,7 +29,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $('.Datos_Sesion').on('click','#Singup2_eye',function(eyen){
+    $('.Secion_Datos').on('click','#Singup2_eye',function(eyen){
         eyen.preventDefault();
         var pasword2 = document.getElementById("Contraseña2");
         var eye2=document.getElementById("eye2_img");

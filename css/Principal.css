@@ -1,0 +1,188 @@
+/*==============Divisaor==============*/
+.custom-shape-divider-top-1700880565 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1700880565 svg {
+    position: relative;
+    display: block;
+    width: calc(139% + 1.3px);
+    height: 46px;
+}
+
+.custom-shape-divider-top-1700880565 .shape-fill {
+    fill: #75B841;
+}
+
+/*==============Cabesera==============*/
+
+.Cabecera_Contenedor {
+    width: 100%;
+    height: 50vh;
+    background: linear-gradient(#00000090, #00000090),url('../img/Analisisfondo.webp')no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+.Cabecera_Titulo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f7efe1;
+    gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    flex-direction: column;
+}
+
+.Cabecera_Titulo h1 {
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+.Cabecera_Titulo h2 {
+    font-size: 2.5em;
+}
+
+.Cabecera_Titulo p {
+    font-size: 1.5em;
+}
+
+
+/*==============Menu==============*/
+.Menu {
+    width: 100%;
+    min-height: 70vh;
+    padding: 20px;
+}
+
+.Menu_Contenedor {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Menu_Cards{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    place-items: center;
+    gap: 20px;
+}
+
+.Card {
+    width: 250px;
+    height: 350px;
+    border-radius: 20px;
+    background-color: #f7efe1;
+    box-shadow: 8px 8px 8px #0000009f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    padding: 10px;
+    border: solid 3px #0e4381;
+}
+
+.Card_Titulo h2 {
+    font-size: 2em;
+}
+
+.Card_Contenido{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.Card_Contenido input {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    font-weight: bolder;
+    background-color: #75B841;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.Card_Contenido input:hover {
+    background-color: #56920c;
+    transform: translateY(-5px);
+}
+
+.Card_Contenido input:active{
+    background-color: #75B841;
+    transform: translateY(0px);
+}
+
+
+/*------ Settings ------*/
+.container {
+    --color: #a5a5b0;
+    --size: 25px;
+    cursor: pointer;
+    font-size: var(--size);
+    user-select: none;
+    fill: var(--color);
+    height: 100%;
+  }
+  
+  .container .moon {
+    
+    animation: keyframes-fill .5s;
+  }
+  
+  .container .sun {
+    
+    display: none;
+    animation: keyframes-fill .5s;
+  }
+  
+  /* ------ On check event ------ */
+  .container input:checked ~ .moon {
+    display: none;
+  }
+  
+  .container input:checked ~ .sun {
+    display: initial;
+  }
+  
+  /* ------ Hide the default checkbox ------ */
+  .container input {
+    
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* ------ Animation ------ */
+  @keyframes keyframes-fill {
+    0% {
+      transform: rotate(-360deg) scale(0);
+      opacity: 0;
+    }
+  
+    75% {
+      transform: rotate(25deg);
+    }
+  }
