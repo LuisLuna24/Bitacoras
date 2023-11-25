@@ -1,0 +1,266 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+/*==============Header==============*/
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 55px;
+    background: #f7efe1;
+    z-index: 100;
+}
+
+.header_Contenedor {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.header_Contenedor img{
+    height: 100%;
+}
+
+/*==============input==============*/
+.Secion_Datos,select {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 1em 0 1em 0;
+    width: 100%;
+    position: relative;
+  }
+  
+  .Secion_Datos input,select {
+    font-size: 100%;
+    padding: 0.8em;
+    outline: none;
+    border: 2px solid rgb(200, 200, 200);
+    background-color: transparent;
+    border-radius: 20px;
+    width: 100%;
+  }
+  
+  .Secion_Datos label {
+    font-size: 100%;
+    position: absolute;
+    left: 0;
+    padding: 0.8em;
+    margin-left: 0.5em;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: rgb(100, 100, 100);
+  }
+  
+  .Secion_Datos :is(input:focus, input:valid)~label {
+    transform: translateY(-50%) scale(.9);
+    margin: 0em;
+    margin-left: 1.3em;
+    padding: 0.4em;
+    background-color: #e8e8e8;
+  }
+  
+  .Secion_Datos :is(input:focus, input:valid) {
+    border-color: rgb(150, 150, 200);
+  }
+
+  /*==============Secion==============*/
+
+ .Secion{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.Seccion_Contenedor{
+    width: 800px;
+    height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    background: #e8e8e8;
+}
+
+@media (max-width:767px){
+    .Seccion_Contenedor{
+        width: 95%;
+        height: auto;
+    }
+    .Secion{
+        height: auto;
+
+    }
+}
+/*==============Bienbenida==============*/
+.Bienbenida {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#00000086, #00000086),url('../img/laboratorio.webp')no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+@media (max-width:767px){
+    .Bienbenida{
+        background-attachment: scroll;
+    }
+}
+.Bienbenida_Logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.Bienbenida_Logo img{
+    width: 150px;
+}
+
+.Bienbenida_Titulo {
+    text-align: center;
+    color: #f7efe1;
+    font-size: 2em;
+}
+.Bienbenida_Boton {
+    color: #e8e8e8;
+    font-size: 1.2em;
+    font-weight: 800;   
+}
+.Bienbenida_Boton a{
+    text-decoration: none;
+    color: #75b841; 
+}
+
+/*==============Bienbenida==============*/
+.Longup{
+    display: none;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+
+.Longup_Form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Longup_Datos{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.Longin{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.Longin_Form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Longin_Titulo {
+    font-size: 1.5em;
+    text-align: center;
+}
+.Longin_Boton {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Longin_Boton input {
+    width: 70%;
+    height: 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(200, 200, 200);
+    color: rgb(100, 100, 100);
+    font-size: 1.5em;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.5s ease;
+}
+
+.Longin_Boton input:hover{
+    background-color: rgb(150, 150, 200);
+    color: rgb(200, 200, 200);
+    transform: translateY(-8px);
+}
+
+.Longin_Boton input:active{
+    transform: translateY(0px);
+}
+
+.Registro_bt{
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+
+.eye{
+    position: absolute;
+    width: 65px;
+    right: -10px;
+    top: 11px;
+    bottom: 4px;
+    z-index: 10;
+    border-radius: 4px;
+    background-color: transparent ;
+    color: #fff;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    transition: .6s ease;
+    cursor: pointer;
+}
+
+.eye img{
+    width: 20px;
+}
+
+
+#NombreA{
+    text-transform: capitalize;
+}
+#ApellidoA{
+    text-transform: capitalize;
+}
