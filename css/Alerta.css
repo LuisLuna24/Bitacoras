@@ -20,7 +20,6 @@
     padding: 20px;
     display: grid;
     place-items: center;
-    gap: 20px;
     
 }
 .Alerta_Titulo {
@@ -66,10 +65,4 @@
 
 .Alerta_Boton input:active{
     transform: translateY(2px);
-}
-
-
-.Faltan_Datos{
-    font-size: 0.7em;
-    color: red;
 }

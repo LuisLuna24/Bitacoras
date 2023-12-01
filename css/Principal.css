@@ -134,3 +134,14 @@
     transform: translateY(0px);
 }
 
+input[type='text']{
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    border: 2px solid #f7efe1;
+    border-radius: 25px;
+    outline: none;
+    font-size: 1em;
+    background: #cda7cf;
+}
+

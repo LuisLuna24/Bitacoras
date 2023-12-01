@@ -1,11 +1,12 @@
 <?php
+session_start();
 
-$Version= "REA14";//$_POST['Version'];
+
+$Version= $_POST['Version'];
 $idBitacora="BBM/GIS/".$Version;
 
-echo $Version."-".$idBitacora;
+$_SESSION["idBitacora"]=$idBitacora;
 
-
-
+echo $idBitacora;
 
 ?>
