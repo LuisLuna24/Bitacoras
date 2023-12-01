@@ -8,20 +8,7 @@
     <link rel="stylesheet" href="css/Proximanete.css">
 </head>
 <body>
-    <header class="header">
-        <a href="#" class="name"><img class="logo_gis" src="img/Gsmall.webp" alt=""></a>
-        <input type="checkbox" id="check">
-        <label for="check" class="menu">
-            <i class="bx bx-menu" id="icon-menu"><img class="bx" src="img/menuahambuegesa.webp"></i>
-            <i class="bx bx-x" id="close-menu"><img class="bx" src="img/menuahambuegesa.webp"></i>
-        </label>
-        <nav class="navbar">
-            <a href="Principal.php">Bitácoras</a>
-            <a href="Proxiamanete.html">Equipo</a>
-            <a href="Proxiamanete.html">Análisis</a>
-            <a href="Proxiamanete.html">Salir</a>
-        </nav>
-    </header>
+    <?php require('./Global/header.php'); ?> 
     <section class="Proxiamanete">
         <div class="Proxiamanete_Contenedor">
             <div class="Proxiamanete_Titulo">

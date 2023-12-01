@@ -7,7 +7,7 @@ inputNumero.addEventListener("input", function () {
     }
     inputNumero.value = valor;
 });*/
-
+/*
 function validarEmail(elemento){
 
     var texto = document.getElementById(elemento.id).value;
@@ -24,4 +24,12 @@ function validarEmail(elemento){
         mensaje1.classList.remove("corr_null");
     }
       
-}
+}*/
+
+
+$(document).ready(function () {
+    const myInput = document.getElementById("Version_Dialog");
+    myInput.addEventListener("input", () => {
+        myInput.value = myInput.value.toUpperCase();
+    });
+});

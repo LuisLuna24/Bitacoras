@@ -1,3 +1,14 @@
+<?php
+ob_start();
+session_start();
+$id_Usuario=$_SESSION['id_usuario'];
+$Nombre=$_SESSION['nombre'];
+$Apellido=$_SESSION['apellido'];
+$idBitacora=$_SESSION["idBitacora"];
+if($id_Usuario=="" || $id_Usuario==null){
+    header("location:index.html");
+}else{  ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,31 +24,19 @@
     <link rel="stylesheet" href="./librerias/select2/css/select2.css">
 </head>
 <body>
-    <header class="header" id="header">
-        <a href="#" class="name"><img class="logo_gis" src="img/Gsmall.webp" alt=""></a>
-        <input type="checkbox" id="check">
-        <label for="check" class="menu">
-            <i class="bx bx-menu" id="icon-menu"><img class="bx" src="img/menuahambuegesa.webp"></i>
-            <i class="bx bx-x" id="close-menu"><img class="bx" src="img/menuahambuegesa.webp"></i>
-            
-        </label>
-        <nav class="navbar">
-            <a href="Principal.php">Bitácoras</a>
-            <a href="Proxiamanete.html">Equipo</a>
-            <a href="Proxiamanete.html">Análisis</a>
-            <a href="Proxiamanete.html">Salir</a>
-        </nav>
-    </header>
+    
+    <?php require('./Global/header.php'); ?> 
 
     <section class="Reactivos">
         <div class="Reactivos_Contenedor">
             <div class="Reactivos_Titulo">
                 <h1>Bitacora de Reactivos</h1>
             </div>
-            <div class="Reactivos_Identificadores">
-                <input type="text">
-            </div>
             <form class="Reactivos_Form" id="Reactivos_Form">
+                <div class="Reactivos_Identificadores">
+                    <input type="text" value="<?php echo $idBitacora;  ?>" readonly>
+                </div>
+            
                 <div class="Reactivos_Datos">
                     <div class="Datos">
                         <label for="Nombre">Nombre:</label>
@@ -51,7 +50,7 @@
                 <div class="Reactivos_Datos">
                     <div class="Datos">
                         <label for="apertura">Fecha apertura:</label>
-                        <input type="date">
+                        <input type="date" id='Fecha_Reactivo'>
                     </div>
                     <div class="Datos">
                         <label for="caducidad">Fecha caducidad:</label>
@@ -65,7 +64,9 @@
                     </div>
                     <div class="Datos">
                         <label for="caducidad">Elaboro:</label>
-                        <input type="text" value="">
+                        <select id=Elaboro  onchange="this.options[0].selected=true">
+                            <option value="<?php $id_Usuario ?>" selected> <?php echo $Nombre.' '.$Apellido   ?> </option>
+                        </select>
                     </div>
                 </div>
                 <div class="Reactivos_Botones">
@@ -113,3 +114,6 @@
 </body>
 </html>
 
+<script src="./jsreactivos/Scripts.js"></script>
+
+<?php } ?>

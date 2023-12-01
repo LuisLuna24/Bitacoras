@@ -16,6 +16,7 @@ if(pg_num_rows($consulta)!=0){
         $row=pg_fetch_assoc($consulta);
         $_SESSION['id_usuario']=$row['id_usuario'];
         $_SESSION['nombre']=$row['nombre'];
+        $_SESSION['apellido']=$row['apellido'];
         $_SESSION['area']=$row['id_area'];
         echo 1;
     }else{

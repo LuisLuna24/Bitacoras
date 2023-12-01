@@ -3,6 +3,7 @@ ob_start();
 session_start();
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
+$Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:index.html");
 }else{  ?>
@@ -16,30 +17,19 @@ if($id_Usuario=="" || $id_Usuario==null){
     <title>Document</title>
     <link rel="stylesheet" href="css/Principal.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/nuevo.css">
 </head>
 
 <body>
-    <header class="header" id="header">
-        <a href="#" class="name"><img class="logo_gis" src="img/Gsmall.webp" alt=""></a>
-        <input type="checkbox" id="check">
-        <label for="check" class="menu">
-            <i class="bx bx-menu" id="icon-menu"><img class="bx" src="img/menuahambuegesa.webp"></i>
-            <i class="bx bx-x" id="close-menu"><img class="bx" src="img/menuahambuegesa.webp"></i>
-        </label>
-        <nav class="navbar">
-            <a href="Principal.php"><span class="Selected">Bitácoras</span></a>
-            <a href="Proxiamanete.html">Equipo</a>
-            <a href="Proxiamanete.html">Análisis</a>
-            <a href="Proxiamanete.html">Salir</a>
-        </nav>
-    </header>
+
+    <?php require('./Global/header.php'); ?> 
 
     <section class="Cabesera">
         <div class="Cabecera_Contenedor">
             <div class="Cabecera_Titulo">
                 <h1>Bienvenido</h1>
                 <h2>
-                    <?php echo $Nombre ?>
+                    <?php echo $Nombre." ".$Apellido  ?>
                 </h2>
                 <p>Bitácoras de Análisis</p>
             </div>
@@ -71,7 +61,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <h2>Bitácoras de Extracción</h2>
                     </div>
                     <div class="Card_Contenido">
-                        <input type="button" value="Nueva Bitacora" id="Proximanete2">
+                        <input type="button" value="Nueva Bitacora" id="Extraccion">
                         <input type="button" value="Ver Bitacoras" id="Proximanete3">
                     </div>
                 </div>
@@ -96,6 +86,24 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
             </div>
         </div>
+        <div id='Dialog_Alert' class="Dialog_Alert">
+            <form class="Dialog_Contenedor" id="Dialg_Form">
+                <div class="Dialog_Titulo">
+                    <h2>Nueva</h2>
+                    <p id="Nombre_Bitacora">Identificador</p>
+                </div>
+                <p class="Alerta_dialog" id="Alerta_dialog"></p>
+                <div class="Dialog_Contenido">
+                    <input type="text" required="" autocomplete="off" name="Version" id="Version_Dialog">
+                    <label name="Version">Identificador</label>
+                </div>
+                <div class="Dialog_Botones" id="Dialog_Botones">
+                    <input type="button" value="Aceptar">
+                    <input type="button" value="Cancelar">
+                </div>
+            </form>
+        </div>
+
     </section>
 
 
@@ -113,5 +121,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="librerias/jquery/jquery-3.2.1.min.js"></script>
 <script src="js/Proximamente.js"></script>
 <script src="./jsreactivos/Nuevo_Reactivo.js"></script>
+<script src="./js/Restricciones.js"></script>
 
 <?php } ?>
