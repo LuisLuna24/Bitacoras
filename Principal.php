@@ -62,7 +62,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <h2>Bitácoras de Reactivos</h2>
                     </div>
                     <div class="Card_Contenido">
-                        <input type="button" value="Nueva Bitacora">
+                        <input type="button" value="Nueva Bitacora" id="Reactivo">
                         <input type="button" value="Ver Bitacoras" id="Proximanete">
                     </div>
                 </div>
@@ -112,5 +112,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 <script src="librerias/jquery/jquery-3.2.1.min.js"></script>
 <script src="js/Proximamente.js"></script>
+<script src="./jsreactivos/Nuevo_Reactivo.js"></script>
 
 <?php } ?>
