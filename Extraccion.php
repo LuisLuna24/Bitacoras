@@ -24,7 +24,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <body>
     <?php require "./Global/header.php"; ?>
     <section class="bitacora_extraccion">
-        <div class="bitacora_extraccion">
+        <div class="bitacora_extraccion_contenedor">
             <form class="bitacora_extraccion_form">
                 <div class="bit_extraccion_titulo">
                     <h1>Bitacora de extraccion</h1>
