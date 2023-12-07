@@ -1,0 +1,110 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  .bit_extraccion {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .bit_extraccion_contenedor {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+  }
+  .bit_extraccion_form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .bit_extraccion_titulo {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .bit_extraccion_titulo h1 {
+    font-size: 2.5em;
+  }
+  .linea_titulo {
+    width: 100%;
+    height: 8px;
+    background-color: rgb(43, 226, 67);
+    border-radius: 25px;
+  }
+  .extraccion_datos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .extraccion_datos input {
+    width: 100%;
+    height: 25px;
+    border-radius: 25px;
+    padding: 0 10px;
+    border: none;
+    background-color: #dfb4e1;
+  }
+  .datos_extraccion {
+    width: 100%;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  .botones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    width: 100%;
+    gap: 10px;
+    place-items: center;
+    margin-top: 20px;
+  }
+  .botones input {
+    width: 200px;
+    height: 30px;
+    border-radius: 25px;
+    border: none;
+    background-color: rgb(43, 226, 67);
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  .botones input:hover {
+    transform: translateY(-8px);
+  }
+  .botones input :active {
+    transform: translateY(2px);
+    transition: 0.3s;
+  }
+  .dat {
+    width: 100%;
+  }
+  .dat h3 {
+    font-size: 1.2em;
+  }
+  .check_contenedor {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: initial;
+    gap: 10px;
+  }
+  .contenedor2{
+      width: 100%;
+  }
