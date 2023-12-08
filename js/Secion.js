@@ -1,12 +1,11 @@
 $(document).ready(function () {
-    
-    $('#Iniciar_Secion').on('click', function(err){
-        err.preventDefault();
-        var parametros = new FormData($("#Longin_Form")[0]);
+    $("#Iniciar_Sesion").on("click",function(event){
+        event.preventDefault();
+        var datos = new FormData($("#Form_Secion")[0]);
         $.ajax({
             type: "POST",
             url: "php/Secion.php",
-            data: parametros,
+            data: datos,
             contentType: false,
             processData:false,
             success: function (response) {
@@ -28,7 +27,7 @@ $(document).ready(function () {
                 }else{
                     var Alert = document.getElementById('Alerta_Secion');
                     Alert.style.display = "flex";
-                    $('#Label_Alerta_Secion').text('Ha ocurrido un error inesperado');
+                    $('#Label_Alerta_Secion').text(response);
                 }
             }
         });

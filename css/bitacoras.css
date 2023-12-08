@@ -1,6 +1,3 @@
-body{
-    background-color: antiquewhite;
-}
 /*==============Divisaor==============*/
 .custom-shape-divider-top-1700880565 {
     top: 0;
@@ -59,57 +56,60 @@ body{
 }
 
 
+/*==============Menu==============*/
 .Menu {
     width: 100%;
-    padding: 50px;
+    min-height: 70vh;
+    padding: 20px;
 }
 
-@media (max-width: 768px) {
-    .Menu{
-        height: auto;
-    }
-}
 .Menu_Contenedor {
     width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Menu_Cards{
+    width: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
     place-items: center;
     gap: 20px;
 }
-.Menu_Card {
+
+.Card {
     width: 250px;
-    height: 300px;
-    border: solid 3px #2196f3;
-    border-radius: 25px;
-    padding: 20px;
+    height: 350px;
+    border-radius: 20px;
+    background-color: #f7efe1;
+    box-shadow: 8px 8px 8px #0000009f;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap:10px;
-    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.527);
-}
-
-.Card_Titulo {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 1.8rem;
+    gap: 20px;
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
+    padding: 10px;
+    border: solid 3px #0e4381;
 }
 
-.Card_Titulo p{
-    font-size: 1.1rem;
-    color: #104977;
+.Card_Titulo h2 {
+    font-size: 2em;
 }
 
-.Card_Boton {
-    width: 100%;
+.Card_Contenido{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
 }
 
-.Card_Boton a {
+.Card_Contenido input {
     width: 100%;
     padding: 5px;
     display: flex;
@@ -122,17 +122,26 @@ body{
     border-radius: 25px;
     cursor: pointer;
     transition: 0.5s ease;
-    text-decoration: none;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: black;
 }
 
-.Card_Boton a:hover {
+.Card_Contenido input:hover {
     background-color: #56920c;
     transform: translateY(-5px);
 }
 
-.Card_Boton a:active{
+.Card_Contenido input:active{
     background-color: #75B841;
     transform: translateY(0px);
 }
+
+input[type='text']{
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    border: 2px solid #f7efe1;
+    border-radius: 25px;
+    outline: none;
+    font-size: 1em;
+    background: #cda7cf;
+}
+

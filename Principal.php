@@ -5,24 +5,20 @@ $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
-    header("location:index.html");
+    header("location:index.php");
 }else{  ?>
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/Principal.css">
+    <title>Principal</title>
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/nuevo.css">
+    <link rel="stylesheet" href="css/principal.css">
 </head>
-
 <body>
-
-    <?php require('./Global/header.php'); ?> 
+    <?php require "./global/header.php"  ?>
 
     <section class="Cabesera">
         <div class="Cabecera_Contenedor">
@@ -44,83 +40,52 @@ if($id_Usuario=="" || $id_Usuario==null){
         </svg>
     </div>
 
+
     <section class="Menu">
         <div class="Menu_Contenedor">
-            <div class="Menu_Cards">
-                <div class="Card">
-                    <div class="Card_Titulo">
-                        <h2>Bitácoras de Reactivos</h2>
-                    </div>
-                    <div class="Card_Contenido">
-                        <input type="button" value="Nueva Bitacora" id="Reactivo">
-                        <input type="button" value="Ver Bitacoras" id="Proximanete">
-                    </div>
+            <div class="Menu_Card">
+                <div class="Card_Titulo">
+                    <h2>Bitacoras</h2>
+                    <p>Ver, editar, agregar bitacoras</p>
                 </div>
-                <div class="Card">
-                    <div class="Card_Titulo">
-                        <h2>Bitácoras de Extracción</h2>
-                    </div>
-                    <div class="Card_Contenido">
-                        <input type="button" value="Nueva Bitacora" id="Extraccion">
-                        <input type="button" value="Ver Bitacoras" id="Proximanete3">
-                    </div>
+                <div class="Card_Boton">
+                    <a href="./Bitacoras.php">Entrar</a>
                 </div>
-                <div class="Card">
-                    <div class="Card_Titulo">
-                        <h2>Bitácoras de Resultados de PCR</h2>
-                    </div>
-                    <div class="Card_Contenido">
-                        <input type="button" value="Nueva Bitacora" id="Proximanete4">
-                        <input type="button" value="Ver Bitacoras" id="Proximanete5">
-                    </div>
+            </div>
+            <div class="Menu_Card">
+                <div class="Card_Titulo">
+                    <h2>Reactivos</h2>
+                    <p>Ver, editar, agregar Reactivos</p>
                 </div>
-                <div class="Card">
-                    <div class="Card_Titulo">
-                        <h2>Bitácoras de Resultados de PCR</h2>
-                        <h3>Tiempo Real</h3>
-                    </div>
-                    <div class="Card_Contenido">
-                        <input type="button" value="Nueva Bitacora" id="Proximanete6">
-                        <input type="button" value="Ver Bitacoras" id="Proximanete7">
-                    </div>
+                <div class="Card_Boton">
+                    <a href="./Proxiamanete.php">Entrar</a>
+                </div>
+            </div>
+            <div class="Menu_Card">
+                <div class="Card_Titulo">
+                    <h2>Analisis</h2>
+                    <p>Ver, editar, agregar Analisis</p>
+                </div>
+                <div class="Card_Boton">
+                    <a href="./Proxiamanete.php">Entrar</a>
+                </div>
+            </div>
+            <div class="Menu_Card">
+                <div class="Card_Titulo">
+                    <h2>Equipo</h2>
+                    <p>Ver, editar, agregar Equipo</p>
+                </div>
+                <div class="Card_Boton">
+                    <a href="./Equipo/Equipo.php">Entrar</a>
                 </div>
             </div>
         </div>
-        <div id='Dialog_Alert' class="Dialog_Alert">
-            <form class="Dialog_Contenedor" id="Dialg_Form">
-                <div class="Dialog_Titulo">
-                    <h2>Nueva</h2>
-                    <p id="Nombre_Bitacora">Identificador</p>
-                </div>
-                <p class="Alerta_dialog" id="Alerta_dialog"></p>
-                <div class="Dialog_Contenido">
-                    <input type="text" required="" autocomplete="off" name="Version" id="Version_Dialog">
-                    <label name="Version">Identificador</label>
-                </div>
-                <div class="Dialog_Botones" id="Dialog_Botones">
-                    <input type="button" value="Aceptar">
-                    <input type="button" value="Cancelar">
-                </div>
-            </form>
-        </div>
-
     </section>
 
 
-    <footer calss="Footer">
-        <div class="Fotter_Contenedor">
-            <div class="Footer_Logo">
-                <img src="img/Smallfooterlogo.webp" alt="">
-                <label for="Copyright">Gisenalabs® Todos los derechos reservados</label>
-            </div>
-        </div>
-    </footer>
+    <?php require "./global/footer.php"  ?>
 </body>
-
 </html>
-<script src="librerias/jquery/jquery-3.2.1.min.js"></script>
-<script src="js/Proximamente.js"></script>
-<script src="./jsreactivos/Nuevo_Reactivo.js"></script>
-<script src="./js/Restricciones.js"></script>
 
-<?php } ?>
+
+<?php }  ?>
