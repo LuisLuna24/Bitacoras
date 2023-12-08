@@ -1,0 +1,260 @@
+.Equipo{
+    width: 100%;
+    min-height: 100vh;
+    background-color: antiquewhite;
+    padding: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+@media (max-width: 768px){
+    .Equipo{
+        padding: 10px;
+    }
+}
+
+.Equipo_Contenedor{
+    width: 100%;
+}
+
+
+.Equipo_Titulo{
+    width: 100%;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.Equipo_Form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    place-items: center;
+    gap: 10px;
+}
+.Dato_Equipo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Dato{
+    width: 100%;
+}
+
+.Dato input{
+    width: 100%;
+    height: 25px;
+    border-radius: 25px;
+    padding: 0px 10px;
+    border: none;
+    background-color: #cba7cc;
+
+}
+.Dato select{
+    width: 100%;
+    height: 25px;
+    border-radius: 25px;
+    border: none;
+    background-color: #cba7cc;
+}
+
+.Acciones_Tabla{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+
+.Acciones_Tabla select{
+    width: 200px;
+    height: 25px;
+    border-radius: 25px;
+    border: none;
+    background-color: #cba7cc;
+    padding: 0px 15px;
+}
+
+
+.Equipo_Tabla{
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  table{
+    border-radius:5px ;
+    font-size: 1rem;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: #e1cce1;
+    border: 1px solid #a588a7;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+td,th{
+    text-align: center;
+    padding: 8px;
+    border-right: 1px solid #a588a7;
+}
+
+td{
+    font-size: 1rem;
+}
+
+thead th{
+    color:#262626;
+    background: #cba7cc;
+}
+
+tr:nth-child(even){
+    background-color: #cda7cf;
+}
+
+@media(max-width:767px){
+    table{
+        display: block;
+        width: 100%;
+    }
+    thead,tbody,thead th{
+        display: block;
+    }
+    thead th:last-child{
+        border-bottom: none;
+    }
+    thead{
+        float: left;
+    }
+    tbody{
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    td,th{
+        padding: 20px 0.625em 0.625em 0.625em ;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 0.8rem;
+        text-overflow: ellipsis;
+    }
+    thead th{
+        text-align: left;
+        border-bottom: 1px solid #a588a7;
+    }
+    tbody tr{
+        display: table-cell;
+    }
+    tbody tr:nth-child(odd){
+        background: none;
+
+    }
+    tr:nth-child(even){
+        background: transparent;
+    }
+    tr td:nth-child(odd){
+        background-color: #cba7cc;
+        border-right: 1px solid #a588a7;
+    }
+    tr td:nth-child(even){
+        background-color: #e1cce1;
+        border-right: #a588a7;
+    }
+    tbody td{
+        display: block;
+        text-align: center;
+    }
+}
+
+
+.Nav_Paginacion{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: 0px 20px;
+}
+
+.Paginacion_Tabla{
+    display: flex;
+    list-style-type: none;
+    gap: 5px;
+}
+
+.Pagina{
+    padding: 5px;
+    background-color: #cda7cf;
+    border-radius: 2px;
+}
+
+.Pagina a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #262626;
+}
+
+.activo{
+    color: #a588a7;
+}
+
+.Equipo_Botones{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    place-items: center;
+    margin-top: 15px;
+    gap: 15px;
+}
+
+ input[type="button"] {
+    width: 200px;
+    height: 28px;
+    border-radius: 25px;
+    background: #75B841;
+    border:none;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: 0.8rem;
+}
+
+ input[type="button"]:hover{
+    transform: translateY(-5px);
+    background-color: #65a039;
+}
+input[type="button"]:active{
+    transform: translateY(-4px);
+    transition: 0.1s ease-in-out;
+    background-color: #446b26;
+}
+
+
+@media (max-width: 768px){
+    .Acciones_Tabla{
+        flex-direction: column;
+    }
+    .Dato input{
+        width: 100%;
+        height: 35px;
+    
+    }
+    .Dato select{
+        width: 100%;
+        height: 35px;
+    }
+    .Acciones_Tabla select{
+        width: 100%;
+        height: 35px;
+    }
+    .Pagina{
+        padding: 15px;
+        background-color: #cda7cf;
+        border-radius: 2px;
+    }
+}
