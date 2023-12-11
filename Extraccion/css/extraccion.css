@@ -304,6 +304,34 @@ tr:nth-child(even){
   background-color: #dfb4e1;
 }
 
+
+.Agregar_Equio_div input[type="button"] {
+  margin-top: 15px;
+  width: 100%;
+  height: 30px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  font-weight: bolder;
+  background-color: #75B841;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.Agregar_Equio_div input[type="button"]:hover {
+  background-color: #56920c;
+  transform: translateY(-5px);
+}
+
+.Agregar_Equio_div input[type="button"]:active{
+  background-color: #75B841;
+  transform: translateY(0px);
+}
+
 @media (max-width:767px){
   .Datos {
     width: 100%;

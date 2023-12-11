@@ -26,6 +26,7 @@ if($id_Usuario=="" || $id_Usuario==null){
     <script src="../librerias/jquery/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="../librerias/select2/css/select2.css" />
     <script src="../librerias/select2/select2.js"></script>
+    <link rel="stylesheet" href="css/Alert.css">
 </head>
 
 <body>
@@ -93,7 +94,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                 </div>
                 <div class="Datos_Metodo_Equipo">
-                        <div class="dato">
+                        <div class="dato Agregar_Equio_div">
                             <label>Selecciona Equipo</label>
                             <select name="Equipo_SelectAgregar" id="Equipo_Select"></select>
                             <input type="button" value="Agregar_Equipo" id="Agregar_Equipo">
@@ -108,7 +109,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
                 <div class="botones">
                     <input type="submit" value="Agregar Extraccion" id="Agregar_Extraccion">
-                    <input type="submit" value="Salir">
+                    <input type="button" value="Salir" id="Salir_Ectraccion">
+                    <input type="button" value="Cancelar" id="Cancelar_Ectraccion">
                 </div>
             </form>
             <div class="Equipo_Tabla">
@@ -144,6 +146,17 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <tbody id="content"></tbody>
                 </table>
                 <div class="Tablas_Paginas" id="nav-paginacion"></div>
+            </div>
+            <div class="Alert">
+                <div class="Alert_Contenedor">
+                    <h2>¡Alerta!</h2>
+                    <p id="Texto_Alerta"></p>
+                    <div class="Alert_Button">
+                        <input type="submit" value="Cancelar Bitacora" id="Alert_CancelarB">
+                        <input type="button" value="Regresar" id="Alert_Regresar">
+                    </div>
+                </div>
+                
             </div>
         </div>
     </section>
