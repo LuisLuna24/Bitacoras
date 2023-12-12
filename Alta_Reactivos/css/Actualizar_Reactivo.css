@@ -1,0 +1,90 @@
+body{
+    background-color: antiquewhite;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.Editar{
+    width: 100%;
+    height: 100vh;
+}
+
+.Editar_Contenedor{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+}
+
+.Contenedor_Titulo h1{
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.Editar_Form{
+    width: 100%;
+}
+
+.Datos_Form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    place-items: center;
+    gap: 20px;
+}
+
+.datos{
+    width: 100%;
+}
+
+.datos input{
+    width: 100%;
+    height: 25px;
+    border-radius: 25px;
+    padding: 0px 10px;
+    border: none;
+    background-color: #cba7cc;
+}
+
+input[type="button"] {
+    width: 200px;
+    height: 28px;
+    border-radius: 25px;
+    background: #75B841;
+    border:none;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: 0.8rem;
+  }
+  
+  input[type="button"]:hover{
+    transform: translateY(-5px);
+    background-color: #65a039;
+  }
+  input[type="button"]:active{
+    transform: translateY(-4px);
+    transition: 0.1s ease-in-out;
+    background-color: #446b26;
+  }
+
+.Editar_Botones{
+    margin-top: 20px;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 20px;
+}
+
+@media(max-width:767px){
+    .Editar_Contenedor{
+        justify-content: start;
+    }
+    input[type="button"] {
+        width: 100%;
+    }
+}
