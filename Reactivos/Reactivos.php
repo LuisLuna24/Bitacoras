@@ -119,6 +119,8 @@ if($id_Usuario=="" || $id_Usuario==null){
             </form>
         </div>
     </section>
+    <?php require "../global/footer.php" ?>
+
 </body>
 
 </html>

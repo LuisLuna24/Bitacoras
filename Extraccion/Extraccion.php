@@ -2,9 +2,9 @@
 ob_start();
 session_start();
 if(isset($_GET['No_Folio'])){
-    $_SESSION['No_FoliRec']=$_GET['No_Folio'];
+    $_SESSION['No_Foli']=$_GET['No_Folio'];
 }else{
-    $_SESSION['No_FoliRec'];
+    $_SESSION['No_Foli'];
 }
 
 $id_Usuario=$_SESSION['id_usuario'];
