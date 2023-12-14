@@ -5,16 +5,10 @@ body{
   .datos_alta {
     width: 100%;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
   .datos_alta_contenedor {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 50px;
   }
 
@@ -26,9 +20,6 @@ body{
   .datos_alta_form {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
     flex-direction: column;
     gap: 10px;
@@ -42,7 +33,7 @@ body{
     flex-direction: column;
   }
   .datos_alta_titulo h1 {
-    font-size: 3em;
+    font-size: 2.5rem;
   }
   .linea_titulo {
     width: 100%;

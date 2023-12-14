@@ -18,6 +18,12 @@ body{
     align-items: center;
     padding: 50px;
   }
+
+  @media(max-width: 767px) {
+    .datos_alta_contenedor{
+      padding: 10px;
+    }
+  }
   .datos_alta_form {
     width: 100%;
     height: 100%;

@@ -6,7 +6,7 @@ $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
-    header("location:../../index.php");
+    header("location:../index.php");
 }else{  ?>
 
 <!DOCTYPE html>

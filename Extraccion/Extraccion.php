@@ -11,7 +11,7 @@ $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
-    header("location:../../index.php");
+    header("location:../index.php");
 }else{  ?>
 
 <!DOCTYPE html>
@@ -109,7 +109,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
                 <div class="botones">
                     <input type="submit" value="Agregar Extraccion" id="Agregar_Extraccion">
-                    <input type="button" value="Salir" id="Salir_Ectraccion">
+                    <input type="button" value="Ver Bitacoras" id="Salir_Ectraccion">
                     <input type="button" value="Cancelar" id="Cancelar_Ectraccion">
                 </div>
             </form>

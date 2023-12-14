@@ -7,10 +7,10 @@
         
     </label>
     <nav class="navbar">
-        <a id="Bitacoras_Global" href="Principal.php">Bitácoras</a>
+        <a id="Bitacoras_Global" href="Bitacoras.php">Bitácoras</a>
         <a id="Equipo_Global" href="./Equipo/Equipo.php">Equipo</a>
         <a id="Análisis_Global" href="Proxiamanete.php">Análisis</a>
-        <a id="Reactivos_Global" href="Proxiamanete.php">Reactivos</a>
+        <a id="Reactivos_Global" href="./Alta_Reactivos/Alta_Reactivos.php">Reactivos</a>
         <a id="Salir_Global" href="./php/Cerrar.php">Salir</a>
     </nav>
 </header>

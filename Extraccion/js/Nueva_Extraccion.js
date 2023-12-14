@@ -51,7 +51,7 @@ $(document).ready(function () {
     });
 
     $("#Salir_Ectraccion").on('click',function(){
-        window.location.href = "../Bitacoras.php";
+        window.location.href = "./Ver_Extraccion.php";
     });
 
     $("#Cancelar_Ectraccion").on('click',function(){

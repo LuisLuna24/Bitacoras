@@ -1,7 +1,7 @@
 <?php
 require "../../php/conexion.php";
 
-$columns=['nombre', 'no_lote', 'fecha_apertura', 'fecha_caducidad', 'pruaba_reactivo'];
+$columns=['nombre', 'no_lote', 'fecha_apertura', 'fecha_caducidad', 'pruaba_reactivo','identificado'];
 
 $table="bitacora_reactivo";
 
@@ -67,7 +67,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['fecha_caducidad'] .'</td>';
         $output['data'].='<td>'. $row['pruaba_reactivo'] .'</td>';
         $output['data'].='<td><a href="">Editar</a></td>';
-        $output['data'].='<td><a href="">Eliminar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?identificado='.$row['identificado'].'">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{
