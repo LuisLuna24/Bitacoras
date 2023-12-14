@@ -31,7 +31,6 @@ if($id_Usuario=="" || $id_Usuario==null){
         <div class="Reactivos_Contenedor">
             <div class="Reactivos_Titulo">
                 <h1>Bitacora de Reactivos</h1>
-                <div class="linea_titulo"></div>
             </div>
             <form class="Reactivos_Form" id="Reactivos_Form">
                 <div class="Reactivos_Identificadores">
