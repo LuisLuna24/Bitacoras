@@ -1,5 +1,6 @@
 let paginaActual = 1;
 
+
 getData(paginaActual);
 
 document.getElementById("campo").addEventListener("keyup",function(e){
@@ -19,7 +20,7 @@ if(pagina != null){
     paginaActual=pagina;
 }
 
-    let url="./php/Buscar_TabalaExtraccion.php";
+    let url="./php/Buscar_TablaReactivos.php";
     let formaData = new FormData();
     formaData.append('campo',input);
     formaData.append('registros',num_registros);

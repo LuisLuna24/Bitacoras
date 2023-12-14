@@ -1,16 +1,16 @@
 $(document).ready(function () {
-    $("#Agregar_Extraccion").on('click',function (e) {
+    $("#Nuevo_Reactivo").on("click", function(e){
         e.preventDefault();
-        var datos = new FormData($('#Form_Extraccion')[0]);
+        var elementos = new FormData($("#Reactivos_Form_Data")[0]);
         $.ajax({
             type: "POST",
-            url: "./php/Nueva_Extraccion.php",
-            data: datos,
+            url: "./php/Agregar_Reactivo.php",
+            data: elementos,
             contentType: false,
             processData:false,
             success: function (response) {
                 let paginaActual = 1;
-
+                
                 getData(paginaActual);
 
                 document.getElementById("campo").addEventListener("keyup",function(e){
@@ -30,7 +30,7 @@ $(document).ready(function () {
                     paginaActual=pagina;
                 }
 
-                    let url="./php/Buscar_TabalaExtraccion.php";
+                    let url="./php/Buscar_Equipo.php";
                     let formaData = new FormData();
                     formaData.append('campo',input);
                     formaData.append('registros',num_registros);
@@ -46,41 +46,8 @@ $(document).ready(function () {
                     }).catch(err => console.log(err))
 
                 }
+
             }
         });
-    });
-
-    $("#Salir_Ectraccion").on('click',function(){
-        window.location.href = "./Ver_Extraccion.php";
-    });
-
-    $("#Cancelar_Ectraccion").on('click',function(){
-        $(".Alert").css("display","grid");
-        $("#Texto_Alerta").text("¿Esta sefuro de cancelar la bitacora?");
-    });
-
-    $("#Alert_Regresar").on('click',function(){
-        $(".Alert").css("display","none");
-    });
-
-    $("#Alert_CancelarB").on('click',function(){
-        $.ajax({
-            type: "POST",
-            url: "./php/Cancelar_Bitacora.php",
-            dataType: "html",
-            success: function (response) {
-                if(response==1){
-                    window.location.href = "../Bitacoras.php";
-                }else if (response==2){
-                    $(".Alert").css("display","grid");
-                    $("#Texto_Alerta").text("No se pudo cancelar la bitacora");
-                    $(".Alert_Button").html("<input type='button' value='Regresar' id='Alert_Regresar'>");
-                }else{
-                    alert(response);
-                }
-            }
-        });
-    });
-
-
+    })
 });

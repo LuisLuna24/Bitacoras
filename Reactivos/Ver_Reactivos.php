@@ -11,25 +11,27 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver Extraccion</title>
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="css/ver_extraccion.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/Ver_Reactivos.css">
+    <title>Ver Reactivos</title>
+    <link rel="stylesheet" href="../css/header.css" />
     <script src="../librerias/jquery/jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="../librerias/select2/css/select2.css">
+    <link rel="stylesheet" href="../librerias/select2/css/select2.css" />
     <script src="../librerias/select2/select2.js"></script>
+    <link rel="stylesheet" href="css/Alert.css" />
 </head>
+
 <body>
-    <?php require "../global/header.php" ?>
-    <section class="Extraccion">
-        <div class=Extraccion_Contenedor>
-            <div class="Extraccion_Titulo">
-                <h1>Ver Extraccion</h1>
+    <?php require "../global/header.php" ;?>
+    <section class="Reactivos">
+        <div class="Reactivo_Contenedor">
+            <div class="Reactivo_Titulo">
+                <h1>Ver Reactivos</h1>
             </div>
-        </div>
-        <div class="Todas_las_Extracciones">
+            <div class="Linea_Titulo"></div>
             <div class="Equipo_Tabla">
                 <div class="Acciones_Tabla">
                     <div class="Datos">
@@ -41,19 +43,18 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </select>
                     </div>
                     <div class="Dato">
-                        <label for="buscar">Buscar folio:</label>
-                        <input type="text" id="campo" name="campo">
+                        <label for="buscar">Buscar Reactivo:</label>
+                        <input type="text" id="campo" name="campo" />
                     </div>
                 </div>
-                
+
                 <table>
                     <thead>
-                        <th>No.</th>
                         <th>Folio</th>
-                        <th>Bitacora</th>
-                        <th>Realizo</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th>Elaboro</th>
+                        <th>Fecha Elaboro</th>
+                        <th>Actualizar</th>
+                        <th>Eliminar </th>
                     </thead>
                     <tbody id="content"></tbody>
                 </table>
@@ -61,12 +62,12 @@ if($id_Usuario=="" || $id_Usuario==null){
             </div>
         </div>
     </section>
-
     <?php require "../global/footer.php" ?>
 </body>
+
 </html>
 
 <script src="./js/scripts.js"></script>
-<script src="./js/Buscar_Extraccion.js"></script>
+<script src="./js/Buscar_TablaReactivos.js"></script>
 
 <?php }  ?>

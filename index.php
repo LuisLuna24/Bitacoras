@@ -13,7 +13,7 @@
     <header>
         <div class="header_contenedor">
             <img src="./img/Gsmall.webp" alt="logo">
-            <a href="./registrarce.html">Registrace</a>
+            <a href="./registrarce.php">Registrace</a>
         </div>
     </header>
 
@@ -40,7 +40,7 @@
             <div class="Secion_Imagen">
                 <img src="./img/Gsmall.webp" alt="logo">
                 <h1>Gisena <span>Labs</span> </h1>
-                <p>¿No tienes cuneta? <a href="./registrarce.html">Registrarce</a></p>
+                <p>¿No tienes cuneta? <a href="./registrarce.php">Registrarce</a></p>
             </div>
             <?php  require "./global/Alerta_Index.php" ?>
         </div>

@@ -1,19 +1,15 @@
 <?php
 require "../../php/conexion.php";
 
+$columns=['nombre', 'no_lote', 'fecha_apertura', 'fecha_caducidad', 'pruaba_reactivo','identificado'];
 
-$columns=['ver_folioextraccion.id_folio', 'ver_folioextraccion.folio  ', 'version_bitacora',' usuarios.nombre','usuarios.apellido','id_equiposeleccionado'];
+$table="bitacora_reactivo";
 
-$table="ver_folioextraccion ";
-
-$id= 'id_folio';
+$id= 'id_bitreactivo';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="INNER JOIN birtacora_extaccion on birtacora_extaccion.id_folio=ver_folioextraccion.id_folio  INNER  JOIN usuarios on usuarios.id_usuario=birtacora_extaccion.id_usuario";
-
-
-$where = "WHERE ver_folioextraccion.id_folio::text ILIKE '%" . $campo . "%' ";
+$where = "WHERE nombre ILIKE '%" . $campo . "%'";
 
 /*if($campo!==null){
     $where = "WHERE (";
@@ -29,8 +25,6 @@ $where = "WHERE ver_folioextraccion.id_folio::text ILIKE '%" . $campo . "%' ";
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
 
-
-
 if(!$pagina){
     $inicio = 0;
     $pagina =1;
@@ -41,12 +35,10 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT DISTINCT " . implode(", ",$columns) . "
-FROM $table 
-$join
+$sql="SELECT " . implode(", ",$columns) . "
+FROM $table
 $where
 $sLimit";
-
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
@@ -67,14 +59,15 @@ $output['data'] = '';
 $output['paginacion'] = '';
 
 if($num_rows>0){
-    while($row=pg_fetch_array($resultado)){
+    while($row=pg_fetch_assoc($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['id_folio'] .'</td>';
-        $output['data'].='<td>'. $row['folio'] .'</td>';
-        $output['data'].='<td>'. $row['version_bitacora'] .'</td>';
-        $output['data'].='<td>'. $row['nombre'] . ' ' . $row['apellido'] . '</td>';
-        $output['data'].='<td><a href="Extraccion.php?No_Folio='. $row['folio']. '">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Extraccion.php?No_Folio='. $row['folio']. '">Eliminar</a></td>';
+        $output['data'].='<td>'. $row['nombre'] .'</td>';
+        $output['data'].='<td>'. $row['no_lote'] .'</td>';
+        $output['data'].='<td>'. $row['fecha_apertura'] .'</td>';
+        $output['data'].='<td>'. $row['fecha_caducidad'] .'</td>';
+        $output['data'].='<td>'. $row['pruaba_reactivo'] .'</td>';
+        $output['data'].='<td><a href="">Editar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?identificado='.$row['identificado'].'">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{
@@ -108,10 +101,10 @@ if($output['totalRegistros']>0){
 
     for($i=$numeroInicio;$i<=$numeroFin;$i++){
         if($pagina == $i){
-            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="#">' . $i . '</a></li>';
 
         }else{
-            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="" onclick="getData('. $i .')">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="#" onclick="getData('. $i .')">' . $i . '</a></li>';
         }
     }
 

@@ -53,7 +53,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                     <div class="Card_Contenido">
                         <input type="button" value="Nueva Bitacora" id="Reactivo">
-                        <input type="button" value="Ver Bitacoras" id="Proximanete">
+                        <input type="button" value="Ver Bitacoras" id="Ver_Reactivos">
                     </div>
                 </div>
                 <div class="Card">
@@ -105,5 +105,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="js/Proximamente.js"></script>
 <script src="./js/Restricciones.js"></script>
 <script src="./js/Extraccion.js"></script>
+<script src="./js/Reactivos.js"></script>
 
 <?php } ?>

@@ -58,7 +58,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <p>Ver, editar, agregar Reactivos</p>
                 </div>
                 <div class="Card_Boton">
-                    <a href="./Proxiamanete.php">Entrar</a>
+                    <a href="./Alta_Reactivos/Alta_Reactivos.php">Entrar</a>
                 </div>
             </div>
             <div class="Menu_Card">
