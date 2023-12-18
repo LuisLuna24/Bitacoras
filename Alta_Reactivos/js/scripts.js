@@ -6,4 +6,6 @@ $(document).ready(function () {
     $("#Análisis_Global").attr("href", "../Proxiamanete.php");
     $("#Reactivos_Global").attr("href", "../Proxiamanete.php");
     $("#Salir_Global").attr("href", "../php/Cerrar.php");
+    $("#Inicio_Global").attr("href", "../Principal.php");
+
 });

@@ -10,7 +10,6 @@ $(document).ready(function () {
             processData:false,
             success: function (response) {
                 let paginaActual = 1;
-                
                 getData(paginaActual);
 
                 document.getElementById("campo").addEventListener("keyup",function(e){
@@ -30,7 +29,7 @@ $(document).ready(function () {
                     paginaActual=pagina;
                 }
 
-                    let url="./php/Buscar_Equipo.php";
+                    let url="./php/Buscar_Tabla.php";
                     let formaData = new FormData();
                     formaData.append('campo',input);
                     formaData.append('registros',num_registros);

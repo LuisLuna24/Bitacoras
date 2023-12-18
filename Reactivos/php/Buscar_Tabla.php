@@ -1,5 +1,8 @@
 <?php
 require "../../php/conexion.php";
+session_start();
+
+$folio=$_SESSION['No_Foli'];
 
 $columns=['nombre', 'no_lote', 'fecha_apertura', 'fecha_caducidad', 'pruaba_reactivo','identificado'];
 
@@ -9,7 +12,7 @@ $id= 'id_bitreactivo';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$where = "WHERE nombre ILIKE '%" . $campo . "%'";
+$where = "WHERE nombre ILIKE '%" . $campo . "%' and id_folio = '$folio'";
 
 /*if($campo!==null){
     $where = "WHERE (";

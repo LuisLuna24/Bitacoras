@@ -69,7 +69,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['id_folio'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'].'</td>';
         $output['data'].='<td>'. $row['fechaelabortacion'] .'</td>';
-        $output['data'].='<td><a href="Reactivos.php?No_Folio="'. $row['id_folio']. '">Editar</a></td>';
+        $output['data'].='<td><a href="Reactivos.php?No_Folio='.$row['id_folio'].'">Editar</a></td>';
         $output['data'].='<td><a href="">Eliminar</a></td>';
         $output['data'].='</tr>';
     }

@@ -74,7 +74,7 @@ $(document).ready(function () {
                 }else if (response==2){
                     $(".Alert").css("display","grid");
                     $("#Texto_Alerta").text("No se pudo cancelar la bitacora");
-                    $(".Alert_Button").html("<input type='button' value='Regresar' id='Alert_Regresar'>");
+                    $(".Alert_Button").html("<input type='button' value='Regresar' id='khg'>");
                 }else{
                     alert(response);
                 }
