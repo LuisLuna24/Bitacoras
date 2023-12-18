@@ -24,7 +24,6 @@ if($id_Usuario=="" || $id_Usuario==null){
     <link rel="stylesheet" href="css/bitacora_pcr_tim_real.css" />
     <title>Bitacora PCR Tiempo Real</title>
     <link rel="stylesheet" href="../css/header.css" />
-    <link rel="stylesheet" href="css/ver_extraccion.css" />
     <script src="../librerias/jquery/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="../librerias/select2/css/select2.css" />
     <script src="../librerias/select2/select2.js"></script>
@@ -37,7 +36,7 @@ if($id_Usuario=="" || $id_Usuario==null){
         <div class="dat_pcr_tim_real_contenedor">
             <form class="dat_pcr_tim_real_for" id=Pcreal_Form>
                 <div class="dat_pcr_tim_real_titulo">
-                    <h1>Bitacora de Resultados de PCR Tiempo Real</h1>
+                    <h1>Bitacora PCR Tiempo Real</h1>
                     <div class="linea_titulo"></div>
                 </div>
 
@@ -47,9 +46,15 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <label for="">Nombre:</label>
                             <input type="text" name="Nombre" >
                         </div>
+                        <div>
+                            <label for="">Cantidad:</label>
+                            <input type="text" name="Cantidad" >
+                        </div>
                         <div class="dat_Select">
-                            <label for="">Patogeno:</label>
-                            <select name="Patogeno" id="Patogeno_pcreal"></select>
+                            <label>Patogeno:</label>
+                            <select name="Patogeno" id="Patogeno">
+                                <option value="1">Listeria</option>
+                            </select>
                         </div>
                     </div>
 
@@ -60,7 +65,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </div>
                         <div class="dat_Select">
                             <label for="">Resultado:</label>
-                            <select name="Patogeno" id="Resultado_pcreal">
+                            <select name="Resultado" id="Resultado_pcreal">
                                 <option value="Positivo">Positivo</option>
                                 <option value="Negativo">Negativo</option>
                             </select>
@@ -101,21 +106,19 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </div>
                         <div class="Dato">
                             <label for="buscar">Buscar equipo</label>
-                            <input type="text" id="campo" name="campo" />
+                            <input type="text" id="campo" name="campo">
                         </div>
                     </div>
 
                     <table>
                         <thead>
-                            <th>No. Registro</th>
-                            <th>Fecha de Extraccion</th>
-                            <th>Metodo</th>
-                            <th>Analisis</th>
-                            <th>Area</th>
-                            <th>Conc ng/ul</th>
-                            <th>Dato 260/280</th>
-                            <th>Dato 260/230</th>
-                            <th>Usuario</th>
+                            <th>Nombre</th>
+                            <th>Patogeno</th>
+                            <th>Fecha</th>
+                            <th>Resultado</th>
+                            <th>Sanitizo</th>
+                            <th>Uv</th>
+                            <th>Observacion</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </thead>
@@ -134,5 +137,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 <script src="./js/scripts.js"></script>
 <script src="./js/Agregar_Pcr.js"></script>
-
+<script src="./js/Buscar_Patogeno.js"></script>
+<script src="./js/Buscar_Pcreal.js"></script>
 <?php }  ?>

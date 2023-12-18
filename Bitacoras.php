@@ -81,7 +81,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                     <div class="Card_Contenido">
                         <input type="button" value="Nueva Bitacora" id="Pcr_Real">
-                        <input type="button" value="Ver Bitacoras" id="Proximanete7">
+                        <input type="button" value="Ver Bitacoras" id="ver_pcreal">
                     </div>
                 </div>
             </div>

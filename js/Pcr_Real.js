@@ -14,7 +14,7 @@ $(document).ready(function () {
         });
     });
 
-    $("#Ver_Reactivos").on("click",function(){
-        location.href ="./Reactivos/Ver_Reactivos.php";
+    $("#ver_pcreal").on("click",function(){
+        location.href ="./Pcr_Real/ver_pcreal.php";
     });
 });

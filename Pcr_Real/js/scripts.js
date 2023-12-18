@@ -10,6 +10,8 @@ $(document).ready(function () {
     $("#Salir_Global").attr("href", "../php/Cerrar.php");
 
 
-    $("#Patogeno_pcreal").select2();
+    $("#Patogeno").select2();
     $("#Resultado_pcreal").select2();
+
+    
 });
