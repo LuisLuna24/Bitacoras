@@ -1,8 +1,8 @@
 <?php
 ob_start();
 session_start();
-if(isset($_GET['pcreal_fol'])){
-    $_SESSION["pcreal_fol"]=$_GET['pcreal_fol'];
+if(isset($_GET['No_Folio'])){
+    $_SESSION["pcreal_fol"]=$_GET['No_Folio'];
 }else{
     $_SESSION["pcreal_fol"];
 }

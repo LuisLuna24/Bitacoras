@@ -1,23 +1,18 @@
 <?php
 require "../../php/conexion.php";
-session_start();
-
-if(isset($_GET['No_Folio'])){
-    $Folio=$_GET['No_Folio'];
-}else{
-    $Folio=$_SESSION["pcreal_fol"];
-}
 
 
-$columns=['id_pcreal', 'identificador', 'no_identificador', 'id_patogeno', 'fecha', 'id_equipo_pcreal', 'sanitizo', 'tiempouv', 'resultado', 'observaciones', 'id_uausario', 'id_folio'];
+$columns=['folio_pcreal.id_folio','bitacora_pcreal.fecha','usuarios.nombre','usuarios.apellido','bitacora_pcreal.observaciones'];
 
-$table="bitacora_pcreal ";
+$table="folio_pcreal ";
 
-$id= 'id_pcreal';
+$id= 'folio_pcreal.id_folio';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Folio'  ";
+$join="RIGHT join bitacora_pcreal on bitacora_pcreal.id_folio = folio_pcreal.id_folio INNER join usuarios on usuarios.id_usuario=bitacora_pcreal.id_uausario";
+
+$where = "WHERE folio_pcreal.id_folio::text ILIKE '%" . $campo . "%' or bitacora_pcreal.fecha::text ILIKE '%" . $campo . "%' ";
 
 /*if($campo!==null){
     $where = "WHERE (";
@@ -45,11 +40,11 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT " . implode(", ",$columns) . "
 FROM $table 
+$join
 $where
 $sLimit";
-
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
@@ -72,15 +67,12 @@ $output['paginacion'] = '';
 if($num_rows>0){
     while($row=pg_fetch_array($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['identificador'] .'-'.$row['no_identificador'].'</td>';
-        $output['data'].='<td>'. $row['id_patogeno'] .'</td>';
+        $output['data'].='<td>'. $row['id_folio'].'</td>';
         $output['data'].='<td>'. $row['fecha'] .'</td>';
-        $output['data'].='<td>'. $row['resultado'] .'</td>';
-        $output['data'].='<td>'. $row['sanitizo'] .'</td>';
-        $output['data'].='<td>'. $row['tiempouv'] .'</td>';
+        $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'].'</td>';
         $output['data'].='<td>'. $row['observaciones'] .'</td>';
-        $output['data'].='<td><a href="Extraccion.php?No_Folio='. $row['identificador']. '">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Extraccion.php?No_Folio='. $row['identificador']. '">Eliminar</a></td>';
+        $output['data'].='<td><a href="Pcr_Real.php?No_Folio='. $row['id_folio']. '">Editar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Extraccion.php?No_Folio='. $row['id_folio']. '">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

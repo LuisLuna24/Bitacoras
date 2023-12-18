@@ -48,12 +48,9 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                     <table>
                         <thead>
-                            <th>Nombre</th>
-                            <th>Patogeno</th>
+                            <th>Folio</th>
                             <th>Fecha</th>
-                            <th>Resultado</th>
-                            <th>Sanitizo</th>
-                            <th>Uv</th>
+                            <th>Realizo</th>
                             <th>Observacion</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
@@ -71,6 +68,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 <script src="./js/scripts.js"></script>
-<script src="./js/Buscar_Pcreal.js"></script>
+<script src="./js/Buscar_VerPcreal.js"></script>
 
 <?php } ?>
