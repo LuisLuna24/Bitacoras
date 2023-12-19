@@ -2,7 +2,7 @@
 require "../../php/conexion.php";
 
 
-$columns=['folio_pcreal.id_folio','bitacora_pcreal.fecha','usuarios.nombre','usuarios.apellido','bitacora_pcreal.observaciones'];
+$columns=['folio_pcreal.id_folio','bitacora_pcreal.fecha','usuarios.nombre','usuarios.apellido','bitacora_pcreal.observaciones','bitacora_pcreal.identificador'];
 
 $table="folio_pcreal ";
 
@@ -10,7 +10,7 @@ $id= 'folio_pcreal.id_folio';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="RIGHT join bitacora_pcreal on bitacora_pcreal.id_folio = folio_pcreal.id_folio INNER join usuarios on usuarios.id_usuario=bitacora_pcreal.id_uausario";
+$join="INNER join bitacora_pcreal on bitacora_pcreal.id_folio = folio_pcreal.id_folio INNER join usuarios on usuarios.id_usuario=bitacora_pcreal.id_uausario";
 
 $where = "WHERE folio_pcreal.id_folio::text ILIKE '%" . $campo . "%' or bitacora_pcreal.fecha::text ILIKE '%" . $campo . "%' ";
 
@@ -43,8 +43,8 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 $sql="SELECT DISTINCT " . implode(", ",$columns) . "
 FROM $table 
 $join
-$where
-$sLimit";
+$where ORDER BY folio_pcreal.id_folio ASC
+$sLimit ";
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
@@ -72,7 +72,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'].'</td>';
         $output['data'].='<td>'. $row['observaciones'] .'</td>';
         $output['data'].='<td><a href="Pcr_Real.php?No_Folio='. $row['id_folio']. '">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Extraccion.php?No_Folio='. $row['id_folio']. '">Eliminar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Nombre.php?No_nombre='. $row['identificador']. '">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

@@ -309,6 +309,25 @@ tr:nth-child(even){
 }
 
 
+
+
+@media (max-width:767px){
+  .Datos {
+    width: 100%;
+  }
+  
+  .Datos select {
+    width: 100%;
+    height: 35px;
+  }
+  .Dato input {
+    height: 35px;
+  }
+  .extraccion_datos input{
+    height: 35px;
+  }
+}
+
 .Agregar_Equio_div input[type="button"] {
   margin-top: 15px;
   width: 100%;
@@ -334,21 +353,4 @@ tr:nth-child(even){
 .Agregar_Equio_div input[type="button"]:active{
   background-color: #75B841;
   transform: translateY(0px);
-}
-
-@media (max-width:767px){
-  .Datos {
-    width: 100%;
-  }
-  
-  .Datos select {
-    width: 100%;
-    height: 35px;
-  }
-  .Dato input {
-    height: 35px;
-  }
-  .extraccion_datos input{
-    height: 35px;
-  }
 }

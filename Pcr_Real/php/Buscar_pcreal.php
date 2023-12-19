@@ -80,7 +80,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['tiempouv'] .'</td>';
         $output['data'].='<td>'. $row['observaciones'] .'</td>';
         $output['data'].='<td><a href="Extraccion.php?No_Folio='. $row['identificador']. '">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Extraccion.php?No_Folio='. $row['identificador']. '">Eliminar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_pcreal.php?No_nombre='. $row['identificador']. '">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

@@ -23,7 +23,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 </head>
 <body>
     <?php require "../global/header.php" ?>
-
     <section class="dat_result_pcr">
         <div class="dat_resul_contenedor">
             <form class="dat_resul_form">

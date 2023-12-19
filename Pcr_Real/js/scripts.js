@@ -13,5 +13,9 @@ $(document).ready(function () {
     $("#Patogeno").select2();
     $("#Resultado_pcreal").select2();
 
+    $("#Ver_Bitacoras").on('click', function(e) {
+        $(location).attr('href', 'ver_pcreal.php');
+    })
+
     
 });
