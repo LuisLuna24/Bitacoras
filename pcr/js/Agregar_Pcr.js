@@ -1,9 +1,9 @@
 $(document).ready(function () {
-    $("#Agregar_Pcreal").on('click',function (e) {
-        var datos = new FormData($("#Pcreal_Form")[0]);
+    $("#Agregar_Pcr").on('click',function (e) {
+        var datos = new FormData($("#Pcr_Form")[0]);
         $.ajax({
             type: "POST",
-            url: "./php/Agregar_Pcreal.php",
+            url: "./php/Agreagr_Pcr.php",
             data: datos,
             contentType: false,
             processData:false,
@@ -29,7 +29,7 @@ $(document).ready(function () {
                     paginaActual=pagina;
                 }
 
-                    let url="./php/Buscar_pcreal.php";
+                    let url="./php/Buscar_Pcr.php";
                     let formaData = new FormData();
                     formaData.append('campo',input);
                     formaData.append('registros',num_registros);

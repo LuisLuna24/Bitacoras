@@ -1,0 +1,19 @@
+$(document).ready(function () {
+    $("#Bitacora_Pcr").on('click', function (e) {
+        $.ajax({
+            type: "POST",
+            url: "./php/Pcr.php",
+            dataType: "html",
+            success: function (response) {
+                if (response==1){
+                    location.href ="./pcr/Bitacora_Pcr.php";
+                }else{
+                    alert(response);
+                }
+            }
+        }); 
+    })
+    $("#Ver_Pcr").on("click",function(){
+        location.href ="./pcr/Ver_Pcr.php";
+    });
+});

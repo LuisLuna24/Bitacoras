@@ -18,7 +18,7 @@ $row=pg_fetch_assoc($querybus);
 $identificar=$row['max']+1;
 $Insertar="INSERT INTO public.bitacora_reactivo(
 	id_bitreactivo, identificado, id_reactivo, nombre, no_lote, fecha_apertura, fecha_caducidad, pruaba_reactivo, id_usuario, id_folio,fechaelabortacion)
-	VALUES ($Folio, $identificar, $Reactivo, '$Reactivo', '$Lote', '$Apertura', '$Caducidad', '$ReactivoBitacora', '$id_Usuario', '$Folio',CURRENT_TIMESTAMP);";
+	VALUES ($Folio, $identificar, $Reactivo, '$Reactivo', '$Lote', '$Apertura', '$Caducidad', '$Folio', '$id_Usuario', '$Folio',CURRENT_TIMESTAMP);";
 pg_query($conexion,$Insertar);
 
 
