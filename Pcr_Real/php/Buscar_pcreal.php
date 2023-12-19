@@ -2,17 +2,22 @@
 require "../../php/conexion.php";
 session_start();
 
-$folio=$_SESSION['No_Foli'];
+if(isset($_GET['No_Folio'])){
+    $Folio=$_GET['No_Folio'];
+}else{
+    $Folio=$_SESSION["pcreal_fol"];
+}
 
-$columns=['nombre', 'no_lote', 'fecha_apertura', 'fecha_caducidad', 'pruaba_reactivo','identificado'];
 
-$table="bitacora_reactivo";
+$columns=['id_pcreal', 'identificador', 'no_identificador', 'id_patogeno', 'fecha', 'id_equipo_pcreal', 'sanitizo', 'tiempouv', 'resultado', 'observaciones', 'id_uausario', 'id_folio'];
 
-$id= 'id_bitreactivo';
+$table="bitacora_pcreal ";
+
+$id= 'id_pcreal';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$where = "WHERE nombre ILIKE '%" . $campo . "%' and id_folio = '$folio'";
+$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Folio'  ";
 
 /*if($campo!==null){
     $where = "WHERE (";
@@ -28,6 +33,8 @@ $where = "WHERE nombre ILIKE '%" . $campo . "%' and id_folio = '$folio'";
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
 
+
+
 if(!$pagina){
     $inicio = 0;
     $pagina =1;
@@ -39,9 +46,10 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 
 
 $sql="SELECT " . implode(", ",$columns) . "
-FROM $table
+FROM $table 
 $where
 $sLimit";
+
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
@@ -62,24 +70,21 @@ $output['data'] = '';
 $output['paginacion'] = '';
 
 if($num_rows>0){
-    while($row=pg_fetch_assoc($resultado)){
+    while($row=pg_fetch_array($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['nombre'] .'</td>';
-        $output['data'].='<td>'. $row['no_lote'] .'</td>';
-        $output['data'].='<td>'. $row['fecha_apertura'] .'</td>';
-        $output['data'].='<td>'. $row['fecha_caducidad'] .'</td>';
-        $output['data'].='<td>'. $row['pruaba_reactivo'] .'</td>';
-        $output['data'].='<td><a href="">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?identificado='.$row['identificado'].'">Eliminar</a></td>';
+        $output['data'].='<td>'. $row['identificador'] .'-'.$row['no_identificador'].'</td>';
+        $output['data'].='<td>'. $row['id_patogeno'] .'</td>';
+        $output['data'].='<td>'. $row['fecha'] .'</td>';
+        $output['data'].='<td>'. $row['resultado'] .'</td>';
+        $output['data'].='<td>'. $row['sanitizo'] .'</td>';
+        $output['data'].='<td>'. $row['tiempouv'] .'</td>';
+        $output['data'].='<td>'. $row['observaciones'] .'</td>';
+        $output['data'].='<td><a href="Extraccion.php?No_Folio='. $row['identificador']. '">Editar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_pcreal.php?No_nombre='. $row['identificador']. '">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{
     $output['data'].='<tr>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
     $output['data'].='<td >Sin resultados</td>';
     $output['data'].='</tr>';
 }
@@ -104,10 +109,10 @@ if($output['totalRegistros']>0){
 
     for($i=$numeroInicio;$i<=$numeroFin;$i++){
         if($pagina == $i){
-            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="#">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="">' . $i . '</a></li>';
 
         }else{
-            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="#" onclick="getData('. $i .')">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="" onclick="getData('. $i .')">' . $i . '</a></li>';
         }
     }
 

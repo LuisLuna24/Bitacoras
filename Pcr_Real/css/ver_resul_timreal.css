@@ -1,139 +1,35 @@
 body{
-  background-color: antiquewhite;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}  
-.FOlio{
-  display: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: antiquewhite;
 }
-
-caption{
-  text-align: center;
-  display: grid;
-  place-items: center;
-}
-
-.bit_extraccion {
+.dat_result_pcr{
     width: 100%;
     min-height: 100vh;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
-  .bit_extraccion_contenedor {
+}
+.dat_resul_contenedor{
     width: 100%;
     height: 100%;
     padding: 50px;
-  }
-
-@media (max-width: 768px){
-    .bit_extraccion_contenedor {
-        padding: 10px;
-    }
 }
-
-  .bit_extraccion_form {
+.dat_resul_form{
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
     flex-direction: column;
     gap: 10px;
-  }
-  .bit_extraccion_titulo {
+}
+.dat_resul_titulo{
     width: 100%;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  .bit_extraccion_titulo h1 {
+}
+.dat_resul_titulo h1{
     font-size: 2.5em;
-  }
-  .linea_titulo {
+}
+.linea_titulo {
     width: 100%;
     height: 8px;
-    background-color: #75B841;
+    background-color: #75b841;
     border-radius: 25px;
-  }
-  .extraccion_datos {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  .extraccion_datos input {
-    width: 100%;
-    height: 25px;
-    border-radius: 25px;
-    padding: 0 10px;
-    border: none;
-    background-color: #dfb4e1;
-  }
-
-.No_Registro{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-  .datos_extraccion {
-    width: 100%;
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-  .botones {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    width: 100%;
-    gap: 10px;
-    place-items: center;
-    margin-top: 20px;
-  }
-  .botones input {
-    width: 200px;
-    height: 30px;
-    border-radius: 25px;
-    border: none;
-    background-color: #75B841;
-    transition: 0.5s;
-    cursor: pointer;
-  }
-  .botones input:hover {
-    transform: translateY(-8px);
-  }
-  .botones input :active {
-    transform: translateY(2px);
-    transition: 0.3s;
-  }
-  
-.dato{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.Datos_Metodo_Equipo {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-  gap: 15px;
-}
-
-  .check_contenedor {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    flex-direction: initial;
-    gap: 10px;
-  }
-  .contenedor2{
-      width: 100%;
   }
 
   .Equipo_Tabla{
@@ -309,8 +205,6 @@ tr:nth-child(even){
 }
 
 
-
-
 @media (max-width:767px){
   .Datos {
     width: 100%;
@@ -326,31 +220,10 @@ tr:nth-child(even){
   .extraccion_datos input{
     height: 35px;
   }
-}
-
-.Agregar_Equio_div input[type="button"] {
-  margin-top: 15px;
-  width: 100%;
-  height: 30px;
-  padding: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  outline: none;
-  font-weight: bolder;
-  background-color: #75B841;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: 0.5s ease;
-}
-
-.Agregar_Equio_div input[type="button"]:hover {
-  background-color: #56920c;
-  transform: translateY(-5px);
-}
-
-.Agregar_Equio_div input[type="button"]:active{
-  background-color: #75B841;
-  transform: translateY(0px);
+  .Acciones_Tabla{
+    flex-direction: column;
+  }
+  .dat_resul_contenedor{
+    padding: 10px;
+  }
 }

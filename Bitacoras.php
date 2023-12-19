@@ -80,8 +80,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <h3>Tiempo Real</h3>
                     </div>
                     <div class="Card_Contenido">
-                        <input type="button" value="Nueva Bitacora" id="Proximanete6">
-                        <input type="button" value="Ver Bitacoras" id="Proximanete7">
+                        <input type="button" value="Nueva Bitacora" id="Pcr_Real">
+                        <input type="button" value="Ver Bitacoras" id="ver_pcreal">
                     </div>
                 </div>
             </div>
@@ -106,5 +106,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Restricciones.js"></script>
 <script src="./js/Extraccion.js"></script>
 <script src="./js/Reactivos.js"></script>
+<script src="./js/Pcr_Real.js"></script>
 
 <?php } ?>
