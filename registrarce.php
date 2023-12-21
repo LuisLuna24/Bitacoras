@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class=Registro_Boton>
-                        <input type="submit" value="Registrarce" id="Registrase_btn" class="Registro_bt">
+                        <input type="button" value="Registrarce" id="Registrase_btn" class="Registro_bt">
                     </div>
                 </form>
             </div>

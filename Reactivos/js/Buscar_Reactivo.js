@@ -21,4 +21,15 @@ $(document).ready(function () {
             $("#Reactivos_Select").html(response);
         }
     });
+
+    $.ajax({
+        type: "POST",
+        url: "./php/Buscar_Tipo.php",
+        dataType: "html",
+        success: function (response) {
+            $("#Tipo_Select").html(response);
+        }
+    });
+
+    
 });

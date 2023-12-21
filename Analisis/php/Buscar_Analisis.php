@@ -1,31 +1,22 @@
 <?php
 require "../../php/conexion.php";
 
-$columns=['id_folio', 'folio', 'fecha_creacion'];
 
-$table="reactivo_folio";
+$columns=['id_analisis', 'nombre', 'abreviatura'];
 
-$id= 'id_folio';
+$table="analisis ";
+
+$id= 'id_analisis';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$where = "WHERE folio::text ILIKE '%" . $campo . "%' OR fecha_creacion::text ILIKE '%" . $campo . "%'";
+$where = "WHERE id_analisis::text ILIKE '%" . $campo . "%' and nombre ILIKE '%" . $campo . "%'";
 
-
-
-/*if($campo!==null){
-    $where = "WHERE (";
-
-    $cont=count($columns);
-    for($i=0;$i<$cont;$i++){
-        $where .= $columns[$i] . " ILIKE '%" . $campo . "%' OR ";
-    }
-    $where= substr_replace($where, "", -3);
-    $where.= ")";
-}*/
 
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
+
+
 
 if(!$pagina){
     $inicio = 0;
@@ -37,10 +28,11 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT DISTINCT " . implode(", ",$columns) . "
-FROM $table
+$sql="SELECT " . implode(", ",$columns) . "
+FROM $table 
 $where
 $sLimit";
+
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
@@ -61,13 +53,13 @@ $output['data'] = '';
 $output['paginacion'] = '';
 
 if($num_rows>0){
-    while($row=pg_fetch_assoc($resultado)){
+    while($row=pg_fetch_array($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['folio'] .'</td>';
-        $output['data'].='<td>'. $row['folio'] .'</td>';
-        $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
-        $output['data'].='<td><a href="Reactivos.php?No_Folio='.$row['id_folio'].'">Editar</a></td>';
-        $output['data'].='<td><a href="">Eliminar</a></td>';
+        $output['data'].='<td>'. $row['id_analisis'].'</td>';
+        $output['data'].='<td>'. $row['nombre'] .'</td>';
+        $output['data'].='<td>'. $row['abreviatura'] .'</td>';
+        $output['data'].='<td><a href="Extraccion.php?Analisis='. $row['id_analisis']. '">Editar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Pcr.php?Analisis='. $row['id_analisis']. '">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{
@@ -96,10 +88,10 @@ if($output['totalRegistros']>0){
 
     for($i=$numeroInicio;$i<=$numeroFin;$i++){
         if($pagina == $i){
-            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="#">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="">' . $i . '</a></li>';
 
         }else{
-            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="#" onclick="getData('. $i .')">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="" onclick="getData('. $i .')">' . $i . '</a></li>';
         }
     }
 

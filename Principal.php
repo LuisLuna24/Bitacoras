@@ -67,7 +67,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <p>Ver, editar, agregar Analisis</p>
                 </div>
                 <div class="Card_Boton">
-                    <a href="./Proxiamanete.php">Entrar</a>
+                    <a href="./Analisis/Analisis.php">Entrar</a>
                 </div>
             </div>
             <div class="Menu_Card">
@@ -77,6 +77,24 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
                 <div class="Card_Boton">
                     <a href="./Equipo/Equipo.php">Entrar</a>
+                </div>
+            </div>
+            <div class="Menu_Card">
+                <div class="Card_Titulo">
+                    <h2>Areas</h2>
+                    <p>Ver, editar, agregar Areas</p>
+                </div>
+                <div class="Card_Boton">
+                    <a href="./Proxiamanete.php">Entrar</a>
+                </div>
+            </div>
+            <div class="Menu_Card">
+                <div class="Card_Titulo">
+                    <h2>Metodos</h2>
+                    <p>Ver, editar, agregar Metodos</p>
+                </div>
+                <div class="Card_Boton">
+                    <a href="./Proxiamanete.php">Entrar</a>
                 </div>
             </div>
         </div>
