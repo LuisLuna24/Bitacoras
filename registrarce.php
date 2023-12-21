@@ -14,7 +14,7 @@
     <header>
         <div class="header_contenedor">
             <img src="./img/Gsmall.webp" alt="logo">
-            <a href="./index.php">Registrace</a>
+            <a href="./index.php">Iniciar Sesión</a>
         </div>
     </header>
     <section class="Registro">
@@ -64,7 +64,7 @@
             <div class="Regsitro_Imagen">
                 <img src="./img/Gsmall.webp" alt="logo">
                 <h1>Gisena <span>Labs</span> </h1>
-                <p>¿Ya tienes cuneta? <a href="./index.php">Iniciar Secion</a></p>
+                <p>¿Ya tienes cuneta? <a href="./index.php">Iniciar Sesión</a></p>
             </div>
         </div>
         <?php  require "./global/Alerta_Index.php" ?>
