@@ -2,28 +2,20 @@
 require "../../php/conexion.php";
 session_start();
 
-$folio=$_SESSION['No_Foli'];
+$folio=$_SESSION['No_FoliRec'];
 
-$columns=['nombre', 'no_lote', 'fecha_apertura', 'fecha_caducidad', 'pruaba_reactivo','identificado'];
+$columns=['id_bit_reactivo', 'id_folio', 'reacivos.id_reactivo',' bitacora_reactivos.no_lote', 'fecha_apertura', 'fecha_caducidad', 'folio_bitacora', 'id_usuario','reacivos.nombre','nombre_version'];
 
-$table="bitacora_reactivo";
+$table="bitacora_reactivos";
 
-$id= 'id_bitreactivo';
+$id= 'id_bit_reactivo';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$where = "WHERE nombre ILIKE '%" . $campo . "%' and id_folio = '$folio'";
+$join ="INNER JOIN reacivos on reacivos.id_reactivo=bitacora_reactivos.id_reactivo INNER JOIN version_bitacora on version_bitacora.id_version=bitacora_reactivos.tipo_bitacora";
 
-/*if($campo!==null){
-    $where = "WHERE (";
+$where = "WHERE reacivos.nombre ILIKE '%" . $campo . "%' and id_folio = '$folio'";
 
-    $cont=count($columns);
-    for($i=0;$i<$cont;$i++){
-        $where .= $columns[$i] . " ILIKE '%" . $campo . "%' OR ";
-    }
-    $where= substr_replace($where, "", -3);
-    $where.= ")";
-}*/
 
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
@@ -40,6 +32,7 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 
 $sql="SELECT " . implode(", ",$columns) . "
 FROM $table
+$join
 $where
 $sLimit";
 
@@ -68,18 +61,13 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['no_lote'] .'</td>';
         $output['data'].='<td>'. $row['fecha_apertura'] .'</td>';
         $output['data'].='<td>'. $row['fecha_caducidad'] .'</td>';
-        $output['data'].='<td>'. $row['pruaba_reactivo'] .'</td>';
-        $output['data'].='<td><a href="">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?identificado='.$row['identificado'].'">Eliminar</a></td>';
+        $output['data'].='<td>'. $row['nombre_version'].'  ' .'Folio:'.$row['folio_bitacora'] .'</td>';
+        $output['data'].='<td><a href="./Ediatar_BitReactivo.php?identificador='.$row['id_bit_reactivo'].'">Editar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?identificado='.$row['id_bit_reactivo'].'">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{
     $output['data'].='<tr>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
     $output['data'].='<td >Sin resultados</td>';
     $output['data'].='</tr>';
 }

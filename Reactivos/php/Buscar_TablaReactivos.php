@@ -1,17 +1,15 @@
 <?php
 require "../../php/conexion.php";
 
-$columns=['bitacora_reactivo.nombre', 'no_lote', 'fecha_apertura', 'fecha_caducidad', 'pruaba_reactivo','id_folio','usuarios.id_usuario','usuarios.nombre','usuarios.apellido','fechaelabortacion'];
+$columns=['id_folio', 'folio', 'fecha_creacion'];
 
-$table="bitacora_reactivo";
+$table="reactivo_folio";
 
-$id= 'id_bitreactivo';
+$id= 'id_folio';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="INNER JOIN usuarios ON usuarios.id_usuario=bitacora_reactivo.id_usuario";
-
-$where = "WHERE bitacora_reactivo.nombre ILIKE '%" . $campo . "%'";
+$where = "WHERE folio::text ILIKE '%" . $campo . "%' OR fecha_creacion::text ILIKE '%" . $campo . "%'";
 
 
 
@@ -41,7 +39,6 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 
 $sql="SELECT DISTINCT " . implode(", ",$columns) . "
 FROM $table
-$join
 $where
 $sLimit";
 
@@ -66,9 +63,9 @@ $output['paginacion'] = '';
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['id_folio'] .'</td>';
-        $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'].'</td>';
-        $output['data'].='<td>'. $row['fechaelabortacion'] .'</td>';
+        $output['data'].='<td>'. $row['folio'] .'</td>';
+        $output['data'].='<td>'. $row['folio'] .'</td>';
+        $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
         $output['data'].='<td><a href="Reactivos.php?No_Folio='.$row['id_folio'].'">Editar</a></td>';
         $output['data'].='<td><a href="">Eliminar</a></td>';
         $output['data'].='</tr>';

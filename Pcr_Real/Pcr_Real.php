@@ -2,9 +2,9 @@
 ob_start();
 session_start();
 if(isset($_GET['No_Folio'])){
-    $_SESSION["pcreal_fol"]=$_GET['No_Folio'];
+    $_SESSION["pcr_fol"]=$_GET['No_Folio'];
 }else{
-    $_SESSION["pcreal_fol"];
+    $_SESSION["pcr_fol"];
 }
 
 $id_Usuario=$_SESSION['id_usuario'];

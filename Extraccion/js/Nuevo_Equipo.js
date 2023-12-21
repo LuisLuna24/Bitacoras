@@ -8,7 +8,7 @@ $(document).ready(function () {
             contentType: false,
             processData:false,
             success: function (response) {
-                alert(response);
+                alert('Equipo agregado');
                 $.ajax({
                     type: "POST",
                     url: "./php/Buscar_TablaEquipo.php",
@@ -17,7 +17,6 @@ $(document).ready(function () {
                         $("#Equipo_Tabla").html(response);
                     }
                 });
-                alert(response);
             }
         });
     });

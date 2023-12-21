@@ -7,7 +7,7 @@ $query=pg_query($conexion,$Buscar);
 $out="";
 if(pg_num_rows($query)!=0){
     while($row=pg_fetch_assoc($query)){
-        $out="<option value='".$row['id_reactivo']."'>".$row['nombre']."--".$row['descripcion']."</option>";
+        $out.="<option value='".$row['id_reactivo']."'>".$row['nombre']."--".$row['descripcion']."</option>";
     }
 }
 

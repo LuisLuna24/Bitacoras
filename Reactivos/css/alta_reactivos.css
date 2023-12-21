@@ -55,6 +55,15 @@ body{
     border: none;
     background-color: #dfb4e1;
   }
+
+  select {
+    width: 100%;
+    height: 25px;
+    border-radius: 25px;
+    padding: 0 10px;
+    border: none;
+    background-color: #dfb4e1;
+  }
   .datoo{
     width: 100%;
     display: grid;

@@ -70,8 +70,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <h2>Bitácoras de Resultados de PCR</h2>
                     </div>
                     <div class="Card_Contenido">
-                        <input type="button" value="Nueva Bitacora" id="Proximanete4">
-                        <input type="button" value="Ver Bitacoras" id="Proximanete5">
+                        <input type="button" value="Nueva Bitacora" id="Bitacora_Pcr">
+                        <input type="button" value="Ver Bitacoras" id="Ver_Pcr">
                     </div>
                 </div>
                 <div class="Card">
@@ -107,5 +107,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Extraccion.js"></script>
 <script src="./js/Reactivos.js"></script>
 <script src="./js/Pcr_Real.js"></script>
+<script src="./js/Pcr.js"></script>
 
 <?php } ?>

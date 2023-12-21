@@ -7,19 +7,30 @@ $Datos=$_POST['Tipo_Select'];
 $html="";
 
 if($Datos==1){
-   $Buscar="SELECT * FROM public.birtacora_extaccion;" ;
+   $Buscar="SELECT DISTINCT * FROM public.ver_folioextraccion;" ;
    $query=pg_query($conexion,$Buscar);
    if(pg_num_rows($query)>0){
     while($row=pg_fetch_assoc($query)){
-        $html="<option value='".$row['id_extraccion']."'>".$row['version_bitacora']."    "."Folio:".$row['id_folio']."</option>";
+        $html.="<option value='".$row['id_folio']."'>"."Folio:".$row['id_folio']."</option>";
     }
    }
 }else if($Datos==2){
-    $html="<option>Proximamente</option>";
+    $Buscar="SELECT  DISTINCT * FROM public.folio_pcr;" ;
+    $query=pg_query($conexion,$Buscar);
+    if(pg_num_rows($query)>0){
+        while($row=pg_fetch_assoc($query)){
+            $html.="<option value='".$row['id_folio']."'>"."Folio:".$row['id_folio']."</option>";
+        }
+   }
     
 }else if($Datos==3){
-    $html="<option>Proximamente</option>";
-    
+    $Buscar="SELECT DISTINCT * FROM public.folio_pcreal;" ;
+    $query=pg_query($conexion,$Buscar);
+    if(pg_num_rows($query)>0){
+        while($row=pg_fetch_assoc($query)){
+            $html.="<option value='".$row['id_folio']."'>"."Folio:".$row['id_folio']."</option>";
+        }
+    }
 }
 
 echo $html;

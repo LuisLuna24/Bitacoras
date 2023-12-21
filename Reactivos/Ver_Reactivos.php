@@ -50,8 +50,8 @@ if($id_Usuario=="" || $id_Usuario==null){
 
                 <table>
                     <thead>
+                        <th>No.</th>
                         <th>Folio</th>
-                        <th>Elaboro</th>
                         <th>Fecha Elaboro</th>
                         <th>Actualizar</th>
                         <th>Eliminar </th>

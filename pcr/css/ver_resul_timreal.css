@@ -1,0 +1,229 @@
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: antiquewhite;
+}
+.dat_result_pcr{
+    width: 100%;
+    min-height: 100vh;
+}
+.dat_resul_contenedor{
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+}
+.dat_resul_form{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    flex-direction: column;
+    gap: 10px;
+}
+.dat_resul_titulo{
+    width: 100%;
+    text-align: center;
+}
+.dat_resul_titulo h1{
+    font-size: 2.5em;
+}
+.linea_titulo {
+    width: 100%;
+    height: 8px;
+    background-color: #75b841;
+    border-radius: 25px;
+  }
+
+  .Equipo_Tabla{
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  table{
+    border-radius:5px ;
+    font-size: 1rem;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: #e1cce1;
+    border: 1px solid #a588a7;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+td,th{
+    text-align: center;
+    padding: 8px;
+    border-right: 1px solid #a588a7;
+}
+
+td{
+    font-size: 1rem;
+}
+
+thead th{
+    color:#262626;
+    background: #cba7cc;
+}
+
+tr:nth-child(even){
+    background-color: #cda7cf;
+}
+
+@media(max-width:767px){
+    table{
+        display: block;
+        width: 100%;
+    }
+    thead,tbody,thead th{
+        display: block;
+    }
+    thead th:last-child{
+        border-bottom: none;
+    }
+    thead{
+        float: left;
+    }
+    tbody{
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    td,th{
+        padding: 20px 0.625em 0.625em 0.625em ;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 0.8rem;
+        text-overflow: ellipsis;
+    }
+    thead th{
+        text-align: left;
+        border-bottom: 1px solid #a588a7;
+    }
+    tbody tr{
+        display: table-cell;
+    }
+    tbody tr:nth-child(odd){
+        background: none;
+
+    }
+    tr:nth-child(even){
+        background: transparent;
+    }
+    tr td:nth-child(odd){
+        background-color: #cba7cc;
+        border-right: 1px solid #a588a7;
+    }
+    tr td:nth-child(even){
+        background-color: #e1cce1;
+        border-right: #a588a7;
+    }
+    tbody td{
+        display: block;
+        text-align: center;
+    }
+}
+
+
+.Nav_Paginacion{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: 0px 20px;
+}
+
+.Paginacion_Tabla{
+    display: flex;
+    list-style-type: none;
+    gap: 5px;
+}
+
+.Pagina{
+    padding: 5px;
+    background-color: #cda7cf;
+    border-radius: 2px;
+}
+
+@media(max-width:767px){
+  .Pagina{
+    padding: 10px;
+  }
+}
+
+.Pagina a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #262626;
+}
+
+.activo{
+    color: #a588a7;
+}
+
+
+
+
+.Acciones_Tabla {
+  width: 100%;
+  display: flex;
+  gap: 15px;
+}
+.Datos {
+  display: flex;
+  flex-direction: column;
+}
+
+.Datos select {
+  width: 200px;
+  height: 25px;
+  border-radius: 25px;
+  padding: 0 10px;
+  border: none;
+  background-color: #dfb4e1;
+}
+
+
+.Dato {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.Dato input {
+  width: 100%;
+  height: 25px;
+  border-radius: 25px;
+  padding: 0 10px;
+  border: none;
+  background-color: #dfb4e1;
+}
+
+
+@media (max-width:767px){
+  .Datos {
+    width: 100%;
+  }
+  
+  .Datos select {
+    width: 100%;
+    height: 35px;
+  }
+  .Dato input {
+    height: 35px;
+  }
+  .extraccion_datos input{
+    height: 35px;
+  }
+  .Acciones_Tabla{
+    flex-direction: column;
+  }
+  .dat_resul_contenedor{
+    padding: 10px;
+  }
+}

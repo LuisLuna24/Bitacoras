@@ -9,6 +9,8 @@ $(document).ready(function () {
                     location.href ="./Reactivos/Reactivos.php";
                 }else if(response==2){
                     location.href ="./Reactivos/Reactivos.php";
+                }else{
+                    alert(response);
                 }
             }
         });

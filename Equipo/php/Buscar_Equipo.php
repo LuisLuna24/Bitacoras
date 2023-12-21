@@ -61,12 +61,12 @@ $output['paginacion'] = '';
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['identificador'] .'</td>';
+        $output['data'].='<td>'. $row['id_equipo'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .'</td>';
         $output['data'].='<td>'. $row['descripcion'] .'</td>';
         $output['data'].='<td>'. $row['id_area'] .'</td>';
         $output['data'].='<td><a href="">Editar</a></td>';
-        $output['data'].='<td><a href="">Eliminar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Equipo.php?Equipo='. $row['id_equipo'] .'">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{
