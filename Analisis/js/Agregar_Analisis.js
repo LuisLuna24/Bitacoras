@@ -9,7 +9,7 @@ $(document).ready(function () {
             processData:false,
             success: function (response) {
                 if(response==1){
-                    alert("Analisis agregado");
+                    alert("Analisis agregado correctamente.");
 
                     let paginaActual = 1;
                     getData(paginaActual);

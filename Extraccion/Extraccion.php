@@ -97,20 +97,24 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <div class="dato Agregar_Equio_div">
                             <label>Selecciona Equipo</label>
                             <select name="Equipo_SelectAgregar" id="Equipo_Select"></select>
-                            <input type="button" value="Agregar_Equipo" id="Agregar_Equipo">
+                            <div class="Botones_Equipo">
+                                <input type="button" value="Agregar Equipo" id="Agregar_Equipo">
+                                <!--<input type="button" value="Agregar Todos los equipos" id="Agregar_Todo">-->
+                            </div>
+                            
                         </div>
                     <table>
                         <thead>
                             <th>No. Equipo</th>
                             <th>Nombre Equipo</th>
+                            <th>Eliminar</th>
                         </thead>
                         <tbody id="Equipo_Tabla"></tbody>
                     </table>
                 </div>
                 <div class="botones">
                     <input type="submit" value="Agregar Extraccion" id="Agregar_Extraccion">
-                    <input type="button" value="Ver Bitacoras" id="Salir_Ectraccion">
-                    <input type="button" value="Cancelar" id="Cancelar_Ectraccion">
+                    <input type="button" value="Ver Registros" id="Salir_Ectraccion">
                 </div>
             </form>
             <div class="Equipo_Tabla">
@@ -172,4 +176,5 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/scripts.js"></script>
 <script src="./js/Nueva_Extraccion.js"></script>
 <script src="./js/Nuevo_Equipo.js"></script>
+<script src="./js/Buscar_Equipo.js"></script>
 <?php }  ?>

@@ -1,7 +1,7 @@
 <?php
 require "../../php/conexion.php";
 
-$Buscar= "SELECT id_area, version, nombre, abreviatura FROM public.area;";
+$Buscar= "SELECT id_area, nombre FROM public.area;";
 $query=pg_query($conexion,$Buscar);
 
 $html='<option vlaue="0">Seleccione un area</option>';

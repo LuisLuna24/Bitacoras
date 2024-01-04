@@ -1,7 +1,7 @@
 <?php
 require "../../php/conexion.php";
 
-$columns=['id_equipo', 'identificador', 'version', 'nombre', 'descripcion', 'id_area'];
+$columns=['id_equipo', 'identificador',' equipo.nombre as equipo_nombre','area.nombre as area_nombre', 'descripcion',' area.id_area'];
 
 $table="equipo";
 
@@ -9,7 +9,9 @@ $id= 'id_equipo';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$where = "WHERE nombre ILIKE '%" . $campo . "%'";
+$join="INNER JOIN area on area.id_area=equipo.id_area";
+
+$where = "WHERE equipo.nombre ILIKE '%" . $campo . "%'";
 
 /*if($campo!==null){
     $where = "WHERE (";
@@ -37,6 +39,7 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 
 $sql="SELECT " . implode(", ",$columns) . "
 FROM $table
+$join
 $where
 $sLimit";
 
@@ -61,21 +64,16 @@ $output['paginacion'] = '';
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['id_equipo'] .'</td>';
-        $output['data'].='<td>'. $row['nombre'] .'</td>';
+        $output['data'].='<td>'. $row['identificador'] .'</td>';
+        $output['data'].='<td>'. $row['equipo_nombre'] .'</td>';
         $output['data'].='<td>'. $row['descripcion'] .'</td>';
-        $output['data'].='<td>'. $row['id_area'] .'</td>';
-        $output['data'].='<td><a href="">Editar</a></td>';
+        $output['data'].='<td>'. $row['area_nombre'] .'</td>';
+        $output['data'].='<td><a href="./Editar_Equipo.php?Equipo='. $row['id_equipo'] .'">Editar</a></td>';
         $output['data'].='<td><a href="./php/Eliminar_Equipo.php?Equipo='. $row['id_equipo'] .'">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{
     $output['data'].='<tr>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
     $output['data'].='<td >Sin resultados</td>';
     $output['data'].='</tr>';
 }

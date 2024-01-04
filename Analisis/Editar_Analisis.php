@@ -2,6 +2,8 @@
 ob_start();
 session_start();
 
+$_SESSION['Analisis']=$_GET['Analisis'];
+
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
@@ -28,9 +30,9 @@ if($id_Usuario=="" || $id_Usuario==null){
 
     <section class="dat_agrega_analisis">
         <div class="dat_agrega_analisis_contenedor">
-            <form class="dat_agrega_analisis_form" id="Analisis_Form">
+            <form class="dat_agrega_analisis_form" id="Actualizar_Form">
                 <div class="dat_agrega_analisis_titulo">
-                    <h1>Catalogo de Analisis</h1>
+                    <h1>Actualizar Analisis</h1>
                     <div class="linea_titulo"></div>
                 </div>
 
@@ -38,46 +40,19 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="dato">
                         <div>
                             <label for="nombre">Nombre:</label>
-                            <input type="text" name="Nombre">
+                            <input type="text" name="Editar_Nombre" id="Editar_Nombre">
                         </div>
                         <div>
                         <label for="abrev">Abreviatura:</label>
-                        <input type="text" name="Abrebiatura">
+                        <input type="text" name="Editar_Abrebiatura" id="Editar_Abrebiatura">
                     </div>
                     </div>
                 </div>
                 <div class="botones">
-                    <input type="button" value="Agregar" id="Agregar_Analisis">
+                    <input type="button" value="Actualizar" id="Actualizarbtn_Analisis">
+                    <input type="button" value="Salir" id="Salir_Actualizar">
                 </div>
             </form>
-            <div class="Equipo_Tabla">
-                <div class="Acciones_Tabla">
-                    <div class="Datos">
-                        <label for="">Mostrar:</label>
-                        <select name="num_registros" id="num_registros">
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                        </select>
-                    </div>
-                    <div class="Dato">
-                        <label for="buscar">Buscar equipo</label>
-                        <input type="text" id="campo" name="campo" />
-                    </div>
-                </div>
-
-                <table>
-                    <thead>
-                        <th>No Analisis</th>
-                        <th>Nombre</th>
-                        <th>Abrebiatura</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
-                    </thead>
-                    <tbody id="content"></tbody>
-                </table>
-                <div class="Tablas_Paginas" id="nav-paginacion"></div>
-            </div>
         </div>
     </section>
     <?php require "../global/footer.php" ?>
@@ -86,7 +61,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 <script src="./js/script.js"></script>
-<script src="./js/Buscar_Analisis.js"></script>
-<script src="./js/Agregar_Analisis.js"></script>
+<script src="./js/Buscar_Actualizar_Analisis.js"></script>
+<script src="./js/Actualizar_Reactivo.js"></script>
 
 <?php }  ?>

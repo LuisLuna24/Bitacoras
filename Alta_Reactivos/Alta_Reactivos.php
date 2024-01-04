@@ -30,7 +30,7 @@ if($id_Usuario=="" || $id_Usuario==null){
         <div class="datos_alta_contenedor">
             <form class="datos_alta_form" id="Reactivo_Form">
                 <div class="datos_alta_titulo">
-                    <h1>Alta de Reactivos</h1>
+                    <h1>Inventario de Reactivos</h1>
                     <div class="linea_titulo"></div>
                 </div>
 
@@ -41,26 +41,32 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <input type="text" name="Reacivo_Nombre">
                         </div>
                         <div>
-                            <label for="dat5">Descripcion:</label>
-                            <input type="text" name="Reactivo_Descripcion">
+                            <label for="dat5">Lote:</label>
+                            <input type="text" name="Reactivo_Lote">
                         </div>
                     </div>
 
                     <div class="datoo">
                         <div>
-                            <label for="dat3">No Serie:</label>
-                            <input type="text" name="Reactivo_Serie">
+                            <label for="dat5">Descripcion:</label>
+                            <input type="text" name="Reactivo_Descripcion">
                         </div>
+                        
                         <div>
-                            <label for="dat4">Abreviatura:</label>
-                            <input type="text" name="Reactivo_Abrebiatura">
+                            <label for="dat4">Cantidad:</label>
+                            <input type="text" name="Reactivo_Cantidad">
+                        </div>
+                    </div>
+                    <div class="datoo">
+                        <div>
+                            <label for="dat4">Fecha Caducidad:</label>
+                            <input type="Date" name="Reactivo_Caducidad">
                         </div>
                     </div>
                 </div>
 
                 <div class="botones">
                     <input type="submit" value="Dar de Alta" id="Agregar_Reactivo">
-                    <input type="submit" value="Salir">
                 </div>
 
                 <div class="Equipo_Tabla">
@@ -83,10 +89,12 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <thead>
                             <th>Nombre</th>
                             <th>Descripcion</th>
-                            <th>No. Serie</th>
-                            <th>Abreviatura</th>
-                            <th>Eliminar</th>
+                            <th>Cantidad</th>
+                            <th>Fecha Caducidad</th>
+                            <th>Lote</th>
+                            <th>Estado</th>
                             <th>Actualizar</th>
+                            <th>Eliminar</th>
                         </thead>
                         <tbody id="content"></tbody>
                     </table>
