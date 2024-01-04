@@ -6,15 +6,15 @@ session_start();
 
 $Folio=$_GET['No_Folio'];
 
-$BuscarFolio="SELECT * FROM birtacora_extaccion where folio = '$Folio'";
+$BuscarFolio="SELECT * FROM birtacora_extaccion where id_folio = '$Folio'";
 $query=pg_query($conexion,$BuscarFolio);
 
 if(pg_num_rows($query)>0){
-    $CancerExtraccion="DELETE FROM birtacora_extaccion where folio = '$Folio'";
+    $CancerExtraccion="DELETE FROM birtacora_extaccion where id_folio = '$Folio'";
     pg_query($conexion,$CancerExtraccion);
-    $CancelarEquipo="DELETE FROM equposeleccionado where id_equiposeleccionado = '$Folio'";
+    $CancelarEquipo="DELETE FROM equipo_extraccion where id_equipo_extraccion = '$Folio'";
     pg_query($conexion,$CancelarEquipo);
-    $CancelarFolio="DELETE FROM ver_folioextraccion where id_folio = '$Folio'";
+    $CancelarFolio="DELETE FROM folio_extraccion where id_folio = '$Folio'";
     pg_query($conexion,$CancelarFolio);
     header("Location: ../Ver_Extraccion.php");
 }else{

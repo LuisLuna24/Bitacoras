@@ -9,13 +9,15 @@ if(isset($_GET['No_Folio'])){
 }
 
 
-$columns=['id_pcr', 'identificador', 'nobre', 'fecha', 'id_analisis', 'agrosa', 'dato_v', 'tiemp', 'id_equipo_pcr', 'id_usuario', 'sanitizo', 'tiempouv'];
+$columns=['nombre','id_pcr', 'no_registro', 'version_pcr', 'identificador', 'id_folio', 'id_analisis', 'fecha', 'agarosa', 'voltaje', 'tiempo', 'sanitizo',' tiempouv', 'especie.id_especie', 'resultado', 'id_equipo_pcr', 'id_usuario', 'id_admin', 'identificador_bitacora'];
 
 $table="bitacora_pcr ";
 
 $id= 'id_pcr';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
+
+$join="INNER JOIN especie on especie.id_especie=bitacora_pcr.id_especie";
 
 $where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Folio'  ";
 
@@ -47,6 +49,7 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 
 $sql="SELECT " . implode(", ",$columns) . "
 FROM $table 
+$join
 $where
 $sLimit";
 
@@ -72,14 +75,14 @@ $output['paginacion'] = '';
 if($num_rows>0){
     while($row=pg_fetch_array($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['identificador'] .'-'.$row['nobre'].'</td>';
+        $output['data'].='<td>'. $row['no_registro'] .'-'.$row['identificador'].'</td>';
         $output['data'].='<td>'. $row['id_analisis'] .'</td>';
         $output['data'].='<td>'. $row['fecha'] .'</td>';
-        $output['data'].='<td>'. $row['agrosa'] .'</td>';
-        $output['data'].='<td>'. $row['tiemp'] .'</td>';
-        $output['data'].='<td>'. $row['sanitizo'] .'</td>';
-        $output['data'].='<td>'. $row['tiempouv'] .'</td>';
-        $output['data'].='<td><a href="Extraccion.php?No_Folio='. $row['identificador']. '">Editar</a></td>';
+        $output['data'].='<td>'. $row['agarosa'] .'</td>';
+        $output['data'].='<td>'. $row['voltaje'] .'</td>';
+        $output['data'].='<td>'. $row['tiempo'] .'</td>';
+        $output['data'].='<td>'. $row['nombre'] .'</td>';
+        $output['data'].='<td>'. $row['resultado'] .'</td>';
         $output['data'].='<td><a href="./php/Eliminar_Pcr.php?Identificador='. $row['identificador']. '">Eliminar</a></td>';
         $output['data'].='</tr>';
     }

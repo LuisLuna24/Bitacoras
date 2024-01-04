@@ -11,6 +11,7 @@ $(document).ready(function () {
 
     $("#Equipo_Select").select2();
     $("#Analisis_Pcr").select2();
+    $("#Especie_pcr").select2();
 
 
 });

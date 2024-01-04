@@ -4,7 +4,7 @@ session_start();
 
 $Folio=$_SESSION['No_Foli'];
 
-$columns=['id_extracion', 'no_registro', 'identificador', 'version_extraccion', 'id_folio', 'fecha', 'id_metodo', 'id_analisis', 'birtacora_extaccion.id_area', 'conc_ng_ul', 'dato_260_280', 'dato_260_230', 'archivo', 'id_equipo_extraccion', 'birtacora_extaccion.id_usuario',' id_admin','nombre','apellido'];
+$columns=['identificador_bitacora','id_extracion', 'no_registro', 'identificador', 'version_extraccion', 'id_folio', 'fecha', 'id_metodo', 'id_analisis', 'birtacora_extaccion.id_area', 'conc_ng_ul', 'dato_260_280', 'dato_260_230', 'archivo', 'id_equipo_extraccion', 'birtacora_extaccion.id_usuario',' id_admin','nombre','apellido'];
 
 $table="birtacora_extaccion";
 
@@ -80,8 +80,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['dato_260_280'] . '</td>';
         $output['data'].='<td>'. $row['dato_260_230'] . '</td>';
         $output['data'].='<td>'. $row['nombre'] . ' ' . $row['apellido'] . '</td>';
-        $output['data'].='<td><a href="Extraccion.php?No_Folio='. $row['id_folio']. '">Editar</a></td>';
-        $output['data'].='<td><a href="">Eliminar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Registro.php?REgistro='.$row['identificador_bitacora'].'">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

@@ -40,7 +40,7 @@ if($id_Usuario=="" || $id_Usuario==null){
             <form class="dat_resul_form" id="Pcr_Form">
                 <div class="datos_pcreal">
                     <div class="datos">
-                        <label>Nombre:</label>
+                        <label>No. Registro:</label>
                         <input type="text" name="Nombre" />
                     </div>
                     <div class="datos">
@@ -48,6 +48,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <input type="text" name="Cantidad" />
                     </div>
                 </div>
+                
                 <div class="datos_pcreal">
                     <div class="datos">
                         <label>Analisis:</label>
@@ -56,6 +57,19 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="datos">
                         <label>Fecha:</label>
                         <input type="Date" name="Fecha" />
+                    </div>
+                </div>
+                <div class="datos_pcreal">
+                    <div class="datos">
+                        <label>Especie:</label>
+                        <select name="Especie" id="Especie_pcr"></select>
+                    </div>
+                    <div class="datos">
+                        <label>Resultados:</label>
+                        <select name="Resultados">
+                            <option value="Negativo">Negativo</option>
+                            <option value="Positivo">Positivo</option>
+                        </select>
                     </div>
                 </div>
                 <div class="datos_pcreal">
@@ -95,6 +109,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <thead>
                             <th>No. Equipo</th>
                             <th>Nombre Equipo</th>
+                            <th>Eliminar</th>
                         </thead>
                         <tbody id="Equipo_Tabla"></tbody>
                     </table>
@@ -123,14 +138,14 @@ if($id_Usuario=="" || $id_Usuario==null){
 
                     <table>
                         <thead>
-                            <th>Nombre</th>
-                            <th>Patogeno</th>
+                            <th>No Registro</th>
+                            <th>Analisis</th>
                             <th>Fecha</th>
+                            <th>Agarosa</th>
+                            <th>Voltaje</th>
+                            <th>Tiempo(min)</th>
+                            <th>Especie</th>
                             <th>Resultado</th>
-                            <th>Sanitizo</th>
-                            <th>Uv</th>
-                            <th>Observacion</th>
-                            <th>Editar</th>
                             <th>Eliminar</th>
                         </thead>
                         <tbody id="content"></tbody>

@@ -8,6 +8,7 @@ $(document).ready(function () {
             contentType: false,
             processData:false,
             success: function (response) {
+                alert("Se agrego correctamente.")
                 alert (response);
                 let paginaActual = 1;
                 getData(paginaActual);
