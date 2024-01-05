@@ -14,4 +14,8 @@ $(document).ready(function () {
     $("#Especie_pcr").select2();
 
 
+    $("#Ver_Bitacoras").on("click", function(){
+        location.href = "Ver_Pcr.php";
+    })
+
 });

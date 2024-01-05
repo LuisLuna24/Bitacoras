@@ -62,7 +62,9 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <div class="datos_pcreal">
                     <div class="datos">
                         <label>Especie:</label>
-                        <select name="Especie" id="Especie_pcr"></select>
+                        <select name="Especie" id="Especie_pcr">
+                            <option value="1">Canino</option>
+                        </select>
                     </div>
                     <div class="datos">
                         <label>Resultados:</label>
@@ -82,7 +84,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <input type="text" name="Dato_V" />
                     </div>
                     <div class="datos">
-                        <label>Tiempo:</label>
+                        <label>Tiempo(min):</label>
                         <input type="text" name="Tiempo" />
                     </div>
                 </div>
@@ -116,9 +118,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
                 <br>
                 <div class="botones">
-                    <input type="button" value="Agregar PCR" id="Agregar_Pcr" />
-                    <input type="button" value="Ver Bitacroas" id="Ver_Bitacoras" />
-                    <input type="button" value="Eliminar Folio" />
+                    <input type="button" value="Agregar PCR" id="Agregar_Pcr">
+                    <input type="button" value="Ver Bitacroas" id="Ver_Bitacoras">
                 </div>
                 <div class="Equipo_Tabla">
                     <div class="Acciones_Tabla">

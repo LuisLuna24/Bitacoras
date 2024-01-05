@@ -50,6 +50,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Folio</th>
                             <th>Fecha</th>
                             <th>Realizo</th>
+                            <th>Revisó</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </thead>
