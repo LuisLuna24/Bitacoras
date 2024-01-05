@@ -1,9 +1,9 @@
 $(document).ready(function () {
     $("#Agregar_Equipo").on("click", function(){
-        var datos = new FormData($('#Form_Extraccion')[0]);
+        var datos = new FormData($('#Pcreal_Form')[0]);
         $.ajax({
             type: "POST",
-            url: "./php/Nuevo_Equipo.php",
+            url: "./php/Agregar_Equipo.php",
             data: datos,
             contentType: false,
             processData:false,
@@ -25,6 +25,14 @@ $(document).ready(function () {
                 }
             }
         });
+    });
+    $.ajax({
+        type: "POST",
+        url: "./php/Buscar_TablaEquipo.php",
+        dataType: "html",
+        success: function (response) {
+            $("#Equipo_Tabla").html(response);
+        }
     });
 
 });

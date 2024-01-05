@@ -49,8 +49,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <thead>
                             <th>Folio</th>
                             <th>Fecha</th>
-                            <th>Realizo</th>
-                            <th>Observacion</th>
+                            <th>Bitacora</th>
+                            <th>Reviso</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </thead>

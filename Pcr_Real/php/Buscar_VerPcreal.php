@@ -2,17 +2,18 @@
 require "../../php/conexion.php";
 
 
-$columns=['folio_pcreal.id_folio','bitacora_pcreal.fecha','usuarios.nombre','usuarios.apellido','bitacora_pcreal.observaciones','bitacora_pcreal.identificador'];
+$columns=['if_folio', 'folio', 'id_version_bitacoras', 'version_bitacoras', 'fecha_elaboracion','admin.nombre','admin.apellido','nombre_version','birtacora_pcreal.id_admin'];
 
 $table="folio_pcreal ";
 
-$id= 'folio_pcreal.id_folio';
+$id= 'folio_pcreal.if_folio';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="INNER join bitacora_pcreal on bitacora_pcreal.id_folio = folio_pcreal.id_folio INNER join usuarios on usuarios.id_usuario=bitacora_pcreal.id_uausario";
+$join="INNER join birtacora_pcreal on birtacora_pcreal.id_folio = folio_pcreal.if_folio LEFT join admin on admin.id_admin=birtacora_pcreal.id_admin
+INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_pcreal.id_version_bitacoras";
 
-$where = "WHERE folio_pcreal.id_folio::text ILIKE '%" . $campo . "%' or bitacora_pcreal.fecha::text ILIKE '%" . $campo . "%' ";
+$where = "WHERE folio_pcreal.if_folio::text ILIKE '%" . $campo . "%' or birtacora_pcreal.fecha::text ILIKE '%" . $campo . "%' ";
 
 /*if($campo!==null){
     $where = "WHERE (";
@@ -43,7 +44,7 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 $sql="SELECT DISTINCT " . implode(", ",$columns) . "
 FROM $table 
 $join
-$where ORDER BY folio_pcreal.id_folio ASC
+$where ORDER BY folio_pcreal.if_folio ASC
 $sLimit ";
 
 $resultado=pg_query($conexion,$sql);
@@ -66,13 +67,18 @@ $output['paginacion'] = '';
 
 if($num_rows>0){
     while($row=pg_fetch_array($resultado)){
+        if($row['id_admin']==''){
+            $Eliminar='<a href="./php/Eliminar_Folio.php?No_FoloEliminar='. $row['if_folio']. '">Eliminar</a>';
+        }else{
+            $Eliminar='';
+        }
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['id_folio'].'</td>';
-        $output['data'].='<td>'. $row['fecha'] .'</td>';
+        $output['data'].='<td>'. $row['if_folio'].'</td>';
+        $output['data'].='<td>'. $row['fecha_elaboracion'] .'</td>';
+        $output['data'].='<td>'. $row['nombre_version'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'].'</td>';
-        $output['data'].='<td>'. $row['observaciones'] .'</td>';
-        $output['data'].='<td><a href="Pcr_Real.php?No_Folio='. $row['id_folio']. '">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Nombre.php?No_nombre='. $row['identificador']. '">Eliminar</a></td>';
+        $output['data'].='<td><a href="Pcr_Real.php?No_Folio='. $row['if_folio']. '">Editar</a></td>';
+        $output['data'].='<td>'.$Eliminar.'</td>';
         $output['data'].='</tr>';
     }
 }else{

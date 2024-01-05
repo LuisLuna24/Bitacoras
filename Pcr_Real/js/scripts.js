@@ -9,9 +9,8 @@ $(document).ready(function () {
     $("#Salir_Global").attr("href", "../php/Cerrar.php");
     $("#Salir_Global").attr("href", "../php/Cerrar.php");
 
-
-    $("#Patogeno").select2();
     $("#Resultado_pcreal").select2();
+    $("#Equipo_Select").select2();
 
     $("#Ver_Bitacoras").on('click', function(e) {
         $(location).attr('href', 'ver_pcreal.php');
