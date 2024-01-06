@@ -54,47 +54,20 @@ if($id_Usuario=="" || $id_Usuario==null){
             </div>
             <div class="Menu_Card">
                 <div class="Card_Titulo">
-                    <h2>Reactivos</h2>
-                    <p>Ver, editar, agregar Reactivos</p>
+                    <h2>Catálogos</h2>
+                    <p>Ver, editar, agregar Catálogos</p>
                 </div>
                 <div class="Card_Boton">
-                    <a href="./Alta_Reactivos/Alta_Reactivos.php">Entrar</a>
+                    <a href="Catalogos.php">Entrar</a>
                 </div>
             </div>
             <div class="Menu_Card">
                 <div class="Card_Titulo">
-                    <h2>Análisis</h2>
-                    <p>Ver, editar, agregar Análisis</p>
+                    <h2>Inventarios</h2>
+                    <p>Ver, editar, agregar Inventarios</p>
                 </div>
                 <div class="Card_Boton">
-                    <a href="./Analisis/Analisis.php">Entrar</a>
-                </div>
-            </div>
-            <div class="Menu_Card">
-                <div class="Card_Titulo">
-                    <h2>Equipo</h2>
-                    <p>Ver, editar, agregar Equipo</p>
-                </div>
-                <div class="Card_Boton">
-                    <a href="./Equipo/Equipo.php">Entrar</a>
-                </div>
-            </div>
-            <div class="Menu_Card">
-                <div class="Card_Titulo">
-                    <h2>Áreas</h2>
-                    <p>Ver, editar, agregar Áreas</p>
-                </div>
-                <div class="Card_Boton">
-                    <a href="./Proxiamanete.php">Entrar</a>
-                </div>
-            </div>
-            <div class="Menu_Card">
-                <div class="Card_Titulo">
-                    <h2>Métodos</h2>
-                    <p>Ver, editar, agregar Métodos</p>
-                </div>
-                <div class="Card_Boton">
-                    <a href="./Proxiamanete.php">Entrar</a>
+                    <a href="Inventarios.php">Entrar</a>
                 </div>
             </div>
         </div>
