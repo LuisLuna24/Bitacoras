@@ -13,19 +13,28 @@ $Caducidad= date("Y-m-d", strtotime($Caducidad1));
 $ReactivoBitacora=$_POST['Select_Prueba_Reactivo'];
 $Datos=$_POST['Tipo_Select'];
 
-$buscarver="SELECT MAX(version) FROM version_bitacora";
-$querybusver=pg_query($conexion,$buscarver);
-$rowver=pg_fetch_assoc($querybusver);
-$versionVer=$rowver['max'];
 
-$buscar="SELECT MAX(id_bit_reactivo) FROM bitacora_reactivos where id_folio='$Folio' ";
+$buscar="SELECT MAX(id_bitacora_reactivo) FROM bitacora_reactivos where id_folio='$Folio' ";
 $querybus=pg_query($conexion,$buscar);
 $row=pg_fetch_assoc($querybus);
 $identificar=$row['max']+1;
 
+
+$Buscarmax="SELECT MAX(version_bitacora) AS vercionmax FROM version_bitacora where id_version_bitacora='$Datos';";
+$querybusuerymax=pg_query($conexion,$Buscarmax);
+$rowmax=pg_fetch_assoc($querybusuerymax);
+$vercionmax=$rowmax['vercionmax'];
+
+echo $Buscarmax;
+
+$BuscarIdentificador="SELECT MAX(identificador) AS identificadormax FROM bitacora_reactivos where id_bitacora_reactivo ='$identificar' and id_folio='$Folio'";
+$queryIdentificador=pg_query($conexion,$BuscarIdentificador);
+$rowIdentificador=pg_fetch_assoc($queryIdentificador);
+$IdentificadorMax=$rowIdentificador['identificadormax']+1;
+
 $Insertar="INSERT INTO public.bitacora_reactivos(
-	id_bit_reactivo, id_folio, id_reactivo, no_lote, fecha_apertura, fecha_caducidad, folio_bitacora, id_usuario,tipo_bitacora,version_bitacora)
-	VALUES ('$identificar', '$Folio', '$Reactivo', '$Lote', '$Apertura', '$Caducidad', '$ReactivoBitacora', '$id_Usuario', $Datos,$versionVer);";
+		id_bitacora_reactivo, version_bitacora_reactivo, identificador, id_folio, no_lote, fecha_apertura, fecha_caducidad, id_folio_bitacora, id_usuario, id_reactivo,id_version_bitacora, version_bitacora)
+	VALUES ('$identificar', '1', '$IdentificadorMax', $Folio, '$Lote', '$Apertura', '$Caducidad', '$ReactivoBitacora', '$id_Usuario', '$Reactivo','$Datos','$vercionmax');";
 pg_query($conexion,$Insertar);
 
 

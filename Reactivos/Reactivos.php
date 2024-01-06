@@ -78,7 +78,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <div class="botones">
                     <input type="button" value="Agregar" id="Nuevo_Reactivo">
                     <input type="button" value="Ver Bitacoras Reactivo" id="Ver_Vitacora_Reactivos">
-                    <input type="button" value="Cancelar">
                 </div>
 
                 <div class="Equipo_Tabla">
@@ -104,7 +103,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Apertura</th>
                             <th>Caducidad</th>
                             <th>Prueba Reactivo</th>
-                            <th>Actualizar</th>
                             <th>Eliminar</th>
                         </thead>
                         <tbody id="content"></tbody>

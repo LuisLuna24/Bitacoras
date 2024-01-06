@@ -1,7 +1,7 @@
 <?php
 require "../../php/conexion.php";
 
-$columns=['id_folio', 'folio', 'fecha_creacion'];
+$columns=['id_folio', 'folio', 'id_version_bitacora', 'version_bitacora', 'fecha_creacion'];
 
 $table="reactivo_folio";
 
