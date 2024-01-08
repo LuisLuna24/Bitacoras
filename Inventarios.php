@@ -68,15 +68,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                                 </a>
                             </div>
                         </div>
-                        <div class="card">
-                            <h2>Especie</h2>
-                            <p class="description">Ver, editar, agregar Especie</a>. </p>
-                            <div class="Card_Boton">
-                                <a href="Proxiamanete.php" class="entrar">
-                                    Entrar
-                                </a>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
