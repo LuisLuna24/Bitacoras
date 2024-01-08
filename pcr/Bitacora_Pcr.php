@@ -80,7 +80,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <input type="text" name="Agrosa" />
                     </div>
                     <div class="datos">
-                        <label>Dato V:</label>
+                        <label>Voltaje:</label>
                         <input type="text" name="Dato_V" />
                     </div>
                     <div class="datos">
