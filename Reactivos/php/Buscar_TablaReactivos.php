@@ -1,13 +1,16 @@
 <?php
 require "../../php/conexion.php";
 
-$columns=['id_folio', 'folio', 'fecha_creacion'];
+$columns=['folio_reactivo.id_folio', 'folio', 'folio_reactivo.id_version_bitacora', 'folio_reactivo.version_bitacora', 'fecha_creacion','nombre_version','admin.id_admin','admin.nombre','admin.apellido'];
 
-$table="reactivo_folio";
+$table="folio_reactivo";
 
 $id= 'id_folio';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
+
+$join="INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_reactivo.id_version_bitacora LEFT JOIN bitacora_reactivos on bitacora_reactivos.id_folio=folio_reactivo.id_folio
+LEFT JOIN admin on admin.id_admin= bitacora_reactivos.id_admin";
 
 $where = "WHERE folio::text ILIKE '%" . $campo . "%' OR fecha_creacion::text ILIKE '%" . $campo . "%'";
 
@@ -39,8 +42,10 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 
 $sql="SELECT DISTINCT " . implode(", ",$columns) . "
 FROM $table
+$join
 $where
 $sLimit";
+
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
@@ -62,12 +67,18 @@ $output['paginacion'] = '';
 
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
+        if($row['id_admin']==''){
+            $Eliminar='<a href="./php/Eliminar_VerReactivo.php?No_Folio='. $row['id_folio']. '">Eliminar</a>';
+        }else{
+            $Eliminar='';
+        }
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['folio'] .'</td>';
-        $output['data'].='<td>'. $row['folio'] .'</td>';
+        $output['data'].='<td>'. $row['nombre_version'] .' Folio:'.$row['folio'] .'</td>';
         $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
+        $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'] .'</td>';
         $output['data'].='<td><a href="Reactivos.php?No_Folio='.$row['id_folio'].'">Editar</a></td>';
-        $output['data'].='<td><a href="">Eliminar</a></td>';
+        $output['data'].='<td>'.$Eliminar.'</td>';
         $output['data'].='</tr>';
     }
 }else{

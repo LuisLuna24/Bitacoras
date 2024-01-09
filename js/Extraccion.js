@@ -9,6 +9,8 @@ $(document).ready(function () {
                     location.href ="./Extraccion/Extraccion.php";
                 }else if(response==2){
                     location.href ="./Extraccion/Extraccion.php";
+                }else{
+                    alert(response);
                 }
             }
         });

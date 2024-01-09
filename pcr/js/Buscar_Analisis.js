@@ -7,4 +7,14 @@ $(document).ready(function () {
             $("#Analisis_Pcr").html(response);
         }
     });
+
+    $.ajax({
+        type: "POST",
+        url: "./php/Buscar_Especie.php",
+        data: "data",
+        dataType: "dataType",
+        success: function (response) {
+            
+        }
+    });
 });

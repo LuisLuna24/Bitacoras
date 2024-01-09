@@ -58,8 +58,8 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['id_analisis'].'</td>';
         $output['data'].='<td>'. $row['nombre'] .'</td>';
         $output['data'].='<td>'. $row['abreviatura'] .'</td>';
-        $output['data'].='<td><a href="Extraccion.php?Analisis='. $row['id_analisis']. '">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Pcr.php?Analisis='. $row['id_analisis']. '">Eliminar</a></td>';
+        $output['data'].='<td><a href="Editar_Analisis.php?Analisis='. $row['id_analisis']. '">Editar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Analisis.php?Analisis='. $row['id_analisis']. '">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

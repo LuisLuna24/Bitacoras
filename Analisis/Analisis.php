@@ -30,29 +30,24 @@ if($id_Usuario=="" || $id_Usuario==null){
         <div class="dat_agrega_analisis_contenedor">
             <form class="dat_agrega_analisis_form" id="Analisis_Form">
                 <div class="dat_agrega_analisis_titulo">
-                    <h1>Agregar Analisis</h1>
+                    <h1>Catalogo de Analisis</h1>
                     <div class="linea_titulo"></div>
                 </div>
 
                 <div class="dat_datos">
                     <div class="dato">
                         <div>
-                            <label for="No_analisis">No analisis:</label>
-                            <input type="text" name="No_Analisis">
-                        </div>
-                        <div>
                             <label for="nombre">Nombre:</label>
                             <input type="text" name="Nombre">
                         </div>
-                    </div>
-                    <div>
+                        <div>
                         <label for="abrev">Abreviatura:</label>
                         <input type="text" name="Abrebiatura">
+                    </div>
                     </div>
                 </div>
                 <div class="botones">
                     <input type="button" value="Agregar" id="Agregar_Analisis">
-                    <input type="button" value="Salir">
                 </div>
             </form>
             <div class="Equipo_Tabla">
@@ -73,7 +68,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 
                 <table>
                     <thead>
-                        <th>Id Analisis</th>
+                        <th>No Analisis</th>
                         <th>Nombre</th>
                         <th>Abrebiatura</th>
                         <th>Editar</th>

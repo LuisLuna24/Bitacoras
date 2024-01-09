@@ -7,7 +7,7 @@ $Folio=$_SESSION["pcr_fol"];
 
 
 
-$buscarEquipo="SELECT equipo_pcr.id_equipo_pcr, equipo.identificador, equipo.id_equipo, equipo.nombre  FROM public.equipo_pcr INNER JOIN equipo on equipo.id_equipo=equipo_pcr.id_equipo where id_equipo_pcr='$Folio';";
+$buscarEquipo="SELECT equipo_pcr.id_equipo_pcr, equipo_pcr.identificador, equipo.id_equipo, equipo.nombre  FROM public.equipo_pcr INNER JOIN equipo on equipo.id_equipo=equipo_pcr.id_equipo where id_equipo_pcr='$Folio';";
 $queryBuscra=pg_query($conexion,$buscarEquipo);
 
 $html="";
@@ -17,6 +17,7 @@ if(pg_num_rows($queryBuscra)!=0){
         $html.='<tr>';
         $html.='<td>' . $row['identificador'] . '</td>';
         $html.='<td>' . $row['nombre'] . '</td>';
+        $html.='<td><a href="./php/Eliminar_Equipo.php?Eqipo='.$row['identificador'].'">Eliminar</a></td>';
         $html.='</tr>';
     }
 }else{

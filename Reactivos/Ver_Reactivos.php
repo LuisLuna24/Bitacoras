@@ -53,6 +53,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>No.</th>
                         <th>Folio</th>
                         <th>Fecha Elaboro</th>
+                        <th>Reviso</th>
                         <th>Actualizar</th>
                         <th>Eliminar </th>
                     </thead>

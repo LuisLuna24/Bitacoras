@@ -83,6 +83,9 @@ textarea{
   padding: 0 10px;
   border: none;
   background-color: #dfb4e1;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: bolder;
 }
 
 .botones{
@@ -330,3 +333,76 @@ tr:nth-child(even){
     flex-direction: column;
   }
 }
+
+.Datos_Metodo_Equipo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 15px;
+  border: solid 3px #75B841;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+  .check_contenedor {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: initial;
+    gap: 10px;
+  }
+  .contenedor2{
+      width: 100%;
+  }
+
+  .Agregar_Equio_div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Agregar_Equio_div input[type="button"] {
+    margin-top: 15px;
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    font-weight: bolder;
+    background-color: #75B841;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.5s ease;
+  }
+  
+  .Agregar_Equio_div input[type="button"]:hover {
+    background-color: #56920c;
+    transform: translateY(-5px);
+  }
+  
+  .Agregar_Equio_div input[type="button"]:active{
+    background-color: #75B841;
+    transform: translateY(0px);
+  }
+  
+  .Botones_Equipo{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    place-items: center;
+    gap: 20px;
+  }
+
+  .dat_resul_titulo {
+    width: 100%;
+    text-align: center;
+  }
+  .dat_resul_titulo h1 {
+    font-size: 2.5em;
+  }

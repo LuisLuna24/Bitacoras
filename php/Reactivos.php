@@ -3,23 +3,25 @@ require "conexion.php";
 
 session_start();
 
-$buscar="SELECT * FROM reactivo_folio where folio = (SELECT MAX(folio) from reactivo_folio)";
+$buscar="SELECT MAX(id_folio) as folio FROM public.folio_reactivo;";
 $sqlbuscar=pg_query($conexion,$buscar);
-$num_rows=pg_num_rows($sqlbuscar);
-if($num_rows!=0){
-    $row=pg_fetch_assoc($sqlbuscar);
-    $nuevoFolio=$row['folio']+1;
-    $crearFolion="INSERT INTO public.reactivo_folio(id_folio, folio) VALUES ('$nuevoFolio', '$nuevoFolio');";
-    $crear=pg_query($conexion,$crearFolion);
-    $_SESSION['No_FoliRec']=$nuevoFolio;
-    echo 1;
-}else if($num_rows==0){
-    $nuevoFolio=1;
-    $crearFolion="INSERT INTO public.reactivo_folio(id_folio, folio) VALUES ('$nuevoFolio', '$nuevoFolio');";
-    $crear=pg_query($conexion,$crearFolion);
-    $_SESSION['No_FoliRec']=$nuevoFolio;
-    echo 2;
-}
+
+
+
+$id_vercion='4';
+$buscarvercion="SELECT MAX(version_bitacora) FROM version_bitacora where id_version_bitacora='$id_vercion'";
+$sqlbuscarvercion=pg_query($conexion,$buscarvercion);
+$num=pg_fetch_assoc($sqlbuscarvercion);
+$vercion=$num['max'];
+
+
+$row=pg_fetch_assoc($sqlbuscar);
+$nuevoFolio=$row['folio']+1;
+$crearFolion="INSERT INTO public.folio_reactivo(id_folio, folio, id_version_bitacora, version_bitacora, fecha_creacion) 
+    VALUES ('$nuevoFolio', '$nuevoFolio',$id_vercion,$vercion,CURRENT_DATE);";
+$crear=pg_query($conexion,$crearFolion);
+$_SESSION['No_FoliRec']=$nuevoFolio;
+echo 1;
 
 
 ?>

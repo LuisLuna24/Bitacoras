@@ -4,17 +4,17 @@ session_start();
 
 $folio=$_SESSION['No_FoliRec'];
 
-$columns=['id_bit_reactivo', 'id_folio', 'reacivos.id_reactivo',' bitacora_reactivos.no_lote', 'fecha_apertura', 'fecha_caducidad', 'folio_bitacora', 'id_usuario','reacivos.nombre','nombre_version'];
+$columns=['id_bitacora_reactivo', 'version_bitacora_reactivo', 'identificador', 'id_folio', 'no_lote', 'fecha_apertura', 'bitacora_reactivos.fecha_caducidad',' id_folio_bitacora', 'id_usuario', 'id_admin','reactivos.id_reactivo,reactivos.nombre','nombre_version','bitacora_reactivos.id_version_bitacora'];
 
 $table="bitacora_reactivos";
 
-$id= 'id_bit_reactivo';
+$id= 'id_bitacora_reactivo';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join ="INNER JOIN reacivos on reacivos.id_reactivo=bitacora_reactivos.id_reactivo INNER JOIN version_bitacora on version_bitacora.id_version=bitacora_reactivos.tipo_bitacora";
+$join ="INNER JOIN reactivos on reactivos.id_reactivo=bitacora_reactivos.id_reactivo INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=bitacora_reactivos.version_bitacora_reactivo";
 
-$where = "WHERE reacivos.nombre ILIKE '%" . $campo . "%' and id_folio = '$folio'";
+$where = "WHERE reactivos.nombre ILIKE '%" . $campo . "%' and id_folio = '$folio'";
 
 
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
@@ -53,17 +53,25 @@ $output=[];
 $output['totalRegistros'] = $totalRegistros;
 $output['data'] = '';
 $output['paginacion'] = '';
+$Tipo_Bitacora='';
 
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
+        if($row['id_version_bitacora']==1){
+            $Tipo_Bitacora='BBM/GIS/BE 13-04';
+        }else if($row['id_version_bitacora']==2){
+            $Tipo_Bitacora='BBM/GIS/E05';
+        }else if($row['id_version_bitacora']==3){
+            $Tipo_Bitacora='BBM/GIS/RqPCR08-03';
+        }
+
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['nombre'] .'</td>';
         $output['data'].='<td>'. $row['no_lote'] .'</td>';
         $output['data'].='<td>'. $row['fecha_apertura'] .'</td>';
         $output['data'].='<td>'. $row['fecha_caducidad'] .'</td>';
-        $output['data'].='<td>'. $row['nombre_version'].'  ' .'Folio:'.$row['folio_bitacora'] .'</td>';
-        $output['data'].='<td><a href="./Ediatar_BitReactivo.php?identificador='.$row['id_bit_reactivo'].'">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?identificado='.$row['id_bit_reactivo'].'">Eliminar</a></td>';
+        $output['data'].='<td>'. $Tipo_Bitacora.' Folio:'.$row['id_folio_bitacora'] .'</td>';
+        $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?identificado='.$row['id_bitacora_reactivo'].'">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

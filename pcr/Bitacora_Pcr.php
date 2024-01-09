@@ -40,7 +40,7 @@ if($id_Usuario=="" || $id_Usuario==null){
             <form class="dat_resul_form" id="Pcr_Form">
                 <div class="datos_pcreal">
                     <div class="datos">
-                        <label>Nombre:</label>
+                        <label>No. Registro:</label>
                         <input type="text" name="Nombre" />
                     </div>
                     <div class="datos">
@@ -48,6 +48,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <input type="text" name="Cantidad" />
                     </div>
                 </div>
+                
                 <div class="datos_pcreal">
                     <div class="datos">
                         <label>Analisis:</label>
@@ -60,15 +61,30 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
                 <div class="datos_pcreal">
                     <div class="datos">
+                        <label>Especie:</label>
+                        <select name="Especie" id="Especie_pcr">
+                            <option value="1">Canino</option>
+                        </select>
+                    </div>
+                    <div class="datos">
+                        <label>Resultados:</label>
+                        <select name="Resultados">
+                            <option value="Negativo">Negativo</option>
+                            <option value="Positivo">Positivo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="datos_pcreal">
+                    <div class="datos">
                         <label>Agrosa:</label>
                         <input type="text" name="Agrosa" />
                     </div>
                     <div class="datos">
-                        <label>Dato V:</label>
+                        <label>Voltaje:</label>
                         <input type="text" name="Dato_V" />
                     </div>
                     <div class="datos">
-                        <label>Tiempo:</label>
+                        <label>Tiempo(min):</label>
                         <input type="text" name="Tiempo" />
                     </div>
                 </div>
@@ -95,15 +111,15 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <thead>
                             <th>No. Equipo</th>
                             <th>Nombre Equipo</th>
+                            <th>Eliminar</th>
                         </thead>
                         <tbody id="Equipo_Tabla"></tbody>
                     </table>
                 </div>
                 <br>
                 <div class="botones">
-                    <input type="button" value="Agregar PCR" id="Agregar_Pcr" />
-                    <input type="button" value="Ver Bitacroas" id="Ver_Bitacoras" />
-                    <input type="button" value="Eliminar Folio" />
+                    <input type="button" value="Agregar PCR" id="Agregar_Pcr">
+                    <input type="button" value="Ver Bitacroas" id="Ver_Bitacoras">
                 </div>
                 <div class="Equipo_Tabla">
                     <div class="Acciones_Tabla">
@@ -123,14 +139,14 @@ if($id_Usuario=="" || $id_Usuario==null){
 
                     <table>
                         <thead>
-                            <th>Nombre</th>
-                            <th>Patogeno</th>
+                            <th>No Registro</th>
+                            <th>Analisis</th>
                             <th>Fecha</th>
+                            <th>Agarosa</th>
+                            <th>Voltaje</th>
+                            <th>Tiempo(min)</th>
+                            <th>Especie</th>
                             <th>Resultado</th>
-                            <th>Sanitizo</th>
-                            <th>Uv</th>
-                            <th>Observacion</th>
-                            <th>Editar</th>
                             <th>Eliminar</th>
                         </thead>
                         <tbody id="content"></tbody>
