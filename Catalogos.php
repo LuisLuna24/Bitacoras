@@ -74,7 +74,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <h2>Especie</h2>
                             <p class="description">Ver, editar, agregar Especie</a>. </p>
                             <div class="Card_Boton">
-                                <a href="Proxiamanete.php" class="entrar">
+                                <a href="./Especies/Especies.php" class="entrar">
                                     Entrar
                                 </a>
                             </div>
