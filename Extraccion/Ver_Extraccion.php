@@ -52,7 +52,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>No.</th>
                         <th>Folio</th>
                         <th>Bitacora</th>
-                        <th>Realizo</th>
+                        <th>Revisó</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </thead>
