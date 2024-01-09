@@ -52,8 +52,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <h2>Bitácoras de Reactivos</h2>
                     </div>
                     <div class="Card_Contenido">
-                        <input type="button" value="Nueva Bitacora" id="Reactivo">
-                        <input type="button" value="Ver Bitacoras" id="Ver_Reactivos">
+                        <input type="button" value="Agregar Registros" id="Reactivo">
+                        <input type="button" value="Ver Registros" id="Ver_Reactivos">
                     </div>
                 </div>
                 <div class="Card">
@@ -61,8 +61,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <h2>Bitácoras de Extracción</h2>
                     </div>
                     <div class="Card_Contenido">
-                        <input type="button" value="Nueva Bitacora" id="Extraccion">
-                        <input type="button" value="Ver Bitacoras" id="Ver_Extraccion">
+                        <input type="button" value="Agregar Registros" id="Extraccion">
+                        <input type="button" value="Ver Registros" id="Ver_Extraccion">
                     </div>
                 </div>
                 <div class="Card">
@@ -70,8 +70,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <h2>Bitácoras de Resultados de PCR</h2>
                     </div>
                     <div class="Card_Contenido">
-                        <input type="button" value="Nueva Bitacora" id="Proximanete4">
-                        <input type="button" value="Ver Bitacoras" id="Proximanete5">
+                        <input type="button" value="Agregar Registros" id="Bitacora_Pcr">
+                        <input type="button" value="Ver Registros" id="Ver_Pcr">
                     </div>
                 </div>
                 <div class="Card">
@@ -80,8 +80,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <h3>Tiempo Real</h3>
                     </div>
                     <div class="Card_Contenido">
-                        <input type="button" value="Nueva Bitacora" id="Pcr_Real">
-                        <input type="button" value="Ver Bitacoras" id="ver_pcreal">
+                        <input type="button" value="Agregar Registros" id="Pcr_Real">
+                        <input type="button" value="Ver Registros" id="ver_pcreal">
                     </div>
                 </div>
             </div>
@@ -107,5 +107,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Extraccion.js"></script>
 <script src="./js/Reactivos.js"></script>
 <script src="./js/Pcr_Real.js"></script>
+<script src="./js/Pcr.js"></script>
 
 <?php } ?>

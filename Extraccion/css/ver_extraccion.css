@@ -10,15 +10,27 @@ body{
     padding: 40px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.Extraccion_Contenedor{
+    width: 100%;
+}
+
 .Extraccion_Titulo {
+    width: 100%;
     font-size: 2rem;
+    text-align: center;
 }
 
 .Todas_las_Extracciones{
     width: 100%;
 }
 
-
+.linea_titulo {
+    width: 100%;
+    height: 8px;
+    background-color: #75b841;
+    border-radius: 25px;
+  }
 
 .Equipo_Tabla{
     width: 100%;

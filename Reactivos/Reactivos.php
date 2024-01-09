@@ -2,9 +2,9 @@
 ob_start();
 session_start();
 if(isset($_GET['No_Folio'])){
-    $_SESSION['No_Foli']=$_GET['No_Folio'];
+    $_SESSION['No_FoliRec']=$_GET['No_Folio'];
 }else{
-    $_SESSION['No_Foli'];
+    $_SESSION['No_FoliRec'];
 }
 
 $id_Usuario=$_SESSION['id_usuario'];
@@ -65,12 +65,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="datoo">
                         <div class="datoos">
                             <label for="dat5">Tipo Bitacora:</label>
-                            <select id="Tipo_Select" name="Tipo_Select">
-                                <option value="0">Seleccione una opcion</option>
-                                <option value="1">Extraccion</option>
-                                <option value="2">PCR</option>
-                                <option value="3">PCR Tiempo Real</option>
-                            </select>
+                            <select id="Tipo_Select" name="Tipo_Select"></select>
                         </div>
                         <div class="datoos">
                             <label for="dat5">Prueba de Reactivo:</label>
@@ -81,9 +76,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
 
                 <div class="botones">
-                    <input type="submit" value="Agregar" id="Nuevo_Reactivo">
-                    <input type="submit" value="Ver Bitacoras Reactivo" id="Ver_Vitacora_Reactivos">
-                    <input type="submit" value="Cancelar">
+                    <input type="button" value="Agregar" id="Nuevo_Reactivo">
+                    <input type="button" value="Ver Bitacoras Reactivo" id="Ver_Vitacora_Reactivos">
                 </div>
 
                 <div class="Equipo_Tabla">
@@ -110,7 +104,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Caducidad</th>
                             <th>Prueba Reactivo</th>
                             <th>Eliminar</th>
-                            <th>Actualizar</th>
                         </thead>
                         <tbody id="content"></tbody>
                     </table>

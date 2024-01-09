@@ -35,15 +35,17 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <input type="text" name="Inventario_Equipo">
                     </div>
                     <div class="Dato">
-                        <label>Nombre</label>
-                        <input type="text" name="Nombre_Equipo">
-                    </div>
-                </div>
-                <div class="Dato_Equipo">
-                    <div class="Dato">
                         <label>Descripcion</label>
                         <input type="text" name="Descripcion_Equipo">
                     </div>
+                    
+                </div>
+                <div class="Dato_Equipo">
+                    <div class="Dato">
+                        <label>Nombre</label>
+                        <input type="text" name="Nombre_Equipo">
+                    </div>
+                    
                     <div class="Dato">
                         <label>Area</label>
                         <select name="Area_Equipo" id="Area_Equipo"></select>
@@ -78,8 +80,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <th>Nombre</th>
                     <th>Descripcion</th>
                     <th>Area</th>
-                    <th></th>
-                    <th></th>
+                    <th>Actualizar</th>
+                    <th>Eliminar</th>
                 </thead>
                 <tbody id="content"></tbody>
             </table>

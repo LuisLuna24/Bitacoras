@@ -1,9 +1,9 @@
 <?php
 require "../../php/conexion.php";
 
-$columns=['id_reactivo','nombre', 'descripcion', 'identificador', 'abreviatura'];
+$columns=['id_reactivo', 'nombre', 'descripcion',' cantidad', 'fecha_caducidad', 'lote', 'estado'];
 
-$table="reacivos";
+$table="reactivos";
 
 $id= 'id_reactivo';
 
@@ -63,8 +63,10 @@ if($num_rows>0){
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['nombre'] .'</td>';
         $output['data'].='<td>'. $row['descripcion'] .'</td>';
-        $output['data'].='<td>'. $row['identificador'] .'</td>';
-        $output['data'].='<td>'. $row['abreviatura'] .'</td>';
+        $output['data'].='<td>'. $row['cantidad'] .'</td>';
+        $output['data'].='<td>'. $row['fecha_caducidad'] .'</td>';
+        $output['data'].='<td>'. $row['lote'] .'</td>';
+        $output['data'].='<td>'. $row['estado'] .'</td>';
         $output['data'].='<td><a href="./Editar_Reactivo.php?Reactivo='. $row['id_reactivo']. '">Editar</a></td>';
         $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?Reactivo='. $row['id_reactivo']. '">Eliminar</a></td>';
         $output['data'].='</tr>';

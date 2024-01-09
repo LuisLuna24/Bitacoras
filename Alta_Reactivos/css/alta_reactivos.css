@@ -7,15 +7,12 @@ body{
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
   .datos_alta_contenedor {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     padding: 50px;
   }
 
@@ -29,7 +26,6 @@ body{
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     padding: 20px;
     flex-direction: column;
     gap: 10px;
@@ -37,10 +33,6 @@ body{
   .datos_alta_titulo {
     width: 100%;
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
   }
   .datos_alta_titulo h1 {
     font-size: 2.5em;

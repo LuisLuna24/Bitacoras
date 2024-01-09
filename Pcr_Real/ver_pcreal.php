@@ -15,7 +15,7 @@ if($id_Usuario=="" || $id_Usuario==null){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/ver_resul_timreal.css">
-    <title>Ver Bitacora PCR</title>
+    <title>Ver Bitacora PCR Tiempo Real</title>
     <link rel="stylesheet" href="../css/header.css" />
     <script src="../librerias/jquery/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="../librerias/select2/css/select2.css" />
@@ -49,8 +49,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <thead>
                             <th>Folio</th>
                             <th>Fecha</th>
-                            <th>Realizo</th>
-                            <th>Observacion</th>
+                            <th>Bitacora</th>
+                            <th>Reviso</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </thead>

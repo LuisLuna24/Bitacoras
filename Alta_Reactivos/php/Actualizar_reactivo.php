@@ -1,24 +1,24 @@
 <?php
-
 require "../../php/conexion.php";
-
 session_start();
 
 $Reactivo=$_SESSION['Reactivo'];
+$Nombre=$_POST['Reacivo_Nombre'];
+$Lote=$_POST['Reactivo_Lote'];
+$Descripcion=$_POST['Reactivo_Descripcion'];
+$Cantidad=$_POST['Reactivo_Cantidad'];
+$Fecha=$_POST['Reactivo_Caducidad'];
+$fcaducidad= date("Y-m-d", strtotime($Fecha));
 
-$Buscar="SELECT * FROM reacivos where id_reactivo = $Reactivo";
-
-$resultado=pg_query($conexion,$Buscar);
-
-$output=[];
-
-if(pg_num_rows($resultado)>0){
-    $row=pg_fetch_assoc($resultado);
-    $output['nombre']=$row['nombre'];
-    $output['descripcion']=$row['descripcion'];
-    $output['no_lote']=$row['no_lote'];
-    $output['abreviatura']=$row['abreviatura'];
-
-    echo json_encode($output, JSON_UNESCAPED_UNICODE);
+try{
+    $Actualizar="UPDATE public.reactivos
+        SET nombre='$Nombre', descripcion='$Descripcion', cantidad='$Cantidad', fecha_caducidad='$fcaducidad', lote='$Lote'
+        WHERE id_reactivo='$Reactivo';";
+    $query=pg_query($conexion,$Actualizar);
+    echo 1;
+}catch(Exception $e){
+    echo 2;
 }
+
+        
 ?>

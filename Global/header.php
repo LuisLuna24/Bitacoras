@@ -9,9 +9,8 @@
     <nav class="navbar">
         <a id="Inicio_Global" href="Principal.php">Inicio</a>
         <a id="Bitacoras_Global" href="Bitacoras.php">Bitácoras</a>
-        <a id="Equipo_Global" href="./Equipo/Equipo.php">Equipo</a>
-        <a id="Análisis_Global" href="Proxiamanete.php">Análisis</a>
-        <a id="Reactivos_Global" href="./Alta_Reactivos/Alta_Reactivos.php">Reactivos</a>
+        <a id="Inventario_Global" href="Inventarios.php">Inventarios</a>
+        <a id="Catalogos_Global" href="Catalogos.php">Catalogos</a>
         <a id="Salir_Global" href="./php/Cerrar.php">Salir</a>
     </nav>
 </header>

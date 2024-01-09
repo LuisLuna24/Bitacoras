@@ -40,7 +40,7 @@ if($id_Usuario=="" || $id_Usuario==null){
             <form class="dat_pcr_tim_real_for" id="Pcreal_Form">
                 <div class="datos_pcreal">
                     <div class="datos">
-                        <label>Nombre:</label>
+                        <label>No. Registro :</label>
                         <input type="text" name="Nombre" />
                     </div>
                     <div class="datos">
@@ -50,10 +50,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
                 <div class="datos_pcreal">
                     <div class="datos">
-                        <label>Patogeno:</label>
-                        <select name="Patogeno" id="Patogeno">
-                            <option value="1">Listeria</option>
-                        </select>
+                        <label>Análisis:</label>
+                        <select name="Patogeno" id="Analisis_pcreal"></select>
                     </div>
                     <div class="datos">
                         <label>Fecha:</label>
@@ -70,12 +68,34 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <input type="checkbox" name="pcreal_uv" id="pcreal_uv" value="1" />
                     </div>
                 </div>
+                <div class="dat_resul_titulo">
+                    <h2>Equipo Seleccionado</h2>
+                </div>
+                <div class="Datos_Metodo_Equipo">
+                        <div class="dato Agregar_Equio_div">
+                            <label>Selecciona Equipo</label>
+                            <select name="Equipo_SelectAgregar" id="Equipo_Select"></select>
+                            <div class="Botones_Equipo">
+                                <input type="button" value="Agregar Equipo" id="Agregar_Equipo">
+                                <!--<input type="button" value="Agregar Todos los equipos" id="Agregar_Todo">-->
+                            </div>
+                            
+                        </div>
+                    <table>
+                        <thead>
+                            <th>No. Equipo</th>
+                            <th>Nombre Equipo</th>
+                            <th>Eliminar</th>
+                        </thead>
+                        <tbody id="Equipo_Tabla"></tbody>
+                    </table>
+                </div>
                 <div class="resultados_pcreal">
                     <div class="datos">
                         <label for="">Resultado:</label>
                         <select name="Resultado" id="Resultado_pcreal">
-                            <option value="Positivo">Positivo</option>
                             <option value="Negativo">Negativo</option>
+                            <option value="Positivo">Positivo</option>
                         </select>
                     </div>
                     <div class="datos">
@@ -84,9 +104,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                 </div>
                 <div class="botones">
-                    <input type="button" value="Agregar PCR" id="Agregar_Pcreal" />
+                    <input type="button" value="Agregar PCR" id="Agregar_Pcreal">
                     <input type="button" value="Ver Bitacroas" id="Ver_Bitacoras">
-                    <input type="button" value="Eliminar Folio" />
                 </div>
             </form>
             <div class="Equipo_Tabla">
@@ -107,14 +126,13 @@ if($id_Usuario=="" || $id_Usuario==null){
 
                 <table>
                     <thead>
-                        <th>Nombre</th>
-                        <th>Patogeno</th>
+                        <th>No. Registro</th>
+                        <th>Analisis</th>
                         <th>Fecha</th>
-                        <th>Resultado</th>
                         <th>Sanitizo</th>
-                        <th>Uv</th>
-                        <th>Observacion</th>
-                        <th>Editar</th>
+                        <th>Tiempo Uv</th>
+                        <th>Resultado</th>
+                        <th>Observaciones</th>
                         <th>Eliminar</th>
                     </thead>
                     <tbody id="content"></tbody>
@@ -131,6 +149,9 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 <script src="./js/scripts.js"></script>
 <script src="./js/Agregar_Pcr.js"></script>
-<script src="./js/Buscar_Patogeno.js"></script>
 <script src="./js/Buscar_Pcreal.js"></script>
+<script src="./js/Buscar_Analisis.js"></script>
+<script src="./js/Buscar_Equipo.js"></script>
+<script src="./js/Agregar_Equipo.js"></script>
+
 <?php }  ?>

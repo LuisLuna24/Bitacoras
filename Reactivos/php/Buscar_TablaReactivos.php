@@ -1,17 +1,18 @@
 <?php
 require "../../php/conexion.php";
 
-$columns=['bitacora_reactivo.nombre', 'no_lote', 'fecha_apertura', 'fecha_caducidad', 'pruaba_reactivo','id_folio','usuarios.id_usuario','usuarios.nombre','usuarios.apellido','fechaelabortacion'];
+$columns=['folio_reactivo.id_folio', 'folio', 'folio_reactivo.id_version_bitacora', 'folio_reactivo.version_bitacora', 'fecha_creacion','nombre_version','admin.id_admin','admin.nombre','admin.apellido'];
 
-$table="bitacora_reactivo";
+$table="folio_reactivo";
 
-$id= 'id_bitreactivo';
+$id= 'id_folio';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="INNER JOIN usuarios ON usuarios.id_usuario=bitacora_reactivo.id_usuario";
+$join="INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_reactivo.id_version_bitacora LEFT JOIN bitacora_reactivos on bitacora_reactivos.id_folio=folio_reactivo.id_folio
+LEFT JOIN admin on admin.id_admin= bitacora_reactivos.id_admin";
 
-$where = "WHERE bitacora_reactivo.nombre ILIKE '%" . $campo . "%'";
+$where = "WHERE folio::text ILIKE '%" . $campo . "%' OR fecha_creacion::text ILIKE '%" . $campo . "%'";
 
 
 
@@ -45,6 +46,7 @@ $join
 $where
 $sLimit";
 
+
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
 
@@ -65,12 +67,18 @@ $output['paginacion'] = '';
 
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
+        if($row['id_admin']==''){
+            $Eliminar='<a href="./php/Eliminar_VerReactivo.php?No_Folio='. $row['id_folio']. '">Eliminar</a>';
+        }else{
+            $Eliminar='';
+        }
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['id_folio'] .'</td>';
-        $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'].'</td>';
-        $output['data'].='<td>'. $row['fechaelabortacion'] .'</td>';
+        $output['data'].='<td>'. $row['folio'] .'</td>';
+        $output['data'].='<td>'. $row['nombre_version'] .' Folio:'.$row['folio'] .'</td>';
+        $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
+        $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'] .'</td>';
         $output['data'].='<td><a href="Reactivos.php?No_Folio='.$row['id_folio'].'">Editar</a></td>';
-        $output['data'].='<td><a href="">Eliminar</a></td>';
+        $output['data'].='<td>'.$Eliminar.'</td>';
         $output['data'].='</tr>';
     }
 }else{

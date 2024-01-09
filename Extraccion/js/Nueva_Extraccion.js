@@ -9,6 +9,7 @@ $(document).ready(function () {
             contentType: false,
             processData:false,
             success: function (response) {
+                alert("Extraccion Agregada");
                 let paginaActual = 1;
 
                 getData(paginaActual);

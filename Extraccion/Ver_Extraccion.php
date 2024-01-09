@@ -27,6 +27,7 @@ if($id_Usuario=="" || $id_Usuario==null){
         <div class=Extraccion_Contenedor>
             <div class="Extraccion_Titulo">
                 <h1>Ver Extraccion</h1>
+                <div class="linea_titulo"></div>
             </div>
         </div>
         <div class="Todas_las_Extracciones">
@@ -51,7 +52,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>No.</th>
                         <th>Folio</th>
                         <th>Bitacora</th>
-                        <th>Realizo</th>
+                        <th>Revisó</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </thead>

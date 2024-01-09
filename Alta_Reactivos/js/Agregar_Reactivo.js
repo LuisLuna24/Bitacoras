@@ -10,6 +10,7 @@ $(document).ready(function () {
             processData: false,
             success: function (response) {
                 if(response==1){
+                    alert("Reactivo agregado correctamente.")
                     let paginaActual = 1;
 
                     getData(paginaActual);
