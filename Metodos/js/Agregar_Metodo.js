@@ -3,15 +3,14 @@ $(document).ready(function () {
         var datos = new FormData($("#Especie_Form")[0]);       
         $.ajax({
             type: "POST",
-            url: "./php/Agregar_Esecie.php",
+            url: "./php/Agregar_Metodo.php",
             data: datos,
             contentType: false,
             processData:false,
             success: function (response) {
                 if(response==1){
-                    alert("Especie agregada correctamente.");
+                    alert("Metodo agregado correctamente.");
                     let paginaActual = 1;
-
                     getData(paginaActual);
 
                     document.getElementById("campo").addEventListener("keyup",function(e){
@@ -31,7 +30,7 @@ $(document).ready(function () {
                         paginaActual=pagina;
                     }
 
-                        let url="./php/Buscar_Especie.php";
+                        let url="./php/Buscar_Metodo.php";
                         let formaData = new FormData();
                         formaData.append('campo',input);
                         formaData.append('registros',num_registros);
@@ -49,7 +48,7 @@ $(document).ready(function () {
                     }
 
                 }else if(response==2){
-                    alert("Esta especie ya existe");
+                    alert("Este metodo ya existe");
                 }else{
                     alert(response);
                 }
