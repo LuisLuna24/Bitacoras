@@ -119,6 +119,11 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <br>
                 <div class="botones">
                     <input type="button" value="Agregar PCR" id="Agregar_Pcr">
+                    <?php 
+                    if(isset($_GET['No_Folio'])){
+                        ?> <input type="button" value="Actualizar PCR" id="Actualizar_Pcr"> <?php
+                    }
+                    ?>
                     <input type="button" value="Ver Bitacroas" id="Ver_Bitacoras">
                 </div>
                 <div class="Equipo_Tabla">
@@ -167,5 +172,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Buscar_Pcr.js"></script>
 <script src="./js/Buscar_Analisis.js"></script>
 <script src="./js/Agregar_Pcr.js"></script>
+<script src="./js/Actualizar_Pcr.js"></script>
 
 <?php }  ?>

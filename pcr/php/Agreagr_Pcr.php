@@ -35,7 +35,7 @@ $id_pcr=$row['max']+1;
 
 
 for($i=0;$i<$Cantidad;$i++){
-    $identificador_bitacora=$Folio.'-'.$id_pcr.'-'.$Registro.'-'.$i+1;
+    $identificador_bitacora=$Folio.'_1';
     $Insertar="INSERT INTO public.bitacora_pcr(
         id_pcr, no_registro, version_pcr, identificador, id_folio, id_analisis, fecha, agarosa, voltaje, tiempo, sanitizo, tiempouv, id_especie, resultado, id_equipo_pcr, id_usuario, identificador_bitacora)
         VALUES ('$id_pcr', '$Registro', '1', $i+1, '$Folio', '$Analisis', '$Fecha', '$Agrosa', '$Dato_V', '$Tiempo', '$Sanitizo', '$uv', '$Especie', '$Resultado', '$Folio', '$id_Usuario', $identificador_bitacora);";

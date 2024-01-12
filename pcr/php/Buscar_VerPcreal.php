@@ -2,7 +2,7 @@
 require "../../php/conexion.php";
 
 
-$columns=['folio_pcr.id_folio', 'folio', 'folio_pcr.id_version_bitacora', 'folio_pcr.version_bitacora','nombre_version','fecha_creacion','admin.nombre','admin.apellido','bitacora_pcr.id_admin'];
+$columns=['folio_pcr.id_folio', 'folio', 'folio_pcr.id_version_bitacora', 'folio_pcr.version_bitacora','nombre_version','fecha_creacion','admin.nombre','admin.apellido','bitacora_pcr.id_admin','identificador_bitacora'];
 
 $table="folio_pcr";
 
@@ -77,7 +77,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .' '. $row['apellido'].'</td>';
-        $output['data'].='<td><a href="Bitacora_Pcr.php?No_Folio='. $row['id_folio']. '">Editar</a></td>';
+        $output['data'].='<td><a href="Bitacora_Pcr.php?No_Folio='. $row['identificador_bitacora']. '">Editar</a></td>';
         $output['data'].='<td>'.$Eliminar.'</td>';
         $output['data'].='</tr>';
     }

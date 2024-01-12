@@ -19,7 +19,7 @@ $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): nu
 
 $join="INNER JOIN especie on especie.id_especie=bitacora_pcr.id_especie";
 
-$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Folio'  ";
+$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Folio' or identificador_bitacora = '$Folio'";
 
 /*if($campo!==null){
     $where = "WHERE (";
