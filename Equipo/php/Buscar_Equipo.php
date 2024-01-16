@@ -1,7 +1,7 @@
 <?php
 require "../../php/conexion.php";
 
-$columns=['id_equipo', 'identificador',' equipo.nombre as equipo_nombre','area.nombre as area_nombre', 'descripcion',' area.id_area'];
+$columns=['id_equipo', 'identificador',' equipo.nombre as equipo_nombre','area.nombre as area_nombre', 'descripcion',' area.id_area','estado_equipo'];
 
 $table="equipo";
 
@@ -11,7 +11,7 @@ $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): nu
 
 $join="INNER JOIN area on area.id_area=equipo.id_area";
 
-$where = "WHERE equipo.nombre ILIKE '%" . $campo . "%'";
+$where = "WHERE equipo.nombre ILIKE '%" . $campo . "%' and estado_equipo='Activo' or estado_equipo = 'Inactivo'";
 
 /*if($campo!==null){
     $where = "WHERE (";
@@ -68,8 +68,9 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['equipo_nombre'] .'</td>';
         $output['data'].='<td>'. $row['descripcion'] .'</td>';
         $output['data'].='<td>'. $row['area_nombre'] .'</td>';
+        $output['data'].='<td>'. $row['estado_equipo'] .'</td>';
         $output['data'].='<td><a href="./Editar_Equipo.php?Equipo='. $row['id_equipo'] .'">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Equipo.php?Equipo='. $row['id_equipo'] .'">Eliminar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Equipo.php?Equipo='. $row['id_equipo'] .'">Baja</a></td>';
         $output['data'].='</tr>';
     }
 }else{

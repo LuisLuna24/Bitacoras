@@ -6,4 +6,9 @@ $(document).ready(function () {
     $("#Catalogos_Global").attr("href", "../Catalogos.php");
     $("#Salir_Global").attr("href", "../php/Cerrar.php");
     $("#Inicio_Global").attr("href", "../Principal.php");
+
+
+    $("#Equipo_Baja").on("click", function(){
+        location.href = "./Equipo_Baja.php"
+    })
 });

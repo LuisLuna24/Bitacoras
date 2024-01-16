@@ -1,25 +1,17 @@
 <?php
 require "../../php/conexion.php";
-session_start();
 
-if(isset($_GET['No_Folio'])){
-    $Folio=$_GET['No_Folio'];
-}else{
-    $Folio=$_SESSION["pcr_fol"];
-}
+$columns=['id_equipo', 'identificador',' equipo.nombre as equipo_nombre','area.nombre as area_nombre', 'descripcion',' area.id_area','estado_equipo'];
 
+$table="equipo";
 
-$columns=['nombre','id_pcr', 'no_registro', 'version_pcr', 'identificador', 'id_folio', 'id_analisis', 'fecha', 'agarosa', 'voltaje', 'tiempo', 'sanitizo',' tiempouv', 'especie.id_especie', 'resultado', 'id_equipo_pcr', 'id_usuario', 'id_admin', 'identificador_bitacora'];
-
-$table="bitacora_pcr ";
-
-$id= 'id_pcr';
+$id= 'id_equipo';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="INNER JOIN especie on especie.id_especie=bitacora_pcr.id_especie";
+$join="INNER JOIN area on area.id_area=equipo.id_area";
 
-$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Folio'";
+$where = "WHERE equipo.nombre ILIKE '%" . $campo . "%' and estado_equipo='Baja'";
 
 /*if($campo!==null){
     $where = "WHERE (";
@@ -35,8 +27,6 @@ $where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Fo
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
 
-
-
 if(!$pagina){
     $inicio = 0;
     $pagina =1;
@@ -47,12 +37,11 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT DISTINCT on(no_registro,identificador) " . implode(", ",$columns) . "
-FROM $table 
+$sql="SELECT " . implode(", ",$columns) . "
+FROM $table
 $join
 $where
 $sLimit";
-
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
@@ -73,18 +62,15 @@ $output['data'] = '';
 $output['paginacion'] = '';
 
 if($num_rows>0){
-    while($row=pg_fetch_array($resultado)){
+    while($row=pg_fetch_assoc($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['no_registro'] .'-'.$row['identificador'].'</td>';
-        $output['data'].='<td>'. $row['version_pcr'] .'</td>';
-        $output['data'].='<td>'. $row['id_analisis'] .'</td>';
-        $output['data'].='<td>'. $row['fecha'] .'</td>';
-        $output['data'].='<td>'. $row['agarosa'] .'</td>';
-        $output['data'].='<td>'. $row['voltaje'] .'</td>';
-        $output['data'].='<td>'. $row['tiempo'] .'</td>';
-        $output['data'].='<td>'. $row['nombre'] .'</td>';
-        $output['data'].='<td>'. $row['resultado'] .'</td>';
-        $output['data'].='<td><a href="./php/Eliminar_Pcr.php?Identificador='. $row['identificador']. '">Eliminar</a></td>';
+        $output['data'].='<td>'. $row['identificador'] .'</td>';
+        $output['data'].='<td>'. $row['equipo_nombre'] .'</td>';
+        $output['data'].='<td>'. $row['descripcion'] .'</td>';
+        $output['data'].='<td>'. $row['area_nombre'] .'</td>';
+        $output['data'].='<td>'. $row['estado_equipo'] .'</td>';
+        $output['data'].='<td><a href="./Editar_Equipo.php?Equipo='. $row['id_equipo'] .'">Editar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Equipo.php?Equipo='. $row['id_equipo'] .'">Baja</a></td>';
         $output['data'].='</tr>';
     }
 }else{
@@ -113,10 +99,10 @@ if($output['totalRegistros']>0){
 
     for($i=$numeroInicio;$i<=$numeroFin;$i++){
         if($pagina == $i){
-            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="#">' . $i . '</a></li>';
 
         }else{
-            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="" onclick="getData('. $i .')">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="#" onclick="getData('. $i .')">' . $i . '</a></li>';
         }
     }
 

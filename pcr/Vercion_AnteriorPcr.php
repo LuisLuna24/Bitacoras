@@ -2,6 +2,8 @@
 ob_start();
 session_start();
 
+$_SESSION['Folio_VercionPcr']=$_GET['No_Folio'];
+
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
@@ -27,7 +29,7 @@ if($id_Usuario=="" || $id_Usuario==null){
         <div class="dat_resul_contenedor">
             <form class="dat_resul_form">
                 <div class="dat_resul_titulo">
-                    <h1>Ver Bitacora de Resultados de PCR</h1>
+                    <h1>Ver Versiónes Bitacora de Resultados de PCR</h1>
                     <div class="linea_titulo"></div>
                 </div>
                 <div class="Equipo_Tabla">
@@ -48,12 +50,11 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <table>
                         <thead>
                             <th>Folio</th>
+                            <th>Versión</th>
                             <th>Fecha</th>
                             <th>Bitacora</th>
                             <th>Revisó</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                            <th>Versiones anteriores</th>
+                            <th>Ver Bitacora</th>
                         </thead>
                         <tbody id="content"></tbody>
                     </table>
@@ -68,6 +69,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 <script src="./js/scripts.js"></script>
-<script src="./js/Buscar_VerPcreal.js"></script>
+<script src="./js/Buscar_VercionPcreal.js"></script>
 
 <?php } ?>

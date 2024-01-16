@@ -1,25 +1,20 @@
 <?php
 require "../../php/conexion.php";
 session_start();
+$Folio=$_SESSION['Folio_VercionPcr'];
 
-if(isset($_GET['No_Folio'])){
-    $Folio=$_GET['No_Folio'];
-}else{
-    $Folio=$_SESSION["pcr_fol"];
-}
+$columns=['version_pcr','folio_pcr.id_folio', 'folio', 'folio_pcr.id_version_bitacora', 'folio_pcr.version_bitacora','nombre_version','fecha_creacion','admin.nombre','admin.apellido','bitacora_pcr.id_admin','identificador_bitacora'];
 
+$table="folio_pcr";
 
-$columns=['nombre','id_pcr', 'no_registro', 'version_pcr', 'identificador', 'id_folio', 'id_analisis', 'fecha', 'agarosa', 'voltaje', 'tiempo', 'sanitizo',' tiempouv', 'especie.id_especie', 'resultado', 'id_equipo_pcr', 'id_usuario', 'id_admin', 'identificador_bitacora'];
-
-$table="bitacora_pcr ";
-
-$id= 'id_pcr';
+$id= 'folio_pcr.id_folio';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="INNER JOIN especie on especie.id_especie=bitacora_pcr.id_especie";
+$join="INNER join bitacora_pcr on bitacora_pcr.id_folio=folio_pcr.id_folio INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_pcr.id_version_bitacora
+LEFT JOIN admin on admin.id_admin=bitacora_pcr.id_admin";
 
-$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Folio'";
+$where = "WHERE folio_pcr.id_folio::text ILIKE '%" . $campo . "%' or bitacora_pcr.fecha::text ILIKE '%" . $campo . "%' and folio_pcr.id_folio ='$Folio' ";
 
 /*if($campo!==null){
     $where = "WHERE (";
@@ -47,12 +42,11 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT DISTINCT on(no_registro,identificador) " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (version_pcr)" . implode(", ",$columns) . "
 FROM $table 
 $join
-$where
-$sLimit";
-
+$where ORDER BY version_pcr ASC
+$sLimit ";
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
@@ -74,17 +68,18 @@ $output['paginacion'] = '';
 
 if($num_rows>0){
     while($row=pg_fetch_array($resultado)){
+        if($row['id_admin']==''){
+            $Eliminar='<a href="./php/Eliminar_Folio.php?No_FoloEliminar='. $row['id_folio']. '">Eliminar</a>';
+        }else{
+            $Eliminar='';
+        }
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['no_registro'] .'-'.$row['identificador'].'</td>';
-        $output['data'].='<td>'. $row['version_pcr'] .'</td>';
-        $output['data'].='<td>'. $row['id_analisis'] .'</td>';
-        $output['data'].='<td>'. $row['fecha'] .'</td>';
-        $output['data'].='<td>'. $row['agarosa'] .'</td>';
-        $output['data'].='<td>'. $row['voltaje'] .'</td>';
-        $output['data'].='<td>'. $row['tiempo'] .'</td>';
-        $output['data'].='<td>'. $row['nombre'] .'</td>';
-        $output['data'].='<td>'. $row['resultado'] .'</td>';
-        $output['data'].='<td><a href="./php/Eliminar_Pcr.php?Identificador='. $row['identificador']. '">Eliminar</a></td>';
+        $output['data'].='<td>'. $row['id_folio'].'</td>';
+        $output['data'].='<td>'. $row['version_pcr'].'</td>';
+        $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
+        $output['data'].='<td>'. $row['nombre_version'] .'</td>';
+        $output['data'].='<td>'. $row['nombre'] .' '. $row['apellido'].'</td>';
+        $output['data'].='<td><a href="php/Actualizar_Actualizar_Pcr.php?No_Folio='. $row['id_folio']. '">Ver</a></td>';
         $output['data'].='</tr>';
     }
 }else{

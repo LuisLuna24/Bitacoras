@@ -41,7 +41,7 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT DISTINCT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (id_folio) " . implode(", ",$columns) . "
 FROM $table 
 $join
 $where ORDER BY folio_pcr.id_folio ASC
@@ -77,8 +77,9 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .' '. $row['apellido'].'</td>';
-        $output['data'].='<td><a href="Bitacora_Pcr.php?No_Folio='. $row['identificador_bitacora']. '">Editar</a></td>';
+        $output['data'].='<td><a href="php/Actualizar_Actualizar_Pcr.php?No_Folio='. $row['id_folio']. '">Editar</a></td>';
         $output['data'].='<td>'.$Eliminar.'</td>';
+        $output['data'].='<td><a href="Vercion_AnteriorPcr.php?No_Folio='. $row['id_folio']. '">Ver</a></td>';
         $output['data'].='</tr>';
     }
 }else{

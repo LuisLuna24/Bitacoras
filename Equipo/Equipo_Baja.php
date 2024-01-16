@@ -24,48 +24,8 @@ if($id_Usuario=="" || $id_Usuario==null){
     <?php require "../global/header.php" ?>
 
     <section class="Equipo">
-        <div class="Equipo_Contenedor">
-            <div class="Equipo_Titulo">
-                <h1>Equipo</h1>
-            </div>
-            <form class="Equipo_Form" id="Equipo_Form">
-                <div class="Dato_Equipo">
-                    <div class="Dato">
-                        <label>No. Inventario</label>
-                        <input type="text" name="Inventario_Equipo">
-                    </div>
-                    <div class="Dato">
-                        <label>Descripcion</label>
-                        <input type="text" name="Descripcion_Equipo">
-                    </div>
-                </div>
-                <div class="Dato_Equipo">
-                    <div class="Dato">
-                        <label>Nombre</label>
-                        <input type="text" name="Nombre_Equipo">
-                    </div>
-                    
-                    <div class="Dato">
-                        <label>Area</label>
-                        <select name="Area_Equipo" id="Area_Equipo"></select>
-                    </div>
-                </div>
-                <div class="Dato_Equipo">
-                    <div class="Dato">
-                        <label>Estado del equipo:</label>
-                        <select name="Estado_Equipo" id="">
-                            <option value="Activo">Activo</option>
-                            <option value="Inactivo">Inactivo</option>
-                            <option value="Baja">Baja</option>
-                        </select>
-                    </div>
-                </div>
-            </form>
-            <div class="Equipo_Botones">
-                <input type="button" value="Agregar" id="Agregar_Equipo">
-                <input type="button" value="Ver Equipo Baja" id="Equipo_Baja">
-                <input type="button" value="Agregar Area">
-            </div>
+        <div class="Equipo_Titulo">
+            <h1>Equipo Baja</h1>
         </div>
         <div class="Equipo_Tabla">
             <div class="Acciones_Tabla">
@@ -105,8 +65,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 <script src="./js/scripts.js"></script>
-<script src="./js/Buscar_Equipo.js"></script>
-<script src="./js/Agregar_Equipo.js"></script>
-<script src="./js/Buscar_Area.js"></script>
+<script src="./js/Buscar_Equipo_Baja.js"></script>
 
-<?php }  ?>
+<?php }  ?>s

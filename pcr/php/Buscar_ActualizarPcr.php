@@ -8,6 +8,8 @@ if(isset($_GET['No_Folio'])){
     $Folio=$_SESSION["pcr_fol"];
 }
 
+$Version=$_SESSION["VercionMax"];
+
 
 $columns=['nombre','id_pcr', 'no_registro', 'version_pcr', 'identificador', 'id_folio', 'id_analisis', 'fecha', 'agarosa', 'voltaje', 'tiempo', 'sanitizo',' tiempouv', 'especie.id_especie', 'resultado', 'id_equipo_pcr', 'id_usuario', 'id_admin', 'identificador_bitacora'];
 
@@ -19,7 +21,7 @@ $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): nu
 
 $join="INNER JOIN especie on especie.id_especie=bitacora_pcr.id_especie";
 
-$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Folio'";
+$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Folio' and version_pcr='$Version'";
 
 /*if($campo!==null){
     $where = "WHERE (";

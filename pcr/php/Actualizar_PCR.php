@@ -22,4 +22,6 @@ while($row=pg_fetch_assoc($query)){
         '".$row['sanitizo']."', '".$row['tiempouv']."', '".$row['id_especie']."', '".$row['resultado']."', '".$row['id_equipo_pcr']."', '".$id_Usuario."', '".$row['identificador_bitacora']."','".$row['no_equipo']."');";
     pg_query($conexion,$Actualizar);
 }
+
+
 ?>
