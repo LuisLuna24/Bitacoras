@@ -1,3 +1,5 @@
+//Mustra los datos de la tabla de analisis en forma paginada
+
 let paginaActual = 1;
 
 
@@ -19,7 +21,7 @@ function getData(pagina){
 if(pagina != null){
     paginaActual=pagina;
 }
-
+    //Ruta del PHP donde está la consulta de los datos de la tabla
     let url="./php/Buscar_Analisis.php";
     let formaData = new FormData();
     formaData.append('campo',input);

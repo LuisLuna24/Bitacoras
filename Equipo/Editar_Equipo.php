@@ -48,10 +48,19 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <label>Nombre</label>
                         <input type="text" name="Nombre_Equipo" id="Nombre_Equipo">
                     </div>
-                    
                     <div class="Dato">
                         <label>Area</label>
                         <select name="Area_Equipo" id="Area_Equipo"></select>
+                    </div>
+                </div>
+                <div class="Dato_Equipo">
+                    <div class="Dato">
+                        <label>Estado del equipo:</label>
+                        <select name="Estado_Equipo" id="">
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                            <option value="Baja">Baja</option>
+                        </select>
                     </div>
                 </div>
             </form>

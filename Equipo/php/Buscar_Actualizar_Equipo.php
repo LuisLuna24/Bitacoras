@@ -1,4 +1,6 @@
 <?php
+//Buscar los datos del equipo a actualizar y mandarlos en JSON
+
 require "../../php/conexion.php";
 session_start();
 
@@ -8,6 +10,7 @@ $Buscar="SELECT  id_equipo, identificador, nombre, descripcion, id_area FROM pub
 $query=pg_query($conexion,$Buscar);
 
 
+//Obtener el array de los datos del equipo
 $output=[];
 
 if(pg_num_rows($query)>0){

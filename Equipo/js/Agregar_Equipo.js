@@ -1,3 +1,5 @@
+//Agregar nuevo equipo en el catálogo de equipos
+
 $(document).ready(function () {
 
 
@@ -11,6 +13,7 @@ $(document).ready(function () {
             processData:false,
             success: function (response) {
                 alert("Equipo agregado correctamente.")
+                //Actualiza la tabla de Equipos 
                 let paginaActual = 1;
 
                 getData(paginaActual);
@@ -31,7 +34,7 @@ $(document).ready(function () {
                 if(pagina != null){
                     paginaActual=pagina;
                 }
-
+                    //Dirección de donde proviene los datos de la tabla de catálogo de equipos
                     let url="./php/Buscar_Equipo.php";
                     let formaData = new FormData();
                     formaData.append('campo',input);

@@ -7,7 +7,7 @@ $Folio=$_SESSION["pcr_fol"];
 
 
 
-$buscarEquipo="SELECT equipo_pcr.id_equipo_pcr, equipo_pcr.identificador, equipo.id_equipo, equipo.nombre  FROM public.equipo_pcr INNER JOIN equipo on equipo.id_equipo=equipo_pcr.id_equipo where id_equipo_pcr='$Folio';";
+$buscarEquipo="SELECT DISTINCT bitacora_pcr.identificador_bitacora,equipo_pcr.id_equipo_pcr, equipo_pcr.identificador, equipo.id_equipo, equipo.nombre  FROM public.equipo_pcr INNER JOIN equipo on equipo.id_equipo=equipo_pcr.id_equipo INNER JOIN bitacora_pcr  on bitacora_pcr.id_equipo_pcr = equipo_pcr.id_equipo_pcr where equipo_pcr.id_equipo_pcr='$Folio' or identificador_bitacora = '$Folio';";
 $queryBuscra=pg_query($conexion,$buscarEquipo);
 
 $html="";

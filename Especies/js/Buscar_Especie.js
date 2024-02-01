@@ -1,5 +1,6 @@
-let paginaActual = 1;
+//Visualizar los valores de la tabla de catálogo de especies
 
+let paginaActual = 1;
 
 getData(paginaActual);
 
@@ -19,7 +20,7 @@ function getData(pagina){
 if(pagina != null){
     paginaActual=pagina;
 }
-
+    //Ruta de donde se obtienen los valores de la tabla paginada
     let url="./php/Buscar_Especie.php";
     let formaData = new FormData();
     formaData.append('campo',input);

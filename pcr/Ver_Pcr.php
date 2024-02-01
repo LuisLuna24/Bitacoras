@@ -53,6 +53,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Revisó</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
+                            <th>Versiones anteriores</th>
                         </thead>
                         <tbody id="content"></tbody>
                     </table>

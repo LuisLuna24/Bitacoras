@@ -31,7 +31,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <h2>
                     <?php echo $Nombre." ".$Apellido  ?>
                 </h2>
-                <p>Bitácoras de Análisis</p>
+                <p>Menu de Bitacoras</p>
             </div>
         </div>
     </section>

@@ -25,15 +25,14 @@
 
 .Equipo_Form{
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    place-items: center;
+    display: felx;
+    flex-direction: column;
     gap: 10px;
 }
 .Dato_Equipo{
     width: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
     gap: 10px;
 }
 

@@ -1,7 +1,9 @@
 <?php
 require "../../php/conexion.php";
 session_start();
+//Actualiza los datos de los reactivos 
 
+////Obtiene los datos nuevos de los reactivos a través del método Ajax
 $Reactivo=$_SESSION['Reactivo'];
 $Nombre=$_POST['Reacivo_Nombre'];
 $Lote=$_POST['Reactivo_Lote'];
