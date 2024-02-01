@@ -1,3 +1,4 @@
+//Actualiza reactivo de Inventario de Reactivos
 $(document).ready(function () {
     $("#Actualizarbtn").on('click', function(){
         var  datos= new FormData($("#Actualizar_Form")[0]);
@@ -18,7 +19,4 @@ $(document).ready(function () {
         });    
     });
 
-    $("#Cancelarbtnm").on("click", function(){
-        location.href ="./Alta_Reactivos.php";
-    });
 });

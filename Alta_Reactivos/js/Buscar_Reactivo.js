@@ -1,3 +1,4 @@
+//Muestra el inventario de reactivos en la tabla paginada 
 let paginaActual = 1;
 
 
@@ -19,7 +20,7 @@ function getData(pagina){
 if(pagina != null){
     paginaActual=pagina;
 }
-
+    //Ruta del PHP donde se obtienen los datos de la tabla de inventario de reactivos
     let url="./php/Buscar_Reactivo.php";
     let formaData = new FormData();
     formaData.append('campo',input);

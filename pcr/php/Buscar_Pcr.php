@@ -19,7 +19,7 @@ $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): nu
 
 $join="INNER JOIN especie on especie.id_especie=bitacora_pcr.id_especie";
 
-$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Folio'  ";
+$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Folio'";
 
 /*if($campo!==null){
     $where = "WHERE (";
@@ -47,7 +47,7 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on(no_registro,identificador) " . implode(", ",$columns) . "
 FROM $table 
 $join
 $where
@@ -76,6 +76,7 @@ if($num_rows>0){
     while($row=pg_fetch_array($resultado)){
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['no_registro'] .'-'.$row['identificador'].'</td>';
+        $output['data'].='<td>'. $row['version_pcr'] .'</td>';
         $output['data'].='<td>'. $row['id_analisis'] .'</td>';
         $output['data'].='<td>'. $row['fecha'] .'</td>';
         $output['data'].='<td>'. $row['agarosa'] .'</td>';

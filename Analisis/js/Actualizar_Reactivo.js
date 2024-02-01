@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    //Permite actualizar los datos de los analsisis 
+    
     $("#Actualizarbtn_Analisis").on("click", function(){
         var datos=new FormData($("#Actualizar_Form")[0]);
         $.ajax({
@@ -18,6 +20,7 @@ $(document).ready(function () {
         });
     })
 
+    //Cansela el actualizar los datos del analisis
     $("#Salir_Actualizar").on("click",function(){
         location.href ="./Analisis.php";
     })

@@ -1,4 +1,6 @@
 <?php
+//Eliminar los reactivos existentes 
+
 require "../../php/conexion.php";
 
 $Reactivos=$_GET['Reactivo'];

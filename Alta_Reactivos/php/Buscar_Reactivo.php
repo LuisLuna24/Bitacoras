@@ -1,27 +1,24 @@
 <?php
 require "../../php/conexion.php";
 
+//Permite la búsqueda de los datos que se escribirán en la tabla de manera paginada
+
+//Columnas que se desean consultar
 $columns=['id_reactivo', 'nombre', 'descripcion',' cantidad', 'fecha_caducidad', 'lote', 'estado'];
 
+//Tabala a la que se desa conultar
 $table="reactivos";
 
+//Columna que se contara para la pagianacion
 $id= 'id_reactivo';
 
+
+//Obtiene el valor del input para buscar los registros
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
 $where = "WHERE nombre ILIKE '%" . $campo . "%'";
 
-/*if($campo!==null){
-    $where = "WHERE (";
-
-    $cont=count($columns);
-    for($i=0;$i<$cont;$i++){
-        $where .= $columns[$i] . " ILIKE '%" . $campo . "%' OR ";
-    }
-    $where= substr_replace($where, "", -3);
-    $where.= ")";
-}*/
-
+//Obtiene el límite de consultas dependiendo la cantidad que se desea visualizar a través del select
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
 
@@ -34,7 +31,7 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-
+//Consulta para obtener los valores que irán en la tabla
 $sql="SELECT " . implode(", ",$columns) . "
 FROM $table
 $where
@@ -44,9 +41,6 @@ $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
 
 //Consulta para total registros
-
-//Consulta para total registros
-
 $sqlTotal="SELECT count($id) FROM $table ";
 $resTotal=pg_query($conexion,$sqlTotal);
 $row_total=pg_fetch_array($resTotal);
@@ -58,6 +52,8 @@ $output['totalRegistros'] = $totalRegistros;
 $output['data'] = '';
 $output['paginacion'] = '';
 
+
+//Datos de la tabla 
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
         $output['data'].='<tr>';

@@ -1,3 +1,4 @@
+//Actualizar los equipos en el apartado de Editar equipo
 $(document).ready(function () {
     $("#Actualizar_Equipo").on('click', function (e) {
         var datos = new FormData($("#Editar_Form")[0]);

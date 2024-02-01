@@ -38,7 +38,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <label>Descripcion</label>
                         <input type="text" name="Descripcion_Equipo">
                     </div>
-                    
                 </div>
                 <div class="Dato_Equipo">
                     <div class="Dato">
@@ -51,11 +50,20 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <select name="Area_Equipo" id="Area_Equipo"></select>
                     </div>
                 </div>
+                <div class="Dato_Equipo">
+                    <div class="Dato">
+                        <label>Estado del equipo:</label>
+                        <select name="Estado_Equipo" id="">
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                            <option value="Baja">Baja</option>
+                        </select>
+                    </div>
+                </div>
             </form>
             <div class="Equipo_Botones">
                 <input type="button" value="Agregar" id="Agregar_Equipo">
-                <input type="button" value="Actualizar Tabla">
-                <input type="button" value="Agregar Area">
+                <input type="button" value="Ver Equipo Baja" id="Equipo_Baja">
             </div>
         </div>
         <div class="Equipo_Tabla">
@@ -80,8 +88,9 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <th>Nombre</th>
                     <th>Descripcion</th>
                     <th>Area</th>
+                    <th>Estado</th>
                     <th>Actualizar</th>
-                    <th>Eliminar</th>
+                    <th>Dar de baja</th>
                 </thead>
                 <tbody id="content"></tbody>
             </table>

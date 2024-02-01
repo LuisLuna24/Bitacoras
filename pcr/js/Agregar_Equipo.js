@@ -8,25 +8,24 @@ $(document).ready(function () {
             contentType: false,
             processData:false,
             success: function (response) {
-                alert("Equipo Agregado");
-                $.ajax({
-                    type: "POST",
-                    url: "./php/Buscar_TablaEquipo.php",
-                    dataType: "html",
-                    success: function (response) {
-                        $("#Equipo_Tabla").html(response);
-                    }
-                });
+                if(response==1){
+                    alert("Equipo Agregado");
+                    $.ajax({
+                        type: "POST",
+                        url: "./php/Buscar_TablaEquipo.php",
+                        dataType: "html",
+                        success: function (response) {
+                            $("#Equipo_Tabla").html(response);
+                        }
+                    });
+                }else if(response==2){
+                    alert("Ya existe el equipo");
+                }else{
+                    alert(response);
+                }
             }
         });
     });
-    $.ajax({
-        type: "POST",
-        url: "./php/Buscar_TablaEquipo.php",
-        dataType: "html",
-        success: function (response) {
-            $("#Equipo_Tabla").html(response);
-        }
-    });
+    
     
 });
