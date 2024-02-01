@@ -1,23 +1,27 @@
 <?php
 require "../../php/conexion.php";
+session_start();
 
-//Visualizar Catálogo de especie en la tabla paginada
+$VersionPcr=$_SESSION["Version_Vitacora"];
 
+$columns=['nombre','id_pcr', 'no_registro', 'version_pcr', 'identificador', 'id_folio', 'id_analisis', 'fecha', 'agarosa', 'voltaje', 'tiempo', 'sanitizo',' tiempouv', 'especie.id_especie', 'resultado', 'id_equipo_pcr', 'id_usuario', 'id_admin', 'identificador_bitacora'];
 
-//Columnas de la tabla que se desea consultar
-$columns=['id_especie', 'nombre'];
-//Tabla que de desa consultar
-$table="especie";
-//Nombre del campo que se va a contar para la paginacion 
-$id= 'id_especie';
+$table="bitacora_pcr ";
+
+$id= 'identificador_bitacora';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$where = "WHERE nombre ILIKE '%" . $campo . "%'";
+$join="INNER JOIN especie on especie.id_especie=bitacora_pcr.id_especie";
+
+$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and identificador_bitacora = '$VersionPcr'";
+
 
 
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
+
+
 
 if(!$pagina){
     $inicio = 0;
@@ -28,11 +32,13 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-//Consulta parar visualizar los campos en la tabla paginada
-$sql="SELECT " . implode(", ",$columns) . "
-FROM $table
+
+$sql="SELECT DISTINCT on(no_registro,identificador) " . implode(", ",$columns) . "
+FROM $table 
+$join
 $where
 $sLimit";
+
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
@@ -50,14 +56,18 @@ $output['totalRegistros'] = $totalRegistros;
 $output['data'] = '';
 $output['paginacion'] = '';
 
-
-//Visualizar los datos de la consulta en la tabla 
 if($num_rows>0){
-    while($row=pg_fetch_assoc($resultado)){
+    while($row=pg_fetch_array($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['id_especie'] .'</td>';
+        $output['data'].='<td>'. $row['no_registro'] .'-'.$row['identificador'].'</td>';
+        $output['data'].='<td>'. $row['version_pcr'] .'</td>';
+        $output['data'].='<td>'. $row['id_analisis'] .'</td>';
+        $output['data'].='<td>'. $row['fecha'] .'</td>';
+        $output['data'].='<td>'. $row['agarosa'] .'</td>';
+        $output['data'].='<td>'. $row['voltaje'] .'</td>';
+        $output['data'].='<td>'. $row['tiempo'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .'</td>';
-        $output['data'].='<td><a href="./php/Eliminar_Especie.php?Especie='. $row['id_especie'] .'">Eliminar</a></td>';
+        $output['data'].='<td>'. $row['resultado'] .'</td>';
         $output['data'].='</tr>';
     }
 }else{
@@ -86,10 +96,10 @@ if($output['totalRegistros']>0){
 
     for($i=$numeroInicio;$i<=$numeroFin;$i++){
         if($pagina == $i){
-            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="#">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="">' . $i . '</a></li>';
 
         }else{
-            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="#" onclick="getData('. $i .')">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="" onclick="getData('. $i .')">' . $i . '</a></li>';
         }
     }
 
@@ -99,8 +109,5 @@ if($output['totalRegistros']>0){
 
 
 echo json_encode($output, JSON_UNESCAPED_UNICODE);
-
-
-
 
 ?>

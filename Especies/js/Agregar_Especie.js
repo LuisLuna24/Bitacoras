@@ -1,3 +1,5 @@
+//Este permite agregar especies al catálogo de especies
+
 $(document).ready(function () {
     $("#btn_Agregar").on('click', function(){
         var datos = new FormData($("#Especie_Form")[0]);       
@@ -10,6 +12,9 @@ $(document).ready(function () {
             success: function (response) {
                 if(response==1){
                     alert("Especie agregada correctamente.");
+
+                    //Actualiza la tabla de catálogo de especies 
+
                     let paginaActual = 1;
 
                     getData(paginaActual);
@@ -29,8 +34,8 @@ $(document).ready(function () {
 
                     if(pagina != null){
                         paginaActual=pagina;
-                    }
-
+                    }   
+                        //Ruta de donde se obtienen los valores de la tabla paginada
                         let url="./php/Buscar_Especie.php";
                         let formaData = new FormData();
                         formaData.append('campo',input);

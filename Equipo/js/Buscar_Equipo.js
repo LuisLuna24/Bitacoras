@@ -1,5 +1,6 @@
-let paginaActual = 1;
+//Visualizar tabla de equipo paginada 
 
+let paginaActual = 1;
 
 getData(paginaActual);
 
@@ -19,7 +20,7 @@ function getData(pagina){
 if(pagina != null){
     paginaActual=pagina;
 }
-
+    //Ruta donde esta la consulta para ver los equipos activos 
     let url="./php/Buscar_Equipo.php";
     let formaData = new FormData();
     formaData.append('campo',input);

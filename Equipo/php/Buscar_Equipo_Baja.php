@@ -1,29 +1,23 @@
 <?php
 require "../../php/conexion.php";
 
+//Consulta para datos de la tabla paginada 
+
+
+//Columnas de la tabla a consultar
 $columns=['id_equipo', 'identificador',' equipo.nombre as equipo_nombre','area.nombre as area_nombre', 'descripcion',' area.id_area','estado_equipo'];
-
+//Nombre de la tabla a consultar
 $table="equipo";
-
+//Nombre del campo que se va acontar para la paginacion 
 $id= 'id_equipo';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
-
+//Consultas JOIN
 $join="INNER JOIN area on area.id_area=equipo.id_area";
-
+//Consultas where
 $where = "WHERE equipo.nombre ILIKE '%" . $campo . "%' and estado_equipo='Baja'";
 
-/*if($campo!==null){
-    $where = "WHERE (";
-
-    $cont=count($columns);
-    for($i=0;$i<$cont;$i++){
-        $where .= $columns[$i] . " ILIKE '%" . $campo . "%' OR ";
-    }
-    $where= substr_replace($where, "", -3);
-    $where.= ")";
-}*/
-
+//Limita la cantidad de datos que se va a ver (no mover)
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
 
@@ -36,7 +30,7 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-
+//Consulta genera para obtener valores para la tabla
 $sql="SELECT " . implode(", ",$columns) . "
 FROM $table
 $join
@@ -45,8 +39,6 @@ $sLimit";
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
-
-//Consulta para total registros
 
 //Consulta para total registros
 
@@ -60,6 +52,8 @@ $output=[];
 $output['totalRegistros'] = $totalRegistros;
 $output['data'] = '';
 $output['paginacion'] = '';
+
+//Visualizar los elementos de la tabla y los manda en JSON 
 
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){

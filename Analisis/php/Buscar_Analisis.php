@@ -1,15 +1,19 @@
 <?php
 require "../../php/conexion.php";
 
+//Buscar los datos de la tabla paginada del catálogo de análisis
 
+
+//Columnas de la tabla que se desea consultar
 $columns=['id_analisis', 'nombre', 'abreviatura'];
-
+//Tabla que se desea consultar 
 $table="analisis ";
-
+//Campo que se contará para el paginado de la tabla
 $id= 'id_analisis';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
+//Where de la consula de la tabala
 $where = "WHERE id_analisis::text ILIKE '%" . $campo . "%' and nombre ILIKE '%" . $campo . "%'";
 
 
@@ -27,7 +31,7 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-
+//Consulta general para obtener los datos de la tabla
 $sql="SELECT " . implode(", ",$columns) . "
 FROM $table 
 $where
@@ -36,8 +40,6 @@ $sLimit";
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
-
-//Consulta para total registros
 
 //Consulta para total registros
 
@@ -51,6 +53,9 @@ $output=[];
 $output['totalRegistros'] = $totalRegistros;
 $output['data'] = '';
 $output['paginacion'] = '';
+
+
+//Donde se muestran los datos de la consulta en la tabla
 
 if($num_rows>0){
     while($row=pg_fetch_array($resultado)){

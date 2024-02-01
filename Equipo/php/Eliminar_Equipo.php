@@ -1,4 +1,5 @@
 <?php
+//Permite dar de baja los equipo cambiando su estado a Baja
 
 require "../../php/conexion.php";
 

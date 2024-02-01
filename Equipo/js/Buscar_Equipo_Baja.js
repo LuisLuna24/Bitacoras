@@ -1,3 +1,5 @@
+//Permite visualizar los equipos dados de baja en la sección de equipo baja
+
 let paginaActual = 1;
 
 
@@ -19,7 +21,7 @@ function getData(pagina){
 if(pagina != null){
     paginaActual=pagina;
 }
-
+    //Ruta para donde está la consulta del equipo dado de baja
     let url="./php/Buscar_Equipo_Baja.php";
     let formaData = new FormData();
     formaData.append('campo',input);

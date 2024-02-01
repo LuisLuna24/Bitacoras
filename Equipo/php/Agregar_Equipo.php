@@ -1,5 +1,7 @@
 <?php
 
+//Agregar nuevo equipo en sección inventario de equipo
+
 require "../../php/conexion.php";
 
 $Inventario_Equipo=$_POST['Inventario_Equipo'];
@@ -8,7 +10,7 @@ $Descripcion_Equipo=$_POST['Descripcion_Equipo'];
 $Area_Equipo=$_POST['Area_Equipo'];
 $Estado=$_POST['Estado_Equipo'];
 
-
+//Buscar inventario de equipo para evitar duplicados
 $Buscar="SELECT * FROM equipo where id_equipo = '$Inventario_Equipo'";
 $query=pg_query($conexion,$Buscar);
 if(pg_num_rows($query)==0){

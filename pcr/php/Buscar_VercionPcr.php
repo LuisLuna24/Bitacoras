@@ -1,4 +1,8 @@
 <?php
+
+ 
+//Permite la paginación y consulta para la tabla que muestra las versiones de un folio
+
 require "../../php/conexion.php";
 session_start();
 $Folio=$_SESSION['Folio_VercionPcr'];
@@ -16,17 +20,6 @@ LEFT JOIN admin on admin.id_admin=bitacora_pcr.id_admin";
 
 $where = "WHERE folio_pcr.id_folio::text ILIKE '%" . $campo . "%' or bitacora_pcr.fecha::text ILIKE '%" . $campo . "%' and folio_pcr.id_folio ='$Folio' ";
 
-/*if($campo!==null){
-    $where = "WHERE (";
-
-    $cont=count($columns);
-    for($i=0;$i<$cont;$i++){
-        $where .= $columns[$i] . " ILIKE '%" . $campo . "%' OR ";
-    }
-    $where= substr_replace($where, "", -3);
-    $where.= ")";
-}*/
-
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
 
@@ -41,7 +34,7 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-
+//Consulta de datos 
 $sql="SELECT DISTINCT on (version_pcr)" . implode(", ",$columns) . "
 FROM $table 
 $join
@@ -50,8 +43,6 @@ $sLimit ";
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
-
-//Consulta para total registros
 
 //Consulta para total registros
 
@@ -79,7 +70,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .' '. $row['apellido'].'</td>';
-        $output['data'].='<td><a href="php/Actualizar_Actualizar_Pcr.php?No_Folio='. $row['id_folio']. '">Ver</a></td>';
+        $output['data'].='<td><a href="Ver_VersionPcr.php?Version_Vitacora='. $row['identificador_bitacora']. '">Ver</a></td>';
         $output['data'].='</tr>';
     }
 }else{

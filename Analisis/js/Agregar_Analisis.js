@@ -1,3 +1,5 @@
+//Agrega analisis al catalogo de analisis
+
 $(document).ready(function () {
     $("#Agregar_Analisis").on("click", function(){
         var datos=new FormData ($("#Analisis_Form")[0])
@@ -10,7 +12,7 @@ $(document).ready(function () {
             success: function (response) {
                 if(response==1){
                     alert("Analisis agregado correctamente.");
-
+                    //Actualiza los datos de la tabla paginada 
                     let paginaActual = 1;
                     getData(paginaActual);
 
@@ -30,7 +32,7 @@ $(document).ready(function () {
                     if(pagina != null){
                         paginaActual=pagina;
                     }
-
+                        //Ruta del archivo PHP donde se encuentra la consulta
                         let url="./php/Buscar_Analisis.php";
                         let formaData = new FormData();
                         formaData.append('campo',input);

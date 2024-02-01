@@ -1,3 +1,4 @@
+//Agregar reactivo a inventario de reactivos 
 $(document).ready(function () {
     $("#Agregar_Reactivo").on('click',function(e){
         e.preventDefault();
@@ -11,6 +12,7 @@ $(document).ready(function () {
             success: function (response) {
                 if(response==1){
                     alert("Reactivo agregado correctamente.")
+                    //Actualiza La tabla paginada 
                     let paginaActual = 1;
 
                     getData(paginaActual);
