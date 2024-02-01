@@ -1,4 +1,5 @@
 <?php  
+ //Visualizar los equipos seleccionados de la tabla en nuevo registro de extraccion
 
 require "../../php/conexion.php";
 session_start();
@@ -6,12 +7,13 @@ session_start();
 $Folio=$_SESSION['No_Foli'];
 
 
-
+//Consulta de la tabla equipos
 $buscarEquipo="SELECT id_equipo_extraccion, equipo_extraccion.identificador, equipo.id_equipo ,nombre FROM public.equipo_extraccion INNER JOIN equipo on equipo.id_equipo=equipo_extraccion.id_equipo  where id_equipo_extraccion ='$Folio' ;";
 $queryBuscra=pg_query($conexion,$buscarEquipo);
 
 $html="";
 
+//Visualizar los elementos de la tabla 
 if(pg_num_rows($queryBuscra)!=0){
     while($row=pg_fetch_assoc($queryBuscra)){
         $html.='<tr>';

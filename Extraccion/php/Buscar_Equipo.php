@@ -1,4 +1,6 @@
 <?php
+//Consulta para visualizar equipo en select análisis en Extracción
+
 require "../../php/conexion.php";
 
 $Area=$_POST['Area_Select'];

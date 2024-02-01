@@ -1,3 +1,5 @@
+//Este permite crear un nuevo folio de Pcr
+
 $(document).ready(function () {
     $("#Bitacora_Pcr").on('click', function (e) {
         $.ajax({
@@ -13,6 +15,8 @@ $(document).ready(function () {
             }
         }); 
     })
+
+    //Redirecciona al apartado para ver todos los folios de Pcr
     $("#Ver_Pcr").on("click",function(){
         location.href ="./pcr/Ver_Pcr.php";
     });

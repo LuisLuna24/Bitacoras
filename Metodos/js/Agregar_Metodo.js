@@ -1,3 +1,5 @@
+//Aggregar metodo a catalogo de metodo Antares de Ajax
+
 $(document).ready(function () {
     $("#btn_Agregar").on('click', function(){
         var datos = new FormData($("#Especie_Form")[0]);       
@@ -10,6 +12,9 @@ $(document).ready(function () {
             success: function (response) {
                 if(response==1){
                     alert("Metodo agregado correctamente.");
+
+                    //Actualizar tabal paginado de catálogo de métodos
+
                     let paginaActual = 1;
                     getData(paginaActual);
 
@@ -29,7 +34,7 @@ $(document).ready(function () {
                     if(pagina != null){
                         paginaActual=pagina;
                     }
-
+                        //Dirección de búsqueda de tabla de métodos  
                         let url="./php/Buscar_Metodo.php";
                         let formaData = new FormData();
                         formaData.append('campo',input);

@@ -1,3 +1,5 @@
+//Modifica las rutas del navbar y logo
+
 $(document).ready(function () {
     $(".logo_gis").attr("src", "../img/Gsmall.webp");
     $(".bx").attr("src", "../img/menuahambuegesa.webp");

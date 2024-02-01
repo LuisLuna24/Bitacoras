@@ -1,4 +1,6 @@
 <?php
+//Consulta para visualizar areas en select análisis en Extracción
+
 require "../../php/conexion.php";
 
 $Buscar= "SELECT id_area, nombre FROM public.area;";

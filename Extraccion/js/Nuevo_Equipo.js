@@ -1,3 +1,5 @@
+//Permite agregar el equipo que se desea seleccionar para la bitácora a través de jQuery Ajax (De momento solo se puede de uno en uno)
+
 $(document).ready(function () {
     $("#Agregar_Equipo").on("click", function(){
         var datos = new FormData($('#Form_Extraccion')[0]);
@@ -8,6 +10,7 @@ $(document).ready(function () {
             contentType: false,
             processData:false,
             success: function (response) {
+                //Válida si el equipo está agregado o no en caso de no estar agregado lo agrega y actualiza la tabla
                 if(response==1){
                     alert('Equipo agregado');
                     $.ajax({

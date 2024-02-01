@@ -1,4 +1,6 @@
 <?php
+//Permite eliminar equipo seleccionado de la tabla equipo seleccionado
+
 require "../../php/conexion.php";
 session_start();
 
