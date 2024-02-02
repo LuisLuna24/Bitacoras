@@ -3,6 +3,8 @@ require 'conexion.php';
 include 'encriptado.php';
 session_start();
 
+//Inicio de secion con secciones 
+
 $Correo=$_POST['In_Correo'];
 $Buscar="SELECT * FROM usuario where correo = '$Correo'";
 $consulta=pg_query($conexion,$Buscar);

@@ -1,3 +1,5 @@
+//Buscar tabla de Bitacora de Reactivos
+
 let paginaActual = 1;
 
 
@@ -19,7 +21,7 @@ function getData(pagina){
 if(pagina != null){
     paginaActual=pagina;
 }
-
+    //Direccion de consulta de tabla de bitacora de reactivos
     let url="./php/Buscar_Tabla.php";
     let formaData = new FormData();
     formaData.append('campo',input);

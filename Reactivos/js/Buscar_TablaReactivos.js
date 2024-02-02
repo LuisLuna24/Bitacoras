@@ -1,3 +1,5 @@
+//Visualizar elementos de tabla Ver Reactivos
+
 let paginaActual = 1;
 
 
@@ -19,7 +21,7 @@ function getData(pagina){
 if(pagina != null){
     paginaActual=pagina;
 }
-
+    //diereccion de la tabla ver Reactivos
     let url="./php/Buscar_TablaReactivos.php";
     let formaData = new FormData();
     formaData.append('campo',input);

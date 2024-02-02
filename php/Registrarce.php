@@ -2,6 +2,7 @@
 require "conexion.php";
 include "encriptado.php";
 
+//Permite crear nuevo usuario
 
 $idUsuario= rand(1, 1000000);
 $Nombre=$_POST['Reg_Nombre'];

@@ -1,3 +1,5 @@
+//agregar nueva Bitacora de Reactivos atraves de Ajaxc
+
 $(document).ready(function () {
     $("#Nuevo_Reactivo").on("click", function(e){
         e.preventDefault();
@@ -9,7 +11,9 @@ $(document).ready(function () {
             contentType: false,
             processData:false,
             success: function (response) {
-                alert("Agregado correctamente");                
+                alert("Agregado correctamente"); 
+                
+                //actualizar la tabla de Bitacora de reactivos 
                 let paginaActual = 1;
                 getData(paginaActual);
 
@@ -29,7 +33,7 @@ $(document).ready(function () {
                 if(pagina != null){
                     paginaActual=pagina;
                 }
-
+                    //Direccion de consulta de tabla de bitacora de reactivos
                     let url="./php/Buscar_Tabla.php";
                     let formaData = new FormData();
                     formaData.append('campo',input);
