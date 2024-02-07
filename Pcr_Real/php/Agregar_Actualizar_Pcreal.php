@@ -26,17 +26,24 @@ if(isset($_POST['pcreal_uv'])){
 
 $Obsevaciones=$_POST['pcreal_observaciones'];
 
+$Version=$_SESSION["VercionMax"];
+
 $Buacrax="SELECT MAX(id_pcreal) FROM birtacora_pcreal where id_folio = '$Folio'";
 $querymax=pg_query($conexion,$Buacrax);
 $row=pg_fetch_assoc($querymax);
 $id_pcreal=$row['max']+1;
 
-$identificador=$Folio.'1';
+$Buscraver="SELECT MAX(version_pcreal) FROM birtacora_pcreal";
+$resultadover=pg_query($conexion,$Buscraver);
+$rowver=pg_fetch_assoc($resultadover);
+$Vercionmax=$rowver['max'];
+$identificador_bitacora=$Folio.$Vercionmax;
 
 for($i=0;$i<$Cantidad;$i++){
+    $identificador=$i+1;
     $Insertar="INSERT INTO public.birtacora_pcreal(
-        id_pcreal, no_registro, version_pcreal, identificador, id_folio, id_analisis, fecha, sanitizo, tiempouv, resultado, observaciones, id_equipo_pcreal, id_usuario,identificador_bitacora,vercion_equipo)
-        VALUES ('$id_pcreal', '$no_registro', 1, $i+1, '$Folio', '$Analisis', '$Fecha', '$Sanitizo', '$uv', '$Resultado', '$Obsevaciones', '$Folio', '$id_Usuario','$identificador','1');";
+        id_pcreal, no_registro, version_pcreal, identificador, id_folio, id_analisis, fecha, sanitizo, tiempouv, resultado, observaciones, id_equipo_pcreal, id_usuario, no_equipo, identificador_bitacora, vercion_equipo)
+        VALUES ('$id_pcreal', '$no_registro', '$Vercionmax','$identificador' , '$Folio', '$Analisis', '$Fecha','$Sanitizo' ,'$uv', '$Resultado', '$Obsevaciones', '$Folio', '$id_Usuario', '1', $identificador_bitacora, $Vercionmax);";
         pg_query($conexion,$Insertar);
 }
 

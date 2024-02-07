@@ -1,19 +1,26 @@
 <?php
 require "../../php/conexion.php";
+session_start();
+
+if(isset($_GET['No_Folio'])){
+    $Folio=$_GET['No_Folio'];
+}else{
+    $Folio=$_SESSION['Folio_VercionPcreal'];
+}
 
 
-$columns=['if_folio', 'folio', 'id_version_bitacoras', 'version_bitacoras', 'fecha_elaboracion','admin.nombre','admin.apellido','nombre_version','birtacora_pcreal.id_admin'];
+$columns=['id_pcreal','identificador_bitacora' ,'no_registro', 'nombre_version','version_pcreal', 'identificador', 'id_folio','fecha_elaboracion' ,'birtacora_pcreal.id_analisis','analisis.nombre as analisis_nombre' ,'fecha', 'sanitizo', 'tiempouv', 'resultado', 'observaciones', 'id_equipo_pcreal', 'id_usuario','id_admin'];
 
-$table="folio_pcreal ";
+$table="birtacora_pcreal ";
 
-$id= 'folio_pcreal.if_folio';
+$id= 'id_pcreal';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="INNER join birtacora_pcreal on birtacora_pcreal.id_folio = folio_pcreal.if_folio LEFT join admin on admin.id_admin=birtacora_pcreal.id_admin
-INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_pcreal.id_version_bitacoras";
+$join="INNER JOIN analisis on analisis.id_analisis=birtacora_pcreal.id_analisis INNER JOIN folio_pcreal on folio_pcreal.if_folio=birtacora_pcreal.id_folio INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_pcreal.id_version_bitacoras";
 
-$where = "WHERE folio_pcreal.if_folio::text ILIKE '%" . $campo . "%' or birtacora_pcreal.fecha::text ILIKE '%" . $campo . "%' ";
+$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Folio'  ";
+
 
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
@@ -30,11 +37,12 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT DISTINCT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (version_pcreal)" . implode(", ",$columns) . "
 FROM $table 
 $join
-$where ORDER BY folio_pcreal.if_folio ASC
-$sLimit ";
+$where
+$sLimit";
+
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
@@ -54,19 +62,13 @@ $output['paginacion'] = '';
 
 if($num_rows>0){
     while($row=pg_fetch_array($resultado)){
-        if($row['id_admin']==''){
-            $Eliminar='<a href="./php/Eliminar_Folio.php?No_FoloEliminar='. $row['if_folio']. '">Eliminar</a>';
-        }else{
-            $Eliminar='';
-        }
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['if_folio'].'</td>';
+        $output['data'].='<td>'. $row['id_folio'] .'</td>';
+        $output['data'].='<td>'. $row['version_pcreal'] .'</td>';
         $output['data'].='<td>'. $row['fecha_elaboracion'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'] .'</td>';
-        $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'].'</td>';
-        $output['data'].='<td><a href="./php/Nueva_Actualizacion.php?No_Folio='. $row['if_folio']. '">Editar</a></td>';
-        $output['data'].='<td>'.$Eliminar.'</td>';
-        $output['data'].='<td><a href="Verciones_AnterioresPcreal.php?No_Folio='. $row['if_folio']. '">Ver</a></td>';
+        $output['data'].='<td>'. $row['id_admin'] .'</td>';
+        $output['data'].='<td><a href="./Ver_VersionPcreal.php?Version_Vitacora='. $row['identificador_bitacora']. '">Ver</a></td>';
         $output['data'].='</tr>';
     }
 }else{

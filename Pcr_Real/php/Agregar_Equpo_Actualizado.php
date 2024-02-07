@@ -3,6 +3,7 @@ require "../../php/conexion.php";
 
 session_start();
 
+$EquipoMax=$_SESSION['EquipoMax'];
 
 $NoEquipo =$_SESSION["pcreal_fol"];
 $identificador="";
@@ -19,7 +20,7 @@ if(pg_num_rows($queryequipo)==0){
     $row=pg_fetch_assoc($querya);
     $identificador=$row['max']+1;
     $crearEquipo="INSERT INTO public.equipo_pcreal( id_equipo_pcreal, identificador, id_equipo,version_equipo)
-    VALUES ('$NoEquipo', '$identificador', '$idEquipo','1');";
+    VALUES ('$NoEquipo', '$identificador', '$idEquipo','$EquipoMax');";
     $crear=pg_query($conexion,$crearEquipo);
     echo 1;
 }else{
