@@ -1,27 +1,22 @@
 <?php
 require "../../php/conexion.php";
 
+//Visualizar elementos de tabla paginad de catálogo de métodos
+
+
+//Columnas a consultar
 $columns=['id_metodo','nombre'];
-
+//Tbala a consultar
 $table="metodo";
-
+//Columna que se desea contar para la paginacion
 $id= 'id_metodo';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
+//Consultas where aqui van todas las consultas where
 $where = "WHERE nombre ILIKE '%" . $campo . "%'";
 
-/*if($campo!==null){
-    $where = "WHERE (";
-
-    $cont=count($columns);
-    for($i=0;$i<$cont;$i++){
-        $where .= $columns[$i] . " ILIKE '%" . $campo . "%' OR ";
-    }
-    $where= substr_replace($where, "", -3);
-    $where.= ")";
-}*/
-
+//Limita los datos que se veran en la paginacion dependiendo los valores del select
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
 
@@ -34,7 +29,7 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-
+//Consulta general para obtener datos para la tabla
 $sql="SELECT " . implode(", ",$columns) . "
 FROM $table
 $where
@@ -44,9 +39,6 @@ $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
 
 //Consulta para total registros
-
-//Consulta para total registros
-
 $sqlTotal="SELECT count($id) FROM $table ";
 $resTotal=pg_query($conexion,$sqlTotal);
 $row_total=pg_fetch_array($resTotal);
@@ -58,6 +50,7 @@ $output['totalRegistros'] = $totalRegistros;
 $output['data'] = '';
 $output['paginacion'] = '';
 
+//Visualizar los valores de la consulta en la tabla 
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
         $output['data'].='<tr>';

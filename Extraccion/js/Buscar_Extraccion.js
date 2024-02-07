@@ -1,3 +1,6 @@
+//Este permite visualizar la tabla de la seccion 'Ver Extraccion'
+
+
 let paginaActual = 1;
 
 
@@ -19,7 +22,7 @@ function getData(pagina){
 if(pagina != null){
     paginaActual=pagina;
 }
-
+    //Ruta de la consulta para ver las extracciones 
     let url="./php/Buscar_Extraccion.php";
     let formaData = new FormData();
     formaData.append('campo',input);

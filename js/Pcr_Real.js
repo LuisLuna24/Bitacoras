@@ -1,3 +1,5 @@
+//Este permite crear un nuevo folio de Pcr Tiempo real
+
 $(document).ready(function () {
     $("#Pcr_Real").on("click", function(){
         $.ajax({
@@ -13,7 +15,7 @@ $(document).ready(function () {
             }
         });
     });
-
+//Redirecciona al apartado para ver todos los folios de Pcr tiemporeal
     $("#ver_pcreal").on("click",function(){
         location.href ="./Pcr_Real/ver_pcreal.php";
     });

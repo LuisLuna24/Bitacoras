@@ -3,6 +3,7 @@ require "../../php/conexion.php";
 
 session_start();
 
+//Permite agregar nuevo equipo a quipo seleccionado en Bitácora Extracción
 
 $NoEquipo =$_SESSION['No_Foli'];
 $identificador="";
@@ -10,6 +11,8 @@ $idEquipo=$_POST['Equipo_SelectAgregar'];
 
 $Buscrae="SELECT * FROM equipo_extraccion where id_equipo_extraccion='$NoEquipo'";
 $querye=pg_query($conexion,$Buscrae);
+
+//Buscar si un equipo ha sido seleccionado antes o no para evitar equipo duplicado
 $Buscarequipo="SELECT * FROM equipo_extraccion where id_equipo_extraccion='$NoEquipo' and id_equipo='$idEquipo'";
 $queryequipo=pg_query($conexion,$Buscarequipo);
 if(pg_num_rows($queryequipo)==0){

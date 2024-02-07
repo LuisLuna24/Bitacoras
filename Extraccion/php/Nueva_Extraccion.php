@@ -1,9 +1,11 @@
 <?php
 require "../../php/conexion.php";
 
+//Crear nuevo registro de Extraccion
+
 session_start();
 
-
+//Obtiene los valores para nuevo registro a través de Ajax
 $Usuario=$_SESSION['id_usuario'];
 $Folio =$_SESSION['No_Foli'];
 $Registro=$_POST['Registro_Exteracion'];
@@ -17,13 +19,14 @@ $Conc=$_POST['Conc_Exteracion'];
 $D280=$_POST['280_Exteracion'];
 $D230=$_POST['230_Exteracion'];
 
+//Busca el ID máximo y suma uno para agregar nuevo registro
 $Buacrax="SELECT MAX(id_extracion) FROM birtacora_extaccion where id_folio = '$Folio'";
 $querymax=pg_query($conexion,$Buacrax);
 $row=pg_fetch_assoc($querymax);
 $id_extraccion=$row['max']+1;
 
 
-
+//Dependiendo de la cantidad de registros de un solo número de registro, los agrega automáticamente 
 for($i=0;$i<$Cantidad;$i++){
     $identificador_bitacora=$Folio.'-'.$id_extraccion.'-'.$Registro.'-'.$i+1;
     $AgregaExtracion="INSERT INTO public.birtacora_extaccion(

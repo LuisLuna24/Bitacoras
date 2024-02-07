@@ -175,5 +175,4 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/scripts.js"></script>
 <script src="./js/Nueva_Extraccion.js"></script>
 <script src="./js/Nuevo_Equipo.js"></script>
-<script src="./js/Buscar_Equipo.js"></script>
 <?php }  ?>

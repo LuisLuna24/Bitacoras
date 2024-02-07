@@ -20,4 +20,9 @@ $(document).ready(function () {
             }
         });
     });
+
+    //Cancelar el actualizar equipo regresa a catálogo equipo
+    $("#Cancelar_Actualriza").on('click', function (e) {
+        location.href ="./Equipo.php";
+    });
 });

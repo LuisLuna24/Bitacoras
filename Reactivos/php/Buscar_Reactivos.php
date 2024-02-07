@@ -1,6 +1,6 @@
 <?php
 require "../../php/conexion.php";
-
+//Muestra los Reactivos del inventario de Reactivos 
 
 $Buscar="SELECT id_reactivo, nombre, descripcion, cantidad, fecha_caducidad, lote, estado FROM public.reactivos;";
 $query=pg_query($conexion,$Buscar);

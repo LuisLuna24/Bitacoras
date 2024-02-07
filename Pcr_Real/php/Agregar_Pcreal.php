@@ -31,11 +31,12 @@ $querymax=pg_query($conexion,$Buacrax);
 $row=pg_fetch_assoc($querymax);
 $id_pcreal=$row['max']+1;
 
+$identificador=$Folio.'1';
 
 for($i=0;$i<$Cantidad;$i++){
     $Insertar="INSERT INTO public.birtacora_pcreal(
-        id_pcreal, no_registro, version_pcreal, identificador, id_folio, id_analisis, fecha, sanitizo, tiempouv, resultado, observaciones, id_equipo_pcreal, id_usuario)
-        VALUES ('$id_pcreal', '$no_registro', 1, $i+1, '$Folio', '$Analisis', '$Fecha', '$Sanitizo', '$uv', '$Resultado', '$Obsevaciones', '$Folio', '$id_Usuario');";
+        id_pcreal, no_registro, version_pcreal, identificador, id_folio, id_analisis, fecha, sanitizo, tiempouv, resultado, observaciones, id_equipo_pcreal, id_usuario,identificador_bitacora,vercion_equipo)
+        VALUES ('$id_pcreal', '$no_registro', 1, $i+1, '$Folio', '$Analisis', '$Fecha', '$Sanitizo', '$uv', '$Resultado', '$Obsevaciones', '$Folio', '$id_Usuario','$identificador','1');";
         pg_query($conexion,$Insertar);
 }
 

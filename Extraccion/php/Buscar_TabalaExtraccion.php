@@ -1,33 +1,27 @@
 <?php
+//Visualizar los datos de la tabla en el apartado para nuevo registro de Extracción
+
 require "../../php/conexion.php";
 session_start();
 
+//Folio para busqueda
 $Folio=$_SESSION['No_Foli'];
-
+//Columnas que se desean consultar
 $columns=['identificador_bitacora','id_extracion', 'no_registro', 'identificador', 'version_extraccion', 'id_folio', 'fecha', 'id_metodo', 'id_analisis', 'birtacora_extaccion.id_area', 'conc_ng_ul', 'dato_260_280', 'dato_260_230', 'archivo', 'id_equipo_extraccion', 'birtacora_extaccion.id_usuario',' id_admin','nombre','apellido'];
-
+//Tabla que se desea consultar
 $table="birtacora_extaccion";
-
+//Columna que se desea contar para la paginacion
 $id= 'id_extracion';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
+//Consultas JOIN se realizan todas las consultas JOIN
 $join="INNER JOIN usuario on usuario.id_usuario=birtacora_extaccion.id_usuario";
 
-
+//Consultas where Se realizar todos los where que se desean consultar
 $where = "WHERE no_registro::text ILIKE '%" . $campo . "%' and birtacora_extaccion.id_folio='$Folio'";
 
-/*if($campo!==null){
-    $where = "WHERE (";
-
-    $cont=count($columns);
-    for($i=0;$i<$cont;$i++){
-        $where .= $columns[$i] . " ILIKE '%" . $campo . "%' OR ";
-    }
-    $where= substr_replace($where, "", -3);
-    $where.= ")";
-}*/
-
+//Limita los datos que se veran en la paginacion dependiendo los valores del select
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
 
@@ -42,7 +36,7 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-
+//Consulta general para obtener datos de la tabla 
 $sql="SELECT " . implode(", ",$columns) . "
 FROM $table
 $join
@@ -52,8 +46,6 @@ $sLimit";
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
-
-//Consulta para total registros
 
 //Consulta para total registros
 
@@ -68,6 +60,7 @@ $output['totalRegistros'] = $totalRegistros;
 $output['data'] = '';
 $output['paginacion'] = '';
 
+//Visualizar los valores de la consulta en la tabla 
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
         $output['data'].='<tr>';

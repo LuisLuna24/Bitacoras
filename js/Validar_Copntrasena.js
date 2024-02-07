@@ -1,3 +1,5 @@
+//Validación si las contraseñas son iguales
+
 $(document).ready(function(){
     var Reg_Contrasena1 = document.getElementById("Reg_Contrasena1");
     var Reg_Contrasena2 = document.getElementById("Reg_Contrasena2");

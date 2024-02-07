@@ -1,32 +1,25 @@
 <?php
+//Visualizar los datos de la tabla de la sección de "Ver Extracciones"
+
 require "../../php/conexion.php";
 
-
+//Columnas que se desean consultar 
 $columns=['folio_extraccion.id_folio', 'folio', 'folio_extraccion.id_version_bitacoras', 'folio_extraccion.version_bitacoras','admin.nombre','admin.apellido','nombre_version','admin.id_admin'];
-
+//Tabla que se desea consultar
 $table="folio_extraccion ";
-
+//Columna que se desea contar para la paginacion
 $id= 'id_folio';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
+//Consultas JOIN se realizan todas las consultas JOIN
 $join="INNER JOIN birtacora_extaccion on birtacora_extaccion.id_folio=folio_extraccion.id_folio  LEFT  JOIN admin on admin.id_admin=birtacora_extaccion.id_admin
 INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_extraccion.id_version_bitacoras";
 
-
+//Consultas Where 
 $where = "WHERE folio_extraccion.id_folio::text ILIKE '%" . $campo . "%' ";
 
-/*if($campo!==null){
-    $where = "WHERE (";
-
-    $cont=count($columns);
-    for($i=0;$i<$cont;$i++){
-        $where .= $columns[$i] . " ILIKE '%" . $campo . "%' OR ";
-    }
-    $where= substr_replace($where, "", -3);
-    $where.= ")";
-}*/
-
+//Limita los datos que se veran en la paginacion dependiendo los valores del select
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
 
@@ -41,7 +34,7 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-
+//Consulta general para obtener datos de la tabla 
 $sql="SELECT DISTINCT " . implode(", ",$columns) . "
 FROM $table 
 $join
@@ -51,8 +44,6 @@ $sLimit";
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
-
-//Consulta para total registros
 
 //Consulta para total registros
 
@@ -67,8 +58,10 @@ $output['totalRegistros'] = $totalRegistros;
 $output['data'] = '';
 $output['paginacion'] = '';
 
+//Visualizar los valores de la consulta en la tabla 
 if($num_rows>0){
     while($row=pg_fetch_array($resultado)){
+        //Analizar si el folio fue revisado en caso de ser revisado por el admin quitara la opción de eliminar
         if($row['id_admin']==''){
             $Eliminar='<a href="./php/Eliminar_Extraccion.php?No_Folio='. $row['id_folio']. '">Eliminar</a>';
         }else{

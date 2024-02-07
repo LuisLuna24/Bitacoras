@@ -2,21 +2,26 @@
 require "../../php/conexion.php";
 session_start();
 
+
+//Visualizar tabla de nuevo registro en bitacora de Reactivos
+
+//folio de bitacora
 $folio=$_SESSION['No_FoliRec'];
-
+//Columnas a consultar
 $columns=['id_bitacora_reactivo', 'version_bitacora_reactivo', 'identificador', 'id_folio', 'no_lote', 'fecha_apertura', 'bitacora_reactivos.fecha_caducidad',' id_folio_bitacora', 'id_usuario', 'id_admin','reactivos.id_reactivo,reactivos.nombre','nombre_version','bitacora_reactivos.id_version_bitacora'];
-
+//tabla a consultar 
 $table="bitacora_reactivos";
-
+//Dato que se contara para conte para paginacion
 $id= 'id_bitacora_reactivo';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
+//Consulta Join aqui van todos los JOINSs
 $join ="INNER JOIN reactivos on reactivos.id_reactivo=bitacora_reactivos.id_reactivo INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=bitacora_reactivos.version_bitacora_reactivo";
-
+//consulta where aqui van todos los where
 $where = "WHERE reactivos.nombre ILIKE '%" . $campo . "%' and id_folio = '$folio'";
 
-
+//Limite dependiendo del selectt de que permite visualizar
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
 
@@ -29,7 +34,7 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-
+//Consulta general para obtenber valores de tabla
 $sql="SELECT " . implode(", ",$columns) . "
 FROM $table
 $join
@@ -38,8 +43,6 @@ $sLimit";
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
-
-//Consulta para total registros
 
 //Consulta para total registros
 
@@ -55,6 +58,7 @@ $output['data'] = '';
 $output['paginacion'] = '';
 $Tipo_Bitacora='';
 
+//Donde se muestra los datos de la tabla apartir de la consulta
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
         if($row['id_version_bitacora']==1){

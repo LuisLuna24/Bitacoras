@@ -1,7 +1,7 @@
 <?php
 require "../../php/conexion.php";
 
-$Buscar= "SELECT id_metodo, nombre, abrebiatura FROM public.metodo;";
+$Buscar= "SELECT id_metodo, nombre FROM public.metodo;";
 $query=pg_query($conexion,$Buscar);
 
 $html='<option vlaue="0">Seleccione un metodo</option>';

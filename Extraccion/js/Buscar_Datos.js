@@ -1,9 +1,11 @@
+
+//Libreria para que los select tengan buscador 
 $(document).ready(function () {
     $("#Analisis_Select").select2();
     $("#Area_Select").select2();
     $("#metodo_select").select2();
     $("#Equipo_Select").select2();
-//Analisis------------------------------------------------------------------
+//Buscar Analisis para select------------------------------------------------------------------
     $.ajax({
         type: "POST",
         url: "./php/Buscar_Analisis.php",
@@ -12,7 +14,7 @@ $(document).ready(function () {
             $("#Analisis_Select").html(response);
         }
     });
-//Area----------------------------------------------------------------------
+//Buscar Area para select----------------------------------------------------------------------
     $.ajax({
         type: "POST",
         url: "./php/Buscar_Area.php",
@@ -21,7 +23,7 @@ $(document).ready(function () {
             $("#Area_Select").html(response);
         }
     });
-//Metodo----------------------------------------------------------------------
+//Buscar Metodo para select----------------------------------------------------------------------
     $.ajax({
         type: "POST",
         url: "./php/Buscar_Metodo.php",
@@ -30,7 +32,7 @@ $(document).ready(function () {
             $("#metodo_select").html(response);
         }
     });
-//Equipo----------------------------------------------------------------------
+//Buscar Equipo para select----------------------------------------------------------------------
     $("#Area_Select").on('change', function(){
         var area = new FormData($("#Form_Extraccion")[0])
         $.ajax({
@@ -44,7 +46,7 @@ $(document).ready(function () {
             }
         });
     })
-//Buscar Equipo----------------------------------------------------------------
+//Buscar Equipo para tabla de equipo----------------------------------------------------------------
 
     $.ajax({
         type: "POST",

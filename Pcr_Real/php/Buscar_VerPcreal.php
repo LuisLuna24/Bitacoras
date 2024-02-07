@@ -15,17 +15,6 @@ INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_pcreal
 
 $where = "WHERE folio_pcreal.if_folio::text ILIKE '%" . $campo . "%' or birtacora_pcreal.fecha::text ILIKE '%" . $campo . "%' ";
 
-/*if($campo!==null){
-    $where = "WHERE (";
-
-    $cont=count($columns);
-    for($i=0;$i<$cont;$i++){
-        $where .= $columns[$i] . " ILIKE '%" . $campo . "%' OR ";
-    }
-    $where= substr_replace($where, "", -3);
-    $where.= ")";
-}*/
-
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
 
@@ -52,8 +41,6 @@ $num_rows=pg_num_rows($resultado);
 
 //Consulta para total registros
 
-//Consulta para total registros
-
 $sqlTotal="SELECT count($id) FROM $table ";
 $resTotal=pg_query($conexion,$sqlTotal);
 $row_total=pg_fetch_array($resTotal);
@@ -77,8 +64,9 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['fecha_elaboracion'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'].'</td>';
-        $output['data'].='<td><a href="Pcr_Real.php?No_Folio='. $row['if_folio']. '">Editar</a></td>';
+        $output['data'].='<td><a href="./php/Nueva_Actualizacion.php?No_Folio='. $row['if_folio']. '">Editar</a></td>';
         $output['data'].='<td>'.$Eliminar.'</td>';
+        $output['data'].='<td><a href="Verciones_AnterioresPcreal.php?No_Folio='. $row['if_folio']. '">Ver</a></td>';
         $output['data'].='</tr>';
     }
 }else{

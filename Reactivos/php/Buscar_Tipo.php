@@ -2,7 +2,7 @@
 
 require "../../php/conexion.php";
 
-
+//busca los tipos de bitacoras que existen conforme a su vesion maxima
 
 $Buscar="SELECT id_version_bitacora, version_bitacora, nombre_version FROM public.version_bitacora where id_version_bitacora= 1 or  id_version_bitacora= 2 or  id_version_bitacora= 3;";
 $query=pg_query($conexion,$Buscar);

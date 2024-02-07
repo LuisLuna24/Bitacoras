@@ -1,5 +1,7 @@
 <?php
 
+//Eliminar reactivo agregado a la tabla de bitacora de reactivos
+
 require "../../php/conexion.php";
 session_start();
 $identificaro=$_GET['identificado'];
