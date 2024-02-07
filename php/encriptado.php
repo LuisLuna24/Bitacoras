@@ -1,4 +1,7 @@
 <?php
+
+//Encriptado de datos 
+
 $clave  = 'Una cadena, muy, muy larga para mejorar la encriptacion';
 $method = 'aes-256-cbc';
 $iv = base64_decode("C9fBxl1EWtYTL1/M8jfstw==");
@@ -8,7 +11,7 @@ $encriptar = function ($valor) use ($method, $clave, $iv) {
 };
 
 
-
+//desencriptador de datos
 $desencriptar = function ($valor) use ($method, $clave, $iv) {
     $encrypted_data = base64_decode($valor);
     return openssl_decrypt($valor, $method, $clave, false, $iv);

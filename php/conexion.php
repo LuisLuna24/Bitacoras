@@ -1,4 +1,6 @@
 <?php 
+
+//Conecion a base de datos
 try {
 $host = 'localhost';
 $user = 'postgres';

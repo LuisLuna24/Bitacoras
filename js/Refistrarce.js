@@ -1,3 +1,5 @@
+//Obtiene los valores para registro una nueva cuenta
+
 $(document).ready(function(){
     $("#Registrase_btn").on('click',function(e){
         e.preventDefault();
@@ -10,6 +12,7 @@ $(document).ready(function(){
             contentType: false,
             processData:false,
             success: function (response) {
+                //Este apartado sirve para validar si el correo esta registrado o no y si algun dato no esta llenado
                 if (response==1) {
                     $(location).attr('href', 'index.php');
                     $('#Singin_Form')[0].reset();
@@ -34,6 +37,7 @@ $(document).ready(function(){
         });
     });
 
+    //Cierra la alerta que se visualiza al encontar error o exito
     $('#Alerta_btn_Secion').on('click',function(alert){
         alert.preventDefault();
         var Alerta = document.getElementById('Alerta_Secion');

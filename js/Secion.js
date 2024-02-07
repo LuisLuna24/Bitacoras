@@ -1,3 +1,5 @@
+//Inicio de secion con JQuery
+
 $(document).ready(function () {
     $("#Iniciar_Sesion").on("click",function(event){
         event.preventDefault();
@@ -9,6 +11,7 @@ $(document).ready(function () {
             contentType: false,
             processData:false,
             success: function (response) {
+                //Validación de inicio de sesión y validación de correo y contraseña 
                 if (response==1) {
                     $(location).attr('href', 'Principal.php');
                     $('#Singin_Form')[0].reset();
@@ -32,6 +35,8 @@ $(document).ready(function () {
             }
         });
     });
+
+    //Cierra la alerta que se visualiza al encontar error o exito
     $('#Alerta_btn_Secion').on('click',function(alert){
         alert.preventDefault();
         var Alerta = document.getElementById('Alerta_Secion');

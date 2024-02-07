@@ -1,3 +1,5 @@
+//Ver la tabla de las extracciones del registro
+
 let paginaActual = 1;
 
 getData(paginaActual);
@@ -18,7 +20,7 @@ function getData(pagina){
 if(pagina != null){
     paginaActual=pagina;
 }
-
+    //Ruta de la consulta de la tabla paginada
     let url="./php/Buscar_TabalaExtraccion.php";
     let formaData = new FormData();
     formaData.append('campo',input);

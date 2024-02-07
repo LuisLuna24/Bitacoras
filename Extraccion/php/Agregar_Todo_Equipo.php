@@ -1,3 +1,5 @@
+//Prueba para agregar todos los equipos de un área (todavía no funciona)
+
 <?php
 require "../../php/conexion.php";
 session_start();

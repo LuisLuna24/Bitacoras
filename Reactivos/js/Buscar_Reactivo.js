@@ -1,3 +1,5 @@
+
+//Busca las bitacoras dependiendo del tipo de bitacora
 $(document).ready(function () {
     $("#Tipo_Select").on("change", function(){
         var datos = new FormData($("#Reactivos_Form_Data")[0]);
@@ -13,6 +15,7 @@ $(document).ready(function () {
         });
     })
 
+    //Busca los inventarios de reactivos
     $.ajax({
         type: "POST",
         url: "./php/Buscar_Reactivos.php",
@@ -22,6 +25,7 @@ $(document).ready(function () {
         }
     });
 
+    //Busca los tipos de bitacoras existentes
     $.ajax({
         type: "POST",
         url: "./php/Buscar_Tipo.php",

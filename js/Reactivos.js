@@ -1,3 +1,5 @@
+//Este permite crear un nuevo folio de Bitacora Reactivos
+
 $(document).ready(function () {
     $("#Reactivo").on("click", function(){
         $.ajax({
@@ -16,6 +18,7 @@ $(document).ready(function () {
         });
     });
 
+    //Redirecciona al apartado para ver todos los folios de bitacora de reactivos
     $("#Ver_Reactivos").on("click",function(){
         location.href ="./Reactivos/Ver_Reactivos.php";
     });

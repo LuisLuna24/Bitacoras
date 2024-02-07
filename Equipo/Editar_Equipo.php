@@ -66,7 +66,7 @@ if($id_Usuario=="" || $id_Usuario==null){
             </form>
             <div class="Equipo_Botones">
                 <input type="button" value="Actualizar" id="Actualizar_Equipo">
-                <input type="button" value="Cancelar">
+                <input type="button" value="Cancelar" id="Cancelar_Actualriza">
             </div>
         </div>
     </section>

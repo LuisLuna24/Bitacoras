@@ -1,15 +1,19 @@
+//crear nueva extraccion atraves de Jquery Ajax
+
 $(document).ready(function () {
     $("#Agregar_Extraccion").on('click',function (e) {
         e.preventDefault();
         var datos = new FormData($('#Form_Extraccion')[0]);
         $.ajax({
             type: "POST",
-            url: "./php/Nueva_Extraccion.php",
+            url: "./php/Nueva_Extraccion.php",//Ruta de query para agregar
             data: datos,
             contentType: false,
             processData:false,
             success: function (response) {
                 alert("Extraccion Agregada");
+
+                //Permite actualizar la tabla automáticamente
                 let paginaActual = 1;
 
                 getData(paginaActual);
@@ -30,7 +34,7 @@ $(document).ready(function () {
                 if(pagina != null){
                     paginaActual=pagina;
                 }
-
+                    //Ruta de donde se obtiene los datos de la tabla
                     let url="./php/Buscar_TabalaExtraccion.php";
                     let formaData = new FormData();
                     formaData.append('campo',input);
@@ -50,38 +54,5 @@ $(document).ready(function () {
             }
         });
     });
-
-    $("#Salir_Ectraccion").on('click',function(){
-        window.location.href = "./Ver_Extraccion.php";
-    });
-
-    $("#Cancelar_Ectraccion").on('click',function(){
-        $(".Alert").css("display","grid");
-        $("#Texto_Alerta").text("¿Esta sefuro de cancelar la bitacora?");
-    });
-
-    $("#Alert_Regresar").on('click',function(){
-        $(".Alert").css("display","none");
-    });
-
-    $("#Alert_CancelarB").on('click',function(){
-        $.ajax({
-            type: "POST",
-            url: "./php/Cancelar_Bitacora.php",
-            dataType: "html",
-            success: function (response) {
-                if(response==1){
-                    window.location.href = "../Bitacoras.php";
-                }else if (response==2){
-                    $(".Alert").css("display","grid");
-                    $("#Texto_Alerta").text("No se pudo cancelar la bitacora");
-                    $(".Alert_Button").html("<input type='button' value='Regresar' id='khg'>");
-                }else{
-                    alert(response);
-                }
-            }
-        });
-    });
-
 
 });

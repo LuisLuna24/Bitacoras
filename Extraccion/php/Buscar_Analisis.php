@@ -1,4 +1,6 @@
 <?php
+//Consulta para visualizar análisis en select análisis en Extracción
+
 require "../../php/conexion.php";
 
 $Buscar= "SELECT id_analisis, nombre, abreviatura FROM public.analisis;";
