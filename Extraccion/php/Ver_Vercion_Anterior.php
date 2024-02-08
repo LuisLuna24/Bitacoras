@@ -2,9 +2,12 @@
 //Visualizar los datos de la tabla de la sección de "Ver Extracciones"
 
 require "../../php/conexion.php";
+session_start();
+
+$Folio=$_SESSION['No_Folio'];
 
 //Columnas que se desean consultar 
-$columns=['folio_extraccion.id_folio', 'folio', 'folio_extraccion.id_version_bitacoras', 'folio_extraccion.version_bitacoras','admin.nombre','admin.apellido','nombre_version','admin.id_admin'];
+$columns=['folio_extraccion.id_folio', 'folio','identificador_bitacora' ,'folio_extraccion.id_version_bitacoras', 'folio_extraccion.version_bitacoras','admin.nombre','admin.apellido','nombre_version','admin.id_admin'];
 //Tabla que se desea consultar
 $table="folio_extraccion ";
 //Columna que se desea contar para la paginacion
@@ -17,7 +20,7 @@ $join="INNER JOIN birtacora_extaccion on birtacora_extaccion.id_folio=folio_extr
 INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_extraccion.id_version_bitacoras";
 
 //Consultas Where 
-$where = "WHERE folio_extraccion.id_folio::text ILIKE '%" . $campo . "%' ";
+$where = "WHERE folio_extraccion.id_folio::text ILIKE '%" . $campo . "%' and birtacora_extaccion.id_folio='$Folio'";
 
 //Limita los datos que se veran en la paginacion dependiendo los valores del select
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
@@ -69,12 +72,10 @@ if($num_rows>0){
         }
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['id_folio'] .'</td>';
-        $output['data'].='<td>'. $row['id_folio'] .'</td>';
+        $output['data'].='<td>'. $row['version_bitacoras'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] . ' ' . $row['apellido'] . '</td>';
-        $output['data'].='<td><a href="php/Agregar_Actualizar_Extraccion.php?No_Folio='. $row['id_folio']. '">Editar</a></td>';
-        $output['data'].='<td>'.$Eliminar.'</td>';
-        $output['data'].='<td><a href="Verciones_Extraccion.php?No_Folio='. $row['id_folio']. '">Ver</a></td>';
+        $output['data'].='<td><a href="Ver_Vercion_Extracion.php?Version_Extraccion='. $row['identificador_bitacora']. '">Ver</a></td>';
         $output['data'].='</tr>';
     }
 }else{

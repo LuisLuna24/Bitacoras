@@ -29,7 +29,7 @@ if($id_Usuario=="" || $id_Usuario==null){
         <div class="dat_resul_contenedor">
             <form class="dat_resul_form">
                 <div class="dat_resul_titulo">
-                    <h1>Ver Versiónes Bitacora de Resultados de PCR</h1>
+                    <h1>Ver Versiónes Bitacora de Resultados de PCR tiempo Real</h1>
                     <div class="linea_titulo"></div>
                 </div>
                 <div class="Equipo_Tabla">

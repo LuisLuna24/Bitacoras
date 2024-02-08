@@ -2,12 +2,16 @@
 ob_start();
 session_start();
 
+$_SESSION['No_Folio']=$_GET['No_Folio'];
+
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
 }else{  ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +30,7 @@ if($id_Usuario=="" || $id_Usuario==null){
     <section class="Extraccion">
         <div class=Extraccion_Contenedor>
             <div class="Extraccion_Titulo">
-                <h1>Ver Extraccion</h1>
+                <h1>Ver Versiones Extracción</h1>
                 <div class="linea_titulo"></div>
             </div>
         </div>
@@ -49,13 +53,11 @@ if($id_Usuario=="" || $id_Usuario==null){
                 
                 <table>
                     <thead>
-                        <th>No.</th>
                         <th>Folio</th>
+                        <th>Vercion</th>
                         <th>Bitacora</th>
                         <th>Revisó</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
-                        <th>Versiones anteriores</th>
+                        <th>Ver Vercion</th>
                     </thead>
                     <tbody id="content"></tbody>
                 </table>
@@ -69,6 +71,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 <script src="./js/scripts.js"></script>
-<script src="./js/Buscar_Extraccion.js"></script>
+<script src="./js/Ver_Vercion_Anterior.js"></script>
 
 <?php }  ?>

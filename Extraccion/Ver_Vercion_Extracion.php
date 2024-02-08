@@ -2,12 +2,16 @@
 ob_start();
 session_start();
 
+$_SESSION['Version_Extraccion']=$_GET['Version_Extraccion'];
+
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
 }else{  ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +30,7 @@ if($id_Usuario=="" || $id_Usuario==null){
     <section class="Extraccion">
         <div class=Extraccion_Contenedor>
             <div class="Extraccion_Titulo">
-                <h1>Ver Extraccion</h1>
+                <h1>Ver Versiones Extracción</h1>
                 <div class="linea_titulo"></div>
             </div>
         </div>
@@ -49,17 +53,34 @@ if($id_Usuario=="" || $id_Usuario==null){
                 
                 <table>
                     <thead>
-                        <th>No.</th>
-                        <th>Folio</th>
-                        <th>Bitacora</th>
-                        <th>Revisó</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
-                        <th>Versiones anteriores</th>
+                        <th>No. Registro</th>
+                        <th>Fecha de Extraccion</th>
+                        <th>Metodo</th>
+                        <th>Analisis</th>
+                        <th>Area</th>
+                        <th>Conc ng/ul</th>
+                        <th>Dato 260/280</th>
+                        <th>Dato 260/230</th>
+                        <th>Usuario</th>
                     </thead>
                     <tbody id="content"></tbody>
                 </table>
                 <div class="Tablas_Paginas" id="nav-paginacion"></div>
+            </div>
+            <div class="Datos_Metodo_Equipo">
+                <div class="Extraccion_Titulo">
+                    <h2>Equipo Seleccionado</h2>
+                    <div class="linea_titulo"></div>
+                    <br>
+                </div>
+                <table>
+                    <thead>
+                        <th>No. Equipo</th>
+                        <th>Nombre Equipo</th>
+                        <th>Eliminar</th>
+                    </thead>
+                    <tbody id="Equipo_Tabla"></tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -69,6 +90,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 <script src="./js/scripts.js"></script>
-<script src="./js/Buscar_Extraccion.js"></script>
+<script src="./js/Ver_Datos_Vercion.js"></script>
+<script src="./js/Ver_Equipo_Vercion.js"></script>
 
 <?php }  ?>
