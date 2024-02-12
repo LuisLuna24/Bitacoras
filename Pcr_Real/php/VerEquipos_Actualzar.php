@@ -3,20 +3,10 @@
 require "../../php/conexion.php";
 session_start();
 
-if(isset($_SESSION["Version_Vitacora"])){
-    $VersionPcr=$_SESSION["Version_Vitacora"];
-}else{
-    $VersionPcr=$_SESSION["EquipoMax"];
-}
+$Vercion=$_SESSION["EquipoMax"];
+$Folio=$_SESSION["pcreal_fol"];
 
-
-$Folio=$_SESSION['Folio_VercionPcreal'];
-
-$buscarEquipo="SELECT * FROM birtacora_pcreal where identificador_bitacora='$VersionPcr'";
-$queryBuscra=pg_query($conexion,$buscarEquipo);
-$rowbit=pg_fetch_array($queryBuscra);
-
-$Equipobit="SELECT equipo.identificador, nombre FROM equipo_pcreal INNER JOIN equipo on equipo.id_equipo = equipo_pcreal.id_equipo where id_equipo_pcreal='$Folio' AND version_equipo='".$rowbit['vercion_equipo']."'";
+$Equipobit="SELECT equipo.identificador, nombre FROM equipo_pcreal INNER JOIN equipo on equipo.id_equipo = equipo_pcreal.id_equipo where id_equipo_pcreal='$Folio' AND version_equipo='$Vercion'";
 $queryEquipo=pg_query($conexion,$Equipobit);
 
 $html="";

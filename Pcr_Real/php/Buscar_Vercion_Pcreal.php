@@ -14,7 +14,7 @@ $columns=['id_pcreal', 'no_registro', 'version_pcreal', 'identificador', 'id_fol
 
 $table="birtacora_pcreal ";
 
-$id= 'id_pcreal';
+$id= 'id_folio';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
@@ -52,11 +52,10 @@ $num_rows=pg_num_rows($resultado);
 
 //Consulta para total registros
 
-$sqlTotal="SELECT count($id) FROM $table ";
+$sqlTotal="SELECT count(CASE WHEN id_folio::text='$id' and version_pcreal='$Vercion' THEN 1 END) FROM birtacora_pcreal;";
 $resTotal=pg_query($conexion,$sqlTotal);
 $row_total=pg_fetch_array($resTotal);
 $totalRegistros = $row_total[0];
-
 
 $output=[];
 $output['totalRegistros'] = $totalRegistros;

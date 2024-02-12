@@ -14,10 +14,10 @@ $id_analisis=$row['max']+1;
 
 //Busca si el análisis es existente o no
 $BuscarAnalisis="SELECT * FROM analisis where nombre='$Nombre'";
-$QueryAnalisis=pg_query($conexion,$BuscarAnalis);
+$QueryAnalisis=pg_query($conexion,$BuscarAnalisis);
 
 //Agrega en análisis
-if(pg_num_rows($QueryAnalisis)>0){
+if(pg_num_rows($QueryAnalisis)==0){
     $Agregar="INSERT INTO analisis ( id_analisis,nombre, abreviatura) VALUES ('$id_analisis','$Nombre','$Abrebiatura')";
     pg_query($conexion,$Agregar);
     echo 1;

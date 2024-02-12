@@ -4,7 +4,7 @@ session_start();
 
 $Vercion=$_SESSION['VercionMax'];
 $NoEquipo =$_SESSION["pcr_fol"];
-$Buscra="SELECT equipo_pcr.identificador AS identificadorpcr, equipo.identificador AS identificador,nombre FROM equipo_pcr INNER JOIN equipo on equipo.id_equipo = equipo_pcr.id_equipo WHERE id_equipo_pcr=$NoEquipo and version_equipo='$Vercion'";
+$Buscra="SELECT DISTINCT equipo_pcr.identificador AS identificadorpcr, equipo.identificador AS identificador,nombre FROM equipo_pcr INNER JOIN equipo on equipo.id_equipo = equipo_pcr.id_equipo WHERE id_equipo_pcr::text='$NoEquipo' and version_equipo::text='$Vercion';";
 $resultado=pg_query($conexion,$Buscra);
 
 $html='';
