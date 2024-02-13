@@ -1,4 +1,4 @@
-<?php
+<?php9
 require "../../php/conexion.php";
 
 session_start();
