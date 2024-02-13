@@ -1,6 +1,14 @@
-
-//Libreria para que los select tengan buscador 
+//Busca los equipos utilizados de la nueva vercion del folio
 $(document).ready(function () {
+    $.ajax({
+        type: "POST",
+        url: "./php/Buscar_Equipo_Vercion.php",
+        dataType: "html",
+        success: function (response) {
+            $("#Equipo_Tabla").html(response);
+        }
+    });
+//Hace qu los selects tengan buscador----------------------------------------------------------
     $("#Analisis_Select").select2();
     $("#Area_Select").select2();
     $("#metodo_select").select2();
@@ -46,15 +54,11 @@ $(document).ready(function () {
             }
         });
     })
-//Buscar Equipo para tabla de equipo----------------------------------------------------------------
+});
+//Salir del registo e ir a la ver Extracciones----------------------------------------------------------------
 
-    $.ajax({
-        type: "POST",
-        url: "./php/Buscar_TablaEquipo.php",
-        dataType: "html",
-        success: function (response) {
-            $("#Equipo_Tabla").html(response);
-        }
+$(document).ready(function () {
+    $("#Salir_Ectraccion").on("click", function(){
+        window.location.href = "Ver_Extraccion.php";
     });
-    
 });

@@ -3,11 +3,12 @@ require "../../php/conexion.php";
 
 session_start();
 
-//Permite agregar nuevo equipo a quipo seleccionado en Bitácora Extracción
+//Permite agregar nuevo equipo a la vercion a quipo seleccionado en Bitácora Extracción
 
 $NoEquipo =$_SESSION['No_Folio'];
 $identificador="";
 $idEquipo=$_POST['Equipo_SelectAgregar'];
+$EquipoMax=$_SESSION["EquipoMax"];
 
 $Buscrae="SELECT * FROM equipo_extraccion where id_equipo_extraccion='$NoEquipo'";
 $querye=pg_query($conexion,$Buscrae);
@@ -19,7 +20,7 @@ if(pg_num_rows($queryequipo)==0){
     if (pg_num_rows($querye)==0) {
         $identificador=1;
         $crearEquipo="INSERT INTO public.equipo_extraccion( id_equipo_extraccion, identificador, id_equipo,version_equipo)
-        VALUES ('$NoEquipo', '$identificador', '$idEquipo','1');";
+        VALUES ('$NoEquipo', '$identificador', '$idEquipo','$EquipoMax');";
         $crear=pg_query($conexion,$crearEquipo);
         echo 1;
     }else{
@@ -28,7 +29,7 @@ if(pg_num_rows($queryequipo)==0){
         $row=pg_fetch_assoc($querya);
         $identificador=$row['max']+1;
         $crearEquipo="INSERT INTO public.equipo_extraccion( id_equipo_extraccion, identificador, id_equipo,version_equipo)
-        VALUES ('$NoEquipo', '$identificador', '$idEquipo','1');";
+        VALUES ('$NoEquipo', '$identificador', '$idEquipo','$EquipoMax');";
         $crear=pg_query($conexion,$crearEquipo);
         echo 1;
     }

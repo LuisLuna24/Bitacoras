@@ -1,13 +1,15 @@
+
 <?php
 require "../../php/conexion.php";
 
-//Crear nuevo registro de Extraccion
+//Permite agregar nueva extraccion a la vercion nueva de la bitacora 
+
 
 session_start();
 
 //Obtiene los valores para nuevo registro a través de Ajax
 $Usuario=$_SESSION['id_usuario'];
-$Folio =$_SESSION['No_Foli'];
+$Folio =$_SESSION['No_Folio'];
 $Registro=$_POST['Registro_Exteracion'];
 $Cantidad=$_POST['Cantidad_Exteracion'];
 $Fecha=$_POST['Fecha_Exteracion'];
@@ -26,12 +28,14 @@ $row=pg_fetch_assoc($querymax);
 $id_extraccion=$row['max']+1;
 
 
+$VersionMax=$_SESSION["VercionMax"];
+
 //Dependiendo de la cantidad de registros de un solo número de registro, los agrega automáticamente 
 for($i=0;$i<$Cantidad;$i++){
-    $identificador_bitacora=$Folio.'1';
+    $identificador_bitacora=$Folio.$VersionMax;
     $AgregaExtracion="INSERT INTO public.birtacora_extaccion(
-        id_extracion, no_registro, identificador, version_extraccion, id_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230,  id_equipo_extraccion, id_usuario,identificador_bitacora, no_equipo, vercion_equipo)
-        VALUES ('$id_extraccion', '$Registro', $i+1 , '1', '$Folio', '$fmuestreo', '$Metodo', '$Analisis', '$Area', '$Conc', '$D280', '$D230', $Folio, '$Usuario','$identificador_bitacora','1','1');";
+        id_extracion, no_registro, identificador, version_extraccion, id_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230,  id_equipo_extraccion, id_usuario,identificador_bitacora,no_equipo, vercion_equipo)
+        VALUES ('$id_extraccion', '$Registro', $i+1 , '$VersionMax', '$Folio', '$fmuestreo', '$Metodo', '$Analisis', '$Area', '$Conc', '$D280', '$D230', $Folio, '$Usuario','$identificador_bitacora','1','$VersionMax');";
     $queryAgregar=pg_query($conexion,$AgregaExtracion);
 }
 

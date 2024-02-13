@@ -37,15 +37,15 @@ while($row=pg_fetch_assoc($queryPcr)){
     $VersionMax=$rowDatosmax['max']+1;
     $Identificador=$Folio.$VersionMax;
     $Insertar_Nuevo="INSERT INTO public.birtacora_extaccion(
-        id_extracion, no_registro, identificador, version_extraccion, id_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230, archivo, id_equipo_extraccion, id_usuario, id_admin, identificador_bitacora, no_equipo, vercion_equipo)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        id_extracion, no_registro, identificador, version_extraccion, id_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230, archivo, id_equipo_extraccion, id_usuario, identificador_bitacora, no_equipo, vercion_equipo)
+        VALUES ('".$row['id_extracion']."', '".$row['no_registro']."', '".$row['identificador']."', '$VersionMax', '".$row['id_folio']."', '".$row['fecha']."', '".$row['id_metodo']."', '".$row['id_analisis']."', '".$row['id_area']."', '".$row['conc_ng_ul']."', '".$row['dato_260_280']."', '".$row['dato_260_230']."', '".$row['archivo']."', '".$row['id_equipo_extraccion']."', '".$row['id_usuario']."', '$Identificador', '".$row['no_equipo']."', '$VersionMax');";
         pg_query($conexion,$Insertar_Nuevo);
 }
 
 $_SESSION["VercionMax"]=$VersionMax;
 $_SESSION["EquipoMax"]=$EquipoMax;
 
-header("Location:../Actualizar_Pcreal.php");
+header("Location:../Actualizar_Vercion_Extraccion.php");
 
 ?>
 

@@ -2,9 +2,9 @@
 ob_start();
 session_start();
 if(isset($_GET['No_Folio'])){
-    $_SESSION['No_Foli']=$_GET['No_Folio'];
+    $_SESSION['No_Folio']=$_GET['No_Folio'];
 }else{
-    $_SESSION['No_Foli'];
+    $_SESSION['No_Folio'];
 }
 
 $id_Usuario=$_SESSION['id_usuario'];
@@ -98,7 +98,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <label>Selecciona Equipo</label>
                             <select name="Equipo_SelectAgregar" id="Equipo_Select"></select>
                             <div class="Botones_Equipo">
-                                <input type="button" value="Agregar Equipo" id="Agregar_Equipo">
+                                <input type="button" value="Agregar Equipo" id="Agregar_Equipo_Vercion">
                                 <!--<input type="button" value="Agregar Todos los equipos" id="Agregar_Todo">-->
                             </div>
                             
@@ -113,7 +113,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </table>
                 </div>
                 <div class="botones">
-                    <input type="submit" value="Agregar Extraccion" id="Agregar_Extraccion">
+                    <input type="submit" value="Agregar Extraccion" id="Agregar_Extraccion_Vercion">
                     <input type="button" value="Ver Registros" id="Salir_Ectraccion">
                 </div>
             </form>
@@ -170,9 +170,9 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 
 
-<script src="js/Buscar_TabalaExtraccion.js"></script>
-<script src="js/Buscar_Datos.js"></script>
+<script src="js/Buscar_Nueva_Vercion.js"></script>
+<script src="js/Buscae_Equipo_Vercion.js"></script>
 <script src="./js/scripts.js"></script>
-<script src="./js/Nueva_Extraccion.js"></script>
-<script src="./js/Nuevo_Equipo.js"></script>
+<script src="./js/Agregar_Vercion_Extraccion.js"></script>
+<script src="./js/Agregar_Equipo_Vercion.js"></script>
 <?php }  ?>

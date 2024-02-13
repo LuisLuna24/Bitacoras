@@ -72,7 +72,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['id_folio'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] . ' ' . $row['apellido'] . '</td>';
-        $output['data'].='<td><a href="php/Agregar_Actualizar_Extraccion.php?No_Folio='. $row['id_folio']. '">Editar</a></td>';
+        $output['data'].='<td><a href="./php/Agregar_Actualizar_Extraccion.php?No_Folio='. $row['id_folio']. '">Editar</a></td>';
         $output['data'].='<td>'.$Eliminar.'</td>';
         $output['data'].='<td><a href="Verciones_Extraccion.php?No_Folio='. $row['id_folio']. '">Ver</a></td>';
         $output['data'].='</tr>';

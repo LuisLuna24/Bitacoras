@@ -21,7 +21,7 @@ $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): nu
 $join="INNER JOIN usuario on usuario.id_usuario=birtacora_extaccion.id_usuario";
 
 //Consultas where Se realizar todos los where que se desean consultar
-$where = "WHERE no_registro::text ILIKE '%" . $campo . "%' and birtacora_extaccion.id_folio='$Folio' and identificador_bitacora='$Vercion'";
+$where = "WHERE no_registro::text ILIKE '%" . $campo . "%' and birtacora_extaccion.identificador_bitacora='$Vercion'";
 
 //Limita los datos que se veran en la paginacion dependiendo los valores del select
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
