@@ -9,8 +9,8 @@ $Folio=$_SESSION['No_Foli'];
 $Version=$_SESSION['Version_Extraccion'];
 
 //Consulta de la tabla equipos
-$buscarEquipo="SELECT id_equipo_extraccion, equipo_extraccion.identificador, equipo.id_equipo ,nombre FROM public.equipo_extraccion INNER JOIN equipo on equipo.id_equipo=equipo_extraccion.id_equipo  INNER JOIN birtacora_extaccion on birtacora_extaccion.id_equipo_extraccion = equipo_extraccion.id_equipo_extraccion where id_equipo_extraccion ='$Folio' 
-and identificador_bitacora='$Version';";
+$buscarEquipo="SELECT equipo_extraccion.id_equipo_extraccion, equipo_extraccion.identificador, equipo.id_equipo ,nombre FROM public.equipo_extraccion INNER JOIN equipo on equipo.id_equipo=equipo_extraccion.id_equipo 
+where equipo_ver='$Version';";
 $queryBuscra=pg_query($conexion,$buscarEquipo);
 
 $html="";

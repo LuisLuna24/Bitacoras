@@ -15,10 +15,12 @@ $BuscarEquipo="SELECT id_equipo_extraccion, identificador, id_equipo, version_eq
 $queryEquipo=pg_query($conexion,$BuscarEquipo);
 
 while($rowEqu=pg_fetch_assoc($queryEquipo)){
+    
     $EquipoMax=$rowEquipomax['max']+1;
+    $IdentificadorVEr=$Folio.$EquipoMax;
     $InsertarEquipo="INSERT INTO public.equipo_extraccion(
-        id_equipo_extraccion, identificador, id_equipo, version_equipo)
-        VALUES ('$Folio', '".$rowEqu['identificador']."', '".$rowEqu['id_equipo']."', $EquipoMax);";
+        id_equipo_extraccion, identificador, id_equipo, version_equipo,equipo_ver)
+        VALUES ('$Folio', '".$rowEqu['identificador']."', '".$rowEqu['id_equipo']."', $EquipoMax,'$IdentificadorVEr');";
     pg_query($conexion,$InsertarEquipo);
 }
 
