@@ -1,23 +1,27 @@
 <?php
-//Visualizar los datos de la tabla de la sección de "Ver Extracciones"
+//Visualizar los datos de la tabla en el apartado para nuevo registro de Extracción
 
 require "../../php/conexion.php";
+session_start();
 
-//Columnas que se desean consultar 
-$columns=['folio_extraccion.id_folio', 'folio', 'folio_extraccion.id_version_bitacoras', 'folio_extraccion.version_bitacoras','admin.nombre','admin.apellido','nombre_version','admin.id_admin'];
+//Vercion de Bitacora
+$VersionMax=$_SESSION["VercionMax"];
+//Folio para busqueda
+$Folio=$_SESSION['No_Folio'];
+//Columnas que se desean consultar
+$columns=['identificador_bitacora','id_extracion', 'no_registro', 'identificador', 'version_extraccion', 'id_folio', 'fecha', 'id_metodo', 'id_analisis', 'birtacora_extaccion.id_area', 'conc_ng_ul', 'dato_260_280', 'dato_260_230', 'archivo', 'id_equipo_extraccion', 'birtacora_extaccion.id_usuario',' id_admin','nombre','apellido'];
 //Tabla que se desea consultar
-$table="folio_extraccion ";
+$table="birtacora_extaccion";
 //Columna que se desea contar para la paginacion
-$id= 'id_folio';
+$id= 'id_extracion';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
 //Consultas JOIN se realizan todas las consultas JOIN
-$join="INNER JOIN birtacora_extaccion on birtacora_extaccion.id_folio=folio_extraccion.id_folio  LEFT  JOIN admin on admin.id_admin=birtacora_extaccion.id_admin
-INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_extraccion.id_version_bitacoras";
+$join="INNER JOIN usuario on usuario.id_usuario=birtacora_extaccion.id_usuario";
 
-//Consultas Where 
-$where = "WHERE folio_extraccion.id_folio::text ILIKE '%" . $campo . "%' ";
+//Consultas where Se realizar todos los where que se desean consultar
+$where = "WHERE no_registro::text ILIKE '%" . $campo . "%' and birtacora_extaccion.id_folio='$Folio' and version_extraccion='$VersionMax'";
 
 //Limita los datos que se veran en la paginacion dependiendo los valores del select
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
@@ -35,8 +39,8 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 //Consulta general para obtener datos de la tabla 
-$sql="SELECT DISTINCT " . implode(", ",$columns) . "
-FROM $table 
+$sql="SELECT " . implode(", ",$columns) . "
+FROM $table
 $join
 $where
 $sLimit";
@@ -60,30 +64,22 @@ $output['paginacion'] = '';
 
 //Visualizar los valores de la consulta en la tabla 
 if($num_rows>0){
-    while($row=pg_fetch_array($resultado)){
-        //Analizar si el folio fue revisado en caso de ser revisado por el admin quitara la opción de eliminar
-        if($row['id_admin']==''){
-            $Eliminar='<a href="./php/Eliminar_Extraccion.php?No_Folio='. $row['id_folio']. '">Eliminar</a>';
-        }else{
-            $Eliminar='';
-        }
+    while($row=pg_fetch_assoc($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['id_folio'] .'</td>';
-        $output['data'].='<td>'. $row['id_folio'] .'</td>';
-        $output['data'].='<td>'. $row['nombre_version'] .'</td>';
+        $output['data'].='<td>'. $row['no_registro'] . '-'. $row['identificador'] .'</td>';
+        $output['data'].='<td>'. $row['fecha'] .'</td>';
+        $output['data'].='<td>'. $row['id_metodo'] .'</td>';
+        $output['data'].='<td>'. $row['id_analisis'] . '</td>';
+        $output['data'].='<td>'. $row['id_area'] . '</td>';
+        $output['data'].='<td>'. $row['conc_ng_ul'] . '</td>';
+        $output['data'].='<td>'. $row['dato_260_280'] . '</td>';
+        $output['data'].='<td>'. $row['dato_260_230'] . '</td>';
         $output['data'].='<td>'. $row['nombre'] . ' ' . $row['apellido'] . '</td>';
-        $output['data'].='<td><a href="./php/Agregar_Actualizar_Extraccion.php?No_Folio='. $row['id_folio']. '">Editar</a></td>';
-        $output['data'].='<td>'.$Eliminar.'</td>';
-        $output['data'].='<td><a href="Verciones_Extraccion.php?No_Folio='. $row['id_folio']. '">Ver</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Registro.php?REgistro='.$row['identificador_bitacora'].'">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{
     $output['data'].='<tr>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
     $output['data'].='<td >Sin resultados</td>';
     $output['data'].='</tr>';
 }
@@ -108,10 +104,10 @@ if($output['totalRegistros']>0){
 
     for($i=$numeroInicio;$i<=$numeroFin;$i++){
         if($pagina == $i){
-            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="#">' . $i . '</a></li>';
 
         }else{
-            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="" onclick="getData('. $i .')">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="#" onclick="getData('. $i .')">' . $i . '</a></li>';
         }
     }
 

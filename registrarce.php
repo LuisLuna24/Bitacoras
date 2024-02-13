@@ -22,7 +22,7 @@
             <div class="Regsitro_Formulario">
                 <form class="Regsitro_Form" id="Regsitro_Form">
                     <div class="Registro_titulo">
-                        <h1>Registrarce</h1>
+                        <h1>Registrarse</h1>
                     </div>
                     <div class="Regsitro_Datos">
                         <div class="Datos">

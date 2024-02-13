@@ -1,27 +1,28 @@
 <?php
-
- 
-//Permite la paginación y consulta para la tabla que muestra las versiones de un folio
+//Visualizar los datos de la tabla de la sección de "Ver Extracciones"
 
 require "../../php/conexion.php";
 session_start();
 
-$Folio=$_SESSION["No_Folio"];
+$Folio=$_SESSION['No_Folio'];
 
-
-$columns=['version_pcr','folio_pcr.id_folio', 'folio', 'folio_pcr.id_version_bitacora', 'folio_pcr.version_bitacora','nombre_version','fecha_creacion','admin.nombre','admin.apellido','bitacora_pcr.id_admin','identificador_bitacora'];
-
-$table="folio_pcr";
-
-$id= 'folio_pcr.id_folio';
+//Columnas que se desean consultar 
+$columns=['folio_extraccion.id_folio', 'folio','identificador_bitacora' ,'folio_extraccion.id_version_bitacoras', 'birtacora_extaccion.version_extraccion','admin.nombre','admin.apellido','nombre_version','admin.id_admin'];
+//Tabla que se desea consultar
+$table="folio_extraccion ";
+//Columna que se desea contar para la paginacion
+$id= 'id_folio';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="INNER join bitacora_pcr on bitacora_pcr.id_folio=folio_pcr.id_folio INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_pcr.id_version_bitacora
-LEFT JOIN admin on admin.id_admin=bitacora_pcr.id_admin";
+//Consultas JOIN se realizan todas las consultas JOIN
+$join="INNER JOIN birtacora_extaccion on birtacora_extaccion.id_folio=folio_extraccion.id_folio  LEFT  JOIN admin on admin.id_admin=birtacora_extaccion.id_admin
+INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_extraccion.id_version_bitacoras";
 
-$where = "WHERE folio_pcr.id_folio::text ILIKE '%" . $campo . "%' or bitacora_pcr.fecha::text ILIKE '%" . $campo . "%' and folio_pcr.id_folio ='$Folio' ";
+//Consultas Where 
+$where = "WHERE folio_extraccion.id_folio::text ILIKE '%" . $campo . "%' and birtacora_extaccion.id_folio='$Folio'";
 
+//Limita los datos que se veran en la paginacion dependiendo los valores del select
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
 
@@ -36,12 +37,13 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-//Consulta de datos 
-$sql="SELECT DISTINCT on (version_pcr)" . implode(", ",$columns) . "
+//Consulta general para obtener datos de la tabla 
+$sql="SELECT DISTINCT on (version_extraccion) " . implode(", ",$columns) . "
 FROM $table 
 $join
-$where ORDER BY version_pcr ASC
-$sLimit ";
+$where
+$sLimit";
+
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
@@ -59,24 +61,30 @@ $output['totalRegistros'] = $totalRegistros;
 $output['data'] = '';
 $output['paginacion'] = '';
 
+//Visualizar los valores de la consulta en la tabla 
 if($num_rows>0){
     while($row=pg_fetch_array($resultado)){
+        //Analizar si el folio fue revisado en caso de ser revisado por el admin quitara la opción de eliminar
         if($row['id_admin']==''){
-            $Eliminar='<a href="./php/Eliminar_Folio.php?No_FoloEliminar='. $row['id_folio']. '">Eliminar</a>';
+            $Eliminar='<a href="./php/Eliminar_Extraccion.php?No_Folio='. $row['id_folio']. '">Eliminar</a>';
         }else{
             $Eliminar='';
         }
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['id_folio'].'</td>';
-        $output['data'].='<td>'. $row['version_pcr'].'</td>';
-        $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
+        $output['data'].='<td>'. $row['id_folio'] .'</td>';
+        $output['data'].='<td>'. $row['version_extraccion'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'] .'</td>';
-        $output['data'].='<td>'. $row['nombre'] .' '. $row['apellido'].'</td>';
-        $output['data'].='<td><a href="Ver_VersionPcr.php?Version_Vitacora='. $row['identificador_bitacora']. '">Ver</a></td>';
+        $output['data'].='<td>'. $row['nombre'] . ' ' . $row['apellido'] . '</td>';
+        $output['data'].='<td><a href="Ver_Vercion_Extracion.php?Version_Extraccion='. $row['identificador_bitacora']. '">Ver</a></td>';
         $output['data'].='</tr>';
     }
 }else{
     $output['data'].='<tr>';
+    $output['data'].='<td >Sin resultados</td>';
+    $output['data'].='<td >Sin resultados</td>';
+    $output['data'].='<td >Sin resultados</td>';
+    $output['data'].='<td >Sin resultados</td>';
+    $output['data'].='<td >Sin resultados</td>';
     $output['data'].='<td >Sin resultados</td>';
     $output['data'].='</tr>';
 }
