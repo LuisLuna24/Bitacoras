@@ -6,7 +6,7 @@
 require "../../php/conexion.php";
 session_start();
 
-$Folio=$_SESSION["Version_Vitacora"];
+$Folio=$_SESSION["No_Folio"];
 
 
 $columns=['version_pcr','folio_pcr.id_folio', 'folio', 'folio_pcr.id_version_bitacora', 'folio_pcr.version_bitacora','nombre_version','fecha_creacion','admin.nombre','admin.apellido','bitacora_pcr.id_admin','identificador_bitacora'];

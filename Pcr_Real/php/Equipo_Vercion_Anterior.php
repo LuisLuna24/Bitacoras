@@ -10,7 +10,7 @@ $buscarEquipo="SELECT * FROM birtacora_pcreal where identificador_bitacora='$Ver
 $queryBuscra=pg_query($conexion,$buscarEquipo);
 $rowbit=pg_fetch_array($queryBuscra);
 
-$Equipobit="SELECT equipo.identificador, nombre FROM equipo_pcreal INNER JOIN equipo on equipo.id_equipo = equipo_pcreal.id_equipo where id_equipo_pcreal='$Folio' AND version_equipo='".$rowbit['vercion_equipo']."'";
+$Equipobit="SELECT equipo.identificador, nombre FROM equipo_pcreal INNER JOIN equipo on equipo.id_equipo = equipo_pcreal.id_equipo where equipo_ver='$VersionPcr'";
 $queryEquipo=pg_query($conexion,$Equipobit);
 
 $html="";

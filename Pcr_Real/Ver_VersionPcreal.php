@@ -1,8 +1,8 @@
 <?php
 ob_start();
 session_start();
-if(isset($_GET['No_Folio'])){
-    $_SESSION["Version_Vitacora"]=$_GET['No_Folio'];
+if(isset($_GET['Version_Vitacora'])){
+    $_SESSION["Version_Vitacora"]=$_GET['Version_Vitacora'];
 }else{
     $_SESSION["Version_Vitacora"];
 }

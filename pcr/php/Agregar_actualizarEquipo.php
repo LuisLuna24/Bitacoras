@@ -17,7 +17,9 @@ if (pg_num_rows($querye)==0) {
     $querya=pg_query($conexion,$Buscraa);
     $row=pg_fetch_assoc($querya);
     $identificador=$row['max']+1;
-    $crearEquipo="INSERT INTO public.equipo_pcr (id_equipo_pcr, identificador, id_equipo,version_equipo) VALUES ($NoEquipo, $identificador, '$idEquipo',$VercionEquipo);";
+    $Ver_Equipo=$NoEquipo.$VercionEquipo;
+    $crearEquipo="INSERT INTO public.equipo_pcr (id_equipo_pcr, identificador, id_equipo,version_equipo,ver_equipo)
+    VALUES ($NoEquipo, $identificador, '$idEquipo',$VercionEquipo,$Ver_Equipo);";
     $crear=pg_query($conexion,$crearEquipo);
     echo 1;
 }else{
