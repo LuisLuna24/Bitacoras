@@ -1,8 +1,11 @@
 <?php
 ob_start();
 session_start();
-
-$_SESSION['Folio_VercionPcreal']=$_GET['No_Folio'];
+if(isset($_GET['No_Folio'])){
+    $_SESSION['No_FoliRec']=$_GET['No_Folio'];
+}else{
+    $_SESSION['No_FoliRec'];
+}
 
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
@@ -12,24 +15,28 @@ if($id_Usuario=="" || $id_Usuario==null){
 }else{  ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/ver_resul_timreal.css">
-    <title>Ver Bitacora PCR</title>
+    <link rel="stylesheet" href="css/alta_reactivos.css">
+    <title>Bitacora Reactivo</title>
     <link rel="stylesheet" href="../css/header.css" />
     <script src="../librerias/jquery/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="../librerias/select2/css/select2.css" />
     <script src="../librerias/select2/select2.js"></script>
+    <link rel="stylesheet" href="css/Alert.css">
 </head>
+
 <body>
-    <?php require "../global/header.php" ?>
-    <section class="dat_result_pcr">
-        <div class="dat_resul_contenedor">
-            <form class="dat_resul_form">
-                <div class="dat_resul_titulo">
-                    <h1>Ver Versiónes Bitacora de Resultados de PCR tiempo Real</h1>
+<?php require "../global/header.php" ;?>
+
+    <section class="datos_alta">
+        <div class="datos_alta_contenedor">
+            <form class="datos_alta_form" id="Reactivos_Form_Data">
+                <div class="datos_alta_titulo">
+                    <h1>Bitacora Reactivos</h1>
                     <div class="linea_titulo"></div>
                 </div>
                 <div class="Equipo_Tabla">
@@ -43,32 +50,36 @@ if($id_Usuario=="" || $id_Usuario==null){
                             </select>
                         </div>
                         <div class="Dato">
-                            <label for="buscar">Buscar PCR Tiempo Real:</label>
+                            <label for="buscar">Buscar Reactivo:</label>
                             <input type="text" id="campo" name="campo">
                         </div>
                     </div>
+
                     <table>
                         <thead>
-                            <th>Folio</th>
-                            <th>Versión</th>
-                            <th>Fecha</th>
-                            <th>Bitacora</th>
-                            <th>Revisó</th>
-                            <th>Ver Bitacora</th>
+                            <th>Nombre Reactivo</th>
+                            <th>Lote</th>
+                            <th>Apertura</th>
+                            <th>Caducidad</th>
+                            <th>Prueba Reactivo</th>
+                            <th>Eliminar</th>
                         </thead>
                         <tbody id="content"></tbody>
                     </table>
                     <div class="Tablas_Paginas" id="nav-paginacion"></div>
                 </div>
             </form>
-            
         </div>
     </section>
     <?php require "../global/footer.php" ?>
+
 </body>
+
 </html>
 
 <script src="./js/scripts.js"></script>
-<script src="./js/Versiones_Anteriores.js"></script>
+<script src="./js/Buscar_Reactivo.js"></script>
+<script src="./js/Agregar_Reactivo.js"></script>
+<script src="./js/Buscar_Tabla.js"></script>
 
-<?php } ?>
+<?php }  ?>

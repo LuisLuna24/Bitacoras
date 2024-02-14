@@ -11,7 +11,7 @@ $(document).ready(function () {
             contentType: false,
             processData:false,
             success: function (response) {
-                alert("Extraccion Agregada");
+                alert("Extracción Agregada Correctamente.");
 
                 //Permite actualizar la tabla automáticamente
                 let paginaActual = 1;

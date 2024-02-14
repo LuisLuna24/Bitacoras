@@ -7,7 +7,7 @@ session_start();
 //Version
 $Vercion=$_SESSION['Version_Extraccion'];
 //Folio para busqueda
-$Folio=$_SESSION['No_Foli'];
+$Folio=$_SESSION['No_Folio'];
 //Columnas que se desean consultar
 $columns=['identificador_bitacora','id_extracion', 'no_registro', 'identificador', 'version_extraccion', 'id_folio', 'fecha', 'id_metodo', 'id_analisis', 'birtacora_extaccion.id_area', 'conc_ng_ul', 'dato_260_280', 'dato_260_230', 'archivo', 'id_equipo_extraccion', 'birtacora_extaccion.id_usuario',' id_admin','nombre','apellido'];
 //Tabla que se desea consultar

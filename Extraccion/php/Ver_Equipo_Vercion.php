@@ -4,7 +4,7 @@
 require "../../php/conexion.php";
 session_start();
 
-$Folio=$_SESSION['No_Foli'];
+$Folio=$_SESSION['No_Folio'];
 
 $Version=$_SESSION['Version_Extraccion'];
 

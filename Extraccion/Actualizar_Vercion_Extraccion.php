@@ -128,7 +128,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </select>
                     </div>
                     <div class="Dato">
-                        <label for="buscar">Buscar equipo</label>
+                        <label for="buscar">Buscar Extraccion:</label>
                         <input type="text" id="campo" name="campo">
                     </div>
                 </div>

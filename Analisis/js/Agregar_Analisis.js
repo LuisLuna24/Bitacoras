@@ -11,7 +11,7 @@ $(document).ready(function () {
             processData:false,
             success: function (response) {
                 if(response==1){
-                    alert("Analisis agregado correctamente.");
+                    alert("Análisis agregado correctamente.");
                     //Actualiza los datos de la tabla paginada 
                     let paginaActual = 1;
                     getData(paginaActual);
@@ -51,9 +51,9 @@ $(document).ready(function () {
                     }
 
                 }else if(response==2){
-                    alert("Analisis existente");
+                    alert("Este análisis ya existe.");
                 }else{
-                    alert(response);
+                    alert("No se pudo agregar el análisis.");
                 }
                 
             }

@@ -13,7 +13,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipo</title>
+    <title>Catálogo Equipos</title>
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="css/equipo.css">
     <script src="../librerias/jquery/jquery-3.2.1.min.js"></script>
@@ -26,7 +26,8 @@ if($id_Usuario=="" || $id_Usuario==null){
     <section class="Equipo">
         <div class="Equipo_Contenedor">
             <div class="Equipo_Titulo">
-                <h1>Equipo</h1>
+                <h1>Inventario de Equipos</h1>
+                <br>
             </div>
             <form class="Equipo_Form" id="Equipo_Form">
                 <div class="Dato_Equipo">
@@ -52,7 +53,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
                 <div class="Dato_Equipo">
                     <div class="Dato">
-                        <label>Estado del equipo:</label>
+                        <label>Estado del Equipo:</label>
                         <select name="Estado_Equipo" id="">
                             <option value="Activo">Activo</option>
                             <option value="Inactivo">Inactivo</option>

@@ -56,6 +56,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>Reviso</th>
                         <th>Actualizar</th>
                         <th>Eliminar </th>
+                        <th>Ver Verciones</th>
                     </thead>
                     <tbody id="content"></tbody>
                 </table>
