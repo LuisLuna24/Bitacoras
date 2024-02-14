@@ -38,8 +38,8 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 $sql="SELECT DISTINCT " . implode(", ",$columns) . "
 FROM $table 
 $join
-$where
-$sLimit";
+$where ORDER BY folio_extraccion.id_folio ASC
+$sLimit ";
 
 
 $resultado=pg_query($conexion,$sql);
