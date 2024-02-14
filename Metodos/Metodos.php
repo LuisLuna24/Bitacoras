@@ -14,7 +14,7 @@ if($id_Usuario=="" || $id_Usuario==null){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/agregar_especie.css">
-    <title>Agregar Metodos</title>
+    <title>Catálogo Métodos</title>
     <link rel="stylesheet" href="../css/header.css">
     <script src="../librerias/jquery/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="../librerias/select2/css/select2.css">
@@ -27,7 +27,7 @@ if($id_Usuario=="" || $id_Usuario==null){
         <div class="agregar_especie_contenedor">
             <form class="agregar_especie_form" id="Especie_Form">
                 <div class="agregar_especie_titulo">
-                    <h1>Agregar Metodos</h1>
+                    <h1>Catálogo Métodos</h1>
                     <div class="linea_titulo"></div>
                 </div>
 

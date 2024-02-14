@@ -11,7 +11,7 @@ $(document).ready(function () {
             processData:false,
             success: function (response) {
                 if(response==1){
-                    alert("Metodo agregado correctamente.");
+                    alert("Método agregado correctamente");
 
                     //Actualizar tabal paginado de catálogo de métodos
 
@@ -55,7 +55,7 @@ $(document).ready(function () {
                 }else if(response==2){
                     alert("Este metodo ya existe");
                 }else{
-                    alert(response);
+                    alert("No se pudo agregar el método");
                 }
             }
         });

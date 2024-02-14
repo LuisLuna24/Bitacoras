@@ -54,9 +54,9 @@ $(document).ready(function () {
                     }
 
                 }else if(response==2){
-                    alert("Esta especie ya existe");
+                    alert("Esta especie ya está registrada.");
                 }else{
-                    alert(response);
+                    alert("No se puede agregar esta especie.");
                 }
             }
         });
