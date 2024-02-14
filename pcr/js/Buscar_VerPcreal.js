@@ -1,3 +1,5 @@
+//Permite ver los folios de las bitacoras existentes 
+
 let paginaActual = 1;
 
 

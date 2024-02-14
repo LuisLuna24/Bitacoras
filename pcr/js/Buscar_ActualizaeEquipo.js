@@ -1,3 +1,4 @@
+//Permite buscar las actualizaciones de la tabla de equipos en editar registro
 $(document).ready(function () {
     $.ajax({
         type: "POST",

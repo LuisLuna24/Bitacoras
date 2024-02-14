@@ -1,3 +1,5 @@
+//Permite agregar equipo a verciones nuevas de un folio
+
 $(document).ready(function () {
     $("#Agregar_Equipo").on("click", function(){
         var datos = new FormData($('#Pcr_Form')[0]);
