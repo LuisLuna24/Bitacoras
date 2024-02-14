@@ -39,8 +39,8 @@ $rowIdentificador=pg_fetch_assoc($queryIdentificador);
 $IdentificadorMax=$rowIdentificador['identificadormax']+1;
 
 $Insertar="INSERT INTO public.bitacora_reactivos(
-		id_bitacora_reactivo, version_bitacora_reactivo, identificador, id_folio, no_lote, fecha_apertura, fecha_caducidad, id_folio_bitacora, id_usuario, id_reactivo,id_version_bitacora, version_bitacora)
-	VALUES ('$identificar', '1', '$IdentificadorMax', $Folio, '$Lote', '$Apertura', '$Caducidad', '$ReactivoBitacora', '$id_Usuario', '$Reactivo','$Datos','$vercionmax');";
+		id_bitacora_reactivo, version_bitacora_reactivo, identificador, id_folio, no_lote, fecha_apertura, fecha_caducidad, id_folio_bitacora, id_usuario, id_reactivo,id_version_bitacora, version_bitacora,fecha_elaboracion)
+	VALUES ('$identificar', '1', '$IdentificadorMax', $Folio, '$Lote', '$Apertura', '$Caducidad', '$ReactivoBitacora', '$id_Usuario', '$Reactivo','$Datos','$vercionmax',CURRENT_DATE);";
 pg_query($conexion,$Insertar);
 
 

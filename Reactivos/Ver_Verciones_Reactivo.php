@@ -5,6 +5,9 @@ session_start();
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
+
+$_SESSION["Folio_Reactivo"]=$_GET['No_Folio'];
+
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
 }else{  ?>
@@ -29,7 +32,7 @@ if($id_Usuario=="" || $id_Usuario==null){
     <section class="Reactivos">
         <div class="Reactivo_Contenedor">
             <div class="Reactivo_Titulo">
-                <h1>Ver Reactivos</h1>
+                <h1>Ver Versiones Bitácora Reactivo</h1>
             </div>
             <div class="Linea_Titulo"></div>
             <div class="Equipo_Tabla">
@@ -50,13 +53,11 @@ if($id_Usuario=="" || $id_Usuario==null){
 
                 <table>
                     <thead>
-                        <th>No.</th>
+                        <th>No. Versión</th>
                         <th>Folio</th>
                         <th>Fecha Elaboro</th>
                         <th>Reviso</th>
-                        <th>Actualizar</th>
-                        <th>Eliminar </th>
-                        <th>Ver Verciones</th>
+                        <th>Ver Versiones</th>
                     </thead>
                     <tbody id="content"></tbody>
                 </table>
@@ -70,6 +71,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 <script src="./js/scripts.js"></script>
-<script src="./js/Buscar_TablaReactivos.js"></script>
+<script src="./js/Buscar_Vercion_Reactivo.js"></script>
 
 <?php }  ?>

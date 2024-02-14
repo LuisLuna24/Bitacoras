@@ -1,21 +1,23 @@
 <?php
 require "../../php/conexion.php";
-
+session_start();
 //Permite ver la tabla paginada de la seccion Ver Reactivos 
 
+
+//Folio a consultar
+$Folio=$_SESSION["Folio_Reactivo"];
 //Columnas que se desea Consultar
-$columns=['folio_reactivo.id_folio', 'folio', 'folio_reactivo.id_version_bitacora', 'folio_reactivo.version_bitacora', 'fecha_creacion','nombre_version','admin.id_admin','admin.nombre','admin.apellido'];
+$columns=[ 'nombre_version','admin.nombre','admin.apellido','id_bitacora_reactivo', 'version_bitacora_reactivo', 'identificador', 'bitacora_reactivos.id_folio', 'fecha_elaboracion','no_lote', 'fecha_apertura', 'fecha_caducidad', 'id_folio_bitacora', 'id_usuario', 'admin.id_admin', 'id_reactivo',' version_bitacora.id_version_bitacora', 'version_bitacora.version_bitacora'];
 //Tabla que se desea consultar 
-$table="folio_reactivo";
+$table="bitacora_reactivos";
 //Conteo para paginacion
-$id= 'id_folio';
+$id= 'id_bitacora_reactivo';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_reactivo.id_version_bitacora LEFT JOIN bitacora_reactivos on bitacora_reactivos.id_folio=folio_reactivo.id_folio
-LEFT JOIN admin on admin.id_admin= bitacora_reactivos.id_admin";
+$join="LEFT JOIN version_bitacora on version_bitacora.id_version_bitacora = bitacora_reactivos.id_version_bitacora LEFT JOIN admin on admin.id_admin = bitacora_reactivos.id_admin";
 
-$where = "WHERE folio::text ILIKE '%" . $campo . "%' OR fecha_creacion::text ILIKE '%" . $campo . "%'";
+$where = "WHERE nombre_version ILIKE '%" . $campo . "%'  AND bitacora_reactivos.id_folio=" . $Folio . "";
 
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
@@ -60,13 +62,11 @@ if($num_rows>0){
             $Eliminar='';
         }
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['folio'] .'</td>';
-        $output['data'].='<td>'. $row['nombre_version'] .' Folio:'.$row['folio'] .'</td>';
-        $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
+        $output['data'].='<td>'. $row['version_bitacora_reactivo'] .'</td>';
+        $output['data'].='<td>'. $row['nombre_version'] .' Folio:'.$row['id_folio'] .'</td>';
+        $output['data'].='<td>'. $row['fecha_elaboracion'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'] .'</td>';
-        $output['data'].='<td><a href="Reactivos.php?No_Folio='.$row['id_folio'].'">Editar</a></td>';
-        $output['data'].='<td>'.$Eliminar.'</td>';
-        $output['data'].='<td><a href="Ver_Verciones_Reactivo.php?No_Folio='.$row['id_folio'].'">Ver</a></td>';
+        $output['data'].='<td><a href="Version_Reactivo.php?No_Folio='.$row['id_folio'].'">Ver</a></td>';
         $output['data'].='</tr>';
     }
 }else{
