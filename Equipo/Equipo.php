@@ -53,7 +53,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
                 <div class="Dato_Equipo">
                     <div class="Dato">
-                        <label>Estado del equipo:</label>
+                        <label>Estado del Equipo:</label>
                         <select name="Estado_Equipo" id="">
                             <option value="Activo">Activo</option>
                             <option value="Inactivo">Inactivo</option>
