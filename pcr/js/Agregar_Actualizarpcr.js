@@ -1,3 +1,4 @@
+//Permite agregar nuevos registros al un folio ya exitente en una nueva vercion
 $(document).ready(function () {
     $("#Agregar_Pcr").on('click',function (e) {
         var datos = new FormData($("#Pcr_Form")[0]);
@@ -8,8 +9,9 @@ $(document).ready(function () {
             contentType: false,
             processData:false,
             success: function (response) {
-                alert("Se agrego correctamente.")
-                alert(response)
+                alert("Se agrego correctamente.");
+
+                //Actualiza la tabla paginada para ver los nuevos registros agregados
                 let paginaActual = 1;
                 getData(paginaActual);
 
@@ -30,7 +32,7 @@ $(document).ready(function () {
                     paginaActual=pagina;
                 }
 
-                    let url="./php/Buscar_ActualizarPcr.php";
+                    let url="./php/Buscar_ActualizarPcr.php";//Ruta donde se obtiene los datos de la tabla paginada
                     let formaData = new FormData();
                     formaData.append('campo',input);
                     formaData.append('registros',num_registros);

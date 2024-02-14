@@ -1,3 +1,5 @@
+//Permite ver los regisraos de una vercion de algun folio en especifico
+
 let paginaActual = 1;
 
 

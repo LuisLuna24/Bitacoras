@@ -1,3 +1,5 @@
+//Permite visualizar los datos de la tabla paginada en un nuevo registro
+
 let paginaActual = 1;
 
 

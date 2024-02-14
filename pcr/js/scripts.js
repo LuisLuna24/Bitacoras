@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    //Direcciones para el menu  de navegacion
     $(".logo_gis").attr("src", "../img/Gsmall.webp");
     $(".bx").attr("src", "../img/menuahambuegesa.webp");
     $("#Bitacoras_Global").attr("href", "../Bitacoras.php");

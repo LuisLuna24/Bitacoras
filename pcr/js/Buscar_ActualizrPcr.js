@@ -1,3 +1,5 @@
+//Muestra los registros de la tabla de editar registro
+
 let paginaActual = 1;
 
 

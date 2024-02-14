@@ -1,3 +1,5 @@
+//Permite ver elequipo de la vercion al mommeto de ver alguna vercon de un folio
+
 $(document).ready(function () {
     $.ajax({
         type: "POST",

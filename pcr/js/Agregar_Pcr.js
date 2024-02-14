@@ -1,3 +1,5 @@
+//Permite agregar nuevo registro en un nuevo folio 
+
 $(document).ready(function () {
     $("#Agregar_Pcr").on('click',function (e) {
         var datos = new FormData($("#Pcr_Form")[0]);

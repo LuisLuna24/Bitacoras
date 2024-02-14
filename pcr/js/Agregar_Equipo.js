@@ -1,3 +1,5 @@
+//Permite agregar equipo en un nuevoregistro
+
 $(document).ready(function () {
     $("#Agregar_Equipo").on("click", function(){
         var datos = new FormData($('#Pcr_Form')[0]);

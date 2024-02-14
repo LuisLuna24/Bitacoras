@@ -119,7 +119,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <br>
                 <div class="botones">
                     <input type="button" value="Agregar PCR" id="Agregar_Pcr">
-                    <input type="button" value="Actualizar PCR" id="Actualizar_Pcr"> 
                     <input type="button" value="Ver Bitacroas" id="Ver_Bitacoras">
                 </div>
                 <div class="Equipo_Tabla">

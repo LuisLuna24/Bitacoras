@@ -1,3 +1,5 @@
+//Busca las vercionesde un folio en especifico y las muestra en una tabla paginada 
+
 let paginaActual = 1;
 
 
