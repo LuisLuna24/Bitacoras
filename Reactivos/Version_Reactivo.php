@@ -80,6 +80,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/scripts.js"></script>
 <script src="./js/Buscar_Reactivo.js"></script>
 <script src="./js/Agregar_Reactivo.js"></script>
-<script src="./js/Buscar_Tabla.js"></script>
+<script src="./js/Buscar_Datos_Vercion.js"></script>
 
 <?php }  ?>

@@ -1,11 +1,9 @@
 <?php
 ob_start();
 session_start();
-if(isset($_GET['No_Folio'])){
-    $_SESSION['No_FoliRec']=$_GET['No_Folio'];
-}else{
-    $_SESSION['No_FoliRec'];
-}
+
+$_SESSION["Reactivo"];
+$_SESSION["VercionMax"];
 
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
@@ -15,7 +13,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 }else{  ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -48,7 +46,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </div>
                         <div>
                             <label for="dat2">No Lote:</label>
-                            <input type="text" name="Lote_Reactivo">
+                            <input type="text" name="Lote_Reactivo" id="Lote_Reactivo">
                         </div>
                     </div>
 
@@ -59,7 +57,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </div>
                         <div>
                             <label for="dat4">Fecha Caducidad:</label>
-                            <input type="date" name="Caducidad_Reactivo">
+                            <input type="date" name="Caducidad_Reactivo" id="Caducidad_Reactivo">
                         </div>
                     </div>
                     <div class="datoo">
@@ -120,7 +118,8 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 <script src="./js/scripts.js"></script>
 <script src="./js/Buscar_Reactivo.js"></script>
-<script src="./js/Agregar_Reactivo.js"></script>
-<script src="./js/Buscar_Tabla.js"></script>
+<script src="./js/Agregar_Reactivo_Vercion.js"></script>
+<script src="./js/Buscar_Tabala_VercionNueva.js"></script>
+<script src="./js/Buscar_Datos_Reactivos.js"></script>
 
 <?php }  ?>

@@ -10,14 +10,4 @@ $(document).ready(function () {
         }
     });
 
-        //Busca las especies existentes y los coloca en el select de especies
-    $.ajax({
-        type: "POST",
-        url: "./php/Buscar_Especie.php",
-        data: "data",
-        dataType: "dataType",
-        success: function (response) {
-            
-        }
-    });
 });

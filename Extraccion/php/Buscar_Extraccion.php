@@ -80,11 +80,6 @@ if($num_rows>0){
 }else{
     $output['data'].='<tr>';
     $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
     $output['data'].='</tr>';
 }
 

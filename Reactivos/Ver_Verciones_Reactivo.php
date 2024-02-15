@@ -6,7 +6,7 @@ $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 
-$_SESSION["Folio_Reactivo"]=$_GET['No_Folio'];
+$_SESSION["Folio_Reactivo"]=$_GET['Bitacora'];
 
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");

@@ -32,7 +32,7 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 $sql="SELECT DISTINCT " . implode(", ",$columns) . "
 FROM $table
 $join
-$where
+$where ORDER BY folio ASC
 $sLimit";
 
 
@@ -64,9 +64,9 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['nombre_version'] .' Folio:'.$row['folio'] .'</td>';
         $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'] .'</td>';
-        $output['data'].='<td><a href="Reactivos.php?No_Folio='.$row['id_folio'].'">Editar</a></td>';
+        $output['data'].='<td><a href="./php/Nueva_Vercion_Reactivo.php?No_Folio='.$row['id_folio'].'">Editar</a></td>';
         $output['data'].='<td>'.$Eliminar.'</td>';
-        $output['data'].='<td><a href="Ver_Verciones_Reactivo.php?No_Folio='.$row['id_folio'].'">Ver</a></td>';
+        $output['data'].='<td><a href="Ver_Verciones_Reactivo.php?Bitacora='.$row['id_folio'].'">Ver</a></td>';
         $output['data'].='</tr>';
     }
 }else{
