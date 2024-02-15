@@ -47,8 +47,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <select name="Reactivos_Select" id="Reactivos_Select"></select>
                         </div>
                         <div>
-                            <label for="dat2">No Lote:</label>
-                            <input type="text" name="Lote_Reactivo">
+                            <label for="dat2" >No Lote:</label>
+                            <input type="text" name="Lote_Reactivo" id="Lote_Reactivo">
                         </div>
                     </div>
 
@@ -59,7 +59,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </div>
                         <div>
                             <label for="dat4">Fecha Caducidad:</label>
-                            <input type="date" name="Caducidad_Reactivo">
+                            <input type="date" name="Caducidad_Reactivo" id="Caducidad_Reactivo">
                         </div>
                     </div>
                     <div class="datoo">
@@ -122,5 +122,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Buscar_Reactivo.js"></script>
 <script src="./js/Agregar_Reactivo.js"></script>
 <script src="./js/Buscar_Tabla.js"></script>
+<script src="./js/Buscar_Datos_Reactivos.js"></script>
 
 <?php }  ?>
