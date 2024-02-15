@@ -86,6 +86,13 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <input type="text" name="Tiempo" />
                     </div>
                 </div>
+                <div class="datos_pcreal">
+                    <div class="datos">
+                        <label>Imagen o Archivo:</label>
+                        <input class="Labeñ" type="file" id="Pcr_Imagen" name="Pcr_Imagen" accept=".jpg,.png,.pdf"/>
+                    </div>
+                </div>
+
                 <div class="checks_pcreal">
                     <div class="datos_check">
                         <label>Sanitizo:</label>
