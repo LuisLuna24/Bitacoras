@@ -11,7 +11,7 @@ $(document).ready(function () {
             contentType: false,
             processData:false,
             success: function (response) {
-                alert(response);
+                alert("Se ha agregado correctamente.");
 
                 //Permite actualizar la tabla automáticamente
                 let paginaActual = 1;

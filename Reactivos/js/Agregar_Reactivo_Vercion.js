@@ -11,7 +11,7 @@ $(document).ready(function () {
             contentType: false,
             processData:false,
             success: function (response) {
-                alert(response); 
+                alert("Se ha agregado correctamente."); 
                 
                 //Visualizar tabla de nuevo registro en nueva vercion en bitacora de Reactivos
 
