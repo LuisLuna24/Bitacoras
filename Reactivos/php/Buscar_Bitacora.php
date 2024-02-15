@@ -8,7 +8,7 @@ $Datos=$_POST['Tipo_Select'];
 $html="";
 
 if($Datos==1){
-   $Buscar="SELECT DISTINCT * FROM public.ver_folioextraccion ORDER BY id_folio ASC;" ;
+   $Buscar="SELECT DISTINCT * FROM public.folio_extraccion ORDER BY id_folio ASC;" ;
    $query=pg_query($conexion,$Buscar);
    if(pg_num_rows($query)>0){
     while($row=pg_fetch_assoc($query)){

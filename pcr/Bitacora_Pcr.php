@@ -62,15 +62,13 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <div class="datos_pcreal">
                     <div class="datos">
                         <label>Especie:</label>
-                        <select name="Especie" id="Especie_pcr">
-                            <option value="1">Canino</option>
-                        </select>
+                        <select name="Especie" id="Pcr_Especie"></select>
                     </div>
                     <div class="datos">
                         <label>Resultados:</label>
                         <select name="Resultados">
+                            <option value="Positivo">Positivo</option>    
                             <option value="Negativo">Negativo</option>
-                            <option value="Positivo">Positivo</option>
                         </select>
                     </div>
                 </div>
@@ -174,5 +172,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Buscar_Analisis.js"></script>
 <script src="./js/Agregar_Pcr.js"></script>
 <script src="./js/Actualizar_Pcr.js"></script>
+<script src="./js/Buscar_Especies.js"></script>
 
 <?php }  ?>
