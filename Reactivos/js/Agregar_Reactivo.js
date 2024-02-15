@@ -11,7 +11,7 @@ $(document).ready(function () {
             contentType: false,
             processData:false,
             success: function (response) {
-                alert("Agregado correctamente"); 
+                alert("Se ha agregado correctamente."); 
                 
                 //actualizar la tabla de Bitacora de reactivos 
                 let paginaActual = 1;
