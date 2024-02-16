@@ -89,7 +89,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <div class="datos_pcreal">
                     <div class="datos">
                         <label>Imagen o Archivo:</label>
-                        <input class="Labeñ" type="file" id="Pcr_Imagen" name="Pcr_Imagen" accept=".jpg,.png,.pdf"/>
+                        <input class="pcr_imagen" type="file" id="Pcr_Imagen" name="Pcr_Imagen" accept=".jpg,.png,.pdf"/>
                     </div>
                 </div>
 
