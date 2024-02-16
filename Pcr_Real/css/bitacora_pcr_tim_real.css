@@ -139,7 +139,14 @@ textarea{
   }
 }
 
-
+.Datos_Select{
+  width: 250px;
+  height: 30px;
+  border-radius: 25px;
+  padding: 0 10px;
+  border: none;
+  background-color: #dfb4e1;
+}
 
 
 .Equipo_Tabla{
