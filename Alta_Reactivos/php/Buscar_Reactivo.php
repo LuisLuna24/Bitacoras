@@ -4,7 +4,7 @@ require "../../php/conexion.php";
 //Permite la búsqueda de los datos que se escribirán en la tabla de manera paginada
 
 //Columnas que se desean consultar
-$columns=['id_reactivo', 'nombre', 'descripcion',' cantidad', 'fecha_caducidad', 'lote', 'estado'];
+$columns=['id_reactivo', 'nombre','descripcion',' cantidad', 'fecha_caducidad', 'lote', 'estado'];
 
 //Tabala a la que se desa conultar
 $table="reactivos";
@@ -16,7 +16,7 @@ $id= 'id_reactivo';
 //Obtiene el valor del input para buscar los registros
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$where = "WHERE nombre ILIKE '%" . $campo . "%'";
+$where = "WHERE nombre ILIKE '%" . $campo . "%' and estado = 'Existencia' ";
 
 //Obtiene el límite de consultas dependiendo la cantidad que se desea visualizar a través del select
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
@@ -32,10 +32,11 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 //Consulta para obtener los valores que irán en la tabla
-$sql="SELECT " . implode(", ",$columns) . "
-FROM $table
-$where
-$sLimit";
+$sql="SELECT DISTINCT on (id_reactivo) " . implode(", ",$columns) . "
+FROM $table 
+$where  GROUP BY nombre,descripcion,cantidad,fecha_caducidad,lote,estado,id_reactivo
+$sLimit ";
+
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
@@ -69,11 +70,6 @@ if($num_rows>0){
     }
 }else{
     $output['data'].='<tr>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
-    $output['data'].='<td >Sin resultados</td>';
     $output['data'].='<td >Sin resultados</td>';
     $output['data'].='</tr>';
 }

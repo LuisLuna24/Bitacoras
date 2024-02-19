@@ -80,6 +80,29 @@ input[type="button"] {
     gap: 20px;
 }
 
+select {
+    width: 100%;
+    border-radius: 25px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #dfb4e1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+select option {
+    width: 100%;
+    border-radius: 25px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #dfb4e1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
 @media(max-width:767px){
     .Editar_Contenedor{
         justify-content: start;

@@ -35,7 +35,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="dato">
                         <div>
                             <label for="nom">Nombre:</label>
-                            <input type="text" name="Nombre_Especie">
+                            <input type="text" name="Nombre_Especie" id="Nombre_Especie">
                         </div>
                     </div>
                     <div class="botones">
@@ -62,6 +62,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <thead>
                             <th>No. Especie</th>
                             <th>Nombre</th>
+                            <th>Editar</th>
                             <th>Eliminar</th>
                         </thead>
                         <tbody id="content"></tbody>

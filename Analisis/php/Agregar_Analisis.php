@@ -18,7 +18,9 @@ $QueryAnalisis=pg_query($conexion,$BuscarAnalisis);
 
 //Agrega en análisis
 if(pg_num_rows($QueryAnalisis)==0){
-    $Agregar="INSERT INTO analisis ( id_analisis,nombre, abreviatura) VALUES ('$id_analisis','$Nombre','$Abrebiatura')";
+    $Agregar="INSERT INTO public.analisis(
+        id_analisis, nombre, abreviatura)
+        VALUES ('$id_analisis', '$Nombre', '$Abrebiatura');";
     pg_query($conexion,$Agregar);
     echo 1;
 }else{
