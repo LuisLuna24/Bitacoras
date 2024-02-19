@@ -56,6 +56,7 @@ if($num_rows>0){
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['id_metodo'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .'</td>';
+        $output['data'].='<td><a href="./Actualizar_Metodos.php?Metodo='. $row['id_metodo'] .'">Editar</a></td>';
         $output['data'].='<td><a href="./php/Eliminar_Metodo.php?Metodo='. $row['id_metodo'] .'">Eliminar</a></td>';
         $output['data'].='</tr>';
     }

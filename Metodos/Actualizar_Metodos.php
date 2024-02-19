@@ -1,6 +1,9 @@
 <?php
 ob_start();
 session_start();
+
+$_SESSION['Metodo']=$_GET['Metodo'];
+
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
@@ -25,7 +28,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 
     <section class="agregar_especie">
         <div class="agregar_especie_contenedor">
-            <form class="agregar_especie_form" id="Especie_Form">
+            <form class="agregar_especie_form" id="Metodo_Form_edit">
                 <div class="agregar_especie_titulo">
                     <h1>Catálogo Métodos</h1>
                     <div class="linea_titulo"></div>
@@ -34,40 +37,19 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <div class="dat_datos">
                     <div class="dato">
                         <div>
+                            <label for="nom" id="Metodo_Anterior"></label>
+                        </div>
+                    </div>
+                    <div class="dato">
+                        <div>
                             <label for="nom">Nombre:</label>
                             <input type="text" name="Nombre_Especie">
                         </div>
                     </div>
                     <div class="botones">
-                        <input type="button" value="Agregar Metodo" id="btn_Agregar">
+                        <input type="button" value="Actualizar Metodo" id="btn_Actualizar">
+                        <input type="button" value="Cancelar" id="btn_Cancelar">
                     </div>
-                </div>
-                <div class="Equipo_Tabla">
-                    <div class="Acciones_Tabla">
-                        <div class="Datos">
-                            <label for="">Mostrar:</label>
-                            <select name="num_registros" id="num_registros">
-                                <option value="10">10</option>
-                                <option value="15">15</option>
-                                <option value="20">20</option>
-                            </select>
-                        </div>
-                        <div class="Dato">
-                            <label for="buscar">Buscar Método:</label>
-                            <input type="text" id="campo" name="campo">
-                        </div>
-                    </div>
-                    
-                    <table>
-                        <thead>
-                            <th>No. Metodo</th>
-                            <th>Nombre</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                        </thead>
-                        <tbody id="content"></tbody>
-                    </table>
-                    <div class="Tablas_Paginas" id="nav-paginacion"></div>
                 </div>
             </form>
         </div>
@@ -80,6 +62,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 
 <script src="js/scripts.js"></script>
-<script src="js/Buscar_Metodo.js"></script>
-<script src="js/Agregar_Metodo.js"></script>
+<script src="js/Bucar_Metodo_Version.js"></script>
+<script src="js/Actualizar_Metodo.js"></script>
 <?php }  ?>
