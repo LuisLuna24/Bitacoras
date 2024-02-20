@@ -16,6 +16,9 @@ if($id_Usuario=="" || $id_Usuario==null){
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/Administrador.css">
     <title>Menú Administrador</title>
+    <script src="./librerias/jquery/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="./librerias/select2/css/select2.css">
+    <script src="./librerias/select2/select2.js"></script>
 </head>
 <body>
     <?php require "./global/header.php"  ?>
@@ -35,20 +38,20 @@ if($id_Usuario=="" || $id_Usuario==null){
         <div class="Opciones_Contenedor">
             <div class="Opciones_Card">
                 <div class="Card_Titulo">
-                    <h3>Recuperar contraseña usuario</h3>
-                    <p>Permite recuperar las contraseñas de los usuarios registrados.</p>
-                </div>
-                <div class="Card_Boton">
-                    <input type="button" value="Recuperar">
-                </div>
-            </div>
-            <div class="Opciones_Card">
-                <div class="Card_Titulo">
                     <h3>Cambiar versiones de bitácoras</h3>
                     <p>Permite modificar las versiones de calidad de las bitácoras</p>
                 </div>
                 <div class="Card_Boton">
                     <input type="button" value="Cambiar">
+                </div>
+            </div>
+            <div class="Opciones_Card">
+                <div class="Card_Titulo">
+                    <h3>Recuperar contraseña usuario</h3>
+                    <p>Permite recuperar las contraseñas de los usuarios registrados.</p>
+                </div>
+                <div class="Card_Boton">
+                    <input type="button" value="Recuperar" id="Recuperar_Contraseña">
                 </div>
             </div>
             <div class="Opciones_Card">
@@ -69,12 +72,33 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <input type="button" value="Dar de baja">
                 </div>
             </div>
-
         </div>
+    </section>
+
+    <section class="Cotraseña" id="Contraseña">
+        <form class="Contraseña_Contenedor" id="Contraseña_form">
+            <div class="Contraseña_Titulo">
+                <h2>Recuperar Contaseña</h2>
+                <p>Recuperar contraseña de usuario</p>
+            </div>
+            <div class="Contaseña_Datos">
+                <label for="Contraseña">Seleccione usuario:</label>
+                <select name="Contraseña_Usuario" id="Contraseña_Usuario"></select>
+            </div>
+            <div class="Contaseña_Datos">
+                <label for="Contraseña">Contraseña Nueva:</label>
+                <input type="text" name="Contraseña_Recuperar" id="Contraseña_Recuperar">
+            </div>
+            <div class="contraseña_boton">
+                <input type="button" value="Recuperar" id="Recuperar_btn">
+            </div>
+        </form>
     </section>
     
     <?php require "./global/footer.php"  ?>
 </body>
 </html>
+
+<script src="js/Administrador.js"></script>
 
 <?php } ?>
