@@ -49,6 +49,14 @@ body{
     gap: 5px;
 }
 
+.Dato input[type="text"]{
+    width: 100%;
+    height: 30px;
+    border-radius: 25px;
+    padding: 0 10px;
+    border: none;
+    background-color: #dfb4e1;
+}
 input[type="text"]{
     width: 100%;
     height: 30px;
@@ -95,8 +103,8 @@ input[type="checkbox"] {
 .Pcr_Espece_Check {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 20px;
     margin-top: 10px;
 }
 .Check{
@@ -168,6 +176,7 @@ table{
     border: 1px solid #a588a7;
     border-radius: 15px;
     overflow: hidden;
+    margin-top: 10px;
   }
   
   td,th{

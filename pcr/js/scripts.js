@@ -10,6 +10,8 @@ $(document).ready(function () {
     $("#Pcr_Analisis").select2();
     $("#Pcr_Resultado").select2();
     $("#Pcr_Equipo").select2();
+    $("#Pcr_Espceie").select2();
+    $
 
     $("#Pcr_Cantidad").val('1');
 });

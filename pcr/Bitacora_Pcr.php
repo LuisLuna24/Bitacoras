@@ -82,15 +82,25 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <h2>Especies:</h2>
                             <div class="Linea"></div>
                         </div>
-                        <div class="Pcr_Espece_Check">
-                            <div class="Check">
-                                <input type="checkbox" name="Canino" id="Canino"><label for="Canino">Canino</label>
+                        <div class="Pcr_Equipo_contenedor">
+                            <div class="Pcr_Equipo_Selecionar">
+                                <div class="Datos">
+                                    <label for="Pcr_Espceie">Especie:</label>
+                                    <select name="Pcr_Espceie" id="Pcr_Espceie"></select>
+                                </div>
+                                <div class="Pcr_Equipo_Boton">
+                                    <input type="button" id="Agregar_Especie" value="Agregar Especie">
+                                </div>
                             </div>
-                            <div class="Check">
-                                <input type="checkbox" name="Porcino" id="Porcino"><label for="Canino">Porcino</label>
-                            </div>
-                            <div class="Check">
-                                <input type="checkbox" name="Bobino" id="Bobino"><label for="Canino">Bobino</label>
+                            <div class="Pcr_Equipo_Tabla">
+                                <table>
+                                    <thead>
+                                        <th>No. Especie</th>
+                                        <th>Nombre Especie</th>
+                                        <th>Eliminar</th>
+                                    </thead>
+                                    <tbody id="Tabala_Especie"></tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -98,7 +108,10 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="Pcr_Datos">
                         <div class="Datos">
                             <label for="Pcr_Resultado">Resultado:</label>
-                            <select name="Pcr_Resultado" id="Pcr_Resultado"></select>
+                            <select name="Pcr_Resultado" id="Pcr_Resultado">
+                                <option value="Negativo">Negativo</option>
+                                <option value="Positivo">Positivo</option>
+                            </select>
                         </div>
                         <div class="Datos">
                             <label for="Pcr_Imagen">Imagen o Archivo:</label>
@@ -118,7 +131,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                                     <select name="Pcr_Equipo" id="Pcr_Equipo"></select>
                                 </div>
                                 <div class="Pcr_Equipo_Boton">
-                                    <input type="button" value="Agregar Equipo">
+                                    <input type="button" id="Agregar_Equipo" value="Agregar Equipo">
                                 </div>
                             </div>
                             <div class="Pcr_Equipo_Tabla">
@@ -128,7 +141,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                                         <th>Nombre Equipo</th>
                                         <th>Eliminar</th>
                                     </thead>
-                                    <tbody></tbody>
+                                    <tbody id="Tabala_Equipos"></tbody>
                                 </table>
                             </div>
                         </div>
@@ -141,41 +154,40 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                 </div>
             </form>
-            <div class="Pcr_Registros">
-                <div class="Pcr_Registros_Titulo">
-
-                </div>
-                <div class="Pcr_Registros_Tabla">
-                    <div class="Acciones_Tabla">
-                        <div class="Datos_Tabla">
-                            <label for="">Mostrar:</label>
-                            <select name="num_registros" id="num_registros">
-                                <option value="10">10</option>
-                                <option value="15">15</option>
-                                <option value="20">20</option>
-                            </select>
-                        </div>
-                        <div class="Datos">
-                            <label for="buscar">Buscar PCR Tiempo Real:</label>
-                            <input type="text" id="campo" name="campo" />
-                        </div>
+            <br>
+            <div class="Equipo_Tabla">
+                <div class="Acciones_Tabla">
+                    <div class="Datos_Tabla">
+                        <label for="">Mostrar:</label>
+                        <select name="num_registros" id="num_registros">
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
                     </div>
-
-                    <table>
-                        <thead>
-                            <th>No. Registro</th>
-                            <th>Analisis</th>
-                            <th>Fecha</th>
-                            <th>Sanitizo</th>
-                            <th>Tiempo Uv</th>
-                            <th>Resultado</th>
-                            <th>Observaciones</th>
-                            <th>Eliminar</th>
-                        </thead>
-                        <tbody id="content"></tbody>
-                    </table>
-                    <div class="Tablas_Paginas" id="nav-paginacion"></div>
+                    <div class="Dato">
+                        <label for="buscar">Buscar PCR Tiempo Real:</label>
+                        <input type="text" id="campo" name="campo" />
+                    </div>
                 </div>
+
+                <table>
+                    <thead>
+                        <th>No. Registro</th>
+                        <th>Analisis</th>
+                        <th>Fecha</th>
+                        <th>Agaroza</th>
+                        <th>Voltage</th>
+                        <th>Tiempo</th>
+                        <th>Especies</th>
+                        <th>Resultado</th>
+                        <th>Imagen</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </thead>
+                    <tbody id="content"></tbody>
+                </table>
+                <div class="Tablas_Paginas" id="nav-paginacion"></div>
             </div>
         </div>
     </section>
@@ -187,5 +199,10 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="js/scripts.js"></script>
 <script src="js/Buscar_Datos.js"></script>
 <script src="js/Agregar_Pcr.js"></script>
+<script src="js/Agregar_Especies.js"></script>
+<script src="js/Agregar_Equipo.js"></script>
+<script src="js/Buscar_Tabla_Especeies.js"></script>
+<script src="js/Buscar_Tabala_Equipos.js"></script>
+<script src="js/Buscar_Tabla_Pcr.js"></script>
 
 <?php } ?>

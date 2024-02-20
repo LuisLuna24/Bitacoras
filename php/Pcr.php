@@ -12,14 +12,16 @@ try {
 
     //toma la verion mas alta 
     $id_vercion='2';
-    $buscarvercion="SELECT MAX(version_bitacora) FROM version_bitacora where id_version_bitacora='$id_vercion'";
+    $buscarvercion="SELECT MAX(version_bitacora) FROM version_bitacora where id_vercion_bitacora='$id_vercion'";
     $sqlbuscarvercion=pg_query($conexion,$buscarvercion);
     $num=pg_fetch_assoc($sqlbuscarvercion);
     $vercion=$num['max'];
 
 
     //crea nuevo folio
-    $crearfolio="INSERT INTO public.folio_pcr(id_folio, folio, id_version_bitacora, version_bitacora,fecha_creacion) VALUES ($nuevo, $nuevo,$id_vercion,$vercion,CURRENT_DATE);";
+    $crearfolio="INSERT INTO public.folio_pcr(
+        id_folio, id_version_bitacora, version_bitacora, fecha_creacion, version_folio)
+        VALUES ('$nuevo', '$id_vercion', '$vercion', CURRENT_DATE, '1');";
     pg_query($conexion,$crearfolio);
 
     $_SESSION["Pcr_Folio"]=$nuevo;

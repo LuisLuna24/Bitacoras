@@ -18,4 +18,14 @@ $(document).ready(function () {
             $("#Pcr_Equipo").html(response);
         }
     });
+
+    //-----------------Especie--------------------------------------------------------
+    $.ajax({
+        type: "POST",
+        url: "php/Buscar_Especie.php",
+        dataType: "html",
+        success: function (response) {
+            $("#Pcr_Espceie").html(response);
+        }
+    });
 });
