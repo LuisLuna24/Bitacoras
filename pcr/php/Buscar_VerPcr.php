@@ -64,8 +64,10 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'].'</td>';
-        $output['data'].='<td><a href="./php/Nueva_Actualizacion.php?No_Folio='. $row['id_folio']. '">Editar</a></td>';
-        $output['data'].='<td><a href="Verciones_AnterioresPcreal.php?No_Folio='. $row['id_folio']. '">Ver</a></td>';
+        $output['data'].='<td><a href="../Proxiamanete.php">Editar</a></td>';
+        //$output['data'].='<td><a href="./php/Nueva_Actualizacion.php?No_Folio='. $row['id_folio']. '">Editar</a></td>';
+        //$output['data'].='<td><a href="Verciones_AnterioresPcreal.php?No_Folio='. $row['id_folio']. '">Ver</a></td>';
+        $output['data'].='<td><a href="../Proxiamanete.php">Ver</a></td>';
         $output['data'].='</tr>';
     }
 }else{
