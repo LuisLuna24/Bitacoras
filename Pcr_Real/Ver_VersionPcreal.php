@@ -20,7 +20,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/bitacora_pcr_tim_real.css" />
+    <link rel="stylesheet" href="css/Vercion_Anterior.css" />
     <title>Bitacora de resultados PCR</title>
     <link rel="stylesheet" href="../css/header.css" />
     <script src="../librerias/jquery/jquery-3.2.1.min.js"></script>

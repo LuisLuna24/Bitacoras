@@ -14,5 +14,7 @@ $(document).ready(function () {
         $(location).attr('href', 'ver_pcreal.php');
     })
 
+    $("#Pcreal_Catidad").val('1');
+
     
 });

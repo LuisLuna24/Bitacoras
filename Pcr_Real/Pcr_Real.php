@@ -45,7 +45,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                     <div class="datos">
                         <label>Cantidad:</label>
-                        <input type="text" name="Cantidad" />
+                        <input type="text" name="Cantidad" id="Pcreal_Catidad" />
                     </div>
                 </div>
                 <div class="datos_pcreal">

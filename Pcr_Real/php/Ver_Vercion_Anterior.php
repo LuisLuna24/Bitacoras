@@ -4,17 +4,17 @@ session_start();
 
 $VersionPcr=$_SESSION["Version_Vitacora"];
 
-$columns=['id_pcreal', 'no_registro', 'version_pcreal', 'identificador', 'id_folio', 'analisis.id_analisis','analisis.nombre' ,'fecha', 'sanitizo', 'tiempouv', 'resultado', 'observaciones', 'id_equipo_pcreal', 'id_usuario', 'id_admin', 'no_equipo', 'identificador_bitacora'];
+$columns=['analisis.nombre','id_pcreal', 'no_registro', 'version_pcreal', 'identificador_bitacora', 'id_folio', 'id_analisi', 'fecha', 'sanitizo', 'tiempouv', 'resultado', 'observaciones', 'id_usuaro', 'archivo', 'version_folio'];
 
-$table="birtacora_pcreal ";
+$table="bitacora_pcreal ";
 
 $id= 'identificador_bitacora';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="INNER JOIN analisis on analisis.id_analisis=birtacora_pcreal.id_analisis";
+$join="INNER JOIN analisis on analisis.id_analisis=bitacora_pcreal.id_analisi";
 
-$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and identificador_bitacora = '$VersionPcr'";
+$where = "WHERE id_pcreal::text ILIKE '%" . $campo . "%' and identificador_bitacora = '$VersionPcr'";
 
 
 
@@ -59,7 +59,7 @@ $output['paginacion'] = '';
 if($num_rows>0){
     while($row=pg_fetch_array($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['no_registro'] .'-'.$row['identificador'].'</td>';
+        $output['data'].='<td>'. $row['id_pcreal'] .'-'.$row['no_registro'].'</td>';
         $output['data'].='<td>'. $row['nombre'] .'</td>';
         $output['data'].='<td>'. $row['fecha'] .'</td>';
         $output['data'].='<td>'. $row['sanitizo'] .'</td>';
