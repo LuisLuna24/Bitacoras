@@ -21,21 +21,14 @@ $Conc=$_POST['Conc_Exteracion'];
 $D280=$_POST['280_Exteracion'];
 $D230=$_POST['230_Exteracion'];
 
-//Busca el ID máximo y suma uno para agregar nuevo registro
-$Buacrax="SELECT MAX(id_extracion) FROM birtacora_extaccion where id_folio = '$Folio'";
-$querymax=pg_query($conexion,$Buacrax);
-$row=pg_fetch_assoc($querymax);
-$id_extraccion=$row['max']+1;
-
-
 $VersionMax=$_SESSION["VercionMax"];
 
 //Dependiendo de la cantidad de registros de un solo número de registro, los agrega automáticamente 
 for($i=0;$i<$Cantidad;$i++){
     $identificador_bitacora=$Folio.$VersionMax;
-    $AgregaExtracion="INSERT INTO public.birtacora_extaccion(
-        id_extracion, no_registro, identificador, version_extraccion, id_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230,  id_equipo_extraccion, id_usuario,identificador_bitacora,no_equipo, vercion_equipo)
-        VALUES ('$id_extraccion', '$Registro', $i+1 , '$VersionMax', '$Folio', '$fmuestreo', '$Metodo', '$Analisis', '$Area', '$Conc', '$D280', '$D230', $Folio, '$Usuario','$identificador_bitacora','1','$VersionMax');";
+    $AgregaExtracion="INSERT INTO public.bitacora_extraccion(
+        id_extracion, no_registro, version_extracion, identificdor_extracion, id_folio, version_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230, id_equipo_extraccion, identificador_equipo, version_equipo, id_usuario)
+        VALUES ('$Registro', $i+1, $VersionMax, '$identificador_bitacora', '$Folio', '1', '$Fecha', '$Metodo', '$Analisis', '$Area', '$Conc', '$D280', '$D230', '$Folio', '1', '$VersionMax', '$Usuario');";
     $queryAgregar=pg_query($conexion,$AgregaExtracion);
 }
 

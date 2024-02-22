@@ -93,6 +93,9 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </div>
                     </div>
                 </div>
+                <div class="dat_resul_titulo">
+                    <h2>Equipo Seleccionado</h2>
+                </div>
                 <div class="Datos_Metodo_Equipo">
                         <div class="dato Agregar_Equio_div">
                             <label>Selecciona Equipo</label>
