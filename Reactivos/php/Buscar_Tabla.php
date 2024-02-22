@@ -8,16 +8,16 @@ session_start();
 //folio de bitacora
 $folio=$_SESSION['No_FoliRec'];
 //Columnas a consultar
-$columns=['id_bitacora_reactivo', 'version_bitacora_reactivo', 'identificador', 'id_folio', 'no_lote', 'fecha_apertura', 'bitacora_reactivos.fecha_caducidad',' id_folio_bitacora', 'id_usuario', 'id_admin','reactivos.id_reactivo,reactivos.nombre','nombre_version','bitacora_reactivos.id_version_bitacora'];
+$columns=['nombre_version','id_bit_reactivo', 'version_bitacora_reactivo', 'id_folio', 'version_foio', 'bitacora_reactivos.id_reactivo', 'fecha_apertura', 'id_folio_bitacoras', 'bitacora_reactivos.id_version_bitacora', 'bitacora_reactivos.version_bitacora'];
 //tabla a consultar 
 $table="bitacora_reactivos";
 //Dato que se contara para conte para paginacion
-$id= 'id_bitacora_reactivo';
+$id= 'id_bit_reactivo';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
 //Consulta Join aqui van todos los JOINSs
-$join ="INNER JOIN reactivos on reactivos.id_reactivo=bitacora_reactivos.id_reactivo INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=bitacora_reactivos.version_bitacora_reactivo";
+$join ="INNER JOIN reactivos on reactivos.id_reactivo=bitacora_reactivos.id_reactivo INNER JOIN version_bitacora on version_bitacora.id_vercion_bitacora=bitacora_reactivos.id_version_bitacora";
 //consulta where aqui van todos los where
 $where = "WHERE reactivos.nombre ILIKE '%" . $campo . "%' and id_folio = '$folio'";
 
@@ -61,20 +61,12 @@ $Tipo_Bitacora='';
 //Donde se muestra los datos de la tabla apartir de la consulta
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
-        if($row['id_version_bitacora']==1){
-            $Tipo_Bitacora='BBM/GIS/BE 13-04';
-        }else if($row['id_version_bitacora']==2){
-            $Tipo_Bitacora='BBM/GIS/E05';
-        }else if($row['id_version_bitacora']==3){
-            $Tipo_Bitacora='BBM/GIS/RqPCR08-03';
-        }
-
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['nombre'] .'</td>';
         $output['data'].='<td>'. $row['no_lote'] .'</td>';
         $output['data'].='<td>'. $row['fecha_apertura'] .'</td>';
         $output['data'].='<td>'. $row['fecha_caducidad'] .'</td>';
-        $output['data'].='<td>'. $Tipo_Bitacora.' Folio:'.$row['id_folio_bitacora'] .'</td>';
+        $output['data'].='<td>'. $row['nombre_version'].' Folio:'.$row['id_folio_bitacora'] .'</td>';
         $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?identificado='.$row['id_bitacora_reactivo'].'">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
