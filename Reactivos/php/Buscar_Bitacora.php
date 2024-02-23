@@ -3,7 +3,7 @@ require "../../php/conexion.php";
 
 //Bucar los folios de la bitacoras dependiendo de su tipo de bitacora
 
-$Datos=$_POST['Tipo_Select'];
+$Datos=$_POST['Tipo_Bitacora'];
 
 $html="";
 

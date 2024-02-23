@@ -15,33 +15,32 @@ $Apertura1=$_POST['Apertura_Reactivo'];
 $Apertura= date("Y-m-d", strtotime($Apertura1));
 $Caducidad1=$_POST['Caducidad_Reactivo'];
 $Caducidad= date("Y-m-d", strtotime($Caducidad1));
-$ReactivoBitacora=$_POST['Select_Prueba_Reactivo'];
-$Datos=$_POST['Tipo_Select'];
+$FolioReactivo=$_POST['Folio_Reactivo'];
+$Tipo_Bitacora=$_POST['Tipo_Bitacora'];
 
-//Buscar ID maximo y sumar uno para nuevo registro
-$buscar="SELECT MAX(id_bitacora_reactivo) FROM bitacora_reactivos where id_folio='$Folio' ";
-$querybus=pg_query($conexion,$buscar);
-$row=pg_fetch_assoc($querybus);
-$identificar=$row['max']+1;
+//Generar nuevo no de regisatro
+$BuscarNo="SELECT MAX(no_reactivo) FROM bitacora_reactivos where id_folio='$Folio'";
+$queryNo=pg_query($conexion,$BuscarNo);
+$rowNo=pg_fetch_assoc($queryNo);
+$No=$rowNo['max']+1;
 
-//Buscar la vesion maxima
-$Buscarmax="SELECT MAX(version_bitacora) AS vercionmax FROM version_bitacora where id_version_bitacora='$Datos';";
-$querybusuerymax=pg_query($conexion,$Buscarmax);
-$rowmax=pg_fetch_assoc($querybusuerymax);
-$vercionmax=$rowmax['vercionmax'];
+//Buscar Version maxima del reactivo
+$BuscarReac="SELECT MAX(version_reactivo) FROM reactivos WHERE id_reactivo='$Reactivo'";
+$queryReac=pg_query($conexion,$BuscarReac);
+$rowReac=pg_fetch_assoc($queryReac);
+$version_reactivo=$rowReac['max']+1;
 
-echo $Buscarmax;
+//Buscar versdion maxima de tipio de vitacora
+$BuscarTipo="SELECT MAX(version_bitacora) FROM version_bitacora WHERE id_vercion_bitacora='$Tipo_Bitacora'";
+$queryTipo=pg_query($conexion,$BuscarTipo);
+$rowTipo=pg_fetch_assoc($queryTipo);
+$version_bitacora=$rowTipo['max']+1;
 
-//Busca el identificador maximo y le agrega uno
-$BuscarIdentificador="SELECT MAX(identificador) AS identificadormax FROM bitacora_reactivos where id_bitacora_reactivo ='$identificar' and id_folio='$Folio'";
-$queryIdentificador=pg_query($conexion,$BuscarIdentificador);
-$rowIdentificador=pg_fetch_assoc($queryIdentificador);
-$IdentificadorMax=$rowIdentificador['identificadormax']+1;
 
-$Identificador_bitacora=$Folio.'1';
+$Identificador=$Folio.'1';
 $Insertar="INSERT INTO public.bitacora_reactivos(
-	id_bit_reactivo, version_bitacora_reactivo, id_folio, version_foio, id_reactivo, fecha_apertura, id_folio_bitacoras, id_version_bitacora, version_bitacora)
-	VALUES ('', '1', '$Folio', '1', '$Reactivo', '$Apertura', '$ReactivoBitacora', '$Datos', '$vercionmax');";
+	id_bit_reactivo, version_bir_reactivo, no_reactivo, identificador_bitacora, id_folio, version_folio, id_reactivo, version_reactivo, fecha_apertura, fecha_caducidad, folio_bitacora, version_folio_bitacora, id_version_bitacora, version_bitacora,'id_usuario')
+	VALUES ('$Folio', '1', '$No', '$Identificador', '$Folio', '1', '$Reactivo', '$version_reactivo', '$Apertura', '$Caducidad', '$FolioReactivo', '1', '$Tipo_Bitacora', '$version_bitacora','$id_Usuario');";
 pg_query($conexion,$Insertar);
 
 
