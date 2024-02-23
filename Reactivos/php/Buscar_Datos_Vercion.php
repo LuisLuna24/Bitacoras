@@ -6,7 +6,7 @@ session_start();
 //Visualizar tabla de nuevo registro en bitacora de Reactivos
 $Version=$_SESSION['Bitacora'];
 //folio de bitacora
-$folio=$_SESSION['No_FoliRec'];
+$folio=$_SESSION['Bitacora'];
 //Columnas a consultar
 $columns=['nombre_version','reactivos.nombre','lote','id_bit_reactivo', 'version_bir_reactivo', 'no_reactivo', 'identificador_bitacora', 'bitacora_reactivos.id_folio', 'bitacora_reactivos.version_folio', 'bitacora_reactivos.id_reactivo', 'bitacora_reactivos.version_reactivo', 'fecha_apertura', 'bitacora_reactivos.fecha_caducidad', 'folio_bitacora', 'version_folio_bitacora', 'bitacora_reactivos.id_version_bitacora', 'bitacora_reactivos.version_bitacora', 'bitacora_reactivos.id_usuario'];
 //tabla a consultar 

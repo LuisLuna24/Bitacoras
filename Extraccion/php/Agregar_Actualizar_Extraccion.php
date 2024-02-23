@@ -31,9 +31,10 @@ $BuscarRegistros="SELECT * FROM bitacora_extraccion where id_folio='$Folio' and 
 $queryRegistros=pg_query($conexion,$BuscarRegistros);
 
 while($rowReg=pg_fetch_assoc($queryRegistros)){
+    $Identificador=$Folio.$VersionMax;
     $InsertarRegistros="INSERT INTO public.bitacora_extraccion(
         id_extracion, no_registro, version_extracion, identificdor_extracion, id_folio, version_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230, archivo, id_equipo_extraccion, identificador_equipo, version_equipo, id_usuario)
-        VALUES ('" .$rowReg['id_extracion']. "', '" .$rowReg['no_registro']. "', '$VersionMax', '" .$rowReg['identificdor_extracion']. "', '" .$rowReg['id_folio']. "', '" .$rowReg['version_folio']. "', '" .$rowReg['fecha']. "', '" .$rowReg['id_metodo']. "', '" .$rowReg['id_analisis']. "', '" .$rowReg['id_area']. "', '" .$rowReg['conc_ng_ul']. "', '" .$rowReg['dato_260_280']. "', '" .$rowReg['dato_260_230']. "', '" .$rowReg['archivo']. "', '" .$rowReg['id_equipo_extraccion']. "', '" .$rowReg['identificador_equipo']. "', '$VersionMax', '" .$rowReg['id_usuario']. "');";
+        VALUES ('" .$rowReg['id_extracion']. "', '" .$rowReg['no_registro']. "', '$VersionMax', '$Identificador', '" .$rowReg['id_folio']. "', '" .$rowReg['version_folio']. "', '" .$rowReg['fecha']. "', '" .$rowReg['id_metodo']. "', '" .$rowReg['id_analisis']. "', '" .$rowReg['id_area']. "', '" .$rowReg['conc_ng_ul']. "', '" .$rowReg['dato_260_280']. "', '" .$rowReg['dato_260_230']. "', '" .$rowReg['archivo']. "', '" .$rowReg['id_equipo_extraccion']. "', '" .$rowReg['identificador_equipo']. "', '$VersionMax', '" .$rowReg['id_usuario']. "');";
     pg_query($conexion,$InsertarRegistros);
 }
 

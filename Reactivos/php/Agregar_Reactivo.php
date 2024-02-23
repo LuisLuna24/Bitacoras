@@ -28,18 +28,18 @@ $No=$rowNo['max']+1;
 $BuscarReac="SELECT MAX(version_reactivo) FROM reactivos WHERE id_reactivo='$Reactivo'";
 $queryReac=pg_query($conexion,$BuscarReac);
 $rowReac=pg_fetch_assoc($queryReac);
-$version_reactivo=$rowReac['max']+1;
+$version_reactivo=$rowReac['max'];
 
 //Buscar versdion maxima de tipio de vitacora
 $BuscarTipo="SELECT MAX(version_bitacora) FROM version_bitacora WHERE id_vercion_bitacora='$Tipo_Bitacora'";
 $queryTipo=pg_query($conexion,$BuscarTipo);
 $rowTipo=pg_fetch_assoc($queryTipo);
-$version_bitacora=$rowTipo['max']+1;
+$version_bitacora=$rowTipo['max'];
 
 
 $Identificador=$Folio.'1';
 $Insertar="INSERT INTO public.bitacora_reactivos(
-	id_bit_reactivo, version_bir_reactivo, no_reactivo, identificador_bitacora, id_folio, version_folio, id_reactivo, version_reactivo, fecha_apertura, fecha_caducidad, folio_bitacora, version_folio_bitacora, id_version_bitacora, version_bitacora,'id_usuario')
+	id_bit_reactivo, version_bir_reactivo, no_reactivo, identificador_bitacora, id_folio, version_folio, id_reactivo, version_reactivo, fecha_apertura, fecha_caducidad, folio_bitacora, version_folio_bitacora, id_version_bitacora, version_bitacora,id_usuario)
 	VALUES ('$Folio', '1', '$No', '$Identificador', '$Folio', '1', '$Reactivo', '$version_reactivo', '$Apertura', '$Caducidad', '$FolioReactivo', '1', '$Tipo_Bitacora', '$version_bitacora','$id_Usuario');";
 pg_query($conexion,$Insertar);
 

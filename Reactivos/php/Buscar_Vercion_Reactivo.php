@@ -5,7 +5,7 @@ session_start();
 //Permite ver la tabla paginada de la seccion Ver Reactivos 
 $VersionFolio=$_SESSION["Folio_Reactivo"];
 //Columnas que se desea Consultar
-$columns=['identificador_bitacora','admin.id_admin','folio_bitacora','folio_reactivo.id_folio', 'folio_reactivo.version_folio', 'folio_reactivo.id_version_bitacora', 'folio_reactivo.version_bitacora', 'fecha_creacion','admin.nombre','admin.apellido','nombre_version'];
+$columns=['version_bir_reactivo','identificador_bitacora','admin.id_admin','folio_bitacora','folio_reactivo.id_folio', 'folio_reactivo.version_folio', 'folio_reactivo.id_version_bitacora', 'folio_reactivo.version_bitacora', 'fecha_creacion','admin.nombre','admin.apellido','nombre_version'];
 //Tabla que se desea consultar 
 $table="folio_reactivo";
 //Conteo para paginacion
@@ -31,10 +31,10 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-$sql="SELECT DISTINCT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (version_bir_reactivo) " . implode(", ",$columns) . "
 FROM $table
 $join
-$where ORDER BY id_folio ASC
+$where ORDER BY version_bir_reactivo ASC
 $sLimit";
 
 
@@ -62,7 +62,7 @@ if($num_rows>0){
             $Eliminar='';
         }
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['id_folio'] .'</td>';
+        $output['data'].='<td>'. $row['version_bir_reactivo'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'] .' Folio:'.$row['folio_bitacora'] .'</td>';
         $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'] .'</td>';

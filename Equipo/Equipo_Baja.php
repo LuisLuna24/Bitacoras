@@ -50,8 +50,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <th>Descripcion</th>
                     <th>Area</th>
                     <th>Estado</th>
-                    <th>Actualizar</th>
-                    <th>Dar de baja</th>
                 </thead>
                 <tbody id="content"></tbody>
             </table>

@@ -23,9 +23,9 @@ $Buscar="SELECT * FROM equipo where  id_equipo='$Inventario';";
 $querybuscar=pg_query($conexion,$Buscar);
 
 if(pg_num_rows($querybuscar)>0){
-    $Actualizar="UPDATE public.equipo
-	SET id_equipo='$Inventario', vercion_equipo='$version_max', identificador='$Inventario - GISENA', nombre='$Nombre', descripcion='$Descripcion', id_area='$Area', estado_equipo='$Estado'
-	WHERE id_equipo='$Id_equipo';";
+    $Actualizar="INSERT INTO public.equipo(
+        id_equipo, vercion_equipo, identificador, nombre, descripcion, id_area, estado_equipo)
+        VALUES ('$Inventario', '$version_max', '$Inventario - GISENA','$Nombre', '$Descripcion', '$Area', '$Estado');";
     pg_query($conexion,$Actualizar);
     echo 1;
 }else{

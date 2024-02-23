@@ -63,11 +63,11 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="datoo">
                         <div class="datoos">
                             <label for="dat5">Tipo Bitacora:</label>
-                            <select id="Tipo_Select" name="Tipo_Select"></select>
+                            <select id="Tipo_Select" name="Tipo_Bitacora"></select>
                         </div>
                         <div class="datoos">
                             <label for="dat5">Prueba de Reactivo:</label>
-                            <select name="Select_Prueba_Reactivo" id="Bitaforas_Select"></select>
+                            <select name="Folio_Reactivo" id="Bitaforas_Select"></select>
                         </div>
                     </div>
                     
@@ -121,5 +121,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Agregar_Reactivo_Vercion.js"></script>
 <script src="./js/Buscar_Tabala_VercionNueva.js"></script>
 <script src="./js/Buscar_Datos_Reactivos.js"></script>
+
 
 <?php }  ?>
