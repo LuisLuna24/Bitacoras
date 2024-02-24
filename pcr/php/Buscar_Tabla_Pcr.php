@@ -2,6 +2,8 @@
 require "../../php/conexion.php";
 session_start();
 
+//Permite visualizar la tabla de nuevo registro de pcr
+
 $Folio=$_SESSION["Pcr_Folio"];
 
 
@@ -17,16 +19,6 @@ $join="INNER JOIN analisis on analisis.id_analisis=bitacora_pcr.id_analisis";
 
 $where = "WHERE id_pcr::text ILIKE '%" . $campo . "%' and id_folio = '$Folio'";
 
-/*if($campo!==null){
-    $where = "WHERE (";
-
-    $cont=count($columns);
-    for($i=0;$i<$cont;$i++){
-        $where .= $columns[$i] . " ILIKE '%" . $campo . "%' OR ";
-    }
-    $where= substr_replace($where, "", -3);
-    $where.= ")";
-}*/
 
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;

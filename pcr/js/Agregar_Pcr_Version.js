@@ -3,7 +3,7 @@ $(document).ready(function () {
         var datos = new FormData($("#Pcr_Form")[0]);
         $.ajax({
             type: "POST",
-            url: "php/Agregar_Pcr.php",
+            url: "php/Agregar_Pcr_Version.php",
             data: datos,
             contentType: false,
             processData: false,
@@ -30,7 +30,7 @@ $(document).ready(function () {
                         paginaActual=pagina;
                     }
 
-                        let url="./php/Buscar_Tabla_Pcr.php";
+                        let url="./php/Buscar_Tabla_Pcr_Vercion.php";
                         let formaData = new FormData();
                         formaData.append('campo',input);
                         formaData.append('registros',num_registros);

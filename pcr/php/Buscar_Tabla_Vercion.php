@@ -1,26 +1,30 @@
 <?php
 require "../../php/conexion.php";
+session_start();
 
-//Permite la búsqueda de los datos que se escribirán en la tabla de manera paginada
+//Permite visualizar la tabla de nuevo registro de pcr
 
-//Columnas que se desean consultar
-$columns=['id_reactivo', 'nombre','descripcion',' cantidad', 'fecha_caducidad', 'lote', 'estado'];
-
-//Tabala a la que se desa conultar
-$table="reactivos";
-
-//Columna que se contara para la pagianacion
-$id= 'id_reactivo';
+$Folio=$_SESSION["Pcr_Folio"];
+$RegistroPcr=$_SESSION['RegistroPcr'];
 
 
-//Obtiene el valor del input para buscar los registros
+$columns=['id_pcr','analisis.nombre','id_especie_pcr','archivo','id_pcr', 'no_registro', 'version_pcr', 'identificador_bitacora', 'id_folio', 'bitacora_pcr.id_analisis', 'fecha', 'agarosa', 'voltage', 'tiempo', 'sanitizo',' tiempouv',  'resultado', 'id_equipo_pcr', 'id_usuario', 'id_admin'];
+
+$table="bitacora_pcr ";
+
+$id= 'id_pcr';
+
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$where = "WHERE nombre ILIKE '%" . $campo . "%' and estado = 'Existencia' ";
+$join="INNER JOIN analisis on analisis.id_analisis=bitacora_pcr.id_analisis";
 
-//Obtiene el límite de consultas dependiendo la cantidad que se desea visualizar a través del select
+$where = "WHERE id_pcr::text ILIKE '%" . $campo . "%' and identificador_bitacora='$RegistroPcr'";
+
+
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
+
+
 
 if(!$pagina){
     $inicio = 0;
@@ -31,17 +35,19 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-//Consulta para obtener los valores que irán en la tabla
-$sql="SELECT DISTINCT on (id_reactivo) " . implode(", ",$columns) . "
+
+$sql="SELECT " . implode(", ",$columns) . "
 FROM $table 
-$where  ORDER BY id_reactivo,version_reactivo DESC
-$sLimit ";
+$join
+$where
+$sLimit";
 
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
 
-//Consulta para total registros
+//Consulta para total registross
+
 $sqlTotal="SELECT count($id) FROM $table ";
 $resTotal=pg_query($conexion,$sqlTotal);
 $row_total=pg_fetch_array($resTotal);
@@ -53,19 +59,18 @@ $output['totalRegistros'] = $totalRegistros;
 $output['data'] = '';
 $output['paginacion'] = '';
 
-
-//Datos de la tabla 
 if($num_rows>0){
-    while($row=pg_fetch_assoc($resultado)){
+    while($row=pg_fetch_array($resultado)){
         $output['data'].='<tr>';
+        $output['data'].='<td>'. $row['no_registro'] .'-'.$row['id_pcr'].'</td>';
         $output['data'].='<td>'. $row['nombre'] .'</td>';
-        $output['data'].='<td>'. $row['descripcion'] .'</td>';
-        $output['data'].='<td>'. $row['cantidad'] .'</td>';
-        $output['data'].='<td>'. $row['fecha_caducidad'] .'</td>';
-        $output['data'].='<td>'. $row['lote'] .'</td>';
-        $output['data'].='<td>'. $row['estado'] .'</td>';
-        $output['data'].='<td><a href="./Editar_Reactivo.php?Reactivo='. $row['id_reactivo']. '">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?Reactivo='. $row['id_reactivo']. '">Eliminar</a></td>';
+        $output['data'].='<td>'. $row['fecha'] .'</td>';
+        $output['data'].='<td>'. $row['agarosa'] .'</td>';
+        $output['data'].='<td>'. $row['voltage'] .'</td>';
+        $output['data'].='<td>'. $row['tiempo'] .'</td>';
+        $output['data'].='<td>'. $row['id_especie_pcr'] .'</td>';
+        $output['data'].='<td>'. $row['resultado'] .'</td>';
+        $output['data'].='<td>'. $row['archivo'] .'</td>';
         $output['data'].='</tr>';
     }
 }else{
@@ -94,10 +99,10 @@ if($output['totalRegistros']>0){
 
     for($i=$numeroInicio;$i<=$numeroFin;$i++){
         if($pagina == $i){
-            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="#">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="">' . $i . '</a></li>';
 
         }else{
-            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="#" onclick="getData('. $i .')">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="" onclick="getData('. $i .')">' . $i . '</a></li>';
         }
     }
 

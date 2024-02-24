@@ -35,7 +35,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="Pcr_Datos">
                         <div class="Datos">
                             <label for="Pcr_Registros">No. Registro:</label>
-                            <input type="text" name="Pcr_Registros" id="Pcr_Registros">
+                            <input type="text" name="Pcr_Registros">
                         </div>
                         <div class="Datos">
                             <label for="Pcr_Cantidad">Cantidad de Registros:</label>
@@ -198,11 +198,11 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 <script src="js/scripts.js"></script>
 <script src="js/Buscar_Datos.js"></script>
-<script src="js/Agregar_Pcr.js"></script>
-<script src="js/Agregar_Especies.js"></script>
-<script src="js/Agregar_Equipo.js"></script>
-<script src="js/Buscar_Tabla_Especeies.js"></script>
-<script src="js/Buscar_Tabala_Equipos.js"></script>
-<script src="js/Buscar_Tabla_Pcr.js"></script>
+<script src="js/Agregar_Pcr_Version.js"></script>
+<script src="js/Agregar_Especies_Version.js"></script>
+<script src="js/Agregar_Equipo_Version.js"></script>
+<script src="js/Buscar_Tabla_Especeies_Version.js"></script>
+<script src="js/Buscar_Tabala_Equipos_Version.js"></script>
+<script src="js/Buscar_Tabla_Pcr_Version.js"></script>
 
 <?php } ?>
