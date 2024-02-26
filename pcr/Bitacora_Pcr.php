@@ -1,6 +1,8 @@
 <?php
 ob_start();
 session_start();
+
+
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
@@ -115,7 +117,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </div>
                         <div class="Datos">
                             <label for="Pcr_Imagen">Imagen o Archivo:</label>
-                            <input type="file" name="Pce_Imagen" accept="image/jpg,image/png,application/pdf">
+                            <input type="file" required name="Pce_Imagen" accept="image/jpg,image/png,application/pdf">
                         </div>
                     </div>
 

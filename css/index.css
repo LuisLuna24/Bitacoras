@@ -152,7 +152,7 @@ header {
 .Secion_Imagen {
     width: 100%;
     height: 100%;
-    background: linear-gradient(#000000a9, #000000a9),url("../img/Analisisfondo.webp")no-repeat;
+    background: linear-gradient(#00000073, #00000073),url("../img/Analisisfondo.webp")no-repeat;
     background-size: cover;
     background-position: center;
     display: flex;
@@ -163,7 +163,7 @@ header {
 }
 
 .Secion_Imagen img {
-    width: 30%;
+    width: 50%;
 }
 
 .Secion_Imagen h1{
