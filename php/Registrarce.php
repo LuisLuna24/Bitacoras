@@ -25,8 +25,8 @@ if($Area!=0){
             $num_Exist=pg_num_rows($queryExist);
             if($num_Exist==0){
                 $Insert="INSERT INTO public.usuario(
-                    id_usuario, nombre, apellido, id_area, correo, contrasena)
-                    VALUES ('$idUsuario', '$Nombre', '$Apellidos','$Area','$Correo','$Contraseña');";
+                    id_usuario, nombre, apellido, id_area, correo, contrasena,estado_usuario)
+                    VALUES ('$idUsuario', '$Nombre', '$Apellidos','$Area','$Correo','$Contraseña','1');";
                 $queryInsert=pg_query($conexion,$Insert);
                 echo 1;
             }else{

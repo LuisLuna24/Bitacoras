@@ -3,6 +3,26 @@ body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+/*==============Divisaor==============*/
+.custom-shape-divider-top-1700880565 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1700880565 svg {
+    position: relative;
+    display: block;
+    width: calc(139% + 1.3px);
+    height: 46px;
+}
+
+.custom-shape-divider-top-1700880565 .shape-fill {
+    fill: #75B841;
+}
 /*==============Cabesera==============*/
 
 .Cabecera_Contenedor {
@@ -157,6 +177,8 @@ input[type="text"]{
 .contraseña_boton {
     width: 100%;
     display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
+    gap: 10px;
     place-items: center;
     margin-top: 5px;
 }
@@ -168,4 +190,24 @@ input[type="text"]{
     .Contraseña_Contenedor{
         width: 100%;
     }
+}
+
+/*==============Modal Baja Usuario==============*/
+
+.Baja{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.452);
+    display: none;
+    place-items: center;
+}
+
+hr{
+    width: 100%;
+    height: 3px;
+    border: none;
+    background-color: #ad98fc;
 }
