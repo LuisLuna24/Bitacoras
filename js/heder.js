@@ -7,4 +7,5 @@ $(document).ready(function () {
     $("#Catalogos_Global").attr("href", "../Catalogos.php");
     $("#Salir_Global").attr("href", "../php/Cerrar.php");
     $("#Inicio_Global").attr("href", "../Principal.php");
+    $("#Administrador_Global").attr("href", "../Administrador.php");
 });

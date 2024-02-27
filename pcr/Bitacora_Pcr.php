@@ -206,5 +206,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="js/Buscar_Tabla_Especeies.js"></script>
 <script src="js/Buscar_Tabala_Equipos.js"></script>
 <script src="js/Buscar_Tabla_Pcr.js"></script>
+<script src="../js/heder.js"></script>
 
 <?php } ?>

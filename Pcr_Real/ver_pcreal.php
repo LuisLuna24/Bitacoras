@@ -66,7 +66,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 </body>
 </html>
 
-<script src="./js/scripts.js"></script>
+<script src="../js/heder.js"></script>
 <script src="./js/Buscar_VerPcreal.js"></script>
 
 <?php } ?>

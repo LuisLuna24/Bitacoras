@@ -153,5 +153,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Buscar_Analisis.js"></script>
 <script src="./js/Buscar_Equipo.js"></script>
 <script src="./js/Agregar_Equipo.js"></script>
+<script src="../js/heder.js"></script>
 
 <?php }  ?>

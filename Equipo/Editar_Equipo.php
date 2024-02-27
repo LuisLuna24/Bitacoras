@@ -80,5 +80,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Buscar_Area.js"></script>
 <script src="./js/Buscar_Actualizar_Equipo.js"></script>
 <script src="./js/Actualizar_Equipo.js"></script>
+<script src="../js/heder.js"></script>
 
 <?php }  ?>

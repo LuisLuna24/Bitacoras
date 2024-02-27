@@ -175,7 +175,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 <script src="js/Buscar_TabalaExtraccion.js"></script>
 <script src="js/Buscar_Datos.js"></script>
-<script src="./js/scripts.js"></script>
+<script src="../js/heder.js"></script>
 <script src="./js/Nueva_Extraccion.js"></script>
 <script src="./js/Nuevo_Equipo.js"></script>
 <?php }  ?>

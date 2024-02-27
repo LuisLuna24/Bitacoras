@@ -64,5 +64,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 <script src="./js/scripts.js"></script>
 <script src="./js/Buscar_Equipo_Baja.js"></script>
+<script src="../js/heder.js"></script>
 
 <?php }  ?>s

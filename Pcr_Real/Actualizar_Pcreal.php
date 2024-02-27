@@ -153,5 +153,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Agregar_Equipo_Actualizado.js"></script>
 <script src="./js/Agregar_Actualizar_Pcreal.js"></script>
 <script src="./js/Buscar_Vercion_Pcreal.js"></script>
+<script src="../js/heder.js"></script>
 
 <?php }  ?>

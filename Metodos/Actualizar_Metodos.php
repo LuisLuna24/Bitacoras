@@ -61,7 +61,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 
-<script src="js/scripts.js"></script>
+<script src="../js/heder.js"></script>
 <script src="js/Bucar_Metodo_Version.js"></script>
 <script src="js/Actualizar_Metodo.js"></script>
 <?php }  ?>

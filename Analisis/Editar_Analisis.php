@@ -60,7 +60,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 </html>
 
-<script src="./js/script.js"></script>
+<script src="../js/heder.js"></script>
 <script src="./js/Buscar_Actualizar_Analisis.js"></script>
 <script src="./js/Actualizar_Reactivo.js"></script>
 

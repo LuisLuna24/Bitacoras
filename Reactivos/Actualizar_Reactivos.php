@@ -121,6 +121,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Agregar_Reactivo_Vercion.js"></script>
 <script src="./js/Buscar_Tabala_VercionNueva.js"></script>
 <script src="./js/Buscar_Datos_Reactivos.js"></script>
+<script src="../js/heder.js"></script>
 
 
 <?php }  ?>
