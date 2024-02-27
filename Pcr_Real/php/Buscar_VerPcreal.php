@@ -2,7 +2,7 @@
 require "../../php/conexion.php";
 
 
-$columns=['admin.nombre','admin.apellido','id_folio', 'folio_pcreal.id_version_bitacora', 'folio_pcreal.version_bitacora', 'fecha_creacion', 'version_folio','nombre_version'];
+$columns=['admin.nombre','admin.apellido','folio_pcreal.id_folio', 'folio_pcreal.id_version_bitacora', 'folio_pcreal.version_bitacora', 'fecha_creacion', 'folio_pcreal.version_folio','nombre_version'];
 
 $table="folio_pcreal ";
 
@@ -11,9 +11,10 @@ $id= 'folio_pcreal.id_folio';
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
 $join="INNER JOIN version_bitacora on version_bitacora.id_vercion_bitacora=folio_pcreal.id_version_bitacora
-    LEFT JOIN admin on admin.id_admin=folio_pcreal.id_admin";
+    LEFT JOIN admin on admin.id_admin=folio_pcreal.id_admin
+    INNER JOIN bitacora_pcreal on bitacora_pcreal.id_folio=folio_pcreal.id_folio";
 
-$where = "WHERE folio_pcreal.id_folio::text ILIKE '%" . $campo . "%' or folio_pcreal.fecha_creacion::text ILIKE '%" . $campo . "%' ";
+$where = "WHERE folio_pcreal.id_folio::text ILIKE '%" . $campo . "%' or folio_pcreal.fecha_creacion::text ILIKE '%" . $campo . "%' or id_pcreal::text ILIKE '%" . $campo . "%' ";
 
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;

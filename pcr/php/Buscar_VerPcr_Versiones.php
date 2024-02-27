@@ -4,7 +4,6 @@ session_start();
 
 $Folio=$_SESSION['No_Folio_Ver'];
 
-$Version=$_SESSION['VersionMax'];
 
 $columns=['nombre_version','fecha_creacion','admin.apellido','admin.nombre','id_pcr', 'no_registro', 'version_pcr', 'bitacora_pcr.id_folio', 'identificador_bitacora', 'id_analisis', 'fecha', 'agarosa', 'voltage', 'tiempo', 'sanitizo', 'tiempouv', 'id_especie_pcr', 'identificador_especie', 'version_especie', 'archivo', 'resultado', 'id_equipo_pcr', 'identificador_equipo', 'version_equipo', 'id_usuario', 'bitacora_pcr.id_admin', 'bitacora_pcr.version_folio'];
 

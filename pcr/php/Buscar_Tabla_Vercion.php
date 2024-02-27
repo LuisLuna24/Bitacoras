@@ -4,7 +4,7 @@ session_start();
 
 //Permite visualizar la tabla de nuevo registro de pcr
 
-$Folio=$_SESSION["Pcr_Folio"];
+$Folio=$_SESSION["No_Folio_Ver"];
 $RegistroPcr=$_SESSION['RegistroPcr'];
 
 

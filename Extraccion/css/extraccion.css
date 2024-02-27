@@ -20,7 +20,7 @@ caption{
   .bit_extraccion_contenedor {
     width: 100%;
     height: 100%;
-    padding: 50px;
+    padding: 0px 50px;
   }
 
 @media (max-width: 768px){

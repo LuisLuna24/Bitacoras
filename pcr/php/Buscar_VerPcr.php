@@ -13,7 +13,7 @@ $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): nu
 $join="LEFT JOIN bitacora_pcr on bitacora_pcr.id_folio = folio_pcr.id_folio LEFT JOIN admin on admin.id_admin = bitacora_pcr.id_admin
 LEFT JOIN version_bitacora on version_bitacora.id_vercion_bitacora= folio_pcr.id_version_bitacora ";
 
-$where = "WHERE folio_pcr.id_folio::text ILIKE '%" . $campo . "%' ";
+$where = "WHERE folio_pcr.id_folio::text ILIKE '%" . $campo . "%' or id_pcr::text ILIKE '%" . $campo . "%'  ";
 
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
