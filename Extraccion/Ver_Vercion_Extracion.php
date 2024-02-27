@@ -9,7 +9,7 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
-}else{  ?>
+}else if($_SESSION['Nivel']==2){    ?>
 
 
 
@@ -93,4 +93,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Ver_Datos_Vercion.js"></script>
 <script src="./js/Ver_Equipo_Vercion.js"></script>
 
-<?php }  ?>
+<?php }else {
+    header("location:../Bitacoras.php");
+}  ?>

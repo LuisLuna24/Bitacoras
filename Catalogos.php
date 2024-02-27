@@ -4,9 +4,10 @@ session_start();
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
+$_SESSION['Nivel'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:index.php");
-}else{  ?>
+}else if($_SESSION['Nivel']==2){  ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -94,4 +95,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 
-<?php }  ?>
+<?php }else {
+    header("location:Bitacoras.php");
+}  ?>

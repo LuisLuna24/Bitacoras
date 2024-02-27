@@ -10,7 +10,7 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
-}else{  ?>
+}else if($_SESSION['Nivel']==2){   ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -92,4 +92,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Buscar_Tabla_Vercion.js"></script>
 <script src="./js/Buscar_Equipos_Version.js"></script>
 <script src="../js/heder.js"></script>
-<?php }  ?>
+<?php }else {
+    header("location:../Bitacoras.php");
+}  ?>

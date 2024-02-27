@@ -20,6 +20,7 @@ if(pg_num_rows($consulta)!=0){
         $_SESSION['nombre']=$row['nombre'];
         $_SESSION['apellido']=$row['apellido'];
         $_SESSION['area']=$row['id_area'];
+        $_SESSION['Nivel']=$row['nivel_usuario'];
         echo 1;
     }else{
         echo 2;

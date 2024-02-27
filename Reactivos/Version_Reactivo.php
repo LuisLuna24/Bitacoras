@@ -76,4 +76,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Buscar_Datos_Vercion.js"></script>
 
 
-<?php }  ?>
+<?php }else {
+    header("location:../Bitacoras.php");
+}  ?>
