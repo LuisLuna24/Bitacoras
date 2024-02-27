@@ -4,7 +4,7 @@ require "../../php/conexion.php";
 //Permite ver la tabla paginada de la seccion Ver Reactivos 
 
 //Columnas que se desea Consultar
-$columns=['admin.id_admin','folio_bitacora','folio_reactivo.id_folio', 'folio_reactivo.version_folio', 'folio_reactivo.id_version_bitacora', 'folio_reactivo.version_bitacora', 'fecha_creacion','admin.nombre','admin.apellido','nombre_version'];
+$columns=['usuario.id_usuario','folio_bitacora','folio_reactivo.id_folio', 'folio_reactivo.version_folio', 'folio_reactivo.id_version_bitacora', 'folio_reactivo.version_bitacora', 'fecha_creacion','usuario.nombre','usuario.apellido','nombre_version'];
 //Tabla que se desea consultar 
 $table="folio_reactivo";
 //Conteo para paginacion
@@ -13,7 +13,7 @@ $id= 'id_folio';
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
 $join="INNER JOIN bitacora_reactivos on bitacora_reactivos.id_folio = folio_reactivo.id_folio
-        LEFT JOIN admin on admin.id_admin=bitacora_reactivos.id_admin
+        LEFT JOIN usuario on usuario.id_usuario=bitacora_reactivos.id_admin
         INNER JOIN version_bitacora on version_bitacora.id_vercion_bitacora =folio_reactivo.id_version_bitacora";
 
 $where = "WHERE folio_reactivo.id_folio::text ILIKE '%" . $campo . "%' OR fecha_creacion::text ILIKE '%" . $campo . "%'";

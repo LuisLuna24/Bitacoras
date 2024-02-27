@@ -5,7 +5,7 @@ require "../../php/conexion.php";
 
 //Columnas que se desean consultar 
 $table="folio_extraccion ";
-$columns=['nombre_version','admin.apellido','admin.nombre','folio_extraccion.id_folio', 'folio_extraccion.id_version_bitacora', 'folio_extraccion.version_bitacora', 'fecha_creacion', 'folio_extraccion.version_folio','folio_extraccion.id_admin'];
+$columns=['nombre_version','usuario.apellido','usuario.nombre','folio_extraccion.id_folio', 'folio_extraccion.id_version_bitacora', 'folio_extraccion.version_bitacora', 'fecha_creacion', 'folio_extraccion.version_folio','folio_extraccion.id_admin'];
 //Tabla que se desea consultar
 $table="folio_extraccion ";
 //Columna que se desea contar para la paginacion
@@ -15,7 +15,7 @@ $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): nu
 
 //Consultas JOIN se realizan todas las consultas JOIN
 $join="INNER JOIN version_bitacora on version_bitacora.id_vercion_bitacora = folio_extraccion.id_version_bitacora
-LEFT JOIN admin on admin.id_admin=folio_extraccion.id_admin
+LEFT JOIN usuario on usuario.id_usuario=folio_extraccion.id_admin
 INNER JOIN bitacora_extraccion on bitacora_extraccion.id_folio=folio_extraccion.id_folio";
 
 //Consultas Where 

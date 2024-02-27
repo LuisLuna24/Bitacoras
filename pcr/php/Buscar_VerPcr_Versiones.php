@@ -5,7 +5,7 @@ session_start();
 $Folio=$_SESSION['No_Folio_Ver'];
 
 
-$columns=['nombre_version','fecha_creacion','admin.apellido','admin.nombre','id_pcr', 'no_registro', 'version_pcr', 'bitacora_pcr.id_folio', 'identificador_bitacora', 'id_analisis', 'fecha', 'agarosa', 'voltage', 'tiempo', 'sanitizo', 'tiempouv', 'id_especie_pcr', 'identificador_especie', 'version_especie', 'archivo', 'resultado', 'id_equipo_pcr', 'identificador_equipo', 'version_equipo', 'id_usuario', 'bitacora_pcr.id_admin', 'bitacora_pcr.version_folio'];
+$columns=['nombre_version','fecha_creacion','usuario.apellido','usuario.nombre','id_pcr', 'no_registro', 'version_pcr', 'bitacora_pcr.id_folio', 'identificador_bitacora', 'id_analisis', 'fecha', 'agarosa', 'voltage', 'tiempo', 'sanitizo', 'tiempouv', 'id_especie_pcr', 'identificador_especie', 'version_especie', 'archivo', 'resultado', 'id_equipo_pcr', 'identificador_equipo', 'version_equipo', 'usuario.id_usuario', 'bitacora_pcr.id_admin', 'bitacora_pcr.version_folio'];
 
 $table="bitacora_pcr";
 
@@ -14,7 +14,7 @@ $id= 'id_pcr';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="LEFT JOIN admin on admin.id_admin = bitacora_pcr.id_admin
+$join="LEFT JOIN usuario on usuario.id_usuario = bitacora_pcr.id_admin
 INNER JOIN folio_pcr on folio_pcr.id_folio = bitacora_pcr.id_folio
 INNER JOIN version_bitacora on version_bitacora.id_vercion_bitacora = folio_pcr.id_version_bitacora";
 

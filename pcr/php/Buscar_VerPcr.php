@@ -2,7 +2,7 @@
 require "../../php/conexion.php";
 
 
-$columns=['nombre_version','admin.nombre','admin.apellido','bitacora_pcr.id_admin','folio_pcr.id_folio', 'folio_pcr.id_version_bitacora', 'folio_pcr.version_bitacora', 'fecha_creacion', 'folio_pcr.version_folio'];
+$columns=['nombre_version','usuario.nombre','usuario.apellido','bitacora_pcr.id_admin','folio_pcr.id_folio', 'folio_pcr.id_version_bitacora', 'folio_pcr.version_bitacora', 'fecha_creacion', 'folio_pcr.version_folio'];
 
 $table="folio_pcr";
 
@@ -10,7 +10,8 @@ $id= 'folio_pcr.id_folio';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="LEFT JOIN bitacora_pcr on bitacora_pcr.id_folio = folio_pcr.id_folio LEFT JOIN admin on admin.id_admin = bitacora_pcr.id_admin
+$join="LEFT JOIN bitacora_pcr on bitacora_pcr.id_folio = folio_pcr.id_folio
+LEFT JOIN usuario on usuario.id_usuario = bitacora_pcr.id_admin
 LEFT JOIN version_bitacora on version_bitacora.id_vercion_bitacora= folio_pcr.id_version_bitacora ";
 
 $where = "WHERE folio_pcr.id_folio::text ILIKE '%" . $campo . "%' or id_pcr::text ILIKE '%" . $campo . "%'  ";

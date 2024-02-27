@@ -9,7 +9,7 @@ if(isset($_GET['No_Folio'])){
 }
 
 
-$columns=['apellido','admin.nombre','version_pcreal', 'identificador_bitacora', 'bitacora_pcreal.id_folio','fecha_creacion','version_bitacora.nombre_version'];
+$columns=['usuario.apellido','usuario.nombre','version_pcreal', 'identificador_bitacora', 'bitacora_pcreal.id_folio','fecha_creacion','version_bitacora.nombre_version'];
 
 $table="bitacora_pcreal ";
 
@@ -19,7 +19,7 @@ $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): nu
 
 $join="INNER JOIN folio_pcreal on folio_pcreal.id_folio=bitacora_pcreal.id_folio 
 INNER JOIN version_bitacora on version_bitacora.id_vercion_bitacora=folio_pcreal.id_version_bitacora
-LEFT JOIN admin on admin.id_admin = bitacora_pcreal.id_admin";
+LEFT JOIN usuario on usuario.id_usuario = bitacora_pcreal.id_admin";
 
 $where = "WHERE bitacora_pcreal.id_folio::text ILIKE '%" . $campo . "%' and bitacora_pcreal.id_folio = '$Folio'  ";
 

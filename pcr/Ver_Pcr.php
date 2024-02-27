@@ -7,7 +7,7 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
-}else if($_SESSION['Nivel']==2){   ?>
+}else{   ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -70,6 +70,4 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Buscar_VerPcr.js"></script>
 <script src="../js/heder.js"></script>
 
-<?php }else {
-    header("location:../Bitacoras.php");
-}  ?>
+<?php }  ?>
