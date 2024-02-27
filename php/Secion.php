@@ -12,7 +12,7 @@ $consulta=pg_query($conexion,$Buscar);
 if(pg_num_rows($consulta)!=0){
     $ContrasenaDes=$_POST['In_Contrasena'];
     $Contraseña=$encriptar($ContrasenaDes);
-    $BuscarUsu="SELECT * FROM usuario WHERE correo = '$Correo' and contrasena = '$Contraseña'";
+    $BuscarUsu="SELECT * FROM usuario WHERE correo = '$Correo' and contrasena = '$Contraseña' and estado_usuario='1'";
     $consulta=pg_query($conexion,$BuscarUsu);
     if(pg_num_rows($consulta)!=0){
         $row=pg_fetch_assoc($consulta);
