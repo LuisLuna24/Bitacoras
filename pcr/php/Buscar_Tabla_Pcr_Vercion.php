@@ -4,7 +4,7 @@ session_start();
 
 //Permite visualizar la tabla de nuevo registro de pcr
 
-$Folio=$_SESSION["Pcr_Folio"];
+$Folio=$_SESSION["No_Folio"];
 $Version=$_SESSION['VersionMax'];
 
 
@@ -18,7 +18,7 @@ $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): nu
 
 $join="INNER JOIN analisis on analisis.id_analisis=bitacora_pcr.id_analisis";
 
-$where = "WHERE id_pcr::text ILIKE '%" . $campo . "%' and id_folio = '$Folio' and version_pcr='$Version'";
+$where = "WHERE id_pcr::text ILIKE '%" . $campo . "%' and id_folio::text = '$Folio' and version_pcr::text='$Version'";
 
 
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;

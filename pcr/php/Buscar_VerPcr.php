@@ -2,7 +2,7 @@
 require "../../php/conexion.php";
 
 
-$columns=['nombre_version','usuario.nombre','usuario.apellido','bitacora_pcr.id_admin','folio_pcr.id_folio', 'folio_pcr.id_version_bitacora', 'folio_pcr.version_bitacora', 'fecha_creacion', 'folio_pcr.version_folio'];
+$columns=['version_pcr','nombre_version','usuario.nombre','usuario.apellido','bitacora_pcr.id_admin','folio_pcr.id_folio', 'folio_pcr.id_version_bitacora', 'folio_pcr.version_bitacora', 'fecha_creacion', 'folio_pcr.version_folio'];
 
 $table="folio_pcr";
 
@@ -34,7 +34,7 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 $sql="SELECT DISTINCT on (folio_pcr.id_folio) " . implode(", ",$columns) . "
 FROM $table 
 $join
-$where ORDER BY folio_pcr.id_folio ASC
+$where ORDER BY folio_pcr.id_folio ASC,version_pcr DESC
 $sLimit ";
 
 $resultado=pg_query($conexion,$sql);

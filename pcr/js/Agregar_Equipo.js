@@ -9,15 +9,19 @@ $(document).ready(function () {
             contentType: false,
             processData:false,
             success: function (response) {
-                alert(response);
-                $.ajax({
-                    type: "POST",
-                    url: "php/Buscar_Tabala_Equipos.php",
-                    dataType: "html",
-                    success: function (response) {
-                        $("#Tabala_Equipos").html(response);
-                    }
-                });
+                if(response==1){
+                    alert('Equipo agregado');
+                    $.ajax({
+                        type: "POST",
+                        url: "php/Buscar_Tabala_Equipos.php",
+                        dataType: "html",
+                        success: function (response) {
+                            $("#Tabala_Equipos").html(response);
+                        }
+                    });
+                }else if(response==3){
+                    alert('Equipo ya agregado');
+                }
             }
         })
     });

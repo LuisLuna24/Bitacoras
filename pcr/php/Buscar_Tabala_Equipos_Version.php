@@ -3,13 +3,13 @@ require "../../php/conexion.php";
 session_start();
 
 
-$Folio=$_SESSION["Pcr_Folio"];
+$Folio=$_SESSION["No_Folio"];
 $Version=$_SESSION['VersionMax'];
 
 //Permite ver las especies agregadas 
 $Buscar="SELECT id_equipo_pcr, equipo_pcr.identificador, version_equipo_pcr, equipo.id_equipo, version_equipo, ver_equipo_pcr, equipo.nombre
 FROM public.equipo_pcr INNER JOIN equipo on equipo.id_equipo = equipo_pcr.id_equipo
-where id_equipo_pcr='$Folio' and version_equipo_pcr='$Version';";
+where id_equipo_pcr::text='$Folio' and version_equipo_pcr='$Version';";
 $query=pg_query($conexion,$Buscar);
 
 $html="";

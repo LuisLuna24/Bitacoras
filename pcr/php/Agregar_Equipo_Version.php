@@ -2,7 +2,7 @@
 require "../../php/conexion.php";
 session_start();
 
-$Folio=$_SESSION["Pcr_Folio"];
+$Folio=$_SESSION['No_Folio'];
 $Version=$_SESSION['VersionMax'];
 
 $Equipo=$_POST['Pcr_Equipo'];
@@ -18,16 +18,22 @@ $Especiequery=pg_query($conexion,$Especiemax);
 $rowesp=pg_fetch_assoc($Especiequery);
 $versionespe=$rowesp['max'];
 
-//Realiza la insercion en caso de no manda error 
-try{
-    $Ver_equipo=$Folio.$Version;
-    $Insertar="INSERT INTO public.equipo_pcr(
-        id_equipo_pcr, identificador, version_equipo_pcr, id_equipo, version_equipo, ver_equipo_pcr)
-        VALUES ('$Folio', '$Identificador', '$Version', '$Equipo', '$versionespe', '$Ver_equipo');";
-    pg_query($conexion,$Insertar);
-    echo 1;
-}catch(Exception $e){
-    echo "Se produjo un error: " . $e->getMessage();
-}
+$BuscarExistente="SELECT id_equipo FROM equipo_pcr where id_equipo='$Equipo'";
+$Existente=pg_query($conexion,$BuscarExistente);
 
+if(pg_num_rows($Existente)==0){
+    //Realiza la insercion en caso de no manda error 
+    try{
+        $Ver_equipo=$Folio.$Version;
+        $Insertar="INSERT INTO public.equipo_pcr(
+            id_equipo_pcr, identificador, version_equipo_pcr, id_equipo, version_equipo, ver_equipo_pcr)
+            VALUES ('$Folio', '$Identificador', '$Version', '$Equipo', '$versionespe', '$Ver_equipo');";
+        pg_query($conexion,$Insertar);
+        echo 1;
+    }catch(Exception $e){
+        echo "Se produjo un error: " . $e->getMessage();
+    }
+}else{
+    echo 3;
+}
 ?>

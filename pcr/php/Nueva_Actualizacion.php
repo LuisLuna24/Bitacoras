@@ -3,6 +3,7 @@ require "../../php/conexion.php";
 session_start();
 
 $Folio=$_GET["No_Folio"];
+$_SESSION['No_Folio']=$_GET["No_Folio"];
 
 //Buscar la version maxima del folio 
 $BuscarMax="SELECT MAX(version_folio) FROM folio_pcr where id_folio='$Folio';";

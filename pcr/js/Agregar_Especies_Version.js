@@ -16,7 +16,7 @@ $(document).ready(function () {
                     //Actualiza la tabla de especies 
                     $.ajax({
                         type: "POST",
-                        url: "php/Buscar_Tabla_Especeies.php",
+                        url: "php/Buscar_Tabla_Especeies_Version.php",
                         dataType: "html",
                         success: function (response) {
                             $("#Tabala_Especie").html(response);

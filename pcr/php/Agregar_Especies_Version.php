@@ -2,7 +2,7 @@
 require "../../php/conexion.php";
 session_start();
 
-$Folio=$_SESSION["Pcr_Folio"];
+$Folio=$_SESSION['No_Folio'];
 $Version=$_SESSION['VersionMax'];
 
 $Especie=$_POST['Pcr_Espceie'];
@@ -11,7 +11,7 @@ $No_Registro=$_POST['Pcr_Registros'];
 $_SESSION['No_Registro']=$_POST['Pcr_Registros'];
 
 //Buscar Identificador maximo
-$Canmax="SELECT MAX(identificador_especie) FROM especie_pcr where id_especie_pcr='$Folio' and no_registro::text='$No_Registro' and version_especie_pcr='$Version'";
+$Canmax="SELECT MAX(identificador_especie) FROM especie_pcr where id_especie_pcr::text='$Folio' and no_registro::text='$No_Registro' and version_especie_pcr='$Version'";
 $Canquery=pg_query($conexion,$Canmax);
 $rowcan=pg_fetch_assoc($Canquery);
 $Identificador=$rowcan['max']+1;

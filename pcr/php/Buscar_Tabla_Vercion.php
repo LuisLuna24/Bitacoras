@@ -48,7 +48,7 @@ $num_rows=pg_num_rows($resultado);
 
 //Consulta para total registross
 
-$sqlTotal="SELECT count($id) FROM $table ";
+$sqlTotal="SELECT count(DISTINCT $id) FROM $table ";
 $resTotal=pg_query($conexion,$sqlTotal);
 $row_total=pg_fetch_array($resTotal);
 $totalRegistros = $row_total[0];

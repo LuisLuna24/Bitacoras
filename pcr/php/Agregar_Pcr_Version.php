@@ -3,7 +3,8 @@ require "../../php/conexion.php";
 session_start();
 
 //Folio del nuevo registro
-$Folio=$_SESSION["Pcr_Folio"];
+$Folio=$_SESSION['No_Folio'];
+
 $Version=$_SESSION['VersionMax'];
 //Id del usuario
 $Usuario=$_SESSION['id_usuario'];

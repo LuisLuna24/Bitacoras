@@ -9,7 +9,7 @@ $columns=['nombre_version','fecha_creacion','usuario.apellido','usuario.nombre',
 
 $table="bitacora_pcr";
 
-$id= 'id_pcr';
+$id= 'id_folio';
 
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
@@ -47,7 +47,7 @@ $num_rows=pg_num_rows($resultado);
 
 //Consulta para total registros
 
-$sqlTotal="SELECT count($id) FROM $table ";
+$sqlTotal="SELECT  count(DISTINCT $id) FROM $table ";
 $resTotal=pg_query($conexion,$sqlTotal);
 $row_total=pg_fetch_array($resTotal);
 $totalRegistros = $row_total[0];
@@ -60,10 +60,10 @@ $output['paginacion'] = '';
 
 if($num_rows>0){
     while($row=pg_fetch_array($resultado)){
-        if($row['id_admin']==''){
-            $Eliminar='<a href="./php/Eliminar_Folio.php?No_FoloEliminar='. $row['id_folio']. '">Eliminar</a>';
+        if($_SESSION['Nivel']==2){
+            $Validar='<a href="./php/Validar_folio.php?Validar='. $row['identificador_bitacora']. '">Validar</a>';
         }else{
-            $Eliminar='';
+            $Validar='';
         }
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['id_folio'].'</td>';
@@ -72,6 +72,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['nombre_version'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'].'</td>';
         $output['data'].='<td><a href="Version_Pcr.php?RegistroPcr='. $row['identificador_bitacora']. '">Ver</a></td>';
+        $output['data'].='<td>'.$Validar.'</td>';
         $output['data'].='</tr>';
     }
 }else{
