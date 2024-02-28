@@ -45,7 +45,7 @@ $num_rows=pg_num_rows($resultado);
 
 //Consulta para total registros
 
-$sqlTotal="SELECT count($id) FROM $table ";
+$sqlTotal="SELECT count($id) FROM $table where identificador_bitacora='$VersionPcr'";
 $resTotal=pg_query($conexion,$sqlTotal);
 $row_total=pg_fetch_array($resTotal);
 $totalRegistros = $row_total[0];

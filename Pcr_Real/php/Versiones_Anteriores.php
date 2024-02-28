@@ -1,5 +1,8 @@
 <?php
 require "../../php/conexion.php";
+
+//Permite ber registros de verciones ateriores de un folio
+
 session_start();
 
 if(isset($_GET['No_Folio'])){
@@ -9,11 +12,11 @@ if(isset($_GET['No_Folio'])){
 }
 
 
-$columns=['usuario.apellido','usuario.nombre','version_pcreal', 'identificador_bitacora', 'bitacora_pcreal.id_folio','fecha_creacion','version_bitacora.nombre_version'];
+$columns=['bitacora_pcreal.id_admin','usuario.apellido','usuario.nombre','version_pcreal', 'identificador_bitacora', 'bitacora_pcreal.id_folio','fecha_creacion','version_bitacora.nombre_version'];
 
 $table="bitacora_pcreal ";
 
-$id= 'id_pcreal';
+$id= 'version_pcreal';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
@@ -51,7 +54,7 @@ $num_rows=pg_num_rows($resultado);
 
 //Consulta para total registros
 
-$sqlTotal="SELECT count($id) FROM $table ";
+$sqlTotal="SELECT count(DISTINCT $id) FROM $table ";
 $resTotal=pg_query($conexion,$sqlTotal);
 $row_total=pg_fetch_array($resTotal);
 $totalRegistros = $row_total[0];
@@ -64,6 +67,11 @@ $output['paginacion'] = '';
 
 if($num_rows>0){
     while($row=pg_fetch_array($resultado)){
+        if($_SESSION['Nivel']==2){
+            $Validar='<a href="./php/Validar_folio.php?Validar='. $row['identificador_bitacora']. '">Validar</a>';
+        }else{
+            $Validar='';
+        }
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['id_folio'] .'</td>';
         $output['data'].='<td>'. $row['version_pcreal'] .'</td>';
@@ -71,6 +79,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['nombre_version'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] . " " . $row['apellido'] .'</td>';
         $output['data'].='<td><a href="./Ver_VersionPcreal.php?Version_Vitacora='. $row['identificador_bitacora']. '">Ver</a></td>';
+        $output['data'].='<td>'. $Validar. '</td>';
         $output['data'].='</tr>';
     }
 }else{

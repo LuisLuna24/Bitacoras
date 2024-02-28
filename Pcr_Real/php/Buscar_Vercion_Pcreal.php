@@ -14,7 +14,7 @@ $columns=['analisis.nombre','id_pcreal', 'no_registro', 'version_pcreal', 'ident
 
 $table="bitacora_pcreal ";
 
-$id= 'id_folio';
+$id= 'identificador_bitacora';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
@@ -52,7 +52,7 @@ $num_rows=pg_num_rows($resultado);
 
 //Consulta para total registros
 
-$sqlTotal="SELECT count(CASE WHEN id_folio::text='$id' and version_pcreal='$Vercion' THEN 1 END) FROM bitacora_pcreal;";
+$sqlTotal="SELECT count(DISTINCT $id) FROM bitacora_pcreal;";
 $resTotal=pg_query($conexion,$sqlTotal);
 $row_total=pg_fetch_array($resTotal);
 $totalRegistros = $row_total[0];

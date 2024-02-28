@@ -2,7 +2,12 @@
 ob_start();
 session_start();
 
-$_SESSION['Folio_VercionPcreal']=$_GET['No_Folio'];
+if(isset($_GET['No_Folio'])){
+    $_SESSION['Folio_VercionPcreal']=$_GET['No_Folio'];
+}else{
+    $_SESSION['Folio_VercionPcreal'];
+}
+
 
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
@@ -55,6 +60,9 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Bitacora</th>
                             <th>Revisó</th>
                             <th>Ver Bitacora</th>
+                            <?php if($_SESSION['Nivel']==2){ ?>
+                                    <th>Revisado</th>
+                            <?php  } ?>
                         </thead>
                         <tbody id="content"></tbody>
                     </table>
