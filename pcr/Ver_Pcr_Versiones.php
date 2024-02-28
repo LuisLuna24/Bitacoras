@@ -62,7 +62,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Versiones anteriores</th>
                             <?php if($_SESSION['Nivel']==2){ ?>
                                     <th>Revisado</th>
-                                <?php  } ?>
+                            <?php  } ?>
                         </thead>
                         <tbody id="content"></tbody>
                     </table>
