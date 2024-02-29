@@ -1,6 +1,7 @@
 //Modifica las rutas del navbar y logo
 $(document).ready(function () {
     $(".logo_gis").attr("src", "../img/Gsmall.webp");
+    $("#Imagen_footer").attr("src", "../img/Smallfooterlogo.webp");
     $(".bx").attr("src", "../img/menuahambuegesa.webp");
     $("#Bitacoras_Global").attr("href", "../Bitacoras.php");
     $("#Inventario_Global").attr("href", "../Inventarios.php");
