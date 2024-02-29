@@ -5,7 +5,7 @@ session_start();
 //Permite ver la tabla paginada de la seccion Ver Reactivos 
 $VersionFolio=$_SESSION["Folio_Reactivo"];
 //Columnas que se desea Consultar
-$columns=['version_bir_reactivo','identificador_bitacora','admin.id_admin','folio_bitacora','folio_reactivo.id_folio', 'folio_reactivo.version_folio', 'folio_reactivo.id_version_bitacora', 'folio_reactivo.version_bitacora', 'fecha_creacion','admin.nombre','admin.apellido','nombre_version'];
+$columns=['nombre_version','nombre','apellido','fecha_creacion','version_bit_reactivo','id_bit_reactivo', 'version_bit_reactivo', 'no_reactivo', 'identificador_bitacora', 'folio_reactivo.id_folio', 'folio_reactivo.version_folio', 'id_reactivo', 'version_reactivo', 'fecha_apertura', 'fecha_caducidad', 'folio_bitacora', 'folio_reactivo.id_version_bitacora', 'folio_reactivo.version_bitacora', 'bitacora_reactivos.id_admin'];
 //Tabla que se desea consultar 
 $table="folio_reactivo";
 //Conteo para paginacion
@@ -14,7 +14,7 @@ $id= 'id_folio';
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
 $join="INNER JOIN bitacora_reactivos on bitacora_reactivos.id_folio = folio_reactivo.id_folio
-        LEFT JOIN admin on admin.id_admin=bitacora_reactivos.id_admin
+        LEFT JOIN usuario on usuario.id_usuario=bitacora_reactivos.id_admin
         INNER JOIN version_bitacora on version_bitacora.id_vercion_bitacora =folio_reactivo.id_version_bitacora";
 
 $where = "WHERE folio_reactivo.id_folio::text ILIKE '%" . $campo . "%' OR fecha_creacion::text ILIKE '%" . $campo . "%' and folio_reactivo.id_folio='$VersionFolio'";
@@ -31,10 +31,10 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-$sql="SELECT DISTINCT on (version_bir_reactivo) " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (version_bit_reactivo) " . implode(", ",$columns) . "
 FROM $table
 $join
-$where ORDER BY version_bir_reactivo ASC
+$where ORDER BY version_bit_reactivo ASC
 $sLimit";
 
 
@@ -56,17 +56,18 @@ $output['paginacion'] = '';
 
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
-        if($row['id_admin']==''){
-            $Eliminar='<a href="./php/Eliminar_VerReactivo.php?No_Folio='. $row['id_folio']. '">Eliminar</a>';
+        if($_SESSION['Nivel']==2){
+            $Validar='<a href="./php/Validar_folio.php?Validar='. $row['identificador_bitacora']. '">Validar</a>';
         }else{
-            $Eliminar='';
+            $Validar='';
         }
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['version_bir_reactivo'] .'</td>';
+        $output['data'].='<td>'. $row['version_bit_reactivo'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'] .' Folio:'.$row['folio_bitacora'] .'</td>';
         $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'] .'</td>';
         $output['data'].='<td><a href="Version_Reactivo.php?Bitacora='.$row['identificador_bitacora'].'">Ver</a></td>';
+        $output['data'].='<td>'. $Validar .'</td>';
         $output['data'].='</tr>';
     }
 }else{

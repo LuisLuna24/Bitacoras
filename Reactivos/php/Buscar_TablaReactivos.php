@@ -30,7 +30,7 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-$sql="SELECT DISTINCT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (id_folio) " . implode(", ",$columns) . "
 FROM $table
 $join
 $where ORDER BY id_folio ASC
@@ -55,11 +55,7 @@ $output['paginacion'] = '';
 
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
-        if($row['id_admin']==''){
-            $Eliminar='<a href="./php/Eliminar_VerReactivo.php?No_Folio='. $row['id_folio']. '">Eliminar</a>';
-        }else{
-            $Eliminar='';
-        }
+        
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['id_folio'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'] .' Folio:'.$row['folio_bitacora'] .'</td>';
