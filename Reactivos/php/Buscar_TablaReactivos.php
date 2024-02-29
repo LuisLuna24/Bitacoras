@@ -4,7 +4,7 @@ require "../../php/conexion.php";
 //Permite ver la tabla paginada de la seccion Ver Reactivos 
 
 //Columnas que se desea Consultar
-$columns=['usuario.id_usuario','folio_bitacora','folio_reactivo.id_folio', 'folio_reactivo.version_folio', 'folio_reactivo.id_version_bitacora', 'folio_reactivo.version_bitacora', 'fecha_creacion','usuario.nombre','usuario.apellido','nombre_version'];
+$columns=['usuario.id_usuario','version_bit_reactivo','folio_bitacora','folio_reactivo.id_folio', 'folio_reactivo.version_folio', 'folio_reactivo.id_version_bitacora', 'folio_reactivo.version_bitacora', 'fecha_creacion','usuario.nombre','usuario.apellido','nombre_version'];
 //Tabla que se desea consultar 
 $table="folio_reactivo";
 //Conteo para paginacion
@@ -33,7 +33,7 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 $sql="SELECT DISTINCT on (id_folio) " . implode(", ",$columns) . "
 FROM $table
 $join
-$where ORDER BY id_folio ASC
+$where GROUP BY " . implode(", ",$columns) . " ORDER BY id_folio ASC,version_bit_reactivo DESC 
 $sLimit";
 
 
