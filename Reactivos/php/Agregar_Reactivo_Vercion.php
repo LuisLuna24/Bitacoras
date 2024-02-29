@@ -41,8 +41,8 @@ $version_bitacora=$rowTipo['max'];
 
 $Identificador=$Folio.$VercionMax;
 $Insertar="INSERT INTO public.bitacora_reactivos(
-	id_bit_reactivo, version_bir_reactivo, no_reactivo, identificador_bitacora, id_folio, version_folio, id_reactivo, version_reactivo, fecha_apertura, fecha_caducidad, folio_bitacora, version_folio_bitacora, id_version_bitacora, version_bitacora,id_usuario)
-	VALUES ('$Folio', '$VercionMax', '$No', '$Identificador', '$Folio', '1', '$Reactivo', '$version_reactivo', '$Apertura', '$Caducidad', '$FolioReactivo', '1', '$Tipo_Bitacora', '$version_bitacora','$id_Usuario');";
+	id_bit_reactivo, version_bit_reactivo, no_reactivo, identificador_bitacora, id_folio, version_folio, id_reactivo, version_reactivo, fecha_apertura, fecha_caducidad, folio_bitacora, id_version_bitacora, version_bitacora, id_usuario)
+	VALUES ('$No', '$VercionMax', '$No', '$Identificador', '$Folio', '$VercionMax', '$Reactivo', '$version_reactivo', '$Apertura', '$Caducidad', '$FolioReactivo','$Tipo_Bitacora', '$version_bitacora', '$id_Usuario');";
 pg_query($conexion,$Insertar);
 
 

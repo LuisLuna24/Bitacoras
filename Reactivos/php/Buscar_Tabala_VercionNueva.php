@@ -6,7 +6,8 @@ session_start();
 //Visualizar tabla de nuevo registro en nueva vercion en bitacora de Reactivos
 
 //folio de bitacora
-$folio=$_SESSION["Folio_Reactivo"];
+$folio=$_SESSION["Reactivo"];
+$Vercion=$_SESSION["VercionMax"];
 //Columnas a consultar
 $columns=['nombre','nombre_version','lote','id_bit_reactivo', 'version_bit_reactivo', 'no_reactivo', 'identificador_bitacora', 'id_folio', 'version_folio', 'bitacora_reactivos.id_reactivo', 'bitacora_reactivos.version_reactivo', 'fecha_apertura', 'bitacora_reactivos.fecha_caducidad', 'folio_bitacora', 'id_version_bitacora', 'bitacora_reactivos.version_bitacora'];
 //tabla a consultar 
@@ -20,7 +21,7 @@ $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): nu
 $join ="INNER JOIN reactivos on reactivos.id_reactivo=bitacora_reactivos.id_reactivo
     INNER JOIN version_bitacora on version_bitacora.id_vercion_bitacora=bitacora_reactivos.id_version_bitacora";
 //consulta where aqui van todos los where
-$where = "WHERE reactivos.nombre ILIKE '%" . $campo . "%' and id_folio = '$folio' ";
+$where = "WHERE reactivos.nombre ILIKE '%" . $campo . "%' and id_folio = '$folio' and version_bit_reactivo = '$Vercion' ";
 
 //Limite dependiendo del selectt de que permite visualizar
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
@@ -41,6 +42,7 @@ FROM $table
 $join
 $where
 $sLimit";
+
 
 
 $resultado=pg_query($conexion,$sql);
