@@ -1,6 +1,7 @@
 <?php 
 ob_start();
 
+
 if($_SESSION['Nivel']==2){
 ?>
 <header class="header" id="header">

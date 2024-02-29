@@ -71,8 +71,8 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['id_especie_pcr'] .'</td>';
         $output['data'].='<td>'. $row['resultado'] .'</td>';
         $output['data'].='<td>'. $row['archivo'] .'</td>';
-        $output['data'].='<td><a href="./php/Eliminar_Pcr.php?Identificador='. $row['identificador_bitacora']. '">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Pcr.php?Identificador='. $row['identificador_bitacora']. '">Eliminar</a></td>';
+        $output['data'].='<td><a href="../Proxiamanete.php?Identificador='. $row['identificador_bitacora']. '">Editar</a></td>';
+        $output['data'].='<td><a href="../Proxiamanete.php?Identificador='. $row['identificador_bitacora']. '">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

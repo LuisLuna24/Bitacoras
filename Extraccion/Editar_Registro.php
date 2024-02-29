@@ -2,7 +2,11 @@
 ob_start();
 session_start();
 
-$_SESSION['RegistroExtra']=$_GET['RegistroExtra'];
+if(isset($_GET['RegistroExtra'])){
+    $_SESSION['RegistroExtra']=$_GET['RegistroExtra'];
+}else{
+    $_SESSION['RegistroExtra'];
+}
 
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
