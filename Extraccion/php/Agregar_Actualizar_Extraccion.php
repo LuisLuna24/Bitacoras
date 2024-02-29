@@ -20,6 +20,9 @@ if($DatosMax==''){
 
     header("Location:../Actualizar_Vercion_Extraccion.php");
 }else{
+
+
+
     //Inserta los equipos de la version anterior a la nueva version
     $BuscarEquipo="SELECT * FROM equipo_extraccion where id_equipo_extraccion::text='$Folio' and version_equipo_extraccion='$DatosMax';";
     $queryEquipo=pg_query($conexion,$BuscarEquipo);
@@ -35,9 +38,10 @@ if($DatosMax==''){
 
     while($rowReg=pg_fetch_assoc($queryRegistros)){
         $Identificador=$Folio.$VersionMax;
+        $Identificador_Registro=$rowReg['id_extracion'].$rowReg['no_registro'].$VersionMax.$Folio;    
         $InsertarRegistros="INSERT INTO public.bitacora_extraccion(
-            id_extracion, no_registro, version_extracion, identificdor_extracion, id_folio, version_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230, archivo, id_equipo_extraccion, identificador_equipo, version_equipo, id_usuario)
-            VALUES ('" .$rowReg['id_extracion']. "', '" .$rowReg['no_registro']. "', '$VersionMax', '$Identificador', '" .$rowReg['id_folio']. "', '" .$rowReg['version_folio']. "', '" .$rowReg['fecha']. "', '" .$rowReg['id_metodo']. "', '" .$rowReg['id_analisis']. "', '" .$rowReg['id_area']. "', '" .$rowReg['conc_ng_ul']. "', '" .$rowReg['dato_260_280']. "', '" .$rowReg['dato_260_230']. "', '" .$rowReg['archivo']. "', '" .$rowReg['id_equipo_extraccion']. "', '" .$rowReg['identificador_equipo']. "', '$VersionMax', '" .$rowReg['id_usuario']. "');";
+            id_extracion, no_registro, version_extracion, identificdor_extracion, id_folio, version_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230, archivo, id_equipo_extraccion, identificador_equipo, version_equipo, id_usuario,version_registro, identificador_registro)
+            VALUES ('" .$rowReg['id_extracion']. "', '" .$rowReg['no_registro']. "', '$VersionMax', '$Identificador', '" .$rowReg['id_folio']. "', '" .$rowReg['version_folio']. "', '" .$rowReg['fecha']. "', '" .$rowReg['id_metodo']. "', '" .$rowReg['id_analisis']. "', '" .$rowReg['id_area']. "', '" .$rowReg['conc_ng_ul']. "', '" .$rowReg['dato_260_280']. "', '" .$rowReg['dato_260_230']. "', '" .$rowReg['archivo']. "', '" .$rowReg['id_equipo_extraccion']. "', '" .$rowReg['identificador_equipo']. "', '$VersionMax', '" .$rowReg['id_usuario']. "','" . $rowReg['version_registro'] . "','$Identificador_Registro');";
         pg_query($conexion,$InsertarRegistros);
     }
     $_SESSION["VercionMax"]=$VersionMax;

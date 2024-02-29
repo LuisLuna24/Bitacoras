@@ -9,7 +9,7 @@ $VersionMax=$_SESSION["VercionMax"];
 //Folio para busqueda
 $Folio=$_SESSION['No_Folio'];
 //Columnas que se desean consultar
-$columns=['usuario.apellido','usuario.nombre','id_extracion', 'no_registro', 'version_extracion', 'identificdor_extracion', 'id_folio', 'version_folio', 'fecha', 'id_metodo', 'id_analisis', 'bitacora_extraccion.id_area', 'conc_ng_ul', 'dato_260_280', 'dato_260_230', 'bitacora_extraccion.id_usuario'];
+$columns=['usuario.apellido','usuario.nombre','identificador_registro','id_extracion', 'no_registro', 'version_extracion', 'identificdor_extracion', 'id_folio', 'version_folio', 'fecha', 'id_metodo', 'id_analisis', 'bitacora_extraccion.id_area', 'conc_ng_ul', 'dato_260_280', 'dato_260_230', 'bitacora_extraccion.id_usuario'];
 //Tabla que se desea consultar
 $table="bitacora_extraccion";
 //Columna que se desea contar para la paginacion
@@ -75,7 +75,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['dato_260_280'] . '</td>';
         $output['data'].='<td>'. $row['dato_260_230'] . '</td>';
         $output['data'].='<td>'. $row['nombre'] . ' ' . $row['apellido'] . '</td>';
-        $output['data'].='<td><a href="./php/Eliminar_Registro.php?REgistro='.$row['identificdor_extracion'].'">Eliminar</a></td>';
+        $output['data'].='<td><a href="./Editar_Registro.php?RegistroExtra='.$row['identificador_registro'].'">Editar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

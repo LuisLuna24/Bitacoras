@@ -155,7 +155,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <h2>Versión de Bitácoras</h2>
             </div>
             <div class="Contaseña_Datos">
-                <label for="Contraseña">Reactovos:</label>
+                <label for="Contraseña">Reactivos:</label>
                 <input type="text" name="Bit_Reactivos" id="Bit_Reactivos" >
             </div>
             <input type="button" value="Actualizar" id="Reactivos_btn">

@@ -26,9 +26,11 @@ $VersionMax=$_SESSION["VercionMax"];
 //Dependiendo de la cantidad de registros de un solo número de registro, los agrega automáticamente 
 for($i=0;$i<$Cantidad;$i++){
     $identificador_bitacora=$Folio.$VersionMax;
+    $Identificador_Registro=$Registro.$No.$VersionMax.$Folio;
+    
     $AgregaExtracion="INSERT INTO public.bitacora_extraccion(
-        id_extracion, no_registro, version_extracion, identificdor_extracion, id_folio, version_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230, id_equipo_extraccion, identificador_equipo, version_equipo, id_usuario)
-        VALUES ('$Registro', $i+1, $VersionMax, '$identificador_bitacora', '$Folio', '1', '$Fecha', '$Metodo', '$Analisis', '$Area', '$Conc', '$D280', '$D230', '$Folio', '1', '$VersionMax', '$Usuario');";
+        id_extracion, no_registro, version_extracion, identificdor_extracion, id_folio, version_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230, id_equipo_extraccion, identificador_equipo, version_equipo, id_usuario,identificador_registro)
+        VALUES ('$Registro', $i+1, $VersionMax, '$identificador_bitacora', '$Folio', '1', '$Fecha', '$Metodo', '$Analisis', '$Area', '$Conc', '$D280', '$D230', '$Folio', '1', '$VersionMax', '$Usuario','$Identificador_Registro');";
     $queryAgregar=pg_query($conexion,$AgregaExtracion);
 }
 
