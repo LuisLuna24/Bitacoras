@@ -30,10 +30,10 @@ $identificador=$Folio.'1';
 
 for($i=0;$i<$Cantidad;$i++){
     $No=$i+1;
-
+    $Identificador_Registro=$no_registro.$No.'1'.$Folio;
     $Insertar="INSERT INTO public.bitacora_pcreal(
-        id_pcreal, no_registro, version_pcreal, identificador_bitacora, id_folio, id_analisi, fecha, sanitizo, tiempouv, resultado, observaciones, id_equipo_pcreal, version_equipo, identificador_equipo, id_usuaro,version_folio)
-        VALUES ('$no_registro','$No' ,'1', '$identificador', $Folio, '$Analisis', '$Fecha', '$Sanitizo', '$uv', '$Resultado', '$Obsevaciones', '$Folio', '1', '1', '$id_Usuario', '1');";
+        id_pcreal, no_registro, version_pcreal, identificador_bitacora, id_folio, id_analisi, fecha, sanitizo, tiempouv, resultado, observaciones, id_equipo_pcreal, version_equipo, identificador_equipo, id_usuaro,version_folio,version_registro, identificador_registro)
+        VALUES ('$no_registro','$No' ,'1', '$identificador', $Folio, '$Analisis', '$Fecha', '$Sanitizo', '$uv', '$Resultado', '$Obsevaciones', '$Folio', '1', '1', '$id_Usuario', '1','1','$Identificador_Registro');";
         pg_query($conexion,$Insertar);
 }
 

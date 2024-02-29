@@ -133,7 +133,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>Tiempo Uv</th>
                         <th>Resultado</th>
                         <th>Observaciones</th>
-                        <th>Eliminar</th>
+                        <th>Editar</th>
                     </thead>
                     <tbody id="content"></tbody>
                 </table>

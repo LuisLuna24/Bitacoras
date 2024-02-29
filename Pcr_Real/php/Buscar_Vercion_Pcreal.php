@@ -10,7 +10,7 @@ if(isset($_GET['No_Folio'])){
 
 $Vercion=$_SESSION["VercionMax"];
 
-$columns=['analisis.nombre','id_pcreal', 'no_registro', 'version_pcreal', 'identificador_bitacora', 'id_analisi', 'fecha', 'sanitizo', 'tiempouv', 'resultado', 'observaciones', 'archivo'];
+$columns=['analisis.nombre','identificador_registro','id_pcreal', 'no_registro', 'version_pcreal', 'identificador_bitacora', 'id_analisi', 'fecha', 'sanitizo', 'tiempouv', 'resultado', 'observaciones', 'archivo'];
 
 $table="bitacora_pcreal ";
 
@@ -38,11 +38,12 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (identificador_registro) " . implode(", ",$columns) . "
 FROM $table 
 $join
-$where
+$where GROUP BY " . implode(", ",$columns) . " 
 $sLimit";
+
 
 
 $resultado=pg_query($conexion,$sql);
@@ -72,7 +73,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['tiempouv'] .'</td>';
         $output['data'].='<td>'. $row['resultado'] .'</td>';
         $output['data'].='<td>'. $row['observaciones'] .'</td>';
-        $output['data'].='<td><a href="./php/Eliminar_pcreal.php?No_nombre='. $row['id_pcreal']. '">Eliminar</a></td>';
+        $output['data'].='<td><a href="./Editar_Registro_Pcreal.php?Registro_Pcreal='. $row['identificador_registro']. '">Editar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

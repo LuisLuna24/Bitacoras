@@ -1,11 +1,6 @@
 <?php
 ob_start();
 session_start();
-if(isset($_GET['No_Folio'])){
-    $_SESSION["pcreal_fol"]=$_GET['No_Folio'];
-}else{
-    $_SESSION["pcreal_fol"];
-}
 
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
@@ -133,7 +128,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>Tiempo Uv</th>
                         <th>Resultado</th>
                         <th>Observaciones</th>
-                        <th>Eliminar</th>
+                        <th>Editar</th>
                     </thead>
                     <tbody id="content"></tbody>
                 </table>

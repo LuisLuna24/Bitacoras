@@ -9,7 +9,7 @@ if(isset($_GET['No_Folio'])){
 }
 
 
-$columns=['analisis.nombre','id_pcreal', 'no_registro',' version_pcreal',' identificador_bitacora', 'id_folio', 'id_analisi', 'fecha', 'sanitizo', 'tiempouv', 'resultado', 'observaciones','id_usuaro', 'archivo', 'version_folio'];
+$columns=['analisis.nombre','id_pcreal', 'no_registro',' version_pcreal','identificador_registro',' identificador_bitacora', 'id_folio', 'id_analisi', 'fecha', 'sanitizo', 'tiempouv', 'resultado', 'observaciones','id_usuaro', 'archivo', 'version_folio'];
 
 $table="bitacora_pcreal ";
 
@@ -72,7 +72,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['tiempouv'] .'</td>';
         $output['data'].='<td>'. $row['resultado'] .'</td>';
         $output['data'].='<td>'. $row['observaciones'] .'</td>';
-        $output['data'].='<td><a href="./php/Eliminar_pcreal.php?No_nombre='. $row['identificador_bitacora']. '">Eliminar</a></td>';
+        $output['data'].='<td><a href="./Editar_Registro_Pcreal.php?Registro_Pcreal='. $row['identificador_registro']. '">Editar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

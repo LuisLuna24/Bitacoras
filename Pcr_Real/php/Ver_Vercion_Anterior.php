@@ -4,7 +4,7 @@ session_start();
 
 $VersionPcr=$_SESSION["Version_Vitacora"];
 
-$columns=['analisis.nombre','id_pcreal', 'no_registro', 'version_pcreal', 'identificador_bitacora', 'id_folio', 'id_analisi', 'fecha', 'sanitizo', 'tiempouv', 'resultado', 'observaciones', 'id_usuaro', 'archivo', 'version_folio'];
+$columns=['identificador_registro','analisis.nombre','id_pcreal', 'no_registro', 'version_pcreal', 'identificador_bitacora', 'id_folio', 'id_analisi', 'fecha', 'sanitizo', 'tiempouv', 'resultado', 'observaciones', 'id_usuaro', 'archivo', 'version_folio'];
 
 $table="bitacora_pcreal ";
 
@@ -33,10 +33,10 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (identificador_registro) " . implode(", ",$columns) . "
 FROM $table
 $join 
-$where
+$where GROUP BY " . implode(", ",$columns) . "
 $sLimit";
 
 
