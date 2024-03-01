@@ -39,10 +39,10 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 //Consulta general para obtener datos de la tabla 
-$sql="SELECT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (identificador_registro)" . implode(", ",$columns) . "
 FROM $table
 $join
-$where
+$where ORDER BY identificador_registro DESC, version_registro DESC
 $sLimit";
 
 

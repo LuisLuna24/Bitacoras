@@ -3,14 +3,14 @@ $(document).ready(function () {
         var datos = new FormData($("#Pcreal_Form")[0]);
         $.ajax({
             type: "POST",
-            url: "./php/Editar_Registro.php",
+            url: "./php/Editar_Registro_Version.php",
             data: datos,
             contentType: false,
             processData:false,
             success: function (response) {
                 alert ("Se ha agregado correctamente.");
                 //Direcciona a Actualizar_Pcreal
-                location.href ="./Pcr_Real.php";
+                location.href ="./Actualizar_Pcreal.php";
                 
             }
         });

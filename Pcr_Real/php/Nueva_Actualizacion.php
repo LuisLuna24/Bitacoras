@@ -11,8 +11,8 @@ $rowDatosmax=pg_fetch_assoc($queryDatosmax);
 
 $Versiondatos=$rowDatosmax['max'];
 
-$BuscarPcreal="SELECT id_pcreal, version_registro,no_registro, version_pcreal, identificador_bitacora, id_folio, id_analisi, fecha, sanitizo, tiempouv, resultado, observaciones, id_equipo_pcreal, version_equipo, identificador_equipo, id_usuaro, id_admin, archivo, version_folio
-FROM public.bitacora_pcreal where id_folio='$Folio' and version_pcreal='$Versiondatos';";
+$BuscarPcreal="SELECT MAX(version_registro), id_pcreal, version_registro,no_registro, version_pcreal, identificador_bitacora, id_folio, id_analisi, fecha, sanitizo, tiempouv, resultado, observaciones, id_equipo_pcreal, version_equipo, identificador_equipo, id_usuaro, id_admin, archivo, version_folio
+FROM public.bitacora_pcreal where id_folio='$Folio' and version_pcreal='$Versiondatos' GROUP BY id_pcreal, version_registro,no_registro, version_pcreal, identificador_bitacora, id_folio, id_analisi, fecha, sanitizo, tiempouv, resultado, observaciones, id_equipo_pcreal, version_equipo, identificador_equipo, id_usuaro, id_admin, archivo, version_folio;";
 $queryPcr=pg_query($conexion,$BuscarPcreal);
 
 

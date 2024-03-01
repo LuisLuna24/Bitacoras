@@ -9,7 +9,7 @@ $VersionMax=$_SESSION["VercionMax"];
 //Folio para busqueda
 $Folio=$_SESSION['No_Folio'];
 //Columnas que se desean consultar
-$columns=['usuario.apellido','usuario.nombre','identificador_registro','id_extracion', 'no_registro', 'version_extracion', 'identificdor_extracion', 'id_folio', 'version_folio', 'fecha', 'id_metodo', 'id_analisis', 'bitacora_extraccion.id_area', 'conc_ng_ul', 'dato_260_280', 'dato_260_230', 'bitacora_extraccion.id_usuario'];
+$columns=['version_registro','usuario.apellido','usuario.nombre','identificador_registro','id_extracion', 'no_registro', 'version_extracion', 'identificdor_extracion', 'id_folio', 'version_folio', 'fecha', 'id_metodo', 'id_analisis', 'bitacora_extraccion.id_area', 'conc_ng_ul', 'dato_260_280', 'dato_260_230', 'bitacora_extraccion.id_usuario'];
 //Tabla que se desea consultar
 $table="bitacora_extraccion";
 //Columna que se desea contar para la paginacion
@@ -39,10 +39,10 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 //Consulta general para obtener datos de la tabla 
-$sql="SELECT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (identificador_registro) " . implode(", ",$columns) . "
 FROM $table
 $join
-$where
+$where GROUP BY " . implode(", ",$columns) . " ORDER BY identificador_registro  ASC, version_registro DESC
 $sLimit";
 
 
@@ -75,7 +75,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['dato_260_280'] . '</td>';
         $output['data'].='<td>'. $row['dato_260_230'] . '</td>';
         $output['data'].='<td>'. $row['nombre'] . ' ' . $row['apellido'] . '</td>';
-        $output['data'].='<td><a href="./Editar_Registro.php?RegistroExtra='.$row['identificador_registro'].'">Editar</a></td>';
+        $output['data'].='<td><a href="./Editar_Registro_Vercion.php?RegistroExtraN='.$row['identificador_registro'].'">Editar</a></td>';
         $output['data'].='</tr>';
     }
 }else{
