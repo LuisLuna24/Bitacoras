@@ -3,7 +3,7 @@ require "../../php/conexion.php";
 session_start();
 
 
-$Registro=$_SESSION['RegistroExtra'];
+$Registro=$_SESSION['RegistroExtraN'];
 
 $Buscar="SELECT MAX(version_registro) ,id_extracion, no_registro, version_extracion, identificdor_extracion, id_folio, version_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230, archivo, id_equipo_extraccion, identificador_equipo, version_equipo, id_usuario, id_admin, version_registro, identificador_registro
 FROM public.bitacora_extraccion where identificador_registro='$Registro' GROUP BY id_extracion, no_registro, version_extracion, identificdor_extracion, id_folio, version_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230, archivo, id_equipo_extraccion, identificador_equipo, version_equipo, id_usuario, id_admin, version_registro, identificador_registro;";

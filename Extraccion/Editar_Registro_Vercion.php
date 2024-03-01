@@ -2,10 +2,10 @@
 ob_start();
 session_start();
 
-if(isset($_GET['RegistroExtra'])){
-    $_SESSION['RegistroExtra']=$_GET['RegistroExtra'];
+if(isset($_GET['RegistroExtraN'])){
+    $_SESSION['RegistroExtraN']=$_GET['RegistroExtraN'];
 }else{
-    $_SESSION['RegistroExtra'];
+    $_SESSION['RegistroExtraN'];
 }
 
 $id_Usuario=$_SESSION['id_usuario'];
@@ -91,7 +91,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                 </div>
                 <div class="botones">
-                    <input type="submit" value="Actualizar Extraccion" id="Actualizar_Registro">
+                    <input type="submit" value="Actualizar Extraccion" id="Actualizar_Registro_nuevo">
                     <input type="button" value="Cancelar" id="Cancelar_Edicion">
                 </div>
             </form>
@@ -103,7 +103,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 <script src="js/Buscar_Registro.js"></script>
-<script src="js/Editar_Registro.js"></script>
 <script src="js/Buscar_Datos.js"></script>
 <script src="../js/heder.js"></script>
 <?php }  ?>

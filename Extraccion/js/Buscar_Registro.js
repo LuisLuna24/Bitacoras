@@ -22,8 +22,23 @@ $(document).ready(function () {
         window.location.href = "Actualizar_Vercion_Extraccion.php";
     })
 
-    $("#Actualizar_Registro").on("click",function(){
-        alert("Esta opcion esta en proceso");
-        window.location.href = "Actualizar_Vercion_Extraccion.php";
+    $("#Actualizar_Registro_nuevo").on("click",function($e){
+        $e.preventDefault();
+        var dato=new FormData($("#Form_Extraccion")[0]);
+        $.ajax({
+            type: "POST",
+            url: "php/Editar_Registro_Version.php",
+            data: dato,
+            contentType: false,
+            processData:false,
+            success: function (response) {
+                if(response==1){
+                    alert("Registro Actualizado");
+                    window.location.href = "Actualizar_Vercion_Extraccion.php";
+                }else{
+                    alert(response);
+                }
+            }
+        });
     });
 });

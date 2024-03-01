@@ -7,7 +7,7 @@ session_start();
 //Folio para busqueda
 $Folio=$_SESSION['No_Foli'];
 //Columnas que se desean consultar
-$columns=['usuario.apellido','usuario.nombre','id_extracion', 'identificador_registro','no_registro', 'version_extracion','identificdor_extracion', 'id_folio', 'version_folio', 'fecha', 'id_metodo', 'id_analisis',' bitacora_extraccion.id_area', 'conc_ng_ul', 'dato_260_280', 'dato_260_230', 'archivo', 'bitacora_extraccion.id_usuario'];
+$columns=['identificador_registro','version_registro','usuario.apellido','usuario.nombre','id_extracion', 'identificador_registro','no_registro', 'version_extracion','identificdor_extracion', 'id_folio', 'version_folio', 'fecha', 'id_metodo', 'id_analisis',' bitacora_extraccion.id_area', 'conc_ng_ul', 'dato_260_280', 'dato_260_230', 'archivo', 'bitacora_extraccion.id_usuario'];
 //Tabla que se desea consultar
 $table="bitacora_extraccion";
 //Columna que se desea contar para la paginacion
@@ -37,10 +37,10 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 //Consulta general para obtener datos de la tabla 
-$sql="SELECT " . implode(", ",$columns) . "
+$sql="SELECT  DISTINCT on (identificador_registro) " . implode(", ",$columns) . "
 FROM $table
 $join
-$where
+$where GROUP BY " . implode(", ",$columns) . " ORDER BY identificador_registro  ASC, version_registro DESC
 $sLimit";
 
 

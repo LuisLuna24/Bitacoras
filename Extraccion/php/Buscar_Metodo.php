@@ -4,7 +4,7 @@ require "../../php/conexion.php";
 $Buscar= "SELECT id_metodo, nombre FROM public.metodo;";
 $query=pg_query($conexion,$Buscar);
 
-$html='<option vlaue="0">Seleccione un metodo</option>';
+$html='<option value="0">Seleccione un metodo</option>';
 
 if(pg_num_rows($query)!=0){
     while($row=pg_fetch_assoc($query)){
