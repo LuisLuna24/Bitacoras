@@ -67,7 +67,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['fecha_apertura'] .'</td>';
         $output['data'].='<td>'. $row['fecha_caducidad'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'].' Folio:'.$row['folio_bitacora'] .'</td>';
-        $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?identificado='.$row['id_bit_reactivo'].'">Eliminar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?Identificador='.$row['id_bit_reactivo'].'">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{
