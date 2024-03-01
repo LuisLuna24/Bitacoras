@@ -10,17 +10,17 @@ if(isset($_GET['No_Folio'])){
 
 $Vercion=$_SESSION["VercionMax"];
 
-$columns=['id_pcreal', 'no_registro', 'version_pcreal', 'identificador', 'id_folio', 'birtacora_pcreal.id_analisis','analisis.nombre as analisis_nombre' ,'fecha', 'sanitizo', 'tiempouv', 'resultado', 'observaciones', 'id_equipo_pcreal', 'id_usuario',];
+$columns=['analisis.nombre','identificador_registro','id_pcreal', 'no_registro', 'version_pcreal', 'identificador_bitacora', 'id_analisi', 'fecha', 'sanitizo', 'tiempouv', 'resultado', 'observaciones', 'archivo'];
 
-$table="birtacora_pcreal ";
+$table="bitacora_pcreal ";
 
-$id= 'id_folio';
+$id= 'identificador_bitacora';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="INNER JOIN analisis on analisis.id_analisis=birtacora_pcreal.id_analisis ";
+$join="INNER JOIN analisis on analisis.id_analisis=bitacora_pcreal.id_analisi ";
 
-$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Folio' and version_pcreal='$Vercion' ";
+$where = "WHERE id_pcreal::text ILIKE '%" . $campo . "%' and id_folio = '$Folio' and version_pcreal='$Vercion' ";
 
 
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
@@ -38,11 +38,12 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (identificador_registro) " . implode(", ",$columns) . "
 FROM $table 
 $join
-$where
+$where GROUP BY " . implode(", ",$columns) . " 
 $sLimit";
+
 
 
 $resultado=pg_query($conexion,$sql);
@@ -52,7 +53,7 @@ $num_rows=pg_num_rows($resultado);
 
 //Consulta para total registros
 
-$sqlTotal="SELECT count(CASE WHEN id_folio::text='$id' and version_pcreal='$Vercion' THEN 1 END) FROM birtacora_pcreal;";
+$sqlTotal="SELECT count(DISTINCT $id) FROM bitacora_pcreal;";
 $resTotal=pg_query($conexion,$sqlTotal);
 $row_total=pg_fetch_array($resTotal);
 $totalRegistros = $row_total[0];
@@ -65,14 +66,14 @@ $output['paginacion'] = '';
 if($num_rows>0){
     while($row=pg_fetch_array($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['no_registro'] .'-'.$row['identificador'].'</td>';
-        $output['data'].='<td>'. $row['analisis_nombre'] .'</td>';
+        $output['data'].='<td>'. $row['id_pcreal'] .'-'.$row['no_registro'].'</td>';
+        $output['data'].='<td>'. $row['nombre'] .'</td>';
         $output['data'].='<td>'. $row['fecha'] .'</td>';
         $output['data'].='<td>'. $row['sanitizo'] .'</td>';
         $output['data'].='<td>'. $row['tiempouv'] .'</td>';
         $output['data'].='<td>'. $row['resultado'] .'</td>';
         $output['data'].='<td>'. $row['observaciones'] .'</td>';
-        $output['data'].='<td><a href="./php/Eliminar_pcreal.php?No_nombre='. $row['identificador']. '">Eliminar</a></td>';
+        $output['data'].='<td><a href="./Editar_Registro_Pcreal.php?Registro_Pcreal='. $row['identificador_registro']. '">Editar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

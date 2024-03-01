@@ -12,7 +12,7 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
-}else{  ?>
+}else{    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -93,6 +93,9 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </div>
                     </div>
                 </div>
+                <div class="dat_resul_titulo">
+                    <h2>Equipo Seleccionado</h2>
+                </div>
                 <div class="Datos_Metodo_Equipo">
                         <div class="dato Agregar_Equio_div">
                             <label>Selecciona Equipo</label>
@@ -172,7 +175,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 <script src="js/Buscar_TabalaExtraccion.js"></script>
 <script src="js/Buscar_Datos.js"></script>
-<script src="./js/scripts.js"></script>
+<script src="../js/heder.js"></script>
 <script src="./js/Nueva_Extraccion.js"></script>
 <script src="./js/Nuevo_Equipo.js"></script>
 <?php }  ?>

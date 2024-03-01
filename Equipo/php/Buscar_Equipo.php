@@ -4,7 +4,7 @@ require "../../php/conexion.php";
 
 
 //Columnas de la tabla a consultar
-$columns=['id_equipo', 'identificador',' equipo.nombre as equipo_nombre','area.nombre as area_nombre', 'descripcion',' area.id_area','estado_equipo'];
+$columns=['id_equipo', 'identificador',' equipo.nombre as equipo_nombre','area.nombre as area_nombre', 'descripcion',' area.id_area','estado_equipo','vercion_equipo'];
 //Tabla a consultar
 $table="equipo";
 //Nombre del campo que se va acontar para la paginacion 
@@ -31,10 +31,10 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 //Consulta general para obtener los datos para la tabla
-$sql="SELECT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (id_equipo)" . implode(", ",$columns) . "
 FROM $table
 $join
-$where
+$where ORDER BY id_equipo,vercion_equipo DESC
 $sLimit";
 
 $resultado=pg_query($conexion,$sql);

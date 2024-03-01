@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +16,13 @@
     <section class="Proxiamanete">
         <div class="Proxiamanete_Contenedor">
             <div class="Proxiamanete_Titulo">
-                <h1>Próximamente</h1>
+                <h1>Actualizando</h1>
             </div>
             <div class="Proxiamanete_Imagen">
                 <img src="img/Proxima.webp" alt="">
             </div>
             <div class="Proxiamanete_Texto">
-                <p>Próximamente estará este apartado</p>
+                <p>Este apartado se esta actualizando a los nuevos requerimientos, disculpe la molestia</p>
             </div>
         </div>
     </section>

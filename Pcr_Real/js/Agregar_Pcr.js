@@ -9,6 +9,7 @@ $(document).ready(function () {
             processData:false,
             success: function (response) {
                 alert ("Se ha agregado correctamente.");
+                alert(response);
                 let paginaActual = 1;
                 getData(paginaActual);
 

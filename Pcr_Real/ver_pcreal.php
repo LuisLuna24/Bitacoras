@@ -52,7 +52,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Bitacora</th>
                             <th>Reviso</th>
                             <th>Editar</th>
-                            <th>Eliminar</th>
                             <th>Versiones anteriores</th>
                         </thead>
                         <tbody id="content"></tbody>
@@ -67,7 +66,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 </body>
 </html>
 
-<script src="./js/scripts.js"></script>
+<script src="../js/heder.js"></script>
 <script src="./js/Buscar_VerPcreal.js"></script>
 
-<?php } ?>
+<?php }  ?>

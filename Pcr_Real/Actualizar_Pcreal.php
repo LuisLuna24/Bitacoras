@@ -133,7 +133,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>Tiempo Uv</th>
                         <th>Resultado</th>
                         <th>Observaciones</th>
-                        <th>Eliminar</th>
+                        <th>Editar</th>
                     </thead>
                     <tbody id="content"></tbody>
                 </table>
@@ -153,5 +153,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Agregar_Equipo_Actualizado.js"></script>
 <script src="./js/Agregar_Actualizar_Pcreal.js"></script>
 <script src="./js/Buscar_Vercion_Pcreal.js"></script>
+<script src="../js/heder.js"></script>
 
-<?php }  ?>
+<?php } ?>

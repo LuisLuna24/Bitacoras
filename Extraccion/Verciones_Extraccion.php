@@ -2,14 +2,19 @@
 ob_start();
 session_start();
 
-$_SESSION['No_Folio']=$_GET['No_Folio'];
+if(isset($_GET['No_Folio'])){
+    $_SESSION['No_Folio']=$_GET['No_Folio'];
+}else{
+    $_SESSION['No_Folio'];
+}
+
 
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
-}else{  ?>
+}else{    ?>
 
 
 
@@ -58,6 +63,9 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>Bitacora</th>
                         <th>Revisó</th>
                         <th>Ver Vercion</th>
+                        <?php if($_SESSION['Nivel']==2){ ?>
+                                <th>Revisado</th>
+                        <?php  } ?>
                     </thead>
                     <tbody id="content"></tbody>
                 </table>
@@ -70,7 +78,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 </body>
 </html>
 
-<script src="./js/scripts.js"></script>
+<script src="../js/heder.js"></script>
 <script src="./js/Ver_Vercion_Anterior.js"></script>
 
 <?php }  ?>

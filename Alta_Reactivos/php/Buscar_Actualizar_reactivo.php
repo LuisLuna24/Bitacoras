@@ -7,12 +7,19 @@ session_start();
 //Busca los datos del reactivo y los escribe en formato JSON
 
 
-//Obtiene el valor global del ID del reactivo para realizar la búsqueda
+//Obtiene el valor maximo de la version del reactivo
 $Reactivo=$_SESSION['Reactivo'];
 
-$Buscar="SELECT id_reactivo, nombre, descripcion, cantidad, fecha_caducidad, lote, estado FROM reactivos where id_reactivo = $Reactivo";
+$Buscarmax="SELECT MAX(version_reactivo)  FROM reactivos where id_reactivo = $Reactivo;";
+$resultadomax=pg_query($conexion,$Buscarmax);
+$rowmax=pg_fetch_assoc($resultadomax);
+$version=$rowmax['max'];
 
+//Obtien los valores del maximo del reactivo
+
+$Buscar="SELECT nombre,descripcion,lote,cantidad,fecha_caducidad FROM reactivos where id_reactivo='$Reactivo' and version_reactivo='$version'";
 $resultado=pg_query($conexion,$Buscar);
+
 
 //Array para obtener los datos de la consulta y mandarlos como JSON
 $output=[];

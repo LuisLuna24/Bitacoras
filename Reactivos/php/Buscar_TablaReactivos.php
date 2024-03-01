@@ -4,7 +4,7 @@ require "../../php/conexion.php";
 //Permite ver la tabla paginada de la seccion Ver Reactivos 
 
 //Columnas que se desea Consultar
-$columns=['folio_reactivo.id_folio', 'folio', 'folio_reactivo.id_version_bitacora', 'folio_reactivo.version_bitacora', 'fecha_creacion','nombre_version','admin.id_admin','admin.nombre','admin.apellido'];
+$columns=['usuario.id_usuario','version_bit_reactivo','folio_bitacora','folio_reactivo.id_folio', 'folio_reactivo.version_folio', 'folio_reactivo.id_version_bitacora', 'folio_reactivo.version_bitacora', 'fecha_creacion','usuario.nombre','usuario.apellido','nombre_version'];
 //Tabla que se desea consultar 
 $table="folio_reactivo";
 //Conteo para paginacion
@@ -12,10 +12,11 @@ $id= 'id_folio';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_reactivo.id_version_bitacora LEFT JOIN bitacora_reactivos on bitacora_reactivos.id_folio=folio_reactivo.id_folio
-LEFT JOIN admin on admin.id_admin= bitacora_reactivos.id_admin";
+$join="INNER JOIN bitacora_reactivos on bitacora_reactivos.id_folio = folio_reactivo.id_folio
+        LEFT JOIN usuario on usuario.id_usuario=bitacora_reactivos.id_admin
+        INNER JOIN version_bitacora on version_bitacora.id_vercion_bitacora =folio_reactivo.id_version_bitacora";
 
-$where = "WHERE folio::text ILIKE '%" . $campo . "%' OR fecha_creacion::text ILIKE '%" . $campo . "%'";
+$where = "WHERE folio_reactivo.id_folio::text ILIKE '%" . $campo . "%' OR fecha_creacion::text ILIKE '%" . $campo . "%'";
 
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
@@ -29,10 +30,10 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-$sql="SELECT DISTINCT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (id_folio) " . implode(", ",$columns) . "
 FROM $table
 $join
-$where ORDER BY folio ASC
+$where GROUP BY " . implode(", ",$columns) . " ORDER BY id_folio ASC,version_bit_reactivo DESC 
 $sLimit";
 
 
@@ -54,18 +55,13 @@ $output['paginacion'] = '';
 
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
-        if($row['id_admin']==''){
-            $Eliminar='<a href="./php/Eliminar_VerReactivo.php?No_Folio='. $row['id_folio']. '">Eliminar</a>';
-        }else{
-            $Eliminar='';
-        }
+        
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['folio'] .'</td>';
-        $output['data'].='<td>'. $row['nombre_version'] .' Folio:'.$row['folio'] .'</td>';
+        $output['data'].='<td>'. $row['id_folio'] .'</td>';
+        $output['data'].='<td>'. $row['nombre_version'] .' Folio:'.$row['folio_bitacora'] .'</td>';
         $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .' '.$row['apellido'] .'</td>';
         $output['data'].='<td><a href="./php/Nueva_Vercion_Reactivo.php?No_Folio='.$row['id_folio'].'">Editar</a></td>';
-        $output['data'].='<td>'.$Eliminar.'</td>';
         $output['data'].='<td><a href="Ver_Verciones_Reactivo.php?Bitacora='.$row['id_folio'].'">Ver</a></td>';
         $output['data'].='</tr>';
     }

@@ -1,11 +1,6 @@
 <?php
 ob_start();
 session_start();
-if(isset($_GET['No_Folio'])){
-    $_SESSION["pcreal_fol"]=$_GET['No_Folio'];
-}else{
-    $_SESSION["pcreal_fol"];
-}
 
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
@@ -45,7 +40,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                     <div class="datos">
                         <label>Cantidad:</label>
-                        <input type="text" name="Cantidad" />
+                        <input type="text" name="Cantidad" id="Pcreal_Catidad" />
                     </div>
                 </div>
                 <div class="datos_pcreal">
@@ -133,7 +128,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>Tiempo Uv</th>
                         <th>Resultado</th>
                         <th>Observaciones</th>
-                        <th>Eliminar</th>
+                        <th>Editar</th>
                     </thead>
                     <tbody id="content"></tbody>
                 </table>
@@ -153,5 +148,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Buscar_Analisis.js"></script>
 <script src="./js/Buscar_Equipo.js"></script>
 <script src="./js/Agregar_Equipo.js"></script>
+<script src="../js/heder.js"></script>
 
-<?php }  ?>
+<?php } ?>

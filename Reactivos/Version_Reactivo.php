@@ -1,11 +1,7 @@
 <?php
 ob_start();
 session_start();
-if(isset($_GET['No_Folio'])){
-    $_SESSION['No_FoliRec']=$_GET['No_Folio'];
-}else{
-    $_SESSION['No_FoliRec'];
-}
+$_SESSION['Bitacora']=$_GET['Bitacora'];
 
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
@@ -62,7 +58,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Apertura</th>
                             <th>Caducidad</th>
                             <th>Prueba Reactivo</th>
-                            <th>Eliminar</th>
                         </thead>
                         <tbody id="content"></tbody>
                     </table>
@@ -77,9 +72,8 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 </html>
 
-<script src="./js/scripts.js"></script>
-<script src="./js/Buscar_Reactivo.js"></script>
-<script src="./js/Agregar_Reactivo.js"></script>
+<script src="../js/heder.js"></script>
 <script src="./js/Buscar_Datos_Vercion.js"></script>
+
 
 <?php }  ?>

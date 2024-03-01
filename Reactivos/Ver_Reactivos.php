@@ -55,7 +55,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>Fecha Elaboro</th>
                         <th>Reviso</th>
                         <th>Actualizar</th>
-                        <th>Eliminar </th>
                         <th>Ver Verciones</th>
                     </thead>
                     <tbody id="content"></tbody>
@@ -69,7 +68,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 </html>
 
-<script src="./js/scripts.js"></script>
+<script src="../js/heder.js"></script>
 <script src="./js/Buscar_TablaReactivos.js"></script>
 
 <?php }  ?>

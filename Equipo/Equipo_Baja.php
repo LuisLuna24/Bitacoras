@@ -6,7 +6,7 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
-}else{  ?>
+}else if($_SESSION['Nivel']==2){   ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -50,8 +50,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <th>Descripcion</th>
                     <th>Area</th>
                     <th>Estado</th>
-                    <th>Actualizar</th>
-                    <th>Dar de baja</th>
                 </thead>
                 <tbody id="content"></tbody>
             </table>
@@ -66,5 +64,8 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 <script src="./js/scripts.js"></script>
 <script src="./js/Buscar_Equipo_Baja.js"></script>
+<script src="../js/heder.js"></script>
 
-<?php }  ?>s
+<?php }else {
+    header("location:../Bitacoras.php");
+}  ?>

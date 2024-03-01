@@ -1,0 +1,213 @@
+body{
+    background-color: antiquewhite;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/*==============Divisaor==============*/
+.custom-shape-divider-top-1700880565 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1700880565 svg {
+    position: relative;
+    display: block;
+    width: calc(139% + 1.3px);
+    height: 46px;
+}
+
+.custom-shape-divider-top-1700880565 .shape-fill {
+    fill: #75B841;
+}
+/*==============Cabesera==============*/
+
+.Cabecera_Contenedor {
+    width: 100%;
+    height: 50vh;
+    background: linear-gradient(#00000090, #00000090),url('../img/Analisisfondo.webp')no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+.Cabecera_Titulo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f7efe1;
+    gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    flex-direction: column;
+}
+
+.Cabecera_Titulo h1 {
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+.Cabecera_Titulo h2 {
+    font-size: 2.5em;
+}
+
+.Cabecera_Titulo p {
+    font-size: 1.5em;
+}
+
+/*==============Cards==============*/
+.Opciones{
+    width: 100%;
+    min-height: 50vh;
+    padding: 50px;
+}
+.Opciones_Contenedor{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    place-items: center;
+    gap: 20px;
+}
+.Opciones_Card {
+    width: 300px;
+    height: 200px;
+    border: solid 3px #2196f3;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 8px 8px 8px #0000009f;
+    padding: 5px;
+
+}
+.Card_Titulo {
+    text-align: center;
+}
+
+.Card_Titulo h3 {
+    font-size: 1.5em;
+}
+
+.Card_Boton {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    margin-top: 20px;
+}
+input[type="button"] {
+    width: 70%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    font-weight: bolder;
+    background-color: #75B841;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+input[type="button"]:hover {
+    background-color: #56920c;
+    transform: translateY(-5px);
+}
+
+input[type="button"]:active{
+    background-color: #75B841;
+    transform: translateY(0px);
+}
+
+@media(max-width:767px){
+    .Opciones{
+        padding: 10px;
+    }
+}
+
+/*==============Modal Recuperar Contaseña==============*/
+
+.Cotraseña {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.452);
+    display: none;
+    place-items: center;
+}
+.Contraseña_Contenedor {
+    width: 300px;
+    background-color: antiquewhite;
+    padding: 20px;
+    border-radius: 20px;
+    border: solid 3px #2196f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.Contraseña_Titulo {
+    text-align: center;
+}
+.Contaseña_Datos {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+input[type="text"]{
+    width: 100%;
+    height: 30px;
+    border-radius: 25px;
+    padding: 0 10px;
+    border: none;
+    background-color: #dfb4e1;
+}
+
+.contraseña_boton {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
+    gap: 10px;
+    place-items: center;
+    margin-top: 5px;
+}
+
+@media(max-width:767px){
+    .Cotraseña{
+        padding: 10px;
+    }
+    .Contraseña_Contenedor{
+        width: 100%;
+    }
+}
+
+/*==============Modal Baja Usuario==============*/
+
+.Baja{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.452);
+    display: none;
+    place-items: center;
+}
+
+hr{
+    width: 100%;
+    height: 3px;
+    border: none;
+    background-color: #ad98fc;
+}

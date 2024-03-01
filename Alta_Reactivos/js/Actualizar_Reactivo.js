@@ -19,4 +19,9 @@ $(document).ready(function () {
         });    
     });
 
+    //Cansela el actualizar los datos del reactivo
+    $("#Cancelarbtnm").on("click",function(){
+        location.href ="./Alta_Reactivos.php";
+    })
+
 });

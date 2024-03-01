@@ -6,7 +6,7 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
-}else{  ?>
+}else if($_SESSION['Nivel']==2){  ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -62,6 +62,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <thead>
                             <th>No. Metodo</th>
                             <th>Nombre</th>
+                            <th>Editar</th>
                             <th>Eliminar</th>
                         </thead>
                         <tbody id="content"></tbody>
@@ -78,7 +79,9 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 
-<script src="js/scripts.js"></script>
+<script src="../js/heder.js"></script>
 <script src="js/Buscar_Metodo.js"></script>
 <script src="js/Agregar_Metodo.js"></script>
-<?php }  ?>
+<?php }else {
+    header("location:../Bitacoras.php");
+}  ?>

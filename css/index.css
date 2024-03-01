@@ -4,31 +4,41 @@
     box-sizing: border-box;
 }
 
-header {
-    width: 100%;
-    height: 50px;
-    position: fixed;
+.header{
+    position: sticky;
     top: 0;
     left: 0;
-    background-color: #f7efe1;
+    width: 100%;
+    padding: 0.3rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
     font-family: "Montserrat",sans-serif;
-    font-weight: bold;
+    
 }
 
-.header_contenedor {
+.header::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    z-index: -1;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.548);
+    background-color: #f7efe1;
+    
+}
+
+.name{
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 5px 30px;
+    justify-content: center;
 }
 
-.header_contenedor img{
-    height: 100%;
-}
-
-.header_contenedor a{
+.navbar a{
     font-size: 1.15rem;
     color: black;
     text-decoration: none;
@@ -37,54 +47,135 @@ header {
     transition: 0.5s ease;
 }
 
-.header_contenedor a:hover{
+.navbar a:hover{
     color: #61a60e;
     padding-right: 10px;
 }
 
-.Secion {
-    width: 100%;
-    height: 100vh;
-    min-height: 100vh;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+#check{
+    display: none;
 }
 
-.Secion_Contenedor {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    place-items: center;
+.menu{
+    position: absolute;
+    right: 5%;
+    font-size: 2rem;
+    cursor: pointer;
+    display: none;
 }
 
-.Form_Secion {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: antiquewhite;
-    border-radius: 20px;
-    gap: 20px;
-    padding: 20px;
+.img_menu{
+    width: 50px;
 }
 
 @media(max-width:768px){
-    .Secion{
-        margin-top: 70px;
-    }
-    .Form_Secion{
-        width: 90%;
+    .header{
+        padding: 0.5rem 1%;
     }
 }
 
-.Form_Secion h1{
-    font-size: 2.5rem;
+@media(max-width:767px){
+    .header{
+        padding: 0.5rem 10%;
+    }
+    .menu{
+        display: inline-flex;
+    }
+    #check:checked~.menu #icon-menu{
+        display: none;
+    }
+    .menu #close-menu{
+        display: none;
+    }
+    #check:checked~.menu #close-menu{
+        display: block;
+    }
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: #16161691;
+        backdrop-filter: blur(50px);
+        overflow: hidden;
+        transition: 0.3s ease;
+    }
+    #check:checked~.navbar{
+        height: 17.7rem;
+    }
+    .navbar a {
+        display: block;
+        font-size: 1rem;
+        margin: 1.5rem 0;
+        text-align: center;
+        transition: 0.3s ease;
+        color: #f7efe1;
+    }
+    .bx{
+        width: 40px;
+    }
+    
+    .logo_gis{
+        width: 25px;
+    }
+    
 }
 
-.Form_Datos {
+.bx{
+    width: 40px;
+}
+
+.logo_gis{
+    width: 120px;
+}
+
+
+/*=======================Sesion=====================*/
+.Sesion{
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#00000080,#00000080),url('../img/laboratorio.webp')no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.Sesion_Contenedor{
+    width: 400px;
+    background-color:antiquewhite;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.Sesion_Imagen{
+    width: 100%;
+    display: grid;
+    place-items: center;
+    gap: 10px;
+}
+
+.Sesion_Imagen img{
     width: 100%;
 }
+
+.Sesion_Imagen h1{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.Sesion_Form{
+    width: 100%;
+    display: grid;
+    place-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/*=======================Registro=====================*/
 
 .Contenedor_Datos {
     position: relative;
@@ -126,13 +217,14 @@ header {
 }
 
 
-.Form_Boton {
+.Sesion_Boton {
     width: 100%;
     display: grid;
     place-items: center;
+    margin-top: 20px;
 }
 
-.Form_Boton input {
+.Sesion_Boton input {
     width: 200px;
     height: 28px;
     border-radius: 25px;
@@ -144,43 +236,7 @@ header {
     font-size: 1rem;
 }
 
-.Form_Boton input:hover{
+.Sesion_Boton input:hover{
     transform: translateY(-5px);
     background-color: #65a039;
-}
-
-.Secion_Imagen {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(#000000a9, #000000a9),url("../img/Analisisfondo.webp")no-repeat;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    flex-direction: column;
-}
-
-.Secion_Imagen img {
-    width: 30%;
-}
-
-.Secion_Imagen h1{
-    font-size: 3rem;
-    color: #2196f3;
-}
-
-.Secion_Imagen h1 span {
-    color: #75B841;
-}
-
-.Secion_Imagen p{
-    color: #f5f5f5;
-    font-size: 1.5rem;
-}
-
-.Secion_Imagen p a{
-    color: #75B841;
-    text-decoration: none;
 }

@@ -9,19 +9,19 @@ $Vercion=$_SESSION['Version_Extraccion'];
 //Folio para busqueda
 $Folio=$_SESSION['No_Folio'];
 //Columnas que se desean consultar
-$columns=['identificador_bitacora','id_extracion', 'no_registro', 'identificador', 'version_extraccion', 'id_folio', 'fecha', 'id_metodo', 'id_analisis', 'birtacora_extaccion.id_area', 'conc_ng_ul', 'dato_260_280', 'dato_260_230', 'archivo', 'id_equipo_extraccion', 'birtacora_extaccion.id_usuario',' id_admin','nombre','apellido'];
+$columns=['usuario.apellido','usuario.nombre','id_extracion', 'no_registro', 'version_extracion', 'identificdor_extracion', 'id_folio', 'version_folio', 'fecha', 'id_metodo', 'id_analisis', 'bitacora_extraccion.id_area', 'conc_ng_ul', 'dato_260_280', 'dato_260_230','bitacora_extraccion.id_usuario'];
 //Tabla que se desea consultar
-$table="birtacora_extaccion";
+$table="bitacora_extraccion";
 //Columna que se desea contar para la paginacion
 $id= 'id_extracion';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
 //Consultas JOIN se realizan todas las consultas JOIN
-$join="INNER JOIN usuario on usuario.id_usuario=birtacora_extaccion.id_usuario";
+$join="INNER JOIN usuario on usuario.id_usuario=bitacora_extraccion.id_usuario";
 
 //Consultas where Se realizar todos los where que se desean consultar
-$where = "WHERE no_registro::text ILIKE '%" . $campo . "%' and birtacora_extaccion.identificador_bitacora='$Vercion'";
+$where = "WHERE id_extracion::text ILIKE '%" . $campo . "%' and bitacora_extraccion.identificdor_extracion='$Vercion'";
 
 //Limita los datos que se veran en la paginacion dependiendo los valores del select
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
@@ -66,7 +66,7 @@ $output['paginacion'] = '';
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['no_registro'] . '-'. $row['identificador'] .'</td>';
+        $output['data'].='<td>'. $row['id_extracion'] . '-'. $row['no_registro'] .'</td>';
         $output['data'].='<td>'. $row['fecha'] .'</td>';
         $output['data'].='<td>'. $row['id_metodo'] .'</td>';
         $output['data'].='<td>'. $row['id_analisis'] . '</td>';

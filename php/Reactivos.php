@@ -12,7 +12,7 @@ $sqlbuscar=pg_query($conexion,$buscar);
 
 //toma la verion mas alta 
 $id_vercion='4';
-$buscarvercion="SELECT MAX(version_bitacora) FROM version_bitacora where id_version_bitacora='$id_vercion'";
+$buscarvercion="SELECT MAX(version_bitacora) FROM version_bitacora where id_vercion_bitacora='$id_vercion'";
 $sqlbuscarvercion=pg_query($conexion,$buscarvercion);
 $num=pg_fetch_assoc($sqlbuscarvercion);
 $vercion=$num['max'];
@@ -21,8 +21,9 @@ $vercion=$num['max'];
 //crea nuevo folio sumando uno
 $row=pg_fetch_assoc($sqlbuscar);
 $nuevoFolio=$row['folio']+1;
-$crearFolion="INSERT INTO public.folio_reactivo(id_folio, folio, id_version_bitacora, version_bitacora, fecha_creacion) 
-    VALUES ('$nuevoFolio', '$nuevoFolio',$id_vercion,$vercion,CURRENT_DATE);";
+$crearFolion="INSERT INTO public.folio_reactivo(
+	id_folio, version_folio, id_version_bitacora, version_bitacora, fecha_creacion)
+	VALUES ('$nuevoFolio', '1', '$id_vercion', '$vercion', CURRENT_DATE);";
 $crear=pg_query($conexion,$crearFolion);
 $_SESSION['No_FoliRec']=$nuevoFolio;
 echo 1;

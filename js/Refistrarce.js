@@ -14,7 +14,7 @@ $(document).ready(function(){
             success: function (response) {
                 //Este apartado sirve para validar si el correo esta registrado o no y si algun dato no esta llenado
                 if (response==1) {
-                    $(location).attr('href', 'index.php');
+                    $(location).attr('href', 'Administrador.php');
                     $('#Singin_Form')[0].reset();
                 } else if(response==2) {
                     var Alert = document.getElementById('Alerta_Secion');

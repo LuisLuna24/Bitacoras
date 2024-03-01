@@ -6,11 +6,9 @@ session_start();
 $VersionPcr=$_SESSION["Version_Vitacora"];
 $Folio=$_SESSION['Folio_VercionPcreal'];
 
-$buscarEquipo="SELECT * FROM birtacora_pcreal where identificador_bitacora='$VersionPcr'";
-$queryBuscra=pg_query($conexion,$buscarEquipo);
-$rowbit=pg_fetch_array($queryBuscra);
 
-$Equipobit="SELECT equipo.identificador, nombre FROM equipo_pcreal INNER JOIN equipo on equipo.id_equipo = equipo_pcreal.id_equipo where equipo_ver='$VersionPcr'";
+
+$Equipobit="SELECT equipo.identificador, nombre FROM equipo_pcreal INNER JOIN equipo on equipo.id_equipo = equipo_pcreal.id_equipo where ver_equipo_pcreal='$VersionPcr'";
 $queryEquipo=pg_query($conexion,$Equipobit);
 
 $html="";

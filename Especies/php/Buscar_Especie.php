@@ -57,6 +57,7 @@ if($num_rows>0){
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['id_especie'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .'</td>';
+        $output['data'].='<td><a href="Editar_Especie.php?Especie='. $row['id_especie'] .'">Editar</a></td>';
         $output['data'].='<td><a href="./php/Eliminar_Especie.php?Especie='. $row['id_especie'] .'">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
