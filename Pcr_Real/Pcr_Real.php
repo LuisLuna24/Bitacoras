@@ -2,6 +2,8 @@
 ob_start();
 session_start();
 
+$_SESSION["pcreal_fol"];
+
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];

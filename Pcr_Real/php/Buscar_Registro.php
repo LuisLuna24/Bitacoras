@@ -6,7 +6,8 @@ session_start();
 $Registro=$_SESSION['Registro_Pcreal'];
 
 $Buscar="SELECT MAX(version_registro) ,id_pcreal, no_registro, version_pcreal, identificador_bitacora, id_folio, id_analisi, fecha, sanitizo, tiempouv, resultado, observaciones, id_equipo_pcreal, version_equipo, identificador_equipo, id_usuaro, id_admin, archivo, version_folio, version_registro, identificador_registro
-FROM public.bitacora_pcreal where identificador_registro='$Registro' GROUP BY id_pcreal, no_registro, version_pcreal, identificador_bitacora, id_folio, id_analisi, fecha, sanitizo, tiempouv, resultado, observaciones, id_equipo_pcreal, version_equipo, identificador_equipo, id_usuaro, id_admin, archivo, version_folio, version_registro, identificador_registro;";
+FROM public.bitacora_pcreal where identificador_registro='$Registro' GROUP BY id_pcreal, no_registro, version_pcreal, identificador_bitacora, id_folio, id_analisi, fecha, sanitizo, tiempouv, resultado, observaciones, id_equipo_pcreal, version_equipo, identificador_equipo, id_usuaro, id_admin, archivo, version_folio, version_registro, identificador_registro
+ORDER BY version_registro DESC;";
 
 $query=pg_query($conexion,$Buscar);
 

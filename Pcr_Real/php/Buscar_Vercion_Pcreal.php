@@ -10,7 +10,7 @@ if(isset($_GET['No_Folio'])){
 
 $Vercion=$_SESSION["VercionMax"];
 
-$columns=['analisis.nombre','identificador_registro','id_pcreal', 'no_registro', 'version_pcreal', 'identificador_bitacora', 'id_analisi', 'fecha', 'sanitizo', 'tiempouv', 'resultado', 'observaciones', 'archivo'];
+$columns=['version_registro','analisis.nombre','identificador_registro','id_pcreal', 'no_registro', 'version_pcreal', 'identificador_bitacora', 'id_analisi', 'fecha', 'sanitizo', 'tiempouv', 'resultado', 'observaciones', 'archivo'];
 
 $table="bitacora_pcreal ";
 
@@ -41,7 +41,7 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 $sql="SELECT DISTINCT on (identificador_registro) " . implode(", ",$columns) . "
 FROM $table 
 $join
-$where GROUP BY " . implode(", ",$columns) . " 
+$where GROUP BY " . implode(", ",$columns) . " ORDER BY identificador_registro DESC , version_registro DESC
 $sLimit";
 
 
@@ -73,7 +73,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['tiempouv'] .'</td>';
         $output['data'].='<td>'. $row['resultado'] .'</td>';
         $output['data'].='<td>'. $row['observaciones'] .'</td>';
-        $output['data'].='<td><a href="./Editar_Registro_Pcreal.php?Registro_Pcreal='. $row['identificador_registro']. '">Editar</a></td>';
+        $output['data'].='<td><a href="./Editar_Registro_Pcreal_Version.php?Registro_Pcreal='. $row['identificador_registro']. '">Editar</a></td>';
         $output['data'].='</tr>';
     }
 }else{
