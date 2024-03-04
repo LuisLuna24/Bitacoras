@@ -9,12 +9,15 @@ if(isset($_SESSION['No_Registro'])){
     $No_Regitro='0';
 }
 
+$RegistroPcr=$_SESSION['RegistroPcr'];
+
+
 $Folio=$_SESSION["Pcr_Folio"];
 
 //Permite ver las especies agregadas 
 $Buscar="SELECT resultado,id_especie_pcr, identificador_especie, especie.nombre,version_especie_pcr, especie_pcr.id_especie, especie_pcr.vercion_especie, no_registro
 FROM public.especie_pcr INNER JOIN especie on especie.id_especie=especie_pcr.id_especie
-where id_especie_pcr='$Folio'  and no_registro::text='$No_Regitro' ;";
+where identificador_registro='$RegistroPcr' ;";
 $query=pg_query($conexion,$Buscar);
 
 $html="";
