@@ -2,6 +2,9 @@ $(document).ready(function () {
 //implementacion de select2 a selects
     $("#Contraseña_Usuario").select2();
     $("#Select_Usuario").select2();
+    $("#Alta_Admin").select2();
+    $("#Baja_Admin").select2();
+    
 
 //Acciones para recuperer contraseña
     $("#Recuperar_Contraseña").on("click",function(){
@@ -294,6 +297,107 @@ $(document).ready(function () {
                 }
             }
         });
+    });
+
+
+    //Alta de administradores =============================================
+
+    $("#Alta_Administrador").on("click",function(){
+        $("#Admin").css("display", "grid");
+        $.ajax({
+            type: "POST",
+            url: "php/Buscar_Usuarios.php",
+            dataType: "html",
+            success: function (response) {
+                $("#Alta_Admin").html(response);
+            }
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "php/Buscar_Admin.php",
+            dataType: "html",
+            success: function (response) {
+                $("#Baja_Admin").html(response);
+            }
+        });
+        
+    })
+
+    //Dar permisos de administrador a usuario
+    $("#Permisos_Admin").on("click",function(){
+        var datos=new FormData($("#Form_Permisos_Admin")[0]);
+        $.ajax({
+            type: "POST",
+            url: "php/Permisos_Admin.php",
+            data: datos,
+            contentType: false,
+            processData:false,
+            success: function (response) {
+                if(response==1){
+                    alert("Permisos actualizados correctamente.");
+                    $.ajax({
+                        type: "POST",
+                        url: "php/Buscar_Usuarios.php",
+                        dataType: "html",
+                        success: function (response) {
+                            $("#Alta_Admin").html(response);
+                        }
+                    });
+            
+                    $.ajax({
+                        type: "POST",
+                        url: "php/Buscar_Admin.php",
+                        dataType: "html",
+                        success: function (response) {
+                            $("#Baja_Admin").html(response);
+                        }
+                    });
+                }else{
+                    alert(response);
+                }
+            }
+        });
+    })
+//Quitar Permisos de adminstrador
+    $("#Quitar_Admin").on("click",function(){
+        var datos=new FormData($("#Form_Permisos_Admin")[0]);
+        $.ajax({
+            type: "POST",
+            url: "php/Permisos_Admin_Quitar.php",
+            data: datos,
+            contentType: false,
+            processData:false,
+            success: function (response) {
+                if(response==1){
+                    alert("Permisos actualizados correctamente.");
+                    $.ajax({
+                        type: "POST",
+                        url: "php/Buscar_Usuarios.php",
+                        dataType: "html",
+                        success: function (response) {
+                            $("#Alta_Admin").html(response);
+                        }
+                    });
+            
+                    $.ajax({
+                        type: "POST",
+                        url: "php/Buscar_Admin.php",
+                        dataType: "html",
+                        success: function (response) {
+                            $("#Baja_Admin").html(response);
+                        }
+                    });
+                }else{
+                    alert(response);
+                }
+            }
+        });
+    })
+
+    //Permite ocultar modal de permisos de administrador
+    $("#Admin_btn_Canselar").on("click",function(){
+        $("#Admin").css("display", "none");
     });
     
 

@@ -18,17 +18,10 @@ $querymax=pg_query($conexion,$Buscarmax);
 $rowmax=pg_fetch_assoc($querymax);
 $version_max=$rowmax['max']+1;
 
-//Busca numero de inventario para evitar duplicaciones con otro equipo
-$Buscar="SELECT * FROM equipo where  id_equipo='$Inventario';";
-$querybuscar=pg_query($conexion,$Buscar);
+$Actualizar="INSERT INTO public.equipo(
+    id_equipo, vercion_equipo, identificador, nombre, descripcion, id_area, estado_equipo)
+    VALUES ('$Inventario', '$version_max', '$Inventario - GISENA','$Nombre', '$Descripcion', '$Area', '$Estado');";
+pg_query($conexion,$Actualizar);
+echo 1;
 
-if(pg_num_rows($querybuscar)>0){
-    $Actualizar="INSERT INTO public.equipo(
-        id_equipo, vercion_equipo, identificador, nombre, descripcion, id_area, estado_equipo)
-        VALUES ('$Inventario', '$version_max', '$Inventario - GISENA','$Nombre', '$Descripcion', '$Area', '$Estado');";
-    pg_query($conexion,$Actualizar);
-    echo 1;
-}else{
-    echo 2;
-}
 ?>

@@ -14,7 +14,7 @@ $id= 'id_analisis';
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
 //Where de la consula de la tabala
-$where = "WHERE id_analisis::text ILIKE '%" . $campo . "%' and nombre ILIKE '%" . $campo . "%'";
+$where = "WHERE nombre ILIKE '%" . $campo . "%' or abreviatura ILIKE '%" . $campo . "%'";
 
 
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;

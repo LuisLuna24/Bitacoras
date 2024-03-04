@@ -88,6 +88,18 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <input type="button" value="Activar usuario" id="Alta_Usuario">
                 </div>
             </div>
+            <?php if($id_Usuario=='11111111'){ ?>
+                <div class="Opciones_Card">
+                    <div class="Card_Titulo">
+                        <h3>Permisos de Administrador</h3>
+                        <p>Permite dar permisos de administrador a un usuario</p>
+                    </div>
+                    <div class="Card_Boton">
+                        <input type="button" value="Activar usuario" id="Alta_Administrador">
+                    </div>
+                </div>
+
+            <?php } ?>
         </div>
     </section>
 <!--========================Recuperer Contraseña=====================================-->
@@ -148,7 +160,7 @@ if($id_Usuario=="" || $id_Usuario==null){
         </form>
     </section>
 
-    <!--========================Alta Usuarios=====================================-->
+    <!--========================Actualizar Bitacoras=====================================-->
     <section class="Baja" id="Calidad">
         <form class="Contraseña_Contenedor" id="Calidad_Form">
             <div class="Contraseña_Titulo">
@@ -180,7 +192,37 @@ if($id_Usuario=="" || $id_Usuario==null){
             <hr>
             
             <div class="contraseña_boton">
-                <input type="button" value="Cancelar" id="Calidad_btn_Canselar">
+                <input type="button" value="Regresar" id="Calidad_btn_Canselar">
+            </div>
+        </form>
+    </section>
+    <!--========================Permisoso de Administrador=====================================-->
+    <section class="Baja" id="Admin">
+        <form class="Contraseña_Contenedor" id="Form_Permisos_Admin">
+            <div class="Contraseña_Titulo">
+                <h2>Permisos de Administrador</h2>
+            </div>
+            <hr>
+            <div class="Contaseña_Datos">
+                <h4>Dar Permisos de Admin</h4>
+                <label for="Contraseña">Seleccione usuario:</label>
+                <select name="Alta_Admin" id="Alta_Admin"></select>
+            </div>
+            <div class="contraseña_boton">
+                <input type="button" value="Activar Permisos" id="Permisos_Admin">
+            </div>
+            <hr>
+            <div class="Contaseña_Datos">
+                <h4>Quitar Permisos de Admin</h4>
+                <label for="Contraseña">Seleccione usuario:</label>
+                <select name="Baja_Admin" id="Baja_Admin"></select>
+            </div>
+            <div class="contraseña_boton">
+                <input type="button" value="Quitar Permisos" id="Quitar_Admin">
+            </div>
+            <hr>
+            <div class="contraseña_boton">
+                <input type="button" value="Regresar" id="Admin_btn_Canselar">
             </div>
         </form>
     </section>

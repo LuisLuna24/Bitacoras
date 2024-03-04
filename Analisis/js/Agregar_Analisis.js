@@ -12,6 +12,8 @@ $(document).ready(function () {
             success: function (response) {
                 if(response==1){
                     alert("Análisis agregado correctamente.");
+                    $('#Analisis_Form')[0].reset();
+
                     //Actualiza los datos de la tabla paginada 
                     let paginaActual = 1;
                     getData(paginaActual);

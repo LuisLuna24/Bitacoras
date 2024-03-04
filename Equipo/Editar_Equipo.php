@@ -35,7 +35,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <div class="Dato_Equipo">
                     <div class="Dato">
                         <label>No. Inventario</label>
-                        <input type="text" name="Inventario_Equipo" id="Inventario_Equipo">
+                        <input type="text" name="Inventario_Equipo" id="Inventario_Equipo" readonly>
                     </div>
                     <div class="Dato">
                         <label>Descripcion</label>

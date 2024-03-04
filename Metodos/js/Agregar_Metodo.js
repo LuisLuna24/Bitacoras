@@ -12,7 +12,8 @@ $(document).ready(function () {
             success: function (response) {
                 if(response==1){
                     alert("Método agregado correctamente");
-
+                    $('#Especie_Form')[0].reset();
+                    
                     //Actualizar tabal paginado de catálogo de métodos
 
                     let paginaActual = 1;

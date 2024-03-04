@@ -60,7 +60,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="datoo">
                         <div>
                             <label for="dat4">Fecha Caducidad:</label>
-                            <input type="Date" name="Reactivo_Caducidad">
+                            <input type="Date" name="Reactivo_Caducidad" id="Fecha_Caducidad">
                         </div>
                     </div>
                 </div>
@@ -114,6 +114,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Buscar_Reactivo.js"></script>
 <script src="./js/Agregar_Reactivo.js"></script>
 <script src="../js/heder.js"></script>
+<script src="js/scripts.js"></script>
 
 <?php }else {
     header("location:../Bitacoras.php");

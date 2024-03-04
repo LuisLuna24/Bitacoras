@@ -1,7 +1,7 @@
 <?php
 require "conexion.php";
 
-$Bitacora=$_POST['Bit_Estraccion'];
+$Bitacora=$_POST['Bit_Extraccion'];
 
 $BuscarMax='SELECT MAX(version_bitacora) FROM version_bitacora where id_vercion_bitacora=1;';
 $queryMax=pg_query($conexion,$BuscarMax);
