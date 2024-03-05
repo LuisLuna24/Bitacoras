@@ -42,19 +42,19 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </div>
                         <div>
                             <label for="dat5">Lote:</label>
-                            <input type="text" name="Reactivo_Lote">
+                            <input type="text" name="Reactivo_Lote" id="Reactivo_Lote">
                         </div>
                     </div>
 
                     <div class="datoo">
                         <div>
-                            <label for="dat5">Descripcion:</label>
-                            <input type="text" name="Reactivo_Descripcion">
+                            <label for="dat5">Descripcion: (Max 60 Caracteres )</label>
+                            <input type="text" name="Reactivo_Descripcion" id="Reactivo_Descripcion">
                         </div>
                         
                         <div>
                             <label for="dat4">Cantidad:</label>
-                            <input type="text" name="Reactivo_Cantidad">
+                            <input type="text" name="Reactivo_Cantidad" id="Reactivo_Cantidad" >
                         </div>
                     </div>
                     <div class="datoo">

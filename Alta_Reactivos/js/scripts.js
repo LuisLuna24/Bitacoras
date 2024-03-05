@@ -9,4 +9,29 @@ $(document).ready(function () {
         }
     });
       
+
+    $("#Reactivo_Descripcion").keypress(function(e) {
+      // Limitar la longitud a 60 caracteres de descripcion de reactivos
+      if ($("#Reactivo_Descripcion").val().length >= 60) {
+        e.preventDefault();
+      }
+    });
+
+    $("#Reactivo_Lote").keypress(function(e) {
+      // Limitar la longitud a 10 caracteres de lote de reactivos
+      if ($("#Reactivo_Lote").val().length >= 10) {
+        e.preventDefault();
+      }
+      // Permitir solo números y el backspace
+      if (e.which != 8 && (e.which < 48 || e.which > 57)) {
+        e.preventDefault();
+      }
+    });
+
+    $("#Reactivo_Cantidad").keypress(function(e) {
+      // Permitir solo números y el backspace
+      if (e.which != 8 && (e.which < 48 || e.which > 57)) {
+        e.preventDefault();
+      }
+    });
 });
