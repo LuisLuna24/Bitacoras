@@ -17,6 +17,15 @@ $(document).ready(function () {
       }
     });
 
+    $("#Reacivo_Nombre").keypress(function(e) {
+      // Limitar la longitud a 60 caracteres de descripcion de reactivos
+      if ($("#Reacivo_Nombre").val().length >= 30) {
+        e.preventDefault();
+      }
+    });
+
+  
+
     $("#Reactivo_Lote").keypress(function(e) {
       // Limitar la longitud a 10 caracteres de lote de reactivos
       if ($("#Reactivo_Lote").val().length >= 10) {
