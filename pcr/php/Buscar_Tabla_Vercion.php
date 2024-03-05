@@ -8,7 +8,8 @@ $Folio=$_SESSION["No_Folio_Ver"];
 $RegistroPcr=$_SESSION['RegistroPcr'];
 
 
-$columns=['id_pcr','analisis.nombre','id_especie_pcr','archivo','id_pcr', 'no_registro', 'version_pcr', 'identificador_bitacora', 'id_folio', 'bitacora_pcr.id_analisis', 'fecha', 'agarosa', 'voltage', 'tiempo', 'sanitizo',' tiempouv',  'resultado', 'id_equipo_pcr', 'id_usuario', 'id_admin'];
+
+$columns=['version_registro','id_pcr','analisis.nombre','id_especie_pcr','archivo','id_pcr', 'no_registro', 'version_pcr', 'identificador_bitacora', 'id_folio', 'bitacora_pcr.id_analisis', 'fecha', 'agarosa', 'voltage', 'tiempo', 'sanitizo',' tiempouv',  'resultado', 'id_equipo_pcr', 'id_usuario', 'id_admin'];
 
 $table="bitacora_pcr ";
 
@@ -36,10 +37,10 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT " . implode(", ",$columns) . "
+$sql="SELECT  DISTINCT on (id_pcr) " . implode(", ",$columns) . "
 FROM $table 
 $join
-$where
+$where GROUP BY " . implode(", ",$columns) . " ORDER BY id_pcr DESC , version_registro DESC
 $sLimit";
 
 

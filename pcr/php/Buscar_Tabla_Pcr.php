@@ -70,7 +70,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['id_especie_pcr'] .'</td>';
         $output['data'].='<td>'. $row['archivo'] .'</td>';
         $output['data'].='<td><a href="./php/../Editar_Pcr.php?RegistroPcr='. $row['identificador_registro']. '">Editar</a></td>';
-        $output['data'].='<td><a href="./php/../Proxiamanete.php?RegistroPcr='. $row['identificador_registro']. '">Eliminar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Registro_Pcr.php?RegistroPcr='. $row['identificador_registro']. '">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

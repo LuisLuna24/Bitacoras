@@ -38,6 +38,8 @@ if(pg_num_rows($Espquery)==0){
             VALUES ('$Folio', '$Identificador', '1', '$Registro', '$No_Registro', '$Especie', '$versionespe', '$Resultado','$Identificador_Registro');";
         pg_query($conexion,$Insertar);
         echo 1;
+        $_SESSION['Pcr_Registros_Especie']=$Registro;
+
     }
 }else{
     echo 2;

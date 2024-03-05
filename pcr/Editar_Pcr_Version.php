@@ -1,7 +1,13 @@
 <?php
 ob_start();
 session_start();
-$_SESSION['VersionMax'];
+
+if(isset($_GET['RegistroPcr'])){
+    $_SESSION['RegistroPcr']=$_GET['RegistroPcr'];
+}else{
+    $_SESSION['RegistroPcr'];
+}
+
 
 
 $id_Usuario=$_SESSION['id_usuario'];
@@ -9,7 +15,7 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
-}else{   ?>
+}else{ ?>
 
 
 <!DOCTYPE html>
@@ -33,16 +39,12 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <h1>Bitacora de PCR</h1>
                 <div class="Linea"></div>
             </div>
-            <form class="Pcr_Form" id="Pcr_Form">
+            <form class="Pcr_Form" id="Pcr_Form_Version_Datos">
                 <div class="Pcr_Form_Datos">
                     <div class="Pcr_Datos">
                         <div class="Datos">
                             <label for="Pcr_Registros">No. Registro:</label>
-                            <input type="text" name="Pcr_Registros" id="Pcr_Registros">
-                        </div>
-                        <div class="Datos">
-                            <label for="Pcr_Cantidad">Cantidad de Registros:</label>
-                            <input type="text" name="Pcr_Cantidad" id="Pcr_Cantidad">
+                            <input type="text" name="Pcr_Registros" id="Pcr_Registros" readonly>
                         </div>
                     </div>
                     
@@ -53,30 +55,30 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </div>
                         <div class="Datos">
                             <label for="Pcr_Fecha">Fecha:</label>
-                            <input type="date" name="Pcr_Fecha">
+                            <input type="date" name="Pcr_Fecha" id="Pcr_Fecha">
                         </div>
                     </div>
 
                     <div class="Pcr_Datos">
                         <div class="Datos">
                             <label for="Pcr_Agrosa">Agrosa:</label>
-                            <input type="text" name="Pcr_Agrosa">
+                            <input type="text" name="Pcr_Agrosa" id="Pcr_Agrosa">
                         </div>
                         <div class="Datos">
                             <label for="Pcr_Voltage">Voltage:</label>
-                            <input type="text" name="Pcr_Voltage">
+                            <input type="text" name="Pcr_Voltage" id="Pcr_Voltage">
                         </div>
                         <div class="Datos">
                             <label for="Pcr_Tiempo">Tiempo (min):</label>
-                            <input type="text" name="Pcr_Tiempo">
+                            <input type="text" name="Pcr_Tiempo" id="Pcr_Tiempo">
                         </div>
                     </div>
                     <div class="Pcr_Espece_Check">
                         <div class="Check">
-                            <input type="checkbox" name="Sanitizo" value="1" ><label for="Canino">Sanitizo</label>
+                            <input type="checkbox" id="Sanitizo" name="Sanitizo" value="1" ><label for="Canino">Sanitizo</label>
                         </div>
                         <div class="Check">
-                            <input type="checkbox" name="Tiempouv" value="1" ><label for="Canino">Tiempo UV</label>
+                            <input type="checkbox" id="Tiempouv" name="Tiempouv" value="1" ><label for="Canino">Tiempo UV</label>
                         </div>
                     </div>
 
@@ -97,7 +99,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                                         <option value="Negativo">Negativo</option>
                                         <option value="Positivo">Positivo</option>
                                     </select>
-                        </div>
+                                </div>
                                 
                             </div>
                             <div class="Pcr_Equipo_Tabla">
@@ -123,75 +125,15 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <input type="file" required name="Pce_Imagen" accept="image/jpg,image/png,application/pdf">
                         </div>
                     </div>
-
-                    <div class="Pcr_Equipo">
-                        <div class="Pcr_Equipo_Titulo">
-                            <h2>Equipos Seleccionados</h2>
-                            <div class="Linea"></div>
-                        </div>
-                        <div class="Pcr_Equipo_contenedor">
-                            <div class="Pcr_Equipo_Selecionar">
-                                <div class="Datos">
-                                    <label for="Pcr_Equipo">Equipo:</label>
-                                    <select name="Pcr_Equipo" id="Pcr_Equipo"></select>
-                                </div>
-                                <div class="Pcr_Equipo_Boton">
-                                    <input type="button" id="Agregar_Equipo" value="Agregar Equipo">
-                                </div>
-                            </div>
-                            <div class="Pcr_Equipo_Tabla">
-                                <table>
-                                    <thead>
-                                        <th>No. Equipo</th>
-                                        <th>Nombre Equipo</th>
-                                        <th>Eliminar</th>
-                                    </thead>
-                                    <tbody id="Tabala_Equipos"></tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
                     <div class="Linea"></div>
 
                     <div class="Pcr_Botones">
-                        <input type="button" value="Agregar Pcr" id="Agregar_Pcr">
-                        <input type="button" value="Ver Bitacoras" id="Ver_Bitacoras">
+                        <input type="button" value="Actualizar Pcr" id="Actualizar_Pcr_Version">
+                        <input type="button" value="Cancelar" id="Cancelar_Editar_Pcr_Version">
                     </div>
+                    <br>
                 </div>
             </form>
-            <br>
-            <div class="Equipo_Tabla">
-                <div class="Acciones_Tabla">
-                    <div class="Datos_Tabla">
-                        <label for="">Mostrar:</label>
-                        <select name="num_registros" id="num_registros">
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                        </select>
-                    </div>
-                    <div class="Dato">
-                        <label for="buscar">Buscar PCR Tiempo Real:</label>
-                        <input type="text" id="campo" name="campo" />
-                    </div>
-                </div>
-
-                <table>
-                    <thead>
-                        <th>No. Registro</th>
-                        <th>Analisis</th>
-                        <th>Fecha</th>
-                        <th>Agaroza</th>
-                        <th>Voltage</th>
-                        <th>Tiempo</th>
-                        <th>Especies</th>
-                        <th>Imagen</th>
-                        <th>Editar</th>
-                    </thead>
-                    <tbody id="content"></tbody>
-                </table>
-                <div class="Tablas_Paginas" id="nav-paginacion"></div>
-            </div>
         </div>
     </section>
 
@@ -201,12 +143,8 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 <script src="js/scripts.js"></script>
 <script src="js/Buscar_Datos.js"></script>
-<script src="js/Agregar_Pcr_Version.js"></script>
-<script src="js/Agregar_Especies_Version.js"></script>
-<script src="js/Agregar_Equipo_Version.js"></script>
-<script src="js/Buscar_Tabla_Especeies_Version.js"></script>
-<script src="js/Buscar_Tabala_Equipos_Version.js"></script>
-<script src="js/Buscar_Tabla_Pcr_Version.js"></script>
 <script src="../js/heder.js"></script>
+<script src="js/Buscar_Tabla_Especie_Editar.js"></script>
+<script src="js/Buscar_Datos_Pcr_Editar.js"></script>
 
 <?php }  ?>

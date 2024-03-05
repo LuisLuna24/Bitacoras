@@ -4,9 +4,10 @@
 require "../../php/conexion.php";
 session_start();
 
-$id_equipo=$_SESSION['Equipo'];
+$Registro=$_SESSION['RegistroPcr'];
 
-$Buscar="SELECT  id_equipo, identificador, nombre, descripcion, id_area FROM public.equipo where id_equipo = $id_equipo;";
+$Buscar="SELECT MAX(version_registro) id_pcr, no_registro, version_pcr, id_folio, identificador_bitacora, id_analisis, fecha, agarosa, voltage, tiempo, sanitizo, tiempouv, id_especie_pcr, identificador_especie, version_especie, archivo, resultado, id_equipo_pcr, identificador_equipo, version_equipo, id_usuario, id_admin, version_folio, version_registro, identificador_registro
+FROM public.bitacora_pcr where identificador_registro='$Registro' GROUP BY id_pcr, no_registro, version_pcr, id_folio, identificador_bitacora, id_analisis, fecha, agarosa, voltage, tiempo, sanitizo, tiempouv, id_especie_pcr, identificador_especie, version_especie, archivo, resultado, id_equipo_pcr, identificador_equipo, version_equipo, id_usuario, id_admin, version_folio, version_registro, identificador_registro;";
 $query=pg_query($conexion,$Buscar);
 
 
@@ -15,11 +16,14 @@ $output=[];
 
 if(pg_num_rows($query)>0){
     $row=pg_fetch_assoc($query);
-    $output['id_equipo']=$row['id_equipo'];
-    $output['identificador']=$row['identificador'];
-    $output['nombre']=$row['nombre'];
-    $output['descripcion']=$row['descripcion'];
-    $output['id_area']=$row['id_area'];
+    $output['id_pcr']=$row['id_pcr'];
+    $output['id_analisis']=$row['id_analisis'];
+    $output['fecha']=$row['fecha'];
+    $output['agarosa']=$row['agarosa'];
+    $output['voltage']=$row['voltage'];
+    $output['tiempo']=$row['tiempo'];
+    $output['sanitizo']=$row['sanitizo'];
+    $output['tiempouv']=$row['tiempouv'];
 
     echo json_encode($output, JSON_UNESCAPED_UNICODE);
 }
