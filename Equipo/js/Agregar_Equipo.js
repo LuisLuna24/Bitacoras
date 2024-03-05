@@ -13,7 +13,9 @@ $(document).ready(function () {
             processData:false,
             success: function (response) {
                 if(response==1){
-                    alert("Equipo agregado correctamente.")
+                    alert("Equipo agregado correctamente.");
+                    $('#Equipo_Form')[0].reset();
+
                     //Actualiza la tabla de Equipos 
                     let paginaActual = 1;
 

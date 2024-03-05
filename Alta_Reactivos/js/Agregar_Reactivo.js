@@ -11,7 +11,9 @@ $(document).ready(function () {
             processData: false,
             success: function (response) {
                 if(response==1){
-                    alert("Reactivo agregado correctamente.")
+                    alert("Reactivo agregado correctamente.");
+                    $('#Reactivo_Form')[0].reset();
+
                     //Actualiza La tabla paginada 
                     let paginaActual = 1;
 

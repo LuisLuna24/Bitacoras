@@ -12,7 +12,8 @@ $(document).ready(function () {
             success: function (response) {
                 if(response==1){
                     alert("Especie agregada correctamente.");
-
+                    $('#Especie_Form')[0].reset();
+                    
                     //Actualiza la tabla de catálogo de especies 
 
                     let paginaActual = 1;
