@@ -36,14 +36,15 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <input type="text" name="Inventario_Equipo" id="Inventario_Equipo">
                     </div>
                     <div class="Dato">
-                        <label>Descripcion: (Max 60 caracteres)</label>
-                        <input type="text" name="Descripcion_Equipo" id="Descripcion_Equipo">
+                        <label>Nombre:</label>
+                        <input type="text" name="Nombre_Equipo" id="Nombre_Equipo">
                     </div>
+                    
                 </div>
                 <div class="Dato_Equipo">
                     <div class="Dato">
-                        <label>Nombre:</label>
-                        <input type="text" name="Nombre_Equipo" id="Nombre_Equipo">
+                        <label>Descripcion: (Max 60 caracteres)</label>
+                        <input type="text" name="Descripcion_Equipo" id="Descripcion_Equipo">
                     </div>
                     
                     <div class="Dato">

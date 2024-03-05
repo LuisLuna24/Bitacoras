@@ -32,5 +32,11 @@ $(document).ready(function () {
         }
     });
 
+
+    //Permite regresar a equipos
+    $("#Regresar_Equipo").on("click", function(){
+        location.href = "./Equipo.php"
+    })
+
     
 });

@@ -34,22 +34,22 @@ if($id_Usuario=="" || $id_Usuario==null){
             <form class="Equipo_Form" id="Editar_Form">
                 <div class="Dato_Equipo">
                     <div class="Dato">
-                        <label>No. Inventario</label>
+                        <label>No. Inventario:</label>
                         <input type="text" name="Inventario_Equipo" id="Inventario_Equipo" readonly>
                     </div>
                     <div class="Dato">
-                        <label>Descripcion</label>
+                        <label>Descripcion: (Max 60 caracteres)</label>
                         <input type="text" name="Descripcion_Equipo" id="Descripcion_Equipo">
                     </div>
                     
                 </div>
                 <div class="Dato_Equipo">
                     <div class="Dato">
-                        <label>Nombre</label>
+                        <label>Nombre:</label>
                         <input type="text" name="Nombre_Equipo" id="Nombre_Equipo">
                     </div>
                     <div class="Dato">
-                        <label>Area</label>
+                        <label>Area:</label>
                         <select name="Area_Equipo" id="Area_Equipo"></select>
                     </div>
                 </div>
