@@ -16,7 +16,7 @@ $id= 'id_reactivo';
 //Obtiene el valor del input para buscar los registros
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$where = "WHERE nombre ILIKE '%" . $campo . "%' and estado = 'Existencia' ";
+$where = "WHERE nombre ILIKE '%" . $campo . "%' or lote::text ILIKE '%" . $campo . "%' and estado = 'Existencia' ";
 
 //Obtiene el límite de consultas dependiendo la cantidad que se desea visualizar a través del select
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
