@@ -82,6 +82,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="../js/heder.js"></script>
 <script src="js/Buscar_Especie.js"></script>
 <script src="js/Agregar_Especie.js"></script>
+<script src="js/script.js"></script>
 
 <?php }else {
     header("location:../Bitacoras.php");
