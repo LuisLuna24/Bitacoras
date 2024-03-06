@@ -7,6 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Alerta_Cerrar.css">
     <title>Document</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/Proximanete.css">
@@ -36,6 +37,9 @@ session_start();
             </div>
         </div>
     </footer>
+
+    <?php require "./global/Alerta_Cerrar.php"  ?>
+    <script src="js/Script_Cerrar.js"></script>
     
 </body>
 </html>

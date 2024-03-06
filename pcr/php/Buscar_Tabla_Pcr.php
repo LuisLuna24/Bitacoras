@@ -7,7 +7,7 @@ session_start();
 $Folio=$_SESSION["Pcr_Folio"];
 
 
-$columns=['id_pcr','analisis.nombre','id_especie_pcr','archivo','id_pcr', 'no_registro', 'version_pcr', 'identificador_bitacora', 'id_folio', 'bitacora_pcr.id_analisis', 'fecha', 'agarosa', 'voltage', 'tiempo', 'sanitizo',' tiempouv',  'resultado', 'id_equipo_pcr', 'id_usuario', 'id_admin'];
+$columns=['identificador_registro','id_pcr','analisis.nombre','id_especie_pcr','archivo','id_pcr', 'no_registro', 'version_pcr', 'identificador_bitacora', 'id_folio', 'bitacora_pcr.id_analisis', 'fecha', 'agarosa', 'voltage', 'tiempo', 'sanitizo',' tiempouv',  'resultado', 'id_equipo_pcr', 'id_usuario', 'id_admin'];
 
 $table="bitacora_pcr ";
 
@@ -68,10 +68,9 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['voltage'] .'</td>';
         $output['data'].='<td>'. $row['tiempo'] .'</td>';
         $output['data'].='<td>'. $row['id_especie_pcr'] .'</td>';
-        $output['data'].='<td>'. $row['resultado'] .'</td>';
         $output['data'].='<td>'. $row['archivo'] .'</td>';
-        $output['data'].='<td><a href="./php/../Proxiamanete.php?RegistroPcr='. $row['identificador_registro']. '">Editar</a></td>';
-        $output['data'].='<td><a href="./php/../Proxiamanete.php?RegistroPcr='. $row['identificador_registro']. '">Eliminar</a></td>';
+        $output['data'].='<td><a href="./php/../Editar_Pcr.php?RegistroPcr='. $row['identificador_registro']. '">Editar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Registro_Pcr.php?RegistroPcr='. $row['identificador_registro']. '">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

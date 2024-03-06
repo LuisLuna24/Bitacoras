@@ -4,7 +4,7 @@ require "../../php/conexion.php";
 //Permite la búsqueda de los datos que se escribirán en la tabla de manera paginada
 
 //Columnas que se desean consultar
-$columns=['id_reactivo', 'nombre','descripcion',' cantidad', 'fecha_caducidad', 'lote', 'estado'];
+$columns=['id_reactivo', 'nombre','descripcion',' cantidad', 'fecha_caducidad', 'lote', 'estado','version_reactivo'];
 
 //Tabala a la que se desa conultar
 $table="reactivos";
@@ -16,7 +16,7 @@ $id= 'id_reactivo';
 //Obtiene el valor del input para buscar los registros
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$where = "WHERE nombre ILIKE '%" . $campo . "%' and estado = 'Existencia' ";
+$where = "WHERE nombre ILIKE '%" . $campo . "%' or lote::text ILIKE '%" . $campo . "%' and estado = 'Existencia' ";
 
 //Obtiene el límite de consultas dependiendo la cantidad que se desea visualizar a través del select
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
@@ -59,6 +59,7 @@ if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['nombre'] .'</td>';
+        $output['data'].='<td>'. $row['version_reactivo'] .'</td>';
         $output['data'].='<td>'. $row['descripcion'] .'</td>';
         $output['data'].='<td>'. $row['cantidad'] .'</td>';
         $output['data'].='<td>'. $row['fecha_caducidad'] .'</td>';
@@ -66,6 +67,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['estado'] .'</td>';
         $output['data'].='<td><a href="./Editar_Reactivo.php?Reactivo='. $row['id_reactivo']. '">Editar</a></td>';
         $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?Reactivo='. $row['id_reactivo']. '">Eliminar</a></td>';
+        $output['data'].='<td><a href="./Verciones_Reactivo.php?IdReactivo='. $row['id_reactivo']. '">Ver</a></td>';
         $output['data'].='</tr>';
     }
 }else{

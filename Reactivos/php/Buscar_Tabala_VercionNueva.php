@@ -9,7 +9,7 @@ session_start();
 $folio=$_SESSION["Reactivo"];
 $Vercion=$_SESSION["VercionMax"];
 //Columnas a consultar
-$columns=['nombre','nombre_version','lote','id_bit_reactivo', 'version_bit_reactivo', 'no_reactivo', 'identificador_bitacora', 'id_folio', 'version_folio', 'bitacora_reactivos.id_reactivo', 'bitacora_reactivos.version_reactivo', 'fecha_apertura', 'bitacora_reactivos.fecha_caducidad', 'folio_bitacora', 'id_version_bitacora', 'bitacora_reactivos.version_bitacora'];
+$columns=['nombre','nombre_version','lote','identificador_registro','id_bit_reactivo', 'version_bit_reactivo', 'no_reactivo', 'identificador_bitacora', 'id_folio', 'version_folio', 'bitacora_reactivos.id_reactivo', 'bitacora_reactivos.version_reactivo', 'fecha_apertura', 'bitacora_reactivos.fecha_caducidad', 'folio_bitacora', 'id_version_bitacora', 'bitacora_reactivos.version_bitacora'];
 //tabla a consultar 
 $table="bitacora_reactivos";
 //Dato que se contara para conte para paginacion
@@ -37,7 +37,7 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 //Consulta general para obtenber valores de tabla
-$sql="SELECT DISTINCT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (identificador_registro)" . implode(", ",$columns) . "
 FROM $table
 $join
 $where
@@ -72,7 +72,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['fecha_apertura'] .'</td>';
         $output['data'].='<td>'. $row['fecha_caducidad'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'].' Folio:'.$row['folio_bitacora'] .'</td>';
-        $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?identificado='.$row['id_bit_reactivo'].'">Eliminar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Reactivo_Version.php?Identificador='.$row['identificador_registro'].'">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

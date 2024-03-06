@@ -6,7 +6,7 @@ $Folio=$_GET["No_Folio"];
 $_SESSION['No_Folio']=$_GET["No_Folio"];
 
 //Buscar la version maxima del folio 
-$BuscarMax="SELECT MAX(version_folio) FROM folio_pcr where id_folio='$Folio';";
+$BuscarMax="SELECT MAX(version_folio) FROM folio_pcr where id_folio::text='$Folio';";
 $queryMax=pg_query($conexion,$BuscarMax);
 $rowMax=pg_fetch_assoc($queryMax);
 $Version=$rowMax['max'];
@@ -14,7 +14,7 @@ $VersionMax=$rowMax['max']+1;
 
 //Buscar y agregar nueva version del folio de pcr
 
-$BuscarFolio="SELECT * FROM folio_pcr WHERE id_folio='$Folio' and version_folio='$Version';";
+$BuscarFolio="SELECT * FROM folio_pcr WHERE id_folio::text='$Folio' and version_folio::text='$Version';";
 $queryFolio=pg_query($conexion,$BuscarFolio);
 
 while($rowFolio=pg_fetch_assoc($queryFolio)){
@@ -26,7 +26,7 @@ while($rowFolio=pg_fetch_assoc($queryFolio)){
 
 //Buscar y actualizar equipo pcr
 
-$BuscarEquipo="SELECT * FROM equipo_pcr WHERE id_equipo_pcr='$Folio' and version_equipo_pcr='$Version';";
+$BuscarEquipo="SELECT * FROM equipo_pcr WHERE id_equipo_pcr::text='$Folio' and version_equipo_pcr::text='$Version';";
 $queryEquipo=pg_query($conexion,$BuscarEquipo);
 
 while($rowEquipo=pg_fetch_assoc($queryEquipo)){
@@ -39,31 +39,35 @@ while($rowEquipo=pg_fetch_assoc($queryEquipo)){
 
 //Buscar y actualizar especie
 
-$BuscarEspecie="SELECT * FROM especie_pcr WHERE id_especie_pcr='$Folio' and version_especie_pcr='$Version';";
+$BuscarEspecie="SELECT * FROM especie_pcr WHERE id_especie_pcr::text='$Folio' and version_especie_pcr::text='$Version';";
 $queryEspecie=pg_query($conexion,$BuscarEspecie);
 
 while($rowEspecie=pg_fetch_assoc($queryEspecie)){
     $IdentificadorEspecie=$Folio.$VersionMax;
+    $IdentificadorRegistro=$rowEspecie['registro'].$rowEspecie['no_registro'].$VersionMax.$Folio;
     $InsertarEspecie="INSERT INTO public.especie_pcr(
-        id_especie_pcr, identificador_especie, version_especie_pcr, id_especie, vercion_especie, no_registro)
-        VALUES ('".$rowEspecie['id_especie_pcr']."', '".$rowEspecie['identificador_especie']."', '$VersionMax', '".$rowEspecie['id_especie']."', '".$rowEspecie['vercion_especie']."', '".$rowEspecie['no_registro']."');";
+        id_especie_pcr, identificador_especie, version_especie_pcr, registro, no_registro, id_especie, vercion_especie, resultado, identificador_registro)
+        VALUES ('".$rowEspecie['id_especie_pcr']."', '".$rowEspecie['identificador_especie']."', '$VersionMax', '".$rowEspecie['registro']."', '".$rowEspecie['no_registro']."','".$rowEspecie['id_especie']."', '".$rowEspecie['vercion_especie']."', '".$rowEspecie['resultado']."','$IdentificadorRegistro');";
     pg_query($conexion,$InsertarEspecie);
 
 }
 
 //Buscar y actualizar Bitacora de pcr
 
-$BuscarBitacora="SELECT * FROM bitacora_pcr WHERE id_folio='$Folio' and version_pcr='$Version';";
+$BuscarBitacora="SELECT id_pcr, no_registro, version_pcr, id_folio, identificador_bitacora, id_analisis, fecha, agarosa, voltage, tiempo, sanitizo, tiempouv, id_especie_pcr, identificador_especie, version_especie, archivo, resultado, id_equipo_pcr, identificador_equipo, version_equipo, id_usuario, id_admin, version_folio, version_registro, identificador_registro  FROM bitacora_pcr 
+WHERE id_folio::text='$Folio' and version_pcr::text='$Version';";
 $queryBitacora=pg_query($conexion,$BuscarBitacora);
 
 while($row=pg_fetch_assoc($queryBitacora)){
     $Identificador=$Folio.$VersionMax;
+    $IdentificadorRegistro=$row['id_pcr'].$row['no_registro'].$VersionMax.$Folio;
     $InsertarBitacora="INSERT INTO public.bitacora_pcr(
-        id_pcr, no_registro, version_pcr, id_folio, identificador_bitacora, id_analisis, fecha, agarosa, voltage, tiempo, sanitizo, tiempouv, id_especie_pcr, identificador_especie, version_especie, archivo, resultado, id_equipo_pcr, identificador_equipo, version_equipo, id_usuario, version_folio)
-        VALUES ('".$row['id_pcr']."', '".$row['no_registro']."', '$VersionMax', '".$row['id_folio']."', '$Identificador', '".$row['id_analisis']."', '".$row['fecha']."', '".$row['agarosa']."', '".$row['voltage']."', '".$row['tiempo']."', '".$row['sanitizo']."', '".$row['tiempouv']."', '".$row['id_especie_pcr']."', '".$row['identificador_especie']."', '$VersionMax', '".$row['archivo']."', '".$row['resultado']."', '".$row['id_equipo_pcr']."', '".$row['identificador_equipo']."', '$VersionMax', '".$row['id_usuario']."', '$VersionMax');";
+        id_pcr, no_registro, version_pcr, id_folio, identificador_bitacora, id_analisis, fecha, agarosa, voltage, tiempo, sanitizo, tiempouv, id_especie_pcr, identificador_especie, version_especie, archivo, resultado, id_equipo_pcr, identificador_equipo, version_equipo, id_usuario, version_folio, version_registro, identificador_registro)
+        VALUES ('".$row['id_pcr']."', '".$row['no_registro']."', '$VersionMax', '".$row['id_folio']."', '$Identificador', '".$row['id_analisis']."', '".$row['fecha']."', '".$row['agarosa']."', '".$row['voltage']."', '".$row['tiempo']."', '".$row['sanitizo']."', '".$row['tiempouv']."', '".$row['id_especie_pcr']."', '".$row['identificador_especie']."', '$VersionMax', '".$row['archivo']."', '".$row['resultado']."', '".$row['id_equipo_pcr']."', '".$row['identificador_equipo']."', '$VersionMax', '".$row['id_usuario']."', '$VersionMax','".$row['version_registro']."','$IdentificadorRegistro');";
     pg_query($conexion,$InsertarBitacora);
-}
+    echo $InsertarBitacora;
 
+}
 
 $_SESSION['VersionMax']=$VersionMax;
 header("Location:../Actualizar_Pcr.php");

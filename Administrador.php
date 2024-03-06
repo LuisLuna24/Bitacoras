@@ -16,6 +16,7 @@ if($id_Usuario=="" || $id_Usuario==null){
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/Administrador.css">
     <title>Menú Administrador</title>
+    <link rel="stylesheet" href="css/Alerta_Cerrar.css">
     <script src="./librerias/jquery/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="./librerias/select2/css/select2.css">
     <script src="./librerias/select2/select2.js"></script>
@@ -72,6 +73,15 @@ if($id_Usuario=="" || $id_Usuario==null){
             </div>
             <div class="Opciones_Card">
                 <div class="Card_Titulo">
+                    <h3>Actualizar Usuario</h3>
+                    <p>Actualizar los datos de los usuarios</p>
+                </div>
+                <div class="Card_Boton">
+                    <input type="button" value="Actualizar" id="Actualizar_Usuario">
+                </div>
+            </div>
+            <div class="Opciones_Card">
+                <div class="Card_Titulo">
                     <h3>Desactivar usuario</h3>
                     <p>Permite deactiviar a los usuarios del sistema (no elimina)</p>
                 </div>
@@ -88,6 +98,18 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <input type="button" value="Activar usuario" id="Alta_Usuario">
                 </div>
             </div>
+            <?php if($id_Usuario=='11111111'){ ?>
+                <div class="Opciones_Card">
+                    <div class="Card_Titulo">
+                        <h3>Permisos de Administrador</h3>
+                        <p>Permite dar permisos de administrador a un usuario</p>
+                    </div>
+                    <div class="Card_Boton">
+                        <input type="button" value="Activar usuario" id="Alta_Administrador">
+                    </div>
+                </div>
+
+            <?php } ?>
         </div>
     </section>
 <!--========================Recuperer Contraseña=====================================-->
@@ -148,7 +170,7 @@ if($id_Usuario=="" || $id_Usuario==null){
         </form>
     </section>
 
-    <!--========================Alta Usuarios=====================================-->
+    <!--========================Actualizar Bitacoras=====================================-->
     <section class="Baja" id="Calidad">
         <form class="Contraseña_Contenedor" id="Calidad_Form">
             <div class="Contraseña_Titulo">
@@ -180,12 +202,71 @@ if($id_Usuario=="" || $id_Usuario==null){
             <hr>
             
             <div class="contraseña_boton">
-                <input type="button" value="Cancelar" id="Calidad_btn_Canselar">
+                <input type="button" value="Regresar" id="Calidad_btn_Canselar">
+            </div>
+        </form>
+    </section>
+    <!--========================Permisoso de Administrador=====================================-->
+    <section class="Baja" id="Admin">
+        <form class="Contraseña_Contenedor" id="Form_Permisos_Admin">
+            <div class="Contraseña_Titulo">
+                <h2>Permisos de Administrador</h2>
+            </div>
+            <hr>
+            <div class="Contaseña_Datos">
+                <h4>Dar Permisos de Admin</h4>
+                <label for="Contraseña">Seleccione usuario:</label>
+                <select name="Alta_Admin" id="Alta_Admin"></select>
+            </div>
+            <div class="contraseña_boton">
+                <input type="button" value="Activar Permisos" id="Permisos_Admin">
+            </div>
+            <hr>
+            <div class="Contaseña_Datos">
+                <h4>Quitar Permisos de Admin</h4>
+                <label for="Contraseña">Seleccione usuario:</label>
+                <select name="Baja_Admin" id="Baja_Admin"></select>
+            </div>
+            <div class="contraseña_boton">
+                <input type="button" value="Quitar Permisos" id="Quitar_Admin">
+            </div>
+            <hr>
+            <div class="contraseña_boton">
+                <input type="button" value="Regresar" id="Admin_btn_Canselar">
+            </div>
+        </form>
+    </section>
+    <!--========================actualizar datos de Usuario=====================================-->
+    <section class="Baja" id="Actualizar_Usuario_Formulario">
+        <form class="Contraseña_Contenedor" id="Actualizar_Form">
+            <div class="Contraseña_Titulo">
+                <h2>Actualizar Usuario</h2>
+            </div>
+            <div class="Contaseña_Datos">
+                <label for="Contraseña">Seleccione usuario:</label>
+                <select name="Actualizar_Select" id="Actualizar_Select"></select>
+            </div>
+            <div class="Contaseña_Datos">
+                <label for="Contraseña">Nombre:</label>
+                <input type="text" id="Nombre_Actualizar" name="Nombre_Actualizar">
+            </div>
+            <div class="Contaseña_Datos">
+                <label for="Contraseña">Apellido:</label>
+                <input type="text" id="Apellido_Actualizar" name="Apellido_Actualizar">
+            </div>
+            <div class="Contaseña_Datos">
+                <label for="Contraseña">Correo:</label>
+                <input type="text" id="Correo_Actualizar" name="Correo_Actualizar">
+            </div>
+            <div class="contraseña_boton">
+                <input type="button" value="Actualizar" id="Actualizar_Btn">
+                <input type="button" value="Cancelar" id="Cancelar_Actualizar_btn">
             </div>
         </form>
     </section>
 
-    
+    <?php require "./global/Alerta_Cerrar.php"  ?>
+    <script src="js/Script_Cerrar.js"></script>
     <?php require "./global/footer.php"  ?>
 </body>
 </html>

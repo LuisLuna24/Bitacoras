@@ -43,7 +43,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="dato">
                         <div>
                             <label for="nom">Nombre:</label>
-                            <input type="text" name="Nombre_Especie">
+                            <input type="text" name="Nombre_Especie" id="Nombre_Especie_input">
                         </div>
                     </div>
                     <div class="botones">
@@ -55,6 +55,8 @@ if($id_Usuario=="" || $id_Usuario==null){
             </form>
         </div>
     </section>
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 
 </body>
@@ -65,6 +67,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="../js/heder.js"></script>
 <script src="js/Buscar_Especie_Version.js"></script>
 <script src="js/Editar_Especie.js"></script>
+<script src="js/script.js"></script>
 
 
 <?php }else {

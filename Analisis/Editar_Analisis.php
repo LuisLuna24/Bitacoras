@@ -55,6 +55,8 @@ if($id_Usuario=="" || $id_Usuario==null){
             </form>
         </div>
     </section>
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>rc="./js/Agregar_Reac
     <?php require "../global/footer.php" ?>
 </body>
 
@@ -63,6 +65,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="../js/heder.js"></script>
 <script src="./js/Buscar_Actualizar_Analisis.js"></script>
 <script src="./js/Actualizar_Reactivo.js"></script>
+<script src="js/scripts.js"></script>
 
 <?php }else {
     header("location:../Bitacoras.php");

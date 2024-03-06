@@ -73,6 +73,8 @@ if($id_Usuario=="" || $id_Usuario==null){
             </div>
         </div>
     </section>
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 </body>
 

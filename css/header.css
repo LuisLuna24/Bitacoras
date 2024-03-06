@@ -79,7 +79,7 @@
     }
 }
 
-@media(max-width:767px){
+@media(max-width:1024px){
     .header{
         padding: 0.5rem 10%;
     }

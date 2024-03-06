@@ -14,6 +14,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Alerta_Cerrar.css">
     <title>Registro</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/Registro.css">
@@ -76,12 +77,16 @@ if($id_Usuario=="" || $id_Usuario==null){
             </div>
             <div class="Regsitro_Imagen">
                 <img src="./img/Gsmall.webp" alt="logo">
+                <div class=Registro_Boton>
+                    <input type="button" value="Regresar" id="Regresar_Admin" class="Registro_btn">
+                </div>
             </div>
         </div>
         <?php  require "./global/Alerta_Index.php" ?>
     </section>
    
-    
+    <?php require "./global/Alerta_Cerrar.php"  ?>
+    <script src="js/Script_Cerrar.js"></script>
 </body>
 </html>
 

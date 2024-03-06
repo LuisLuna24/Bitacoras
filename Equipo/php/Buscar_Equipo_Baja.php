@@ -63,6 +63,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['descripcion'] .'</td>';
         $output['data'].='<td>'. $row['area_nombre'] .'</td>';
         $output['data'].='<td>'. $row['estado_equipo'] .'</td>';
+        $output['data'].='<td><a href="./php/Activar_Equipo.php?Equipo='. $row['id_equipo'] .'">Alta</a></td>';
         $output['data'].='</tr>';
     }
 }else{

@@ -27,27 +27,29 @@ if($id_Usuario=="" || $id_Usuario==null){
         <div class="Equipo_Contenedor">
             <div class="Equipo_Titulo">
                 <h1>Inventario de Equipos</h1>
+                <div class="linea_titulo"></div>
                 <br>
             </div>
             <form class="Equipo_Form" id="Equipo_Form">
                 <div class="Dato_Equipo">
                     <div class="Dato">
-                        <label>No. Inventario</label>
-                        <input type="text" name="Inventario_Equipo">
+                        <label>No. Inventario:</label>
+                        <input type="text" name="Inventario_Equipo" id="Inventario_Equipo">
                     </div>
                     <div class="Dato">
-                        <label>Descripcion</label>
-                        <input type="text" name="Descripcion_Equipo">
+                        <label>Nombre:</label>
+                        <input type="text" name="Nombre_Equipo" id="Nombre_Equipo">
                     </div>
+                    
                 </div>
                 <div class="Dato_Equipo">
                     <div class="Dato">
-                        <label>Nombre</label>
-                        <input type="text" name="Nombre_Equipo">
+                        <label>Descripcion: (Max 60 caracteres)</label>
+                        <input type="text" name="Descripcion_Equipo" id="Descripcion_Equipo">
                     </div>
                     
                     <div class="Dato">
-                        <label>Area</label>
+                        <label>Area:</label>
                         <select name="Area_Equipo" id="Area_Equipo"></select>
                     </div>
                 </div>
@@ -78,7 +80,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </select>
                 </div>
                 <div class="Dato">
-                    <label for="buscar">Buscar equipo</label>
+                    <label for="buscar">Buscar equipo: (Nombre)</label>
                     <input type="text" id="campo" name="campo">
                 </div>
             </div>
@@ -86,12 +88,14 @@ if($id_Usuario=="" || $id_Usuario==null){
             <table>
                 <thead>
                     <th>No. Inventario</th>
+                    <th>Versión</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
                     <th>Area</th>
                     <th>Estado</th>
                     <th>Actualizar</th>
                     <th>Dar de baja</th>
+                    <th>Verciones</th>
                 </thead>
                 <tbody id="content"></tbody>
             </table>
@@ -99,7 +103,8 @@ if($id_Usuario=="" || $id_Usuario==null){
         </div>
     </section>
 
-
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 </body>
 </html>

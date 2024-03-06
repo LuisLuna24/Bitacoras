@@ -1,7 +1,7 @@
 <?php
 require "../../php/conexion.php";
 
-$Buscar="SELECT * FROM equipo";
+$Buscar="SELECT DISTINCT on (id_equipo) id_equipo, vercion_equipo, identificador, nombre, descripcion, id_area, estado_equipo FROM equipo GROUP BY id_equipo, vercion_equipo, identificador, nombre, descripcion, id_area, estado_equipo";
 $query=pg_query($conexion,$Buscar);
 
 $html='<option vlaue="0">Seleccione un equipo</option>';

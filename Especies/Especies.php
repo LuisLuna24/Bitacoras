@@ -53,7 +53,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                             </select>
                         </div>
                         <div class="Dato">
-                            <label for="buscar">Buscar Especie.</label>
+                            <label for="buscar">Buscar Especie: (Nombre)</label>
                             <input type="text" id="campo" name="campo">
                         </div>
                     </div>
@@ -64,6 +64,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Nombre</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
+                            <th>Versión</th>
                         </thead>
                         <tbody id="content"></tbody>
                     </table>
@@ -72,6 +73,8 @@ if($id_Usuario=="" || $id_Usuario==null){
             </form>
         </div>
     </section>
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 
 </body>
@@ -82,6 +85,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="../js/heder.js"></script>
 <script src="js/Buscar_Especie.js"></script>
 <script src="js/Agregar_Especie.js"></script>
+<script src="js/script.js"></script>
 
 <?php }else {
     header("location:../Bitacoras.php");

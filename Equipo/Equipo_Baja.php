@@ -50,14 +50,19 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <th>Descripcion</th>
                     <th>Area</th>
                     <th>Estado</th>
+                    <th>Abilitar</th>
                 </thead>
                 <tbody id="content"></tbody>
             </table>
             <div class="Tablas_Paginas" id="nav-paginacion"></div>
         </div>
+        <div class="Equipo_Botones">
+            <input type="button" value="Regresar" id="Regresar_Equipo">
+        </div>
     </section>
 
-
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 </body>
 </html>

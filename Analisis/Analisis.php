@@ -38,11 +38,11 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="dato">
                         <div>
                             <label for="nombre">Nombre:</label>
-                            <input type="text" name="Nombre">
+                            <input type="text" name="Nombre" id="Editar_Nombre">
                         </div>
                         <div>
                         <label for="abrev">Abreviatura:</label>
-                        <input type="text" name="Abrebiatura">
+                        <input type="text" name="Abrebiatura" id="Editar_Abrebiatura">
                     </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </select>
                     </div>
                     <div class="Dato">
-                        <label for="buscar">Buscar Análisis:</label>
+                        <label for="buscar">Buscar Análisis: (Nombre, Abreviatura)</label>
                         <input type="text" id="campo" name="campo" />
                     </div>
                 </div>
@@ -80,6 +80,8 @@ if($id_Usuario=="" || $id_Usuario==null){
             </div>
         </div>
     </section>
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 </body>
 
@@ -88,6 +90,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="../js/heder.js"></script>
 <script src="./js/Buscar_Analisis.js"></script>
 <script src="./js/Agregar_Analisis.js"></script>
+<script src="js/scripts.js"></script>
 
 <?php }else {
     header("location:../Bitacoras.php");

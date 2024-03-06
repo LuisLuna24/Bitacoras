@@ -90,15 +90,21 @@ if($id_Usuario=="" || $id_Usuario==null){
                                     <label for="Pcr_Espceie">Especie:</label>
                                     <select name="Pcr_Espceie" id="Pcr_Espceie"></select>
                                 </div>
-                                <div class="Pcr_Equipo_Boton">
-                                    <input type="button" id="Agregar_Especie" value="Agregar Especie">
-                                </div>
+                                <div class="Datos">
+                                    <label for="Pcr_Resultado">Resultado:</label>
+                                    <select name="Pcr_Resultado" id="Pcr_Resultado">
+                                        <option value="Negativo">Negativo</option>
+                                        <option value="Positivo">Positivo</option>
+                                    </select>
+                        </div>
+                                
                             </div>
                             <div class="Pcr_Equipo_Tabla">
                                 <table>
                                     <thead>
                                         <th>No. Especie</th>
                                         <th>Nombre Especie</th>
+                                        <th>Resultado</th>
                                         <th>Eliminar</th>
                                     </thead>
                                     <tbody id="Tabala_Especie"></tbody>
@@ -108,12 +114,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
 
                     <div class="Pcr_Datos">
-                        <div class="Datos">
-                            <label for="Pcr_Resultado">Resultado:</label>
-                            <select name="Pcr_Resultado" id="Pcr_Resultado">
-                                <option value="Negativo">Negativo</option>
-                                <option value="Positivo">Positivo</option>
-                            </select>
+                        <div class="Pcr_Equipo_Boton">
+                            <input type="button" id="Agregar_Especie" value="Agregar Especie">
                         </div>
                         <div class="Datos">
                             <label for="Pcr_Imagen">Imagen o Archivo:</label>
@@ -182,7 +184,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>Voltage</th>
                         <th>Tiempo</th>
                         <th>Especies</th>
-                        <th>Resultado</th>
                         <th>Imagen</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
@@ -193,7 +194,8 @@ if($id_Usuario=="" || $id_Usuario==null){
             </div>
         </div>
     </section>
-
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 </body>
 </html>

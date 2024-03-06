@@ -7,7 +7,7 @@ $Folio=$_SESSION["No_Folio_Ver"];
 $RegistroPcr=$_SESSION['RegistroPcr'];
 
 //Permite ver las especies agregadas 
-$Buscar="SELECT id_equipo_pcr, equipo_pcr.identificador, version_equipo_pcr, equipo.id_equipo, version_equipo, ver_equipo_pcr, equipo.nombre
+$Buscar="SELECT DISTINCT on (id_equipo_pcr)  id_equipo_pcr, equipo_pcr.identificador, version_equipo_pcr, equipo.id_equipo, version_equipo, ver_equipo_pcr, equipo.nombre
 FROM public.equipo_pcr INNER JOIN equipo on equipo.id_equipo = equipo_pcr.id_equipo
 where id_equipo_pcr::text='$Folio' and ver_equipo_pcr::text='$RegistroPcr';";
 $query=pg_query($conexion,$Buscar);

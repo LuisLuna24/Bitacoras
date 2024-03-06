@@ -8,7 +8,7 @@ $Folio=$_SESSION["No_Folio"];
 $Version=$_SESSION['VersionMax'];
 
 
-$columns=['id_pcr','analisis.nombre','id_especie_pcr','archivo','id_pcr', 'no_registro', 'version_pcr', 'identificador_bitacora', 'id_folio', 'bitacora_pcr.id_analisis', 'fecha', 'agarosa', 'voltage', 'tiempo', 'sanitizo',' tiempouv',  'resultado', 'id_equipo_pcr', 'id_usuario', 'id_admin'];
+$columns=['version_registro','identificador_registro','id_pcr','analisis.nombre','id_especie_pcr','archivo','id_pcr', 'no_registro', 'version_pcr', 'identificador_bitacora', 'id_folio', 'bitacora_pcr.id_analisis', 'fecha', 'agarosa', 'voltage', 'tiempo', 'sanitizo',' tiempouv',  'resultado', 'id_equipo_pcr', 'id_usuario', 'id_admin'];
 
 $table="bitacora_pcr ";
 
@@ -36,10 +36,10 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (id_pcr) " . implode(", ",$columns) . "
 FROM $table 
 $join
-$where
+$where GROUP BY " . implode(", ",$columns) . " ORDER BY id_pcr DESC , version_registro DESC
 $sLimit";
 
 
@@ -69,10 +69,8 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['voltage'] .'</td>';
         $output['data'].='<td>'. $row['tiempo'] .'</td>';
         $output['data'].='<td>'. $row['id_especie_pcr'] .'</td>';
-        $output['data'].='<td>'. $row['resultado'] .'</td>';
         $output['data'].='<td>'. $row['archivo'] .'</td>';
-        $output['data'].='<td><a href="../Proxiamanete.php?Identificador='. $row['identificador_bitacora']. '">Editar</a></td>';
-        $output['data'].='<td><a href="../Proxiamanete.php?Identificador='. $row['identificador_bitacora']. '">Eliminar</a></td>';
+        $output['data'].='<td><a href="./Editar_Pcr_Version.php?RegistroPcr='. $row['identificador_registro']. '">Editar</a></td>';
         $output['data'].='</tr>';
     }
 }else{
