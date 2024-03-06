@@ -16,6 +16,7 @@ if($id_Usuario=="" || $id_Usuario==null){
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/Administrador.css">
     <title>Menú Administrador</title>
+    <link rel="stylesheet" href="css/Alerta_Cerrar.css">
     <script src="./librerias/jquery/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="./librerias/select2/css/select2.css">
     <script src="./librerias/select2/select2.js"></script>
@@ -227,7 +228,8 @@ if($id_Usuario=="" || $id_Usuario==null){
         </form>
     </section>
 
-    
+    <?php require "./global/Alerta_Cerrar.php"  ?>
+    <script src="js/Script_Cerrar.js"></script>
     <?php require "./global/footer.php"  ?>
 </body>
 </html>
