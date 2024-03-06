@@ -54,4 +54,10 @@ $(document).ready(function () {
       //Permite hacer que solo escriba en mayusculas
       $(this).val($(this).val().toUpperCase());
     });
+
+
+    //Regresar a Alta Reactivos
+    $("#Regresar_Reactivo").on("click", function(){
+        location.href = "./Alta_Reactivos.php";
+    })
 });

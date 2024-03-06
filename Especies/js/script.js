@@ -22,4 +22,9 @@ $(document).ready(function () {
       //Permite hacer que solo escriba en mayusculas
       $(this).val($(this).val().toUpperCase());
     });
+
+    //Regresar a Especies
+    $("#REgresar_Especie").on("click", function(){
+        location.href = "./Especies.php"
+    })
 });

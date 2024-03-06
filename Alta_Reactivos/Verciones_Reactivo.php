@@ -66,7 +66,7 @@ if($id_Usuario=="" || $id_Usuario==null){
             <div class="Tablas_Paginas" id="nav-paginacion"></div>
         </div>
         <div class="Equipo_Botones">
-            <input type="button" value="Regresar" id="Regresar_Equipo">
+            <input type="button" value="Regresar" id="Regresar_Reactivo">
         </div>
     </section>
 

@@ -65,6 +65,9 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="Tablas_Paginas" id="nav-paginacion"></div>
                 </div>
             </form>
+            <div class="botones">
+                <input type="button" value="Agregar Especie" id="REgresar_Especie">
+            </div>
         </div>
     </section>
     <?php require "../global/Alerta_Cerrar.php"  ?>
