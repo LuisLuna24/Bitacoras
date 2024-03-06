@@ -15,6 +15,7 @@ if($id_Usuario=="" || $id_Usuario==null){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/Alerta_Cerrar.css">
     <title>Principal</title>
+    <script src="./librerias/jquery/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/principal.css">
     <link rel="stylesheet" href="css/Inventarios.css">

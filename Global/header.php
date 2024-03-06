@@ -20,6 +20,7 @@ if($_SESSION['Nivel']==2){
         <a id="Inventario_Global" href="Inventarios.php">Inventarios</a>
         <a id="Administrador_Global" href="Administrador.php">Menu Administrador</a>
         <a id="Salir_Global" href="#">Salir</a>
+        <script src="js/Script_Cerrar.js"></script>
     </nav>
 </header>
 

@@ -20,6 +20,7 @@ if($id_Usuario=="" || $id_Usuario==null){
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/principal.css">
     <link rel="stylesheet" href="css/Catalogos.css">
+    <script src="./librerias/jquery/jquery-3.2.1.min.js"></script>
 </head>
 
 <body>
