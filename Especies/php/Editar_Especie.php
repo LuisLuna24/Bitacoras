@@ -15,8 +15,9 @@ $versionid= $row['max']+1;
 $Nombre = $_POST['Nombre_Especie'];
 //Actulizar Especie
 
-$actualizar="UPDATE public.especie SET vercion_especie='$versionid' ,nombre='$Nombre'
-WHERE id_especie='$id_Especie';";
+$actualizar="INSERT INTO public.especie(
+    id_especie, vercion_especie, nombre)
+    VALUES ('$id_Especie', '$versionid', '$Nombre');";
 $resultadoactualizar=pg_query($conexion,$actualizar);
 echo 1;
 

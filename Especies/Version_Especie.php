@@ -1,6 +1,14 @@
 <?php
 ob_start();
 session_start();
+
+if(isset($_GET["IdEspecie"])){
+    $_SESSION["IdEspecie"]=$_GET["IdEspecie"];
+}else{
+    $_SESSION["IdEspecie"];
+}
+
+
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
@@ -27,20 +35,8 @@ if($id_Usuario=="" || $id_Usuario==null){
         <div class="agregar_especie_contenedor">
             <form class="agregar_especie_form" id="Especie_Form">
                 <div class="agregar_especie_titulo">
-                    <h1>Agregar Especie</h1>
+                    <h1>Versiones Especie</h1>
                     <div class="linea_titulo"></div>
-                </div>
-
-                <div class="dat_datos">
-                    <div class="dato">
-                        <div>
-                            <label for="nom">Nombre:</label>
-                            <input type="text" name="Nombre_Especie" id="Nombre_Especie">
-                        </div>
-                    </div>
-                    <div class="botones">
-                        <input type="button" value="Agregar Especie" id="btn_Agregar">
-                    </div>
                 </div>
                 <div class="Equipo_Tabla">
                     <div class="Acciones_Tabla">
@@ -62,8 +58,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <thead>
                             <th>No. Especie</th>
                             <th>Nombre</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
                             <th>Versión</th>
                         </thead>
                         <tbody id="content"></tbody>
@@ -81,9 +75,8 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 
 <script src="../js/heder.js"></script>
-<script src="js/Buscar_Especie.js"></script>
-<script src="js/Agregar_Especie.js"></script>
 <script src="js/script.js"></script>
+<script src="js/Version_Especie.js"></script>
 
 <?php }else {
     header("location:../Bitacoras.php");
