@@ -1,21 +1,21 @@
 <?php
 require "../../php/conexion.php";
-//Consulta par ver elementos de tabla inventario de equipo de los equipos con estado activo
+session_start();
+//Consulta para datos de la tabla paginada 
 
-
+$Id_Equipo=$_SESSION["IdEquipo"];
 //Columnas de la tabla a consultar
-$columns=['id_equipo', 'identificador',' equipo.nombre as equipo_nombre','area.nombre as area_nombre', 'descripcion',' area.id_area','estado_equipo','vercion_equipo'];
-//Tabla a consultar
+$columns=['vercion_equipo','id_equipo', 'identificador',' equipo.nombre as equipo_nombre','area.nombre as area_nombre', 'descripcion',' area.id_area','estado_equipo'];
+//Nombre de la tabla a consultar
 $table="equipo";
 //Nombre del campo que se va acontar para la paginacion 
 $id= 'id_equipo';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
-
-//Consulta JOIN
+//Consultas JOIN
 $join="INNER JOIN area on area.id_area=equipo.id_area";
-//Consulta Where 
-$where = "WHERE equipo.nombre ILIKE '%" . $campo . "%' and estado_equipo='Activo' or estado_equipo = 'Inactivo'";
+//Consultas where
+$where = "WHERE equipo.nombre ILIKE '%" . $campo . "%' and id_equipo::text='$Id_Equipo'";
 
 //Limita la cantidad de datos que se va a ver (no mover)
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
@@ -30,11 +30,11 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-//Consulta general para obtener los datos para la tabla
-$sql="SELECT DISTINCT on (id_equipo)" . implode(", ",$columns) . "
+//Consulta genera para obtener valores para la tabla
+$sql="SELECT  " . implode(", ",$columns) . "
 FROM $table
 $join
-$where ORDER BY id_equipo,vercion_equipo DESC
+$where ORDER BY vercion_equipo ASC
 $sLimit";
 
 $resultado=pg_query($conexion,$sql);
@@ -54,6 +54,7 @@ $output['data'] = '';
 $output['paginacion'] = '';
 
 //Visualizar los elementos de la tabla y los manda en JSON 
+
 if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
         $output['data'].='<tr>';
@@ -63,9 +64,6 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['descripcion'] .'</td>';
         $output['data'].='<td>'. $row['area_nombre'] .'</td>';
         $output['data'].='<td>'. $row['estado_equipo'] .'</td>';
-        $output['data'].='<td><a href="./Editar_Equipo.php?Equipo='. $row['id_equipo'] .'">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Equipo.php?Equipo='. $row['id_equipo'] .'">Baja</a></td>';
-        $output['data'].='<td><a href="./Verciones_Equipo.php?IdEquipo='. $row['id_equipo'] .'">Ver</a></td>';
         $output['data'].='</tr>';
     }
 }else{
