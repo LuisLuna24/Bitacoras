@@ -38,5 +38,13 @@ $(document).ready(function () {
         location.href = "./Equipo.php"
     })
 
-    
+    //Hace ques solo escriba en mayusculas
+    $("#Descripcion_Equipo").keyup(function(e) {
+      //Permite hacer que solo escriba en mayusculas
+      $(this).val($(this).val().toUpperCase());
+    });
+    $("#Nombre_Equipo").keyup(function(e) {
+      //Permite hacer que solo escriba en mayusculas
+      $(this).val($(this).val().toUpperCase());
+    });
 });

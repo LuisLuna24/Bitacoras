@@ -43,4 +43,15 @@ $(document).ready(function () {
         e.preventDefault();
       }
     });
+
+
+    //Hace ques solo escriba en mayusculas
+    $("#Reacivo_Nombre").keyup(function(e) {
+      //Permite hacer que solo escriba en mayusculas
+      $(this).val($(this).val().toUpperCase());
+    });
+    $("#Reactivo_Descripcion").keyup(function(e) {
+      //Permite hacer que solo escriba en mayusculas
+      $(this).val($(this).val().toUpperCase());
+    });
 });

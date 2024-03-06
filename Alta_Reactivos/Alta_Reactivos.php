@@ -38,7 +38,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="datoo">
                         <div>
                             <label for="dat1">Nombre del Reactivo:</label>
-                            <input type="text" name="Reacivo_Nombre">
+                            <input type="text" name="Reacivo_Nombre" id="Reacivo_Nombre">
                         </div>
                         <div>
                             <label for="dat5">Lote:</label>

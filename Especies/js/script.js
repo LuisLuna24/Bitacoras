@@ -11,5 +11,15 @@ $(document).ready(function () {
       if ($("#Nombre_Especie_input").val().length >= 30) {
         e.preventDefault();
       }
-  });
+    });
+
+    //Hace ques solo escriba en mayusculas
+    $("#Nombre_Especie").keyup(function(e) {
+      //Permite hacer que solo escriba en mayusculas
+      $(this).val($(this).val().toUpperCase());
+    });
+    $("#Nombre_Especie_input").keyup(function(e) {
+      //Permite hacer que solo escriba en mayusculas
+      $(this).val($(this).val().toUpperCase());
+    });
 });
