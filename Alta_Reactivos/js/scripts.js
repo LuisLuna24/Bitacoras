@@ -24,6 +24,13 @@ $(document).ready(function () {
       }
     });
 
+    $("#Reactivo_Cantidad").keypress(function(e) {
+      // Limitar la longitud a 60 caracteres de descripcion de reactivos
+      if ($("#Reactivo_Cantidad").val().length >= 10) {
+        e.preventDefault();
+      }
+    });
+
   
 
     $("#Reactivo_Lote").keypress(function(e) {
