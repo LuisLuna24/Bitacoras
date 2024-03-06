@@ -27,6 +27,7 @@ if($id_Usuario=="" || $id_Usuario==null){
         <div class="Equipo_Contenedor">
             <div class="Equipo_Titulo">
                 <h1>Inventario de Equipos</h1>
+                <div class="linea_titulo"></div>
                 <br>
             </div>
             <form class="Equipo_Form" id="Equipo_Form">
