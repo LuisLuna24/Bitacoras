@@ -44,17 +44,17 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <div class="No_Registro">
                             <div>
                                 <label for="ext">No.Registro:</label>
-                                <input type="text" name="Registro_Exteracion">
+                                <input type="text" name="Registro_Exteracion" id="Registro_Exteracion">
                             </div>
                             <div>
                                 <label for="ext">Cantidad:</label>
-                                <input type="text" name="Cantidad_Exteracion" value="1">
+                                <input type="text" name="Cantidad_Exteracion" value="1" id="Cantidad_Exteracion">
                             </div>
                         </div>
 
                         <div class="dato">
                             <label for="dato2">Fecha de extraccion:</label>
-                            <input type="date" name="Fecha_Exteracion">
+                            <input type="date" name="Fecha_Exteracion" id='Fecha_Exteracion'>
                         </div>
                     </div>
 
@@ -78,18 +78,18 @@ if($id_Usuario=="" || $id_Usuario==null){
 
                         <div class="dato10">
                             <label for="dato10">Conc ng/ul:</label>
-                            <input type="text" name="Conc_Exteracion">
+                            <input type="text" name="Conc_Exteracion" id="Conc_Exteracion">
                         </div>
                     </div>
 
                     <div class="datos_extraccion">
                         <div class="dato11">
                             <label for="dato11">Dato 260/280:</label>
-                            <input type="text" name="280_Exteracion">
+                            <input type="text" name="280_Exteracion" id="280_Exteracion">
                         </div>
                         <div class="dato12">
                             <label for="dato12">Dato 260/230:</label>
-                            <input type="text" name="230_Exteracion">
+                            <input type="text" name="230_Exteracion" id="230_Exteracion">
                         </div>
                     </div>
                 </div>

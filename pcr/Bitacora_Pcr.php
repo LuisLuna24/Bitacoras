@@ -59,15 +59,15 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="Pcr_Datos">
                         <div class="Datos">
                             <label for="Pcr_Agrosa">Agrosa:</label>
-                            <input type="text" name="Pcr_Agrosa">
+                            <input type="text" name="Pcr_Agrosa" id="Pcr_Agrosa">
                         </div>
                         <div class="Datos">
                             <label for="Pcr_Voltage">Voltage:</label>
-                            <input type="text" name="Pcr_Voltage">
+                            <input type="text" name="Pcr_Voltage" id="Pcr_Voltage">
                         </div>
                         <div class="Datos">
                             <label for="Pcr_Tiempo">Tiempo (min):</label>
-                            <input type="text" name="Pcr_Tiempo">
+                            <input type="text" name="Pcr_Tiempo" id="Pcr_Tiempo">
                         </div>
                     </div>
                     <div class="Pcr_Espece_Check">
