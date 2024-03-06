@@ -336,6 +336,7 @@ $(document).ready(function () {
             success: function (response) {
                 if(response==1){
                     alert("Permisos actualizados correctamente.");
+                    $('#Form_Permisos_Admin')[0].reset();
                     $.ajax({
                         type: "POST",
                         url: "php/Buscar_Usuarios.php",
@@ -371,6 +372,7 @@ $(document).ready(function () {
             success: function (response) {
                 if(response==1){
                     alert("Permisos actualizados correctamente.");
+                    $('#Form_Permisos_Admin')[0].reset();
                     $.ajax({
                         type: "POST",
                         url: "php/Buscar_Usuarios.php",
@@ -399,7 +401,83 @@ $(document).ready(function () {
     $("#Admin_btn_Canselar").on("click",function(){
         $("#Admin").css("display", "none");
     });
-    
 
+
+    //=========================================Actualizar datos de usuarios =================================================
+    $("#Actualizar_Usuario").on("click",function(){
+        $("#Actualizar_Usuario_Formulario").css("display", "grid");
+        $.ajax({
+            type: "POST",
+            url: "php/Buscar_Usuarios_Actualizar.php",
+            dataType: "html",
+            success: function (response) {
+                $("#Actualizar_Select").html(response);
+            }
+        });
+    })
+
+    $("#Actualizar_Select").select2();
+//Buscar datos usuario
+    $.ajax({
+        type: "POST",
+        url: "php/Buscar_Usuarios_Actualizar.php",
+        dataType: "html",
+        success: function (response) {
+            $("#Actualizar_Select").html(response);
+        }
+    });
+
+
+    $("#Actualizar_Select").on("change",function(){
+        var datos=new FormData($("#Actualizar_Form")[0]);
+        $.ajax({
+            type: "POST",
+            url: "php/Buscar_Datos_Usuario.php",
+            data: datos,
+            contentType: false,
+            processData:false,
+            dataType: "JSON",
+            success: function (response) {
+                $("#Nombre_Actualizar").val(response.nombre);
+                $("#Apellido_Actualizar").val(response.apellido);
+                $("#Correo_Actualizar").val(response.correo);
+
+            }
+        });
+    });
+
+    //Cancelar Actualizar
+    $("#Cancelar_Actualizar_btn").on("click",function(){
+        $("#Actualizar_Usuario_Formulario").css("display", "none");
+    })
+
+    //Actualizar usuario
+    $("#Actualizar_Btn").on("click",function(){
+        var datos=new FormData($("#Actualizar_Form")[0]);
+        $.ajax({
+            type: "POST",
+            url: "php/Actualizar_Usuario.php",
+            data: datos,
+            contentType: false,
+            processData:false,
+            success: function (response) {
+                if(response==1){
+                    alert("Usuario actualizado correctamente.");
+                    $('#Actualizar_Form')[0].reset();
+                    $("#Actualizar_Usuario_Formulario").css("display", "none");
+                    $.ajax({
+                        type: "POST",
+                        url: "php/Buscar_Usuarios_Actualizar.php",
+                        dataType: "html",
+                        success: function (response) {
+                            $("#Actualizar_Select").html(response);
+                        }
+                    });
+                }else{
+                    alert(response);
+                }
+            }
+        });
+    });
     
 });

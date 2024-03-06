@@ -73,6 +73,15 @@ if($id_Usuario=="" || $id_Usuario==null){
             </div>
             <div class="Opciones_Card">
                 <div class="Card_Titulo">
+                    <h3>Actualizar Usuario</h3>
+                    <p>Actualizar los datos de los usuarios</p>
+                </div>
+                <div class="Card_Boton">
+                    <input type="button" value="Actualizar" id="Actualizar_Usuario">
+                </div>
+            </div>
+            <div class="Opciones_Card">
+                <div class="Card_Titulo">
                     <h3>Desactivar usuario</h3>
                     <p>Permite deactiviar a los usuarios del sistema (no elimina)</p>
                 </div>
@@ -224,6 +233,34 @@ if($id_Usuario=="" || $id_Usuario==null){
             <hr>
             <div class="contraseña_boton">
                 <input type="button" value="Regresar" id="Admin_btn_Canselar">
+            </div>
+        </form>
+    </section>
+    <!--========================actualizar datos de Usuario=====================================-->
+    <section class="Baja" id="Actualizar_Usuario_Formulario">
+        <form class="Contraseña_Contenedor" id="Actualizar_Form">
+            <div class="Contraseña_Titulo">
+                <h2>Actualizar Usuario</h2>
+            </div>
+            <div class="Contaseña_Datos">
+                <label for="Contraseña">Seleccione usuario:</label>
+                <select name="Actualizar_Select" id="Actualizar_Select"></select>
+            </div>
+            <div class="Contaseña_Datos">
+                <label for="Contraseña">Nombre:</label>
+                <input type="text" id="Nombre_Actualizar" name="Nombre_Actualizar">
+            </div>
+            <div class="Contaseña_Datos">
+                <label for="Contraseña">Apellido:</label>
+                <input type="text" id="Apellido_Actualizar" name="Apellido_Actualizar">
+            </div>
+            <div class="Contaseña_Datos">
+                <label for="Contraseña">Correo:</label>
+                <input type="text" id="Correo_Actualizar" name="Correo_Actualizar">
+            </div>
+            <div class="contraseña_boton">
+                <input type="button" value="Actualizar" id="Actualizar_Btn">
+                <input type="button" value="Cancelar" id="Cancelar_Actualizar_btn">
             </div>
         </form>
     </section>
