@@ -5,7 +5,7 @@ require "../../php/conexion.php";
 
 
 //Columnas de la tabla a consultar
-$columns=['id_equipo', 'identificador',' equipo.nombre as equipo_nombre','area.nombre as area_nombre', 'descripcion',' area.id_area','estado_equipo'];
+$columns=['vercion_equipo','id_equipo', 'identificador',' equipo.nombre as equipo_nombre','area.nombre as area_nombre', 'descripcion',' area.id_area','estado_equipo'];
 //Nombre de la tabla a consultar
 $table="equipo";
 //Nombre del campo que se va acontar para la paginacion 
@@ -31,10 +31,10 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 //Consulta genera para obtener valores para la tabla
-$sql="SELECT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (id_equipo) " . implode(", ",$columns) . "
 FROM $table
 $join
-$where
+$where ORDER BY id_equipo,vercion_equipo DESC
 $sLimit";
 
 $resultado=pg_query($conexion,$sql);
@@ -63,8 +63,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['descripcion'] .'</td>';
         $output['data'].='<td>'. $row['area_nombre'] .'</td>';
         $output['data'].='<td>'. $row['estado_equipo'] .'</td>';
-        $output['data'].='<td><a href="./Editar_Equipo.php?Equipo='. $row['id_equipo'] .'">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Equipo.php?Equipo='. $row['id_equipo'] .'">Baja</a></td>';
+        $output['data'].='<td><a href="./php/Activar_Equipo.php?Equipo='. $row['id_equipo'] .'">Alta</a></td>';
         $output['data'].='</tr>';
     }
 }else{

@@ -29,9 +29,9 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 //Consulta parar visualizar los campos en la tabla paginada
-$sql="SELECT " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (id_especie) " . implode(", ",$columns) . "
 FROM $table
-$where
+$where ORDER BY id_especie,vercion_especie DESC
 $sLimit";
 
 $resultado=pg_query($conexion,$sql);
@@ -57,7 +57,9 @@ if($num_rows>0){
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['id_especie'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .'</td>';
+        $output['data'].='<td><a href="Editar_Especie.php?Especie='. $row['id_especie'] .'">Editar</a></td>';
         $output['data'].='<td><a href="./php/Eliminar_Especie.php?Especie='. $row['id_especie'] .'">Eliminar</a></td>';
+        $output['data'].='<td><a href="./Version_Especie.php?IdEspecie='. $row['id_especie'] .'">Ver</a></td>';
         $output['data'].='</tr>';
     }
 }else{

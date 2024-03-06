@@ -20,7 +20,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/bitacora_pcr_tim_real.css" />
+    <link rel="stylesheet" href="css/Vercion_Anterior.css" />
     <title>Bitacora de resultados PCR</title>
     <link rel="stylesheet" href="../css/header.css" />
     <script src="../librerias/jquery/jquery-3.2.1.min.js"></script>
@@ -83,12 +83,14 @@ if($id_Usuario=="" || $id_Usuario==null){
             </form>
         </div>
     </section>
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 </body>
 
 </html>
 
-<script src="./js/scripts.js"></script>
+<script src="../js/heder.js"></script>
 <script src="./js/Ver_Vercion_Anterior.js"></script>
 <script src="./js/Equipo_Vercion_Anterior.js"></script>
 <?php }  ?>

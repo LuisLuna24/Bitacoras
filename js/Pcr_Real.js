@@ -2,6 +2,11 @@
 
 $(document).ready(function () {
     $("#Pcr_Real").on("click", function(){
+        $("#Alert_PCREAL").css("display","grid");
+
+    })
+
+    $("#Agregar_Regitstro_Pcreal").on("click", function(){
         $.ajax({
             type: "POST",
             url: "./php/Pcr_Real.php",
@@ -14,6 +19,12 @@ $(document).ready(function () {
                 }
             }
         });
+    });
+
+
+
+    $("#Cancelar_Regitstro_Pcreal").on("click",function(){
+        $("#Alert_PCREAL").css("display","none");
     });
 //Redirecciona al apartado para ver todos los folios de Pcr tiemporeal
     $("#ver_pcreal").on("click",function(){

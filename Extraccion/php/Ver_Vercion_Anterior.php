@@ -7,7 +7,7 @@ session_start();
 $Folio=$_SESSION['No_Folio'];
 
 //Columnas que se desean consultar 
-$columns=['folio_extraccion.id_folio', 'folio','identificador_bitacora' ,'folio_extraccion.id_version_bitacoras', 'birtacora_extaccion.version_extraccion','admin.nombre','admin.apellido','nombre_version','admin.id_admin'];
+$columns=['identificdor_extracion','usuario.nombre','usuario.apellido','nombre_version','version_extracion','folio_extraccion.id_folio', 'folio_extraccion.id_version_bitacora', 'folio_extraccion.version_bitacora', 'fecha_creacion', 'folio_extraccion.version_folio', 'bitacora_extraccion.id_admin'];
 //Tabla que se desea consultar
 $table="folio_extraccion ";
 //Columna que se desea contar para la paginacion
@@ -16,11 +16,12 @@ $id= 'id_folio';
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
 //Consultas JOIN se realizan todas las consultas JOIN
-$join="INNER JOIN birtacora_extaccion on birtacora_extaccion.id_folio=folio_extraccion.id_folio  LEFT  JOIN admin on admin.id_admin=birtacora_extaccion.id_admin
-INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_extraccion.id_version_bitacoras";
+$join="INNER JOIN version_bitacora on version_bitacora.id_vercion_bitacora=folio_extraccion.id_version_bitacora
+        INNER JOIN bitacora_extraccion on bitacora_extraccion.id_folio = folio_extraccion.id_folio
+       LEFT JOIN usuario on usuario.id_usuario = bitacora_extraccion.id_admin";
 
 //Consultas Where 
-$where = "WHERE folio_extraccion.id_folio::text ILIKE '%" . $campo . "%' and birtacora_extaccion.id_folio='$Folio'";
+$where = "WHERE folio_extraccion.id_folio::text ILIKE '%" . $campo . "%' and folio_extraccion.id_folio::text='$Folio'";
 
 //Limita los datos que se veran en la paginacion dependiendo los valores del select
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
@@ -38,10 +39,10 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 //Consulta general para obtener datos de la tabla 
-$sql="SELECT DISTINCT on (version_extraccion) " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (version_extracion) " . implode(", ",$columns) . "
 FROM $table 
 $join
-$where
+$where ORDER BY version_extracion ASC
 $sLimit";
 
 
@@ -65,17 +66,18 @@ $output['paginacion'] = '';
 if($num_rows>0){
     while($row=pg_fetch_array($resultado)){
         //Analizar si el folio fue revisado en caso de ser revisado por el admin quitara la opción de eliminar
-        if($row['id_admin']==''){
-            $Eliminar='<a href="./php/Eliminar_Extraccion.php?No_Folio='. $row['id_folio']. '">Eliminar</a>';
+        if($_SESSION['Nivel']==2){
+            $Validar='<a href="./php/Validar_folio.php?Validar='. $row['identificdor_extracion']. '">Validar</a>';
         }else{
-            $Eliminar='';
+            $Validar='';
         }
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['id_folio'] .'</td>';
-        $output['data'].='<td>'. $row['version_extraccion'] .'</td>';
+        $output['data'].='<td>'. $row['version_extracion'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] . ' ' . $row['apellido'] . '</td>';
-        $output['data'].='<td><a href="Ver_Vercion_Extracion.php?Version_Extraccion='. $row['identificador_bitacora']. '">Ver</a></td>';
+        $output['data'].='<td><a href="Ver_Vercion_Extracion.php?Version_Extraccion='. $row['identificdor_extracion']. '">Ver</a></td>';
+        $output['data'].='<td>'. $Validar . '</td>';
         $output['data'].='</tr>';
     }
 }else{

@@ -20,7 +20,7 @@ caption{
   .bit_extraccion_contenedor {
     width: 100%;
     height: 100%;
-    padding: 50px;
+    padding: 0px 50px;
   }
 
 @media (max-width: 768px){
@@ -364,4 +364,14 @@ tr:nth-child(even){
   grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
   place-items: center;
   gap: 20px;
+}
+
+.Datos_Metodo_Equipo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 15px;
+  border: solid 3px #75B841;
+  padding: 10px;
+  border-radius: 20px;
 }

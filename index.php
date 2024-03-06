@@ -10,38 +10,38 @@
     <script src="./librerias/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-    <header>
-        <div class="header_contenedor">
-            <img src="./img/Gsmall.webp" alt="logo">
-            <a href="./registrarce.php">Registrarse</a>
-        </div>
+    <header class="header" id="header">
+        <a href="#" class="name"><img class="logo_gis" alt="" src="./img/Gsmall.webp" ></a>
+        <input type="checkbox" id="check">
+        <label for="check" class="menu">
+        </label>
+        <nav class="navbar">
+        </nav>
     </header>
 
-    <section class="Secion">
-        <div class="Secion_Contenedor">
-            <form class="Form_Secion" id="Form_Secion">
+    <section class="Sesion">
+        <div class="Sesion_Contenedor">
+            <div class="Sesion_Imagen">
+                <img src="img/Gsmall.webp" alt="Logo Gisena">
                 <h1>Iniciar Sesión</h1>
-                <div class="Form_Datos">
-                    <div class="Contenedor_Datos">
-                        <div class="Datos">
-                            <input type="text" required="" autocomplete="off" class="input" name="In_Correo">
-                            <label for="correo"  class="user-label">Correo</label>
-                        </div>
-                        <div class="Datos">
-                            <input type="password" required="" autocomplete="off" class="input" name="In_Contrasena">
-                            <label for="correo" class="user-label">Contraseña</label>
-                        </div>
+                <p>Bitácoras de Biología Molecular</p>
+            </div>
+            <form class="Sesion_Form" id="Form_Secion">
+                <div class="Contenedor_Datos">
+                    <div class="Datos">
+                        <input type="text" required="" autocomplete="off" class="input" name="In_Correo">
+                        <label for="correo"  class="user-label">Correo</label>
+                    </div>
+                    <div class="Datos">
+                        <input type="password" required="" autocomplete="off" class="input" name="In_Contrasena">
+                        <label for="correo" class="user-label">Contraseña</label>
                     </div>
                 </div>
-                <div class="Form_Boton">
+                <div class="Sesion_Boton">
                     <input type="submit" value="Iniciar" id="Iniciar_Sesion">
                 </div>
             </form>
-            <div class="Secion_Imagen">
-                <img src="./img/Gsmall.webp" alt="logo">
-                <h1>Gisena <span>Labs</span> </h1>
-                <p>¿No tienes cuneta? <a href="./registrarce.php">Registrarse</a></p>
-            </div>
+            
             <?php  require "./global/Alerta_Index.php" ?>
         </div>
     </section>

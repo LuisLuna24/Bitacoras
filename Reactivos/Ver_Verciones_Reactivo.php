@@ -6,7 +6,12 @@ $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 
-$_SESSION["Folio_Reactivo"]=$_GET['Bitacora'];
+if(isset($_GET['Bitacora'])){
+    $_SESSION["Folio_Reactivo"]=$_GET['Bitacora'];
+}else{
+    $_SESSION["Folio_Reactivo"];
+}
+
 
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
@@ -58,6 +63,9 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>Fecha Elaboro</th>
                         <th>Reviso</th>
                         <th>Ver Versiones</th>
+                        <?php if($_SESSION['Nivel']==2){ ?>
+                                    <th>Revisado</th>
+                        <?php  } ?>
                     </thead>
                     <tbody id="content"></tbody>
                 </table>
@@ -65,12 +73,14 @@ if($id_Usuario=="" || $id_Usuario==null){
             </div>
         </div>
     </section>
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 </body>
 
 </html>
 
-<script src="./js/scripts.js"></script>
+<script src="../js/heder.js"></script>
 <script src="./js/Buscar_Vercion_Reactivo.js"></script>
 
 <?php }  ?>

@@ -6,7 +6,7 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:index.php");
-}else{  ?>
+}else if($_SESSION['Nivel']==2){  ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -14,8 +14,10 @@ if($id_Usuario=="" || $id_Usuario==null){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Principal</title>
+    <link rel="stylesheet" href="css/Alerta_Cerrar.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/principal.css">
+    <script src="./librerias/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
     <?php require "./global/header.php"  ?>
@@ -73,10 +75,14 @@ if($id_Usuario=="" || $id_Usuario==null){
         </div>
     </section>
 
-
+    <?php require "./global/Alerta_Cerrar.php"  ?>
+    <script src="js/Script_Cerrar.js"></script>
     <?php require "./global/footer.php"  ?>
 </body>
 </html>
 
 
-<?php }  ?>
+
+<?php } else {
+    header("location:Bitacoras.php");
+}  ?>

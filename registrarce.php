@@ -1,8 +1,20 @@
+<?php
+ob_start();
+session_start();
+$id_Usuario=$_SESSION['id_usuario'];
+$Nombre=$_SESSION['nombre'];
+$Apellido=$_SESSION['apellido'];
+if($id_Usuario=="" || $id_Usuario==null){
+    header("location:index.php");
+}else if($_SESSION['Nivel']==2){  ?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Alerta_Cerrar.css">
     <title>Registro</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/Registro.css">
@@ -11,11 +23,13 @@
     <script src="./librerias/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-    <header>
-        <div class="header_contenedor">
-            <img src="./img/Gsmall.webp" alt="logo">
-            <a href="./index.php">Iniciar Sesión</a>
-        </div>
+    <header class="header" id="header">
+        <a href="#" class="name"><img class="logo_gis" alt="" src="./img/Gsmall.webp" ></a>
+        <input type="checkbox" id="check">
+        <label for="check" class="menu">
+        </label>
+        <nav class="navbar">
+        </nav>
     </header>
     <section class="Registro">
         <div class=Regsitro_contenedor>
@@ -63,16 +77,22 @@
             </div>
             <div class="Regsitro_Imagen">
                 <img src="./img/Gsmall.webp" alt="logo">
-                <h1>Gisena <span>Labs</span> </h1>
-                <p>¿Ya tienes cuneta? <a href="./index.php">Iniciar Sesión</a></p>
+                <div class=Registro_Boton>
+                    <input type="button" value="Regresar" id="Regresar_Admin" class="Registro_btn">
+                </div>
             </div>
         </div>
         <?php  require "./global/Alerta_Index.php" ?>
     </section>
    
-    
+    <?php require "./global/Alerta_Cerrar.php"  ?>
+    <script src="js/Script_Cerrar.js"></script>
 </body>
 </html>
 
 <script src="./js/Validar_Copntrasena.js"></script>
 <script src="./js/Refistrarce.js"></script>
+
+<?php } else {
+    header("location:Bitacoras.php");
+}  ?>

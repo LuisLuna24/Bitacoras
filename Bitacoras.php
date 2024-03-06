@@ -14,6 +14,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Alerta_Cerrar.css">
     <title>Document</title>
     <link rel="stylesheet" href="css/bitacoras.css">
     <link rel="stylesheet" href="css/header.css">
@@ -67,7 +68,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
                 <div class="Card">
                     <div class="Card_Titulo">
-                        <h2>Bitácoras de Resultados de PCR</h2>
+                        <h2>Bitácoras de PCR</h2>
                     </div>
                     <div class="Card_Contenido">
                         <input type="button" value="Agregar Registros" id="Bitacora_Pcr">
@@ -76,7 +77,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
                 <div class="Card">
                     <div class="Card_Titulo">
-                        <h2>Bitácoras de Resultados de PCR</h2>
+                        <h2>Bitácoras de PCR</h2>
                         <h3>Tiempo Real</h3>
                     </div>
                     <div class="Card_Contenido">
@@ -87,9 +88,62 @@ if($id_Usuario=="" || $id_Usuario==null){
             </div>
         </div>
 
+        <div class="alert" id="Alert_PCR">
+            <div class="alert_Contenedor">
+                <div class="alert_Titulo">
+                    <h2>Bitacora de PCR</h2>
+                    <p id=>¿Desea crear nuevo registro de PCR?</p>
+                </div>
+                <div class="alert_Botones" id="alert_Botones">
+                    <input type="button" value="Agregar Registro" id="Agregar_Regitstro_Pcr">
+                    <input type="button" value="Cancelar" id="Cancelar_Regitstro_Pcr">        
+                </div>
+            </div>
+        </div>
+
+        <div class="alert" id="Alert_PCREAL">
+            <div class="alert_Contenedor">
+                <div class="alert_Titulo">
+                    <h2>Bitacora de PCR Tiempo Real</h2>
+                    <p id=>¿Desea crear nuevo registro de PCR Tiemo Real?</p>
+                </div>
+                <div class="alert_Botones" id="alert_Botones">
+                    <input type="button" value="Agregar Registro" id="Agregar_Regitstro_Pcreal">
+                    <input type="button" value="Cancelar" id="Cancelar_Regitstro_Pcreal">        
+                </div>
+            </div>
+        </div>
+
+        <div class="alert" id="Alert_Extraccion">
+            <div class="alert_Contenedor">
+                <div class="alert_Titulo">
+                    <h2>Bitacora de Extraccion</h2>
+                    <p id=>¿Desea crear nuevo registro de bitacora de extraccion?</p>
+                </div>
+                <div class="alert_Botones" id="alert_Botones">
+                    <input type="button" value="Agregar Registro" id="Agregar_Regitstro_Extraccion">
+                    <input type="button" value="Cancelar" id="Cancelar_Regitstro_Extraccion">        
+                </div>
+            </div>
+        </div>
+
+        <div class="alert" id="Alert_Reactivos">
+            <div class="alert_Contenedor">
+                <div class="alert_Titulo">
+                    <h2>Bitacora de Reactivos</h2>
+                    <p id=>¿Desea crear nuevo registro de bitacora de reactivos?</p>
+                </div>
+                <div class="alert_Botones" id="alert_Botones">
+                    <input type="button" value="Agregar Registro" id="Agregar_Regitstro_Reactivos">
+                    <input type="button" value="Cancelar" id="Cancelar_Regitstro_Reactivos">        
+                </div>
+            </div>
+        </div>
+
     </section>
 
-
+    <?php require "./global/Alerta_Cerrar.php"  ?>
+    <script src="js/Script_Cerrar.js"></script>
     <footer calss="Footer">
         <div class="Fotter_Contenedor">
             <div class="Footer_Logo">

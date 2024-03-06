@@ -1,5 +1,8 @@
 <?php
 require "../../php/conexion.php";
+
+//Permite ber registros de verciones ateriores de un folio
+
 session_start();
 
 if(isset($_GET['No_Folio'])){
@@ -9,17 +12,19 @@ if(isset($_GET['No_Folio'])){
 }
 
 
-$columns=['id_pcreal','identificador_bitacora' ,'no_registro', 'nombre_version','version_pcreal', 'identificador', 'id_folio','fecha_elaboracion' ,'birtacora_pcreal.id_analisis','analisis.nombre as analisis_nombre' ,'fecha', 'sanitizo', 'tiempouv', 'resultado', 'observaciones', 'id_equipo_pcreal', 'id_usuario','id_admin'];
+$columns=['bitacora_pcreal.id_admin','usuario.apellido','usuario.nombre','version_pcreal', 'identificador_bitacora', 'bitacora_pcreal.id_folio','fecha_creacion','version_bitacora.nombre_version'];
 
-$table="birtacora_pcreal ";
+$table="bitacora_pcreal ";
 
-$id= 'id_pcreal';
+$id= 'version_pcreal';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="INNER JOIN analisis on analisis.id_analisis=birtacora_pcreal.id_analisis INNER JOIN folio_pcreal on folio_pcreal.if_folio=birtacora_pcreal.id_folio INNER JOIN version_bitacora on version_bitacora.id_version_bitacora=folio_pcreal.id_version_bitacoras";
+$join="INNER JOIN folio_pcreal on folio_pcreal.id_folio=bitacora_pcreal.id_folio 
+INNER JOIN version_bitacora on version_bitacora.id_vercion_bitacora=folio_pcreal.id_version_bitacora
+LEFT JOIN usuario on usuario.id_usuario = bitacora_pcreal.id_admin";
 
-$where = "WHERE identificador::text ILIKE '%" . $campo . "%' and id_folio = '$Folio'  ";
+$where = "WHERE bitacora_pcreal.id_folio::text ILIKE '%" . $campo . "%' and bitacora_pcreal.id_folio = '$Folio'  ";
 
 
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
@@ -49,7 +54,7 @@ $num_rows=pg_num_rows($resultado);
 
 //Consulta para total registros
 
-$sqlTotal="SELECT count($id) FROM $table ";
+$sqlTotal="SELECT count(DISTINCT $id) FROM $table ";
 $resTotal=pg_query($conexion,$sqlTotal);
 $row_total=pg_fetch_array($resTotal);
 $totalRegistros = $row_total[0];
@@ -62,13 +67,19 @@ $output['paginacion'] = '';
 
 if($num_rows>0){
     while($row=pg_fetch_array($resultado)){
+        if($_SESSION['Nivel']==2){
+            $Validar='<a href="./php/Validar_folio.php?Validar='. $row['identificador_bitacora']. '">Validar</a>';
+        }else{
+            $Validar='';
+        }
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['id_folio'] .'</td>';
         $output['data'].='<td>'. $row['version_pcreal'] .'</td>';
-        $output['data'].='<td>'. $row['fecha_elaboracion'] .'</td>';
+        $output['data'].='<td>'. $row['fecha_creacion'] .'</td>';
         $output['data'].='<td>'. $row['nombre_version'] .'</td>';
-        $output['data'].='<td>'. $row['id_admin'] .'</td>';
+        $output['data'].='<td>'. $row['nombre'] . " " . $row['apellido'] .'</td>';
         $output['data'].='<td><a href="./Ver_VersionPcreal.php?Version_Vitacora='. $row['identificador_bitacora']. '">Ver</a></td>';
+        $output['data'].='<td>'. $Validar. '</td>';
         $output['data'].='</tr>';
     }
 }else{

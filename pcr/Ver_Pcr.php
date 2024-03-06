@@ -7,14 +7,14 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
-}else{  ?>
+}else{   ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/ver_resul_timreal.css">
+    <link rel="stylesheet" href="./css/Ver_Bitacoras.css">
     <title>Ver Bitacora PCR</title>
     <link rel="stylesheet" href="../css/header.css" />
     <script src="../librerias/jquery/jquery-3.2.1.min.js"></script>
@@ -27,7 +27,7 @@ if($id_Usuario=="" || $id_Usuario==null){
         <div class="dat_resul_contenedor">
             <form class="dat_resul_form">
                 <div class="dat_resul_titulo">
-                    <h1>Ver Bitacora de Resultados de PCR</h1>
+                    <h1>Ver Bitacora de PCR</h1>
                     <div class="linea_titulo"></div>
                 </div>
                 <div class="Equipo_Tabla">
@@ -50,9 +50,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Folio</th>
                             <th>Fecha</th>
                             <th>Bitacora</th>
-                            <th>Revisó</th>
+                            <th>Reviso</th>
                             <th>Editar</th>
-                            <th>Eliminar</th>
                             <th>Versiones anteriores</th>
                         </thead>
                         <tbody id="content"></tbody>
@@ -63,11 +62,14 @@ if($id_Usuario=="" || $id_Usuario==null){
             
         </div>
     </section>
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 </body>
 </html>
 
-<script src="./js/scripts.js"></script>
-<script src="./js/Buscar_VerPcreal.js"></script>
 
-<?php } ?>
+<script src="./js/Buscar_VerPcr.js"></script>
+<script src="../js/heder.js"></script>
+
+<?php }  ?>

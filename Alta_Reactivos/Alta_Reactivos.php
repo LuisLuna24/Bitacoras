@@ -6,7 +6,7 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
-}else{  ?>
+}else if($_SESSION['Nivel']==2){  ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -38,29 +38,29 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="datoo">
                         <div>
                             <label for="dat1">Nombre del Reactivo:</label>
-                            <input type="text" name="Reacivo_Nombre">
+                            <input type="text" name="Reacivo_Nombre" id="Reacivo_Nombre">
                         </div>
                         <div>
                             <label for="dat5">Lote:</label>
-                            <input type="text" name="Reactivo_Lote">
+                            <input type="text" name="Reactivo_Lote" id="Reactivo_Lote">
                         </div>
                     </div>
 
                     <div class="datoo">
                         <div>
-                            <label for="dat5">Descripcion:</label>
-                            <input type="text" name="Reactivo_Descripcion">
+                            <label for="dat5">Descripcion: (Max 60 Caracteres )</label>
+                            <input type="text" name="Reactivo_Descripcion" id="Reactivo_Descripcion">
                         </div>
                         
                         <div>
                             <label for="dat4">Cantidad:</label>
-                            <input type="text" name="Reactivo_Cantidad">
+                            <input type="text" name="Reactivo_Cantidad" id="Reactivo_Cantidad" >
                         </div>
                     </div>
                     <div class="datoo">
                         <div>
                             <label for="dat4">Fecha Caducidad:</label>
-                            <input type="Date" name="Reactivo_Caducidad">
+                            <input type="Date" name="Reactivo_Caducidad" id="Fecha_Caducidad">
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                             </select>
                         </div>
                         <div class="Dato">
-                            <label for="buscar">Buscar Reactivo:</label>
+                            <label for="buscar">Buscar Reactivo: (Nombre, lote)</label>
                             <input type="text" id="campo" name="campo">
                         </div>
                     </div>
@@ -88,6 +88,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <table>
                         <thead>
                             <th>Nombre</th>
+                            <th>Versión</th>
                             <th>Descripcion</th>
                             <th>Cantidad</th>
                             <th>Fecha Caducidad</th>
@@ -95,6 +96,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Estado</th>
                             <th>Actualizar</th>
                             <th>Eliminar</th>
+                            <th>Versiónes</th>
                         </thead>
                         <tbody id="content"></tbody>
                     </table>
@@ -104,15 +106,19 @@ if($id_Usuario=="" || $id_Usuario==null){
             </form>
         </div>
     </section>
-
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 
 </body>
 
 </html>
 
-<script src="./js/scripts.js"></script>
 <script src="./js/Buscar_Reactivo.js"></script>
 <script src="./js/Agregar_Reactivo.js"></script>
+<script src="../js/heder.js"></script>
+<script src="js/scripts.js"></script>
 
-<?php }  ?>
+<?php }else {
+    header("location:../Bitacoras.php");
+}  ?>

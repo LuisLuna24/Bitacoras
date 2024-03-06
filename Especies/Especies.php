@@ -6,7 +6,7 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
-}else{  ?>
+}else if($_SESSION['Nivel']==2){   ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -35,7 +35,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="dato">
                         <div>
                             <label for="nom">Nombre:</label>
-                            <input type="text" name="Nombre_Especie">
+                            <input type="text" name="Nombre_Especie" id="Nombre_Especie">
                         </div>
                     </div>
                     <div class="botones">
@@ -53,7 +53,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                             </select>
                         </div>
                         <div class="Dato">
-                            <label for="buscar">Buscar Especie.</label>
+                            <label for="buscar">Buscar Especie: (Nombre)</label>
                             <input type="text" id="campo" name="campo">
                         </div>
                     </div>
@@ -62,7 +62,9 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <thead>
                             <th>No. Especie</th>
                             <th>Nombre</th>
+                            <th>Editar</th>
                             <th>Eliminar</th>
+                            <th>Versión</th>
                         </thead>
                         <tbody id="content"></tbody>
                     </table>
@@ -71,6 +73,8 @@ if($id_Usuario=="" || $id_Usuario==null){
             </form>
         </div>
     </section>
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 
 </body>
@@ -78,7 +82,11 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 
-<script src="js/scripts.js"></script>
+<script src="../js/heder.js"></script>
 <script src="js/Buscar_Especie.js"></script>
 <script src="js/Agregar_Especie.js"></script>
-<?php }  ?>
+<script src="js/script.js"></script>
+
+<?php }else {
+    header("location:../Bitacoras.php");
+}  ?>

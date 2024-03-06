@@ -13,9 +13,12 @@ $(document).ready(function () {
             success: function (response) {
                 //Validación de inicio de sesión y validación de correo y contraseña 
                 if (response==1) {
+                    $(location).attr('href', 'Bitacoras.php');
+                    $('#Singin_Form')[0].reset();
+                } else if(response==9){
                     $(location).attr('href', 'Principal.php');
                     $('#Singin_Form')[0].reset();
-                } else if(response==2) {
+                }else if(response==2) {
                     var Alert = document.getElementById('Alerta_Secion');
                     Alert.style.display = "flex";
                     $('#Label_Alerta_Secion').text('La contraseña es incorrecta');

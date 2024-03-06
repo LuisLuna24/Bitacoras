@@ -1,27 +1,40 @@
 <?php
 require "../../php/conexion.php";
-
 session_start();
 
+$Folio=$_SESSION["Pcr_Folio"];
 
-$NoEquipo =$_SESSION["pcr_fol"];
-$identificador="";
-$idEquipo=$_POST['Equipo_SelectAgregar'];
+$Equipo=$_POST['Pcr_Equipo'];
+//Buscar Identificador maximo
+$Canmax="SELECT MAX(identificador) FROM equipo_pcr where id_equipo_pcr='$Folio';";
+$Canquery=pg_query($conexion,$Canmax);
+$rowcan=pg_fetch_assoc($Canquery);
+$Identificador=$rowcan['max']+1;
 
-$Buscrae="SELECT * FROM equipo_pcr where id_equipo='$idEquipo' and id_equipo_pcr='$NoEquipo'";
-$querye=pg_query($conexion,$Buscrae);
+//Bucar Version de especie maxima
+$Especiemax="SELECT MAX(vercion_equipo) FROM public.equipo where id_equipo = '$Equipo';";
+$Especiequery=pg_query($conexion,$Especiemax);
+$rowesp=pg_fetch_assoc($Especiequery);
+$versionespe=$rowesp['max'];
 
 
-if (pg_num_rows($querye)==0) {
-    $Buscraa="SELECT MAX(identificador) FROM equipo_pcr where id_equipo_pcr='$NoEquipo'";
-    $querya=pg_query($conexion,$Buscraa);
-    $row=pg_fetch_assoc($querya);
-    $identificador=$row['max']+1;
-    $crearEquipo="INSERT INTO public.equipo_pcr (id_equipo_pcr, identificador, id_equipo,version_equipo,ver_equipo) VALUES ($NoEquipo, $identificador, '$idEquipo',1,'11');";
-    $crear=pg_query($conexion,$crearEquipo);
-    echo 1;
+$BuscarExistente="SELECT id_equipo FROM equipo_pcr where id_equipo='$Equipo'";
+$Existente=pg_query($conexion,$BuscarExistente);
+
+if(pg_num_rows($Existente)==0){
+    //Realiza la insercion en caso de no manda error 
+    try{
+        $Ver_equipo=$Folio.'1';
+        $Insertar="INSERT INTO public.equipo_pcr(
+            id_equipo_pcr, identificador, version_equipo_pcr, id_equipo, version_equipo, ver_equipo_pcr)
+            VALUES ('$Folio', '$Identificador', '1', '$Equipo', '$versionespe', '$Ver_equipo');";
+        pg_query($conexion,$Insertar);
+        echo 1;
+    }catch(Exception $e){
+        echo "Se produjo un error: " . $e->getMessage();
+    }
 }else{
-    echo 2;
+    echo 3;
 }
 
 ?>

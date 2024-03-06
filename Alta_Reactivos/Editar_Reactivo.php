@@ -10,7 +10,7 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
-}else{  ?>
+}else if($_SESSION['Nivel']==2){  ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -76,14 +76,18 @@ if($id_Usuario=="" || $id_Usuario==null){
             </form>
         </div>
     </section>
-
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ;?>
 </body>
 
 </html>
 
-<script src="./js/scripts.js"></script>
 <script src="./js/Buscar_Actualizar_reactivo.js"></script>
 <script src="./js/Actualizar_Reactivo.js"></script>
+<script src="../js/heder.js"></script>
+<script src="js/scripts.js"></script>
 
-<?php }  ?>
+<?php }else {
+    header("location:../Bitacoras.php");
+}  ?>

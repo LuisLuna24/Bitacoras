@@ -1,8 +1,13 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Alerta_Cerrar.css">
     <title>Document</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/Proximanete.css">
@@ -12,13 +17,13 @@
     <section class="Proxiamanete">
         <div class="Proxiamanete_Contenedor">
             <div class="Proxiamanete_Titulo">
-                <h1>Próximamente</h1>
+                <h1>Actualizando</h1>
             </div>
             <div class="Proxiamanete_Imagen">
                 <img src="img/Proxima.webp" alt="">
             </div>
             <div class="Proxiamanete_Texto">
-                <p>Próximamente estará este apartado</p>
+                <p>Este apartado se esta actualizando a los nuevos requerimientos, disculpe la molestia</p>
             </div>
         </div>
     </section>
@@ -32,6 +37,9 @@
             </div>
         </div>
     </footer>
+
+    <?php require "./global/Alerta_Cerrar.php"  ?>
+    <script src="js/Script_Cerrar.js"></script>
     
 </body>
 </html>

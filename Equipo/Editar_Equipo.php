@@ -9,7 +9,7 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
-}else{  ?>
+}else if($_SESSION['Nivel']==2){   ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -34,22 +34,22 @@ if($id_Usuario=="" || $id_Usuario==null){
             <form class="Equipo_Form" id="Editar_Form">
                 <div class="Dato_Equipo">
                     <div class="Dato">
-                        <label>No. Inventario</label>
-                        <input type="text" name="Inventario_Equipo" id="Inventario_Equipo">
+                        <label>No. Inventario:</label>
+                        <input type="text" name="Inventario_Equipo" id="Inventario_Equipo" readonly>
                     </div>
                     <div class="Dato">
-                        <label>Descripcion</label>
+                        <label>Descripcion: (Max 60 caracteres)</label>
                         <input type="text" name="Descripcion_Equipo" id="Descripcion_Equipo">
                     </div>
                     
                 </div>
                 <div class="Dato_Equipo">
                     <div class="Dato">
-                        <label>Nombre</label>
+                        <label>Nombre:</label>
                         <input type="text" name="Nombre_Equipo" id="Nombre_Equipo">
                     </div>
                     <div class="Dato">
-                        <label>Area</label>
+                        <label>Area:</label>
                         <select name="Area_Equipo" id="Area_Equipo"></select>
                     </div>
                 </div>
@@ -71,7 +71,8 @@ if($id_Usuario=="" || $id_Usuario==null){
         </div>
     </section>
 
-
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 </body>
 </html>
@@ -80,5 +81,8 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Buscar_Area.js"></script>
 <script src="./js/Buscar_Actualizar_Equipo.js"></script>
 <script src="./js/Actualizar_Equipo.js"></script>
+<script src="../js/heder.js"></script>
 
-<?php }  ?>
+<?php }else {
+    header("location:../Bitacoras.php");
+}  ?>

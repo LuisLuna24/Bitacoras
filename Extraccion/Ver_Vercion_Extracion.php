@@ -9,7 +9,7 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
-}else{  ?>
+}else{    ?>
 
 
 
@@ -84,12 +84,13 @@ if($id_Usuario=="" || $id_Usuario==null){
             </div>
         </div>
     </section>
-
+    <?php require "../global/Alerta_Cerrar.php"  ?>
+    <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 </body>
 </html>
 
-<script src="./js/scripts.js"></script>
+<script src="../js/heder.js"></script>
 <script src="./js/Ver_Datos_Vercion.js"></script>
 <script src="./js/Ver_Equipo_Vercion.js"></script>
 

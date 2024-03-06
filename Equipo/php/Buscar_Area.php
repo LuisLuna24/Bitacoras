@@ -6,7 +6,7 @@ require "../../php/conexion.php";
 $Buscar= "SELECT id_area, nombre FROM public.area;";
 $query=pg_query($conexion,$Buscar);
 
-$html='<option vlaue="0">Seleccione un area</option>';
+$html='<option value="0">Seleccione un area</option>';
 
 //Imprime en el select todos los resultados obtenidos 
 if(pg_num_rows($query)!=0){

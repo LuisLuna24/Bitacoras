@@ -5,23 +5,42 @@ session_start();
 $_SESSION["Reactivo"]=$_GET["No_Folio"];
 $Folio=$_GET["No_Folio"];
 
-$BuscarDatosMax="SELECT MAX(version_bitacora_reactivo) FROM bitacora_reactivos where id_folio='$Folio'";
+$BuscarDatosMax="SELECT MAX(version_bit_reactivo) FROM bitacora_reactivos where id_folio='$Folio'";
 $queryDatosmax=pg_query($conexion,$BuscarDatosMax);
 $rowDatosmax=pg_fetch_assoc($queryDatosmax);
-
 $Versiondatos=$rowDatosmax['max'];
 
-$BuscarPcreal="SELECT  id_bitacora_reactivo, version_bitacora_reactivo, identificador, id_folio, no_lote, fecha_apertura, fecha_caducidad, id_folio_bitacora, id_usuario, id_admin, id_reactivo, id_version_bitacora, version_bitacora, fecha_elaboracion
-FROM public.bitacora_reactivos where id_folio='$Folio' and version_bitacora_reactivo='$Versiondatos';";
+$BuscarPcreal="SELECT version_registro, identificador_registro,id_bit_reactivo, version_bit_reactivo, no_reactivo, identificador_bitacora, id_folio, version_folio, id_reactivo, version_reactivo, fecha_apertura, fecha_caducidad, folio_bitacora, id_version_bitacora, version_bitacora, id_usuario, id_admin
+FROM public.bitacora_reactivos where id_folio='$Folio' and version_bit_reactivo='$Versiondatos';";
 $queryPcr=pg_query($conexion,$BuscarPcreal);
+$VersionFolio=$rowDatosmax['max']+1;
 
+//toma la verion mas alta 
+$id_vercion='4';
+$buscarvercion="SELECT MAX(version_bitacora) FROM version_bitacora where id_vercion_bitacora='$id_vercion'";
+$sqlbuscarvercion=pg_query($conexion,$buscarvercion);
+$num=pg_fetch_assoc($sqlbuscarvercion);
+$vercionbit=$num['max'];
+
+$BuscarFecha="SELECT fecha_creacion FROM folio_reactivo where id_folio ='$Folio'";
+$sqlFecha=pg_query($conexion,$BuscarFecha);
+$rowFecha=pg_fetch_assoc($sqlFecha);
+$Fechacracion=date("Y-m-d", strtotime($rowFecha['fecha_creacion']));
+
+$NuevoFolio="INSERT INTO public.folio_reactivo(
+	id_folio, version_folio, id_version_bitacora, version_bitacora, fecha_creacion)
+	VALUES ('$Folio', '$VersionFolio', '$id_vercion', '$vercionbit', '$Fechacracion');";
+$queryFolio=pg_query($conexion,$NuevoFolio);
 
 while($row=pg_fetch_assoc($queryPcr)){
     $VersionMax=$rowDatosmax['max']+1;
     $Identificador=$Folio.$VersionMax;
+    $identificador_registro=$row['id_bit_reactivo'].$VersionMax.$row['no_reactivo'].$Folio;
+    $Apertura= date("Y-m-d", strtotime($row['fecha_apertura']));
+    $Caducidad= date("Y-m-d", strtotime($row['fecha_caducidad']));
     $Insertar_Nuevo="INSERT INTO public.bitacora_reactivos(
-        id_bitacora_reactivo, version_bitacora_reactivo, identificador, id_folio, no_lote, fecha_apertura, fecha_caducidad, id_folio_bitacora, id_usuario, id_reactivo, id_version_bitacora, version_bitacora, fecha_elaboracion,identificador_bitacora)
-        VALUES ('".$row['id_bitacora_reactivo']."', '$VersionMax', '".$row['identificador']."', '".$row['id_folio']."', '".$row['no_lote']."', '".$row['fecha_apertura']."', '".$row['fecha_caducidad']."', '".$row['id_folio_bitacora']."', '".$row['id_usuario']."', '".$row['id_reactivo']."', '".$row['id_version_bitacora']."', '".$row['version_bitacora']."', CURRENT_DATE,'$Identificador');";
+        id_bit_reactivo, version_bit_reactivo, no_reactivo, identificador_bitacora, id_folio, version_folio, id_reactivo, version_reactivo, fecha_apertura, fecha_caducidad, folio_bitacora, id_version_bitacora, version_bitacora, id_usuario,version_registro, identificador_registro)
+        VALUES ('".$row['id_bit_reactivo']."', '$VersionMax', '".$row['no_reactivo']."', '$Identificador', '".$row['id_folio']."', '$VersionFolio', '".$row['id_reactivo']."', '".$row['version_reactivo']."', '$Apertura', '$Caducidad', '".$row['folio_bitacora']."', '".$row['id_version_bitacora']."', '".$row['version_bitacora']."', '".$row['id_usuario']."','".$row['version_registro']."','".$row['identificador_registro']."');";
         pg_query($conexion,$Insertar_Nuevo);
 }
 

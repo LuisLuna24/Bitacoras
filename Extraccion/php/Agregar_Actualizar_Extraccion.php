@@ -5,49 +5,59 @@ session_start();
 $Folio=$_GET['No_Folio'];
 $_SESSION["No_Folio"]=$_GET["No_Folio"];
 
-$BuscarEquipoMaximo="SELECT MAX(version_equipo) FROM equipo_extraccion where id_equipo_extraccion='$Folio'";
-$queryEquipomax=pg_query($conexion,$BuscarEquipoMaximo);
-$rowEquipomax=pg_fetch_assoc($queryEquipomax);
-$EquipoVersion=$rowEquipomax['max'];
+
+//Busca La vercion Maxima 
+$BuscraDatosMax="SELECT MAX(version_extracion) FROM bitacora_extraccion where id_folio='$Folio';";
+$queryDatosMax=pg_query($conexion,$BuscraDatosMax);
+$rowDatosMax=pg_fetch_assoc($queryDatosMax);
+$DatosMax=$rowDatosMax['max'];
+$VersionMax=$rowDatosMax['max']+1;
+
+if($DatosMax==''){
+    $VersionMax=1;
+    $_SESSION["VercionMax"]=$VersionMax;
+    $_SESSION["EquipoMax"]=$VersionMax;
+
+    header("Location:../Actualizar_Vercion_Extraccion.php");
+}else{
 
 
-$BuscarEquipo="SELECT id_equipo_extraccion, identificador, id_equipo, version_equipo FROM public.equipo_extraccion where id_equipo_extraccion='$Folio' and version_equipo='$EquipoVersion';";
-$queryEquipo=pg_query($conexion,$BuscarEquipo);
 
-while($rowEqu=pg_fetch_assoc($queryEquipo)){
-    
-    $EquipoMax=$rowEquipomax['max']+1;
-    $IdentificadorVEr=$Folio.$EquipoMax;
-    $InsertarEquipo="INSERT INTO public.equipo_extraccion(
-        id_equipo_extraccion, identificador, id_equipo, version_equipo,equipo_ver)
-        VALUES ('$Folio', '".$rowEqu['identificador']."', '".$rowEqu['id_equipo']."', $EquipoMax,'$IdentificadorVEr');";
-    pg_query($conexion,$InsertarEquipo);
+    //Inserta los equipos de la version anterior a la nueva version
+    $BuscarEquipo="SELECT * FROM equipo_extraccion where id_equipo_extraccion::text='$Folio' and version_equipo_extraccion='$DatosMax';";
+    $queryEquipo=pg_query($conexion,$BuscarEquipo);
+    while($rowEqu=pg_fetch_assoc($queryEquipo)){
+        $Ver_Equipo=$Folio.$VersionMax;
+        $InsertarEquipo="INSERT INTO public.equipo_extraccion(
+            id_equipo_extraccion, identificador, version_equipo_extraccion, id_equipo, version_equipo, ver_equipo_extraccion)
+            VALUES ('$Folio','" .$rowEqu['identificador']. "' , '$VersionMax', '" .$rowEqu['id_equipo']. "', '" .$rowEqu['version_equipo']. "', '$Ver_Equipo');";
+        pg_query($conexion,$InsertarEquipo);
+    }
+    $BuscarRegistros="SELECT * FROM bitacora_extraccion where id_folio='$Folio' and version_extracion='$DatosMax'";
+    $queryRegistros=pg_query($conexion,$BuscarRegistros);
+
+    while($rowReg=pg_fetch_assoc($queryRegistros)){
+        $Identificador=$Folio.$VersionMax;
+        $Identificador_Registro=$rowReg['id_extracion'].$rowReg['no_registro'].$VersionMax.$Folio;    
+        $InsertarRegistros="INSERT INTO public.bitacora_extraccion(
+            id_extracion, no_registro, version_extracion, identificdor_extracion, id_folio, version_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230, archivo, id_equipo_extraccion, identificador_equipo, version_equipo, id_usuario,version_registro, identificador_registro)
+            VALUES ('" .$rowReg['id_extracion']. "', '" .$rowReg['no_registro']. "', '$VersionMax', '$Identificador', '" .$rowReg['id_folio']. "', '" .$rowReg['version_folio']. "', '" .$rowReg['fecha']. "', '" .$rowReg['id_metodo']. "', '" .$rowReg['id_analisis']. "', '" .$rowReg['id_area']. "', '" .$rowReg['conc_ng_ul']. "', '" .$rowReg['dato_260_280']. "', '" .$rowReg['dato_260_230']. "', '" .$rowReg['archivo']. "', '" .$rowReg['id_equipo_extraccion']. "', '" .$rowReg['identificador_equipo']. "', '$VersionMax', '" .$rowReg['id_usuario']. "','" . $rowReg['version_registro'] . "','$Identificador_Registro');";
+        pg_query($conexion,$InsertarRegistros);
+    }
+    $_SESSION["VercionMax"]=$VersionMax;
+    $_SESSION["EquipoMax"]=$VersionMax;
+
+    header("Location:../Actualizar_Vercion_Extraccion.php");
 }
 
-$BuscarDatosMax="SELECT MAX(version_extraccion) FROM birtacora_extaccion where id_folio='$Folio'";
-$queryDatosmax=pg_query($conexion,$BuscarDatosMax);
-$rowDatosmax=pg_fetch_assoc($queryDatosmax);
-$Versiondatos=$rowDatosmax['max'];
 
-$BuscarPcreal="SELECT id_extracion, no_registro, identificador, version_extraccion, id_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230, archivo, id_equipo_extraccion, id_usuario, id_admin, identificador_bitacora, no_equipo, vercion_equipo
-FROM public.birtacora_extaccion where id_folio='$Folio' and version_extraccion='$Versiondatos';";
-$queryPcr=pg_query($conexion,$BuscarPcreal);
+
+//Inserta los regisros de la version anterior a la nueva version
 
 
 
-while($row=pg_fetch_assoc($queryPcr)){
-    $VersionMax=$rowDatosmax['max']+1;
-    $Identificador=$Folio.$VersionMax;
-    $Insertar_Nuevo="INSERT INTO public.birtacora_extaccion(
-        id_extracion, no_registro, identificador, version_extraccion, id_folio, fecha, id_metodo, id_analisis, id_area, conc_ng_ul, dato_260_280, dato_260_230, archivo, id_equipo_extraccion, id_usuario, identificador_bitacora, no_equipo, vercion_equipo)
-        VALUES ('".$row['id_extracion']."', '".$row['no_registro']."', '".$row['identificador']."', '$VersionMax', '".$row['id_folio']."', '".$row['fecha']."', '".$row['id_metodo']."', '".$row['id_analisis']."', '".$row['id_area']."', '".$row['conc_ng_ul']."', '".$row['dato_260_280']."', '".$row['dato_260_230']."', '".$row['archivo']."', '".$row['id_equipo_extraccion']."', '".$row['id_usuario']."', '$Identificador', '".$row['no_equipo']."', '$VersionMax');";
-        pg_query($conexion,$Insertar_Nuevo);
-}
 
-$_SESSION["VercionMax"]=$VersionMax;
-$_SESSION["EquipoMax"]=$EquipoMax;
 
-header("Location:../Actualizar_Vercion_Extraccion.php");
 
 ?>
 

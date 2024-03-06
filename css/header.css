@@ -14,7 +14,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 0.3rem 5%;
+    padding: 0.7rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,7 +70,7 @@
 }
 
 .img_menu{
-    width: 40px;
+    width: 50px;
 }
 
 @media(max-width:768px){
@@ -79,7 +79,7 @@
     }
 }
 
-@media(max-width:767px){
+@media(max-width:1024px){
     .header{
         padding: 0.5rem 10%;
     }
@@ -132,7 +132,7 @@
 }
 
 .logo_gis{
-    width: 40px;
+    width: 120px;
 }
 
 

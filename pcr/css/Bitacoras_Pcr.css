@@ -1,0 +1,327 @@
+body{
+    background-color: antiquewhite;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.Pcr {
+    width: 100%;
+    min-height: 100vh;
+    padding: 00px 50px;
+}
+
+.Pcr_Contenedor {
+    width: 100%;
+    height: 100%;
+}
+
+.Pcr_titulo {
+    width: 100%;
+    font-size: 2.5rem;
+    text-align: center;
+}
+.Linea {
+    width: 100%;
+    height: 8px;
+    background-color: #75B841;
+    border-radius: 25px;
+}
+.Pcr_Form {
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+}
+.Pcr_Form_Datos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.Pcr_Datos {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 20px;
+}
+.Datos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.Dato input[type="text"]{
+    width: 100%;
+    height: 30px;
+    border-radius: 25px;
+    padding: 0 10px;
+    border: none;
+    background-color: #dfb4e1;
+}
+input[type="text"]{
+    width: 100%;
+    height: 30px;
+    border-radius: 25px;
+    padding: 0 10px;
+    border: none;
+    background-color: #dfb4e1;
+}
+input[type="date"]{
+    width: 100%;
+    height: 30px;
+    border-radius: 25px;
+    padding: 0 10px;
+    border: none;
+    background-color: #dfb4e1;
+}
+input[type="file"]{
+    width: 100%;
+    border-radius: 25px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #dfb4e1;
+}
+
+input[type="checkbox"] {
+    height: 18px;
+    width: 18px;
+}
+
+.Datos_Tabla select {
+    width: 250px;
+    border-radius: 25px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #dfb4e1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.Pcr_Especie {
+    width: 100%;
+}
+.Pcr_Espece_Check {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 20px;
+    margin-top: 10px;
+}
+.Check{
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    align-items: center;
+    justify-content: center;
+}
+.Pcr_Equipo {
+    width: 100%;
+}
+
+.Pcr_Equipo_contenedor{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 10px;
+}
+.Pcr_Equipo_Selecionar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.Pcr_Equipo_Boton {
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+
+input[type="button"]{
+    width: 200px;
+    height: 30px;
+    border-radius: 25px;
+    border: none;
+    background-color: #75B841;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+input[type="button"]:hover{
+    transform: translateY(-8px);
+}
+
+input[type="button"]:active{
+    transform: translateY(2px);
+    transition: 0.3s;
+}
+
+.Pcr_Equipo_Tabla {
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+table{
+    border-radius:5px ;
+    font-size: 1rem;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: #e1cce1;
+    border: 1px solid #a588a7;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  
+  td,th{
+    text-align: center;
+    padding: 8px;
+    border-right: 1px solid #a588a7;
+  }
+  
+  td{
+    font-size: 1rem;
+  }
+  
+  thead th{
+    color:#262626;
+    background: #cba7cc;
+  }
+  
+  tr:nth-child(even){
+    background-color: #cda7cf;
+  }
+  
+  @media(max-width:767px){
+    table{
+        display: block;
+        width: 100%;
+    }
+    thead,tbody,thead th{
+        display: block;
+    }
+    thead th:last-child{
+        border-bottom: none;
+    }
+    thead{
+        float: left;
+    }
+    tbody{
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    td,th{
+        padding: 20px 0.625em 0.625em 0.625em ;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 0.8rem;
+        text-overflow: ellipsis;
+    }
+    thead th{
+        text-align: left;
+        border-bottom: 1px solid #a588a7;
+    }
+    tbody tr{
+        display: table-cell;
+    }
+    tbody tr:nth-child(odd){
+        background: none;
+  
+    }
+    tr:nth-child(even){
+        background: transparent;
+    }
+    tr td:nth-child(odd){
+        background-color: #cba7cc;
+        border-right: 1px solid #a588a7;
+    }
+    tr td:nth-child(even){
+        background-color: #e1cce1;
+        border-right: #a588a7;
+    }
+    tbody td{
+        display: block;
+        text-align: center;
+    }
+  }
+
+  .Nav_Paginacion{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: 0px 20px;
+  }
+  
+  .Paginacion_Tabla{
+    display: flex;
+    list-style-type: none;
+    gap: 5px;
+  }
+  
+  .Pagina{
+    padding: 5px;
+    background-color: #cda7cf;
+    border-radius: 2px;
+  }
+  
+  @media(max-width:767px){
+  .Pagina{
+    padding: 10px;
+  }
+  }
+  
+  .Pagina a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #262626;
+  }
+  
+  .activo{
+    color: #a588a7;
+  }
+
+  .Acciones_Tabla {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+  }
+
+.Pcr_Botones {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    place-items: center;
+    gap: 20px;
+}
+
+
+.Pcr_Registros_Tabla{
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+@media(max-width:767px){
+    .Pcr{
+        padding: 10px;
+    }
+    .Pcr_Equipo_contenedor{
+        flex-direction: column;
+    }
+    input[type="button"]{
+        width: 100%;
+    }
+}
