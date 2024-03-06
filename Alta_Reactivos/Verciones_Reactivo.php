@@ -2,10 +2,10 @@
 ob_start();
 session_start();
 
-if(isset($_GET["IdEquipo"])){
-    $_SESSION["IdEquipo"]=$_GET["IdEquipo"];
+if(isset($_GET["IdReactivo"])){
+    $_SESSION["IdReactivo"]=$_GET["IdReactivo"];
 }else{
-    $_SESSION["IdEquipo"];
+    $_SESSION["IdReactivo"];
 }
 
 
@@ -21,9 +21,9 @@ if($id_Usuario=="" || $id_Usuario==null){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipo</title>
+    <title>Verciones Reactivo</title>
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="css/equipo.css">
+    <link rel="stylesheet" href="../Equipo/css/equipo.css">
     <script src="../librerias/jquery/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="../librerias/select2/css/select2.css">
     <script src="../librerias/select2/select2.js"></script>
@@ -33,7 +33,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 
     <section class="Equipo">
         <div class="Equipo_Titulo">
-            <h1>Verciones de Equipo</h1>
+            <h1>Versiones de Reactivo</h1>
         </div>
         <div class="Equipo_Tabla">
             <div class="Acciones_Tabla">
@@ -53,11 +53,12 @@ if($id_Usuario=="" || $id_Usuario==null){
             
             <table>
                 <thead>
-                    <th>No. Inventario</th>
-                    <th>Versión</th>
                     <th>Nombre</th>
+                    <th>Versión</th>
                     <th>Descripcion</th>
-                    <th>Area</th>
+                    <th>Cantidad</th>
+                    <th>Fecha Caducidad</th>
+                    <th>Lote</th>
                     <th>Estado</th>
                 </thead>
                 <tbody id="content"></tbody>
@@ -76,7 +77,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 <script src="./js/scripts.js"></script>
 <script src="../js/heder.js"></script>
-<script src="js/Verciones_Equipo.js"></script>
+<script src="js/Verciones_Reactivo.js"></script>
 
 <?php }else {
     header("location:../Bitacoras.php");

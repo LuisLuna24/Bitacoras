@@ -88,6 +88,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <table>
                         <thead>
                             <th>Nombre</th>
+                            <th>Versión</th>
                             <th>Descripcion</th>
                             <th>Cantidad</th>
                             <th>Fecha Caducidad</th>
@@ -95,6 +96,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Estado</th>
                             <th>Actualizar</th>
                             <th>Eliminar</th>
+                            <th>Versiónes</th>
                         </thead>
                         <tbody id="content"></tbody>
                     </table>

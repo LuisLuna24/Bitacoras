@@ -1,8 +1,10 @@
 <?php
 require "../../php/conexion.php";
-
+session_start();
 //Permite la búsqueda de los datos que se escribirán en la tabla de manera paginada
 
+
+$id_Rectivo=$_SESSION["IdReactivo"];
 //Columnas que se desean consultar
 $columns=['id_reactivo', 'nombre','descripcion',' cantidad', 'fecha_caducidad', 'lote', 'estado','version_reactivo'];
 
@@ -16,7 +18,7 @@ $id= 'id_reactivo';
 //Obtiene el valor del input para buscar los registros
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$where = "WHERE nombre ILIKE '%" . $campo . "%' or lote::text ILIKE '%" . $campo . "%' and estado = 'Existencia' ";
+$where = "WHERE nombre ILIKE '%" . $campo . "%' and id_reactivo=$id_Rectivo";
 
 //Obtiene el límite de consultas dependiendo la cantidad que se desea visualizar a través del select
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
@@ -32,9 +34,9 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 //Consulta para obtener los valores que irán en la tabla
-$sql="SELECT DISTINCT on (id_reactivo) " . implode(", ",$columns) . "
+$sql="SELECT  " . implode(", ",$columns) . "
 FROM $table 
-$where  ORDER BY id_reactivo,version_reactivo DESC
+$where  ORDER BY version_reactivo ASC
 $sLimit ";
 
 
@@ -65,9 +67,6 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['fecha_caducidad'] .'</td>';
         $output['data'].='<td>'. $row['lote'] .'</td>';
         $output['data'].='<td>'. $row['estado'] .'</td>';
-        $output['data'].='<td><a href="./Editar_Reactivo.php?Reactivo='. $row['id_reactivo']. '">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Reactivo.php?Reactivo='. $row['id_reactivo']. '">Eliminar</a></td>';
-        $output['data'].='<td><a href="./Verciones_Reactivo.php?IdReactivo='. $row['id_reactivo']. '">Ver</a></td>';
         $output['data'].='</tr>';
     }
 }else{
