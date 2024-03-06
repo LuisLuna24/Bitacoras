@@ -72,9 +72,6 @@ body{
     color: white;
     padding: 30px 0;
   }
-  .datoo{
-  
-  }
   .botones {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
