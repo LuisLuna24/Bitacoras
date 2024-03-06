@@ -77,6 +77,9 @@ if($id_Usuario=="" || $id_Usuario==null){
             </div>
             <div class="Regsitro_Imagen">
                 <img src="./img/Gsmall.webp" alt="logo">
+                <div class=Registro_Boton>
+                    <input type="button" value="Regresar" id="Regresar_Admin" class="Registro_btn">
+                </div>
             </div>
         </div>
         <?php  require "./global/Alerta_Index.php" ?>

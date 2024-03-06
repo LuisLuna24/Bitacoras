@@ -43,4 +43,10 @@ $(document).ready(function(){
         var Alerta = document.getElementById('Alerta_Secion');
         Alerta.style.display = "none";
     });
+
+    //Regresar a Administrador
+    $("#Regresar_Admin").on('click',function(e){
+        e.preventDefault();
+        $(location).attr('href', 'Administrador.php');
+    });
 });
