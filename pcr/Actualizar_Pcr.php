@@ -53,7 +53,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </div>
                         <div class="Datos">
                             <label for="Pcr_Fecha">Fecha:</label>
-                            <input type="date" name="Pcr_Fecha">
+                            <input type="date" name="Pcr_Fecha" id="Pcr_Fecha">
                         </div>
                     </div>
 

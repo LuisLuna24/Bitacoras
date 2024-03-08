@@ -3,56 +3,121 @@
 $(document).ready(function () {
     $("#Agregar_Extraccion_Vercion").on('click',function (e) {
         e.preventDefault();
-        var datos = new FormData($('#Form_Extraccion')[0]);
-        $.ajax({
-            type: "POST",
-            url: "./php/Agregar_Vercion_Extraccion.php",//Ruta de query para agregar
-            data: datos,
-            contentType: false,
-            processData:false,
-            success: function (response) {
-                alert("Se ha agregado correctamente.");
+        if($('#Registro_Exteracion').val()=="") {
+            alert("Agregue No. De Registro");
+            return false;
+        }else if($("#Cantidad_Exteracion").val()==""){
+            alert("Agregue Cantidad");
+            return false;
+        }else if($("#Fecha_Exteracion").val()==""){
+            alert("Seleccione  Fecha de Extraccion");
+            return false;
+        }else if($("#metodo_select").val()=="0"){
+            alert("Seleccione Metodo");
+            return false;
+        }else if($("#Fecha_Caducidad").val()=="0"){
+            alert("Falta Fecha de caducidad del Reactivo");
+            return false;
+        }else if($("#Analisis_Select").val()=="0"){
+            alert("Seleccione Analisis");
+            return false;
+        }else if($("#Area_Select").val()=="0"){
+            alert("Seleccione Area");
+            return false;
+        }else{
+            var datos = new FormData($('#Form_Extraccion')[0]);
+            $.ajax({
+                type: "POST",
+                url: "./php/Agregar_Vercion_Extraccion.php",//Ruta de query para agregar
+                data: datos,
+                contentType: false,
+                processData:false,
+                success: function (response) {
+                    alert("Se ha agregado correctamente.");
 
-                //Permite actualizar la tabla automáticamente
-                let paginaActual = 1;
+                    //Permite actualizar la tabla automáticamente
+                    let paginaActual = 1;
 
-                getData(paginaActual);
-
-                document.getElementById("campo").addEventListener("keyup",function(e){
-                    getData(1);
-                },false);
-                document.getElementById("num_registros").addEventListener("input",function(e){
                     getData(paginaActual);
-                },false);
 
-                function getData(pagina){
-                    let input=document.getElementById("campo").value;
-                    let num_registros=document.getElementById("num_registros").value;
+                    document.getElementById("campo").addEventListener("keyup",function(e){
+                        getData(1);
+                    },false);
+                    document.getElementById("num_registros").addEventListener("input",function(e){
+                        getData(paginaActual);
+                    },false);
 
-                    let content=document.getElementById("content");
+                    function getData(pagina){
+                        let input=document.getElementById("campo").value;
+                        let num_registros=document.getElementById("num_registros").value;
 
-                if(pagina != null){
-                    paginaActual=pagina;
+                        let content=document.getElementById("content");
+
+                    if(pagina != null){
+                        paginaActual=pagina;
+                    }
+                        //Ruta de donde se obtiene los datos de la tabla
+                        let url="./php/Buscar_Nueva_Vercion.php";
+                        let formaData = new FormData();
+                        formaData.append('campo',input);
+                        formaData.append('registros',num_registros);
+                        formaData.append('pagina',paginaActual);
+
+                        fetch(url,{
+                            method:'POST',
+                            body:formaData
+                        }).then(resoponse => resoponse.json())
+                        .then(data => {
+                            content.innerHTML = data.data;
+                            document.getElementById("nav-paginacion").innerHTML = data.paginacion;
+                        }).catch(err => console.log(err))
+
+                    }
                 }
-                    //Ruta de donde se obtiene los datos de la tabla
-                    let url="./php/Buscar_Nueva_Vercion.php";
-                    let formaData = new FormData();
-                    formaData.append('campo',input);
-                    formaData.append('registros',num_registros);
-                    formaData.append('pagina',paginaActual);
+            });
+        }
+    });
 
-                    fetch(url,{
-                        method:'POST',
-                        body:formaData
-                    }).then(resoponse => resoponse.json())
-                    .then(data => {
-                        content.innerHTML = data.data;
-                        document.getElementById("nav-paginacion").innerHTML = data.paginacion;
-                    }).catch(err => console.log(err))
 
-                }
-            }
-        });
+    $("#Registro_Exteracion").keypress(function(e) {
+        // Limitar la longitud a 10 caracteres de lote de reactivos
+        if ($("#Registro_Exteracion").val().length >= 10) {
+          e.preventDefault();
+        }
+        // Permitir solo números y el backspace
+        if (e.which != 8 && (e.which < 48 || e.which > 57)) {
+          e.preventDefault();
+        }
+    });
+    $("#Cantidad_Exteracion").keypress(function(e) {
+        // Limitar la longitud a 10 caracteres de lote de reactivos
+        if ($("#Cantidad_Exteracion").val().length >= 10) {
+          e.preventDefault();
+        }
+        // Permitir solo números y el backspace
+        if (e.which != 8 && (e.which < 48 || e.which > 57)) {
+          e.preventDefault();
+        }
+    });
+
+
+    $("#Conc_Exteracion").keypress(function(e) {
+        // Limitar la longitud a 10 caracteres de lote de reactivos
+        if ($("#Conc_Exteracion").val().length >= 30) {
+          e.preventDefault();
+        }
+    });
+    $("#280_Exteracion").keypress(function(e) {
+        // Limitar la longitud a 10 caracteres de lote de reactivos
+        if ($("#280_Exteracion").val().length >= 30) {
+          e.preventDefault();
+        }
+    });
+    $("#230_Exteracion").keypress(function(e) {
+        // Limitar la longitud a 10 caracteres de lote de reactivos
+        if ($("#230_Exteracion").val().length >= 30) {
+          e.preventDefault();
+        }
     });
 
 });
