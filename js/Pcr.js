@@ -1,5 +1,4 @@
 //Este permite crear un nuevo folio de Pcr
-
 $(document).ready(function () {
 
     $("#Bitacora_Pcr").on('click', function (e) {
@@ -7,18 +6,7 @@ $(document).ready(function () {
     })
 
     $("#Agregar_Regitstro_Pcr").on("click",function(){
-        $.ajax({
-            type: "POST",
-            url: "./php/Pcr.php",
-            dataType: "html",
-            success: function (response) {
-                if (response==1){
-                    location.href ="./pcr/Bitacora_Pcr.php";
-                }else{
-                    alert(response);
-                }
-            }
-        });
+        location.href ="./pcr/Bitacora_Pcr.php";
     })
 
     //Cierra Alerta de nuevo Registro

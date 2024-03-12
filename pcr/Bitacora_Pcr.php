@@ -2,7 +2,6 @@
 ob_start();
 session_start();
 
-
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
@@ -205,8 +204,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="js/Agregar_Pcr.js"></script>
 <script src="js/Agregar_Especies.js"></script>
 <script src="js/Agregar_Equipo.js"></script>
-<script src="js/Buscar_Tabla_Especeies.js"></script>
-<script src="js/Buscar_Tabala_Equipos.js"></script>
 <script src="js/Buscar_Tabla_Pcr.js"></script>
 <script src="../js/heder.js"></script>
 

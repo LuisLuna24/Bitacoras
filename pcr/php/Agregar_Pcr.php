@@ -2,8 +2,7 @@
 require "../../php/conexion.php";
 session_start();
 
-//Folio del nuevo registro
-$Folio=$_SESSION["Pcr_Folio"];
+
 //Id del usuario
 $Usuario=$_SESSION['id_usuario'];
 //Datos a obtener de los campos

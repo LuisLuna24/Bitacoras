@@ -2,10 +2,10 @@
 require "conexion.php";
 include "encriptado.php";
 
-$Buscar="SELECT * FROM usuario where estado_usuario='1' and nivel_usuario = '1'";
+$Buscar="SELECT * FROM usuarios where estado_usuario='1' and nivel_usuario = '1'";
 $query=pg_query($conexion,$Buscar);
 
-$html='<option vlaue="0">Seleccione un usuario</option>';
+$html='<option value="0">Seleccione un usuario</option>';
 
 if(pg_num_rows($query)!=0){
     while($row=pg_fetch_assoc($query)){

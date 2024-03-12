@@ -3,7 +3,7 @@ require "conexion.php";
 
 $Usuario=$_POST["Actualizar_Select"];
 
-$Buscar="SELECT * FROM usuario where id_usuario::text='$Usuario'";
+$Buscar="SELECT * FROM usuarios where id_usuario::text='$Usuario'";
 $query=pg_query($conexion,$Buscar);
 $row=pg_fetch_assoc($query);
 

@@ -44,7 +44,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 
     <section class="Opciones">
         <div class="Opciones_Contenedor">
-            <div class="Opciones_Card">
+            <!--<div class="Opciones_Card">
                 <div class="Card_Titulo">
                     <h3>Cambiar versiones de bitácoras</h3>
                     <p>Permite modificar las versiones de calidad de las bitácoras</p>
@@ -52,7 +52,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <div class="Card_Boton">
                     <input type="button" value="Cambiar" id="Calidad_Bitacoras">
                 </div>
-            </div>
+            </div>-->
             <div class="Opciones_Card">
                 <div class="Card_Titulo">
                     <h3>Recuperar contraseña usuario</h3>

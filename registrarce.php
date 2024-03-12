@@ -6,7 +6,7 @@ $Nombre=$_SESSION['nombre'];
 $Apellido=$_SESSION['apellido'];
 if($id_Usuario=="" || $id_Usuario==null){
     header("location:index.php");
-}else if($_SESSION['Nivel']==2){  ?>
+}else if($_SESSION['Nivel']==2){ ?>
 
 
 <!DOCTYPE html>
@@ -53,12 +53,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <input type="text" required="" autocomplete="off" class="input" name="Reg_Correo" id="Reg_Correo">
                             <label for="correo"  class="user-label">Correo</label>
                         </div>
-                        <div class="Datos">
-                            <select class="Datos_Area" name="Reg_Area" id="Reg_Area">
-                                <option value="0">Seleccione un Area</option>
-                                <option value="1">Biologia Molecular</option>
-                            </select>
-                        </div>
                     </div>
                     <div class="Regsitro_Datos">
                         <div class="Datos">
@@ -93,6 +87,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Validar_Copntrasena.js"></script>
 <script src="./js/Refistrarce.js"></script>
 
-<?php } else {
+<?php  } else {
     header("location:Bitacoras.php");
-}  ?>
+} ?>

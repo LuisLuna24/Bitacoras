@@ -8,7 +8,7 @@ $Contraseñades=$_POST['Contraseña_Recuperar'];
 $Contraseña=$encriptar($Contraseñades);
 
 try{
-    $Actualizar="UPDATE public.usuario
+    $Actualizar="UPDATE public.usuarios
 	SET contrasena='$Contraseña' WHERE id_usuario='$Usuario';";
     pg_query($conexion,$Actualizar);
     echo 1;
