@@ -66,6 +66,35 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                 </div>
                 <div class="dat_resul_titulo">
+                    <h2>Especie Seleccionado</h2>
+                </div>
+                <div class="Datos_Metodo_Equipo">
+                        <div class="dato Agregar_Equio_div">
+                            <label>Selecciona Equipo</label>
+                            <select name="Especie_Select" id="Especie_Select"></select>
+                            <label>Resultado:</label>
+                            <select name="Resultado_Select" id="Resultado_Select">
+                                <option value="Negativo">Negativo</option>
+                                <option value="Positivo">Positivo</option>
+                            </select>
+                            <div class="Botones_Equipo">
+                                <input type="button" value="Agregar Especie" id="Agregar_Especie">
+                                <!--<input type="button" value="Agregar Todos los equipos" id="Agregar_Todo">-->
+                            </div>
+                            
+                        </div>
+                    <table>
+                        <thead>
+                            <th>No. Especie</th>
+                            <th>Nombre Especie</th>
+                            <th>Resultado</th>
+                            <th>Eliminar</th>
+                        </thead>
+                        <tbody id="Equipo_Tabla"></tbody>
+                    </table>
+                </div>
+                
+                <div class="dat_resul_titulo">
                     <h2>Equipo Seleccionado</h2>
                 </div>
                 <div class="Datos_Metodo_Equipo">
