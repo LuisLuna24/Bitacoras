@@ -3,14 +3,13 @@ require "../../php/conexion.php";
 session_start();
 
 
-
-$No_Regitro=$_SESSION['Pcr_Registros_Especie'];
+$No_Regitro=$_POST['Pcr_Registros'];
 $Folio=$_SESSION["Pcr_Folio"];
 
 //Permite ver las especies agregadas 
-$Buscar="SELECT resultado,id_especie_pcr, identificador_especie, especie.nombre,version_especie_pcr, especie_pcr.id_especie, especie_pcr.vercion_especie, no_registro
+$Buscar="SELECT DISTINCT on (id_especie_pcr) resultado,id_especie_pcr, identificador_especie, especie.nombre,version_especie_pcr, especie_pcr.id_especie, especie_pcr.vercion_especie, no_registro
 FROM public.especie_pcr INNER JOIN especie on especie.id_especie=especie_pcr.id_especie
-where id_especie_pcr='$Folio'  and registro::text='$No_Regitro' ;";
+where id_especie_pcr='$Folio' and registro::text='$No_Regitro';";
 $query=pg_query($conexion,$Buscar);
 
 $html="";

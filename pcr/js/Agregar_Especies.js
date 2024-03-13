@@ -15,12 +15,16 @@ $(document).ready(function () {
                 processData:false,
                 success: function (response) {
                     //Mensaje de agregar especie y actualizar tabla 
-                    if(response==1){
+                    if(response!=null){
                         alert("Especie agregada correctamente.");
                         //Actualiza la tabla de especies 
+                        var datos=new FormData($("#Pcr_Form")[0]);
                         $.ajax({
                             type: "POST",
                             url: "php/Buscar_Tabla_Especeies.php",
+                            data: datos,
+                            contentType: false,
+                            processData:false,
                             dataType: "html",
                             success: function (response) {
                                 $("#Tabala_Especie").html(response);

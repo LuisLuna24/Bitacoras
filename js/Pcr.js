@@ -13,6 +13,7 @@ $(document).ready(function () {
             dataType: "html",
             success: function (response) {
                 if (response==1){
+                    alert(response)
                     location.href ="./pcr/Bitacora_Pcr.php";
                 }else{
                     alert(response);

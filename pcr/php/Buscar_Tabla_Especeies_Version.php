@@ -9,7 +9,7 @@ $Folio=$_SESSION["No_Folio"];
 $Version=$_SESSION['VersionMax'];
 
 //Permite ver las especies agregadas 
-$Buscar="SELECT id_especie_pcr, identificador_especie, especie.nombre,version_especie_pcr, especie_pcr.id_especie, resultado,especie_pcr.vercion_especie, no_registro
+$Buscar="SELECT DISTINCT on (id_especie_pcr) id_especie_pcr, identificador_especie, especie.nombre,version_especie_pcr, especie_pcr.id_especie, resultado,especie_pcr.vercion_especie, no_registro
 FROM public.especie_pcr INNER JOIN especie on especie.id_especie=especie_pcr.id_especie
 where id_especie_pcr::text='$Folio'  and registro::text='$No_Regitro' and version_especie_pcr='$Version';";
 $query=pg_query($conexion,$Buscar);

@@ -38,7 +38,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <div class="datos_pcreal">
                     <div class="datos">
                         <label>No. Registro :</label>
-                        <input type="text" name="Nombre" />
+                        <input type="text" name="Nombre" id="Nombre_Pcreal">
                     </div>
                     <div class="datos">
                         <label>Cantidad:</label>
@@ -52,7 +52,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                     <div class="datos">
                         <label>Fecha:</label>
-                        <input type="date" name="Fecha" />
+                        <input type="date" name="Fecha" id="Fecha_Pcreal">
                     </div>
                 </div>
                 <div class="checks_pcreal">
@@ -97,7 +97,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                     <div class="datos">
                         <label for="">Observaciones:</label>
-                        <textarea name="pcreal_observaciones" id="" cols="30" rows="10"></textarea>
+                        <textarea name="pcreal_observaciones" id="" cols="30" rows="10" id="pcreal_observaciones"></textarea>
                     </div>
                 </div>
                 <div class="botones">

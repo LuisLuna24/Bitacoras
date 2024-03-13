@@ -55,7 +55,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="datoo">
                         <div>
                             <label for="dat3">Fecha Apertura:</label>
-                            <input type="date" name="Apertura_Reactivo">
+                            <input type="date" name="Apertura_Reactivo" id="Apertura_Reactivo">
                         </div>
                         <div>
                             <label for="dat4">Fecha Caducidad:</label>
@@ -65,7 +65,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="datoo">
                         <div class="datoos">
                             <label for="dat5">Tipo Bitacora:</label>
-                            <select id="Tipo_Select" name="Tipo_Bitacora"></select>
+                            <select id="Tipo_Select" name="Tipo_Bitacora" id="Tipo_Bitacora"></select>
                         </div>
                         <div class="datoos">
                             <label for="dat5">Prueba de Reactivo:</label>

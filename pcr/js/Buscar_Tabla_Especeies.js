@@ -5,7 +5,7 @@ $(document).ready(function () {
         url: "php/Buscar_Tabla_Especeies.php",
         dataType: "html",
         success: function (response) {
-            $("#Tabala_Especie").html(response);
+            //$("#Tabala_Especie").html(response);
         }
     });
 });
