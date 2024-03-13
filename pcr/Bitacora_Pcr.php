@@ -178,11 +178,9 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>No. Registro</th>
                         <th>Analisis</th>
                         <th>Fecha</th>
-                        <th>Agaroza</th>
-                        <th>Voltage</th>
-                        <th>Tiempo</th>
+                        <th>Sanitizo</th>
+                        <th>Tiempo UV</th>
                         <th>Especies</th>
-                        <th>Imagen</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </thead>
@@ -201,6 +199,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="js/scripts.js"></script>
 <script src="js/Agregar_Pcr.js"></script>
 <script src="js/Agregar_Especie.js"></script>
+<script src="js/Agregar_Equipo.js"></script>
 <script src="js/Buscar_Datos.js"></script>
 <script src="../js/heder.js"></script>
 

@@ -4,18 +4,17 @@ require "../../php/conexion.php";
 
 
 //Columnas de la tabla a consultar
-$columns=['id_equipo', 'identificador',' equipo.nombre as equipo_nombre','area.nombre as area_nombre', 'descripcion',' area.id_area','estado_equipo','vercion_equipo'];
+$columns=['id_equipo', 'version_equipo', 'nombre', 'identificador', 'descripcion', 'estado_equipo'];
 //Tabla a consultar
-$table="equipo";
+$table="equipos";
 //Nombre del campo que se va acontar para la paginacion 
 $id= 'id_equipo';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
 //Consulta JOIN
-$join="INNER JOIN area on area.id_area=equipo.id_area";
 //Consulta Where 
-$where = "WHERE equipo.nombre ILIKE '%" . $campo . "%' and estado_equipo='Activo' or estado_equipo = 'Inactivo'";
+$where = "WHERE equipos.nombre ILIKE '%" . $campo . "%' and estado_equipo='Activo' or estado_equipo = 'Inactivo'";
 
 //Limita la cantidad de datos que se va a ver (no mover)
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
@@ -33,8 +32,7 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 //Consulta general para obtener los datos para la tabla
 $sql="SELECT DISTINCT on (id_equipo)" . implode(", ",$columns) . "
 FROM $table
-$join
-$where ORDER BY id_equipo,vercion_equipo DESC
+$where ORDER BY id_equipo,version_equipo DESC
 $sLimit";
 
 $resultado=pg_query($conexion,$sql);
@@ -58,10 +56,9 @@ if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['identificador'] .'</td>';
-        $output['data'].='<td>'. $row['vercion_equipo'] .'</td>';
-        $output['data'].='<td>'. $row['equipo_nombre'] .'</td>';
+        $output['data'].='<td>'. $row['version_equipo'] .'</td>';
+        $output['data'].='<td>'. $row['nombre'] .'</td>';
         $output['data'].='<td>'. $row['descripcion'] .'</td>';
-        $output['data'].='<td>'. $row['area_nombre'] .'</td>';
         $output['data'].='<td>'. $row['estado_equipo'] .'</td>';
         $output['data'].='<td><a href="./Editar_Equipo.php?Equipo='. $row['id_equipo'] .'">Editar</a></td>';
         $output['data'].='<td><a href="./php/Eliminar_Equipo.php?Equipo='. $row['id_equipo'] .'">Baja</a></td>';

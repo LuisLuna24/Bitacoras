@@ -2,10 +2,10 @@
 ob_start();
 session_start();
 
-if(isset($_GET['No_Folio_Ver'])){
-    $_SESSION['No_Folio_Ver']=$_GET['No_Folio_Ver'];
+if(isset($_GET['Registro_Pcr_Versiones'])){
+    $_SESSION['Registro_Pcr_Versiones']=$_GET['Registro_Pcr_Versiones'];
 }else{
-    $_GET['No_Folio_Ver']=$_SESSION['No_Folio_Ver'];
+    $_SESSION['Registro_Pcr_Versiones'];
 }
 
 
@@ -59,7 +59,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Fecha</th>
                             <th>Bitacora</th>
                             <th>Reviso</th>
-                            <th>Versiones anteriores</th>
                             <?php if($_SESSION['Nivel']==2){ ?>
                                     <th>Revisado</th>
                             <?php  } ?>
@@ -79,6 +78,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 <script src="./js/Buscar_VerPcr_Version.js"></script>
+<script src="js/Buscar_Verciones_Registros.js"></script>
 <script src="../js/heder.js"></script>
 
 <?php } ?>

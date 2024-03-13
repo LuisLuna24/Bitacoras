@@ -4,7 +4,7 @@
 require "../../php/conexion.php";
 
 $identificaro=$_GET['Equipo'];
-$Eliminar="UPDATE public.equipo
+$Eliminar="UPDATE public.equipos
             SET estado_equipo='Baja' where id_equipo= '$identificaro'";
 pg_query($conexion,$Eliminar);
 

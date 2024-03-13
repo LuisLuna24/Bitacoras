@@ -5,17 +5,15 @@ session_start();
 
 $Id_Equipo=$_SESSION["IdEquipo"];
 //Columnas de la tabla a consultar
-$columns=['vercion_equipo','id_equipo', 'identificador',' equipo.nombre as equipo_nombre','area.nombre as area_nombre', 'descripcion',' area.id_area','estado_equipo'];
+$columns=['id_equipo', 'version_equipo', 'nombre', 'identificador', 'descripcion', 'estado_equipo'];
 //Nombre de la tabla a consultar
-$table="equipo";
+$table="equipos";
 //Nombre del campo que se va acontar para la paginacion 
 $id= 'id_equipo';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
-//Consultas JOIN
-$join="INNER JOIN area on area.id_area=equipo.id_area";
 //Consultas where
-$where = "WHERE equipo.nombre ILIKE '%" . $campo . "%' and id_equipo::text='$Id_Equipo'";
+$where = "WHERE equipos.nombre ILIKE '%" . $campo . "%' and id_equipo::text='$Id_Equipo'";
 
 //Limita la cantidad de datos que se va a ver (no mover)
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
@@ -33,8 +31,7 @@ $sLimit="LIMIT $limit OFFSET $inicio";
 //Consulta genera para obtener valores para la tabla
 $sql="SELECT  " . implode(", ",$columns) . "
 FROM $table
-$join
-$where ORDER BY vercion_equipo ASC
+$where ORDER BY version_equipo ASC
 $sLimit";
 
 $resultado=pg_query($conexion,$sql);
@@ -59,10 +56,9 @@ if($num_rows>0){
     while($row=pg_fetch_assoc($resultado)){
         $output['data'].='<tr>';
         $output['data'].='<td>'. $row['identificador'] .'</td>';
-        $output['data'].='<td>'. $row['vercion_equipo'] .'</td>';
-        $output['data'].='<td>'. $row['equipo_nombre'] .'</td>';
+        $output['data'].='<td>'. $row['version_equipo'] .'</td>';
+        $output['data'].='<td>'. $row['nombre'] .'</td>';
         $output['data'].='<td>'. $row['descripcion'] .'</td>';
-        $output['data'].='<td>'. $row['area_nombre'] .'</td>';
         $output['data'].='<td>'. $row['estado_equipo'] .'</td>';
         $output['data'].='</tr>';
     }

@@ -5,14 +5,11 @@ $(document).ready(function () {
         if($('#Pcr_Registros').val()=="") {
             alert("Falta No. de Registro");
             return false;
-        }else if($('#Pcr_Cantidad').val()==""){
-            alert("Falta Cantidad");
-            return false;
         }else{
             var datos = new FormData($("#Pcr_Form")[0]);
             $.ajax({
                 type: "POST",
-                url: "php/Agregar_Especie.php",
+                url: "php/Agregar_Especie_Editar.php",
                 data: datos,
                 contentType: false,
                 processData:false,
@@ -21,7 +18,7 @@ $(document).ready(function () {
                         alert("Se ha agregado correctamente.");
                         $.ajax({
                             type: "POST",
-                            url: "php/Buscar_Tabla_Especies.php",
+                            url: "php/Buscar_Tabla_Especies_Editar.php",
                             dataType: "html",
                             success: function (response) {
                                 $("#Tabala_Especie").html(response);
@@ -37,4 +34,12 @@ $(document).ready(function () {
             });
         }
     })
+    $.ajax({
+        type: "POST",
+        url: "php/Buscar_Tabla_Especies_Editar.php",
+        dataType: "html",
+        success: function (response) {
+            $("#Tabala_Especie").html(response);
+        }
+    });
 });

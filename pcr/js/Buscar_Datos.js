@@ -17,4 +17,16 @@ $(document).ready(function () {
             $("#Pcr_Espceie").html(response);
         }
     });
+
+    $.ajax({
+        type: "POST",
+        url: "php/Buscar_Equipos.php",
+        dataType: "html",
+        success: function (response) {
+            $("#Pcr_Equipo").html(response);
+        }
+    });
+
+
+    
 });

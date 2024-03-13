@@ -1,8 +1,12 @@
 <?php
 ob_start();
 session_start();
-$_SESSION['VersionMax'];
 
+if(isset($_GET['Registro_Pcr'])){
+    $_SESSION['Registro_Pcr']=$_GET['Registro_Pcr'];
+}else{
+    $_SESSION['Registro_Pcr'];
+}
 
 $id_Usuario=$_SESSION['id_usuario'];
 $Nombre=$_SESSION['nombre'];
@@ -40,10 +44,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <label for="Pcr_Registros">No. Registro:</label>
                             <input type="text" name="Pcr_Registros" id="Pcr_Registros">
                         </div>
-                        <div class="Datos">
-                            <label for="Pcr_Cantidad">Cantidad de Registros:</label>
-                            <input type="text" name="Pcr_Cantidad" id="Pcr_Cantidad">
-                        </div>
                     </div>
                     
                     <div class="Pcr_Datos">
@@ -59,30 +59,31 @@ if($id_Usuario=="" || $id_Usuario==null){
 
                     <div class="Pcr_Datos">
                         <div class="Datos">
-                            <label for="Pcr_Agrosa">Agrosa:</label>
-                            <input type="text" name="Pcr_Agrosa">
+                            <label for="Pcr_Agrosa">Agarosa:</label>
+                            <input type="text" name="Pcr_Agrosa" id="Pcr_Agrosa">
                         </div>
                         <div class="Datos">
                             <label for="Pcr_Voltage">Voltage:</label>
-                            <input type="text" name="Pcr_Voltage">
+                            <input type="text" name="Pcr_Voltage" id="Pcr_Voltage">
                         </div>
                         <div class="Datos">
                             <label for="Pcr_Tiempo">Tiempo (min):</label>
-                            <input type="text" name="Pcr_Tiempo">
+                            <input type="text" name="Pcr_Tiempo" id="Pcr_Tiempo">
                         </div>
                     </div>
                     <div class="Pcr_Espece_Check">
                         <div class="Check">
-                            <input type="checkbox" name="Sanitizo" value="1" ><label for="Canino">Sanitizo</label>
+                            <input type="checkbox" name="Sanitizo" value="1" id="Sanitizo" ><label for="Canino">Sanitizo</label>
                         </div>
                         <div class="Check">
-                            <input type="checkbox" name="Tiempouv" value="1" ><label for="Canino">Tiempo UV</label>
+                            <input type="checkbox" name="Tiempouv" value="1" id="Tiempouv" ><label for="Canino">Tiempo UV</label>
                         </div>
                     </div>
 
                     <div class="Pcr_Especie">
                         <div class="Pcr_Especie_Titulo">
                             <h2>Especies:</h2>
+                            <input type="checkbox" name="Especie_cehck" id="Especie_cehck" value="1">
                             <div class="Linea"></div>
                         </div>
                         <div class="Pcr_Equipo_contenedor">
@@ -118,10 +119,10 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <div class="Pcr_Equipo_Boton">
                             <input type="button" id="Agregar_Especie" value="Agregar Especie">
                         </div>
-                        <div class="Datos">
+                        <!--<div class="Datos">
                             <label for="Pcr_Imagen">Imagen o Archivo:</label>
                             <input type="file" required name="Pce_Imagen" accept="image/jpg,image/png,application/pdf">
-                        </div>
+                        </div>-->
                     </div>
 
                     <div class="Pcr_Equipo">
@@ -160,39 +161,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
             </form>
             <br>
-            <div class="Equipo_Tabla">
-                <div class="Acciones_Tabla">
-                    <div class="Datos_Tabla">
-                        <label for="">Mostrar:</label>
-                        <select name="num_registros" id="num_registros">
-                            <option value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                        </select>
-                    </div>
-                    <div class="Dato">
-                        <label for="buscar">Buscar PCR Tiempo Real:</label>
-                        <input type="text" id="campo" name="campo" />
-                    </div>
-                </div>
-
-                <table>
-                    <thead>
-                        <th>No. Registro</th>
-                        <th>Analisis</th>
-                        <th>Fecha</th>
-                        <th>Agaroza</th>
-                        <th>Voltage</th>
-                        <th>Tiempo</th>
-                        <th>Especies</th>
-                        <th>Imagen</th>
-                        <th>Editar</th>
-                    </thead>
-                    <tbody id="content"></tbody>
-                </table>
-                <div class="Tablas_Paginas" id="nav-paginacion"></div>
-            </div>
-        </div>
     </section>
     <?php require "../global/Alerta_Cerrar.php"  ?>
     <script src="../js/Script_Cerrar.js"></script>
@@ -202,12 +170,10 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 <script src="js/scripts.js"></script>
 <script src="js/Buscar_Datos.js"></script>
-<script src="js/Agregar_Pcr_Version.js"></script>
-<script src="js/Agregar_Especies_Version.js"></script>
-<script src="js/Agregar_Equipo_Version.js"></script>
-<script src="js/Buscar_Tabla_Especeies_Version.js"></script>
-<script src="js/Buscar_Tabala_Equipos_Version.js"></script>
-<script src="js/Buscar_Tabla_Pcr_Version.js"></script>
+<script src="js/Buscar_Datos_Editar.js"></script>
+<script src="js/Agregar_Especie_Editar.js"></script>
+<script src="js/Agregar_Equipo_Editar.js"></script>
+<script src="js/Agregar_Pcr_Editar.js"></script>
 <script src="../js/heder.js"></script>
 
 <?php }  ?>

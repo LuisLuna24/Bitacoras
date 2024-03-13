@@ -13,9 +13,6 @@ $(document).ready(function () {
         }else if($("#Nombre_Equipo").val()==""){
             alert("Falta Nombre del equipo");
             return false;
-        }else if($("#Area_Equipo").val()=="0"){
-            alert("Falta Area del equipo");
-            return false;
         }else{
             var datos = new FormData($("#Equipo_Form")[0]);
             $.ajax({
@@ -71,6 +68,7 @@ $(document).ready(function () {
                         alert("Este equipo ya existe.");
                     }else{
                         alert("No se pudo agregar el equipo.");
+                        alert(response);
                     }
                 }
             });

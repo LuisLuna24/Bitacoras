@@ -49,12 +49,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <input type="text" name="Nombre_Equipo" id="Nombre_Equipo">
                     </div>
                     <div class="Dato">
-                        <label>Area:</label>
-                        <select name="Area_Equipo" id="Area_Equipo"></select>
-                    </div>
-                </div>
-                <div class="Dato_Equipo">
-                    <div class="Dato">
                         <label>Estado del equipo:</label>
                         <select name="Estado_Equipo" id="">
                             <option value="Activo">Activo</option>
@@ -78,7 +72,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 <script src="./js/scripts.js"></script>
-<script src="./js/Buscar_Area.js"></script>
 <script src="./js/Buscar_Actualizar_Equipo.js"></script>
 <script src="./js/Actualizar_Equipo.js"></script>
 <script src="../js/heder.js"></script>

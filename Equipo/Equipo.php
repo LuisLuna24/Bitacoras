@@ -47,13 +47,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <label>Descripcion: (Max 60 caracteres)</label>
                         <input type="text" name="Descripcion_Equipo" id="Descripcion_Equipo">
                     </div>
-                    
-                    <div class="Dato">
-                        <label>Area:</label>
-                        <select name="Area_Equipo" id="Area_Equipo"></select>
-                    </div>
-                </div>
-                <div class="Dato_Equipo">
                     <div class="Dato">
                         <label>Estado del Equipo:</label>
                         <select name="Estado_Equipo" id="">
@@ -91,7 +84,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <th>Versión</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
-                    <th>Area</th>
                     <th>Estado</th>
                     <th>Actualizar</th>
                     <th>Dar de baja</th>
@@ -112,7 +104,6 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/scripts.js"></script>
 <script src="./js/Buscar_Equipo.js"></script>
 <script src="./js/Agregar_Equipo.js"></script>
-<script src="./js/Buscar_Area.js"></script>
 <script src="../js/heder.js"></script>
 
 <?php }else {

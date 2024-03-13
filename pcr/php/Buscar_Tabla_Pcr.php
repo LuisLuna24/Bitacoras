@@ -1,24 +1,26 @@
 <?php
 require "../../php/conexion.php";
-//Consulta par ver elementos de tabla inventario de equipo de los equipos con estado activo
+session_start();
 
+$Id_pcr_bitacora=$_SESSION['Id_Pcr_bitacora'];
 
-//Columnas de la tabla a consultar
-$columns=['id_equipo', 'version_equipo', 'nombre', 'identificador', 'descripcion', 'estado_equipo'];
-//Tabla a consultar
-$table="equipos";
-//Nombre del campo que se va acontar para la paginacion 
-$id= 'id_equipo';
+$columns=['id_pcr', 'version_pcr',' no_registro','id_especes_pcr' ,'bitacoras_pcr.id_analisis',' version_analsisi', 'fecha', 'sanitizo', 'tiempouv','nombre'];
+
+$table="bitacoras_pcr ";
+
+$id= 'id_pcr';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-//Consulta JOIN
-//Consulta Where 
-$where = "WHERE equipos.nombre ILIKE '%" . $campo . "%' and estado_equipo='Baja'";
+$join="INNER JOIN analisis on analisis.id_analisis=bitacoras_pcr.id_analisis ";
 
-//Limita la cantidad de datos que se va a ver (no mover)
+$where = "WHERE no_registro::text ILIKE '%" . $campo . "%' and id_pcr = '$Id_pcr_bitacora'  ";
+
+
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;
 $pagina=isset($_POST['pagina']) ? pg_escape_string($conexion ,$_POST['pagina']): 0;
+
+
 
 if(!$pagina){
     $inicio = 0;
@@ -29,18 +31,22 @@ if(!$pagina){
 
 $sLimit="LIMIT $limit OFFSET $inicio";
 
-//Consulta general para obtener los datos para la tabla
-$sql="SELECT DISTINCT on (id_equipo)" . implode(", ",$columns) . "
-FROM $table
-$where ORDER BY id_equipo,version_equipo DESC
+
+$sql="SELECT DISTINCT on (id_pcr)" . implode(", ",$columns) . "
+FROM $table 
+$join
+$where ORDER BY id_pcr DESC, version_pcr DESC
 $sLimit";
+
 
 $resultado=pg_query($conexion,$sql);
 $num_rows=pg_num_rows($resultado);
 
 //Consulta para total registros
 
-$sqlTotal="SELECT count($id) FROM $table ";
+//Consulta para total registros
+
+$sqlTotal="SELECT count($id) FROM $table WHERE id_pcr='$Id_pcr_bitacora'";
 $resTotal=pg_query($conexion,$sqlTotal);
 $row_total=pg_fetch_array($resTotal);
 $totalRegistros = $row_total[0];
@@ -51,18 +57,17 @@ $output['totalRegistros'] = $totalRegistros;
 $output['data'] = '';
 $output['paginacion'] = '';
 
-//Visualizar los elementos de la tabla y los manda en JSON 
 if($num_rows>0){
-    while($row=pg_fetch_assoc($resultado)){
+    while($row=pg_fetch_array($resultado)){
         $output['data'].='<tr>';
-        $output['data'].='<td>'. $row['identificador'] .'</td>';
-        $output['data'].='<td>'. $row['version_equipo'] .'</td>';
+        $output['data'].='<td>'. $row['no_registro'] .'</td>';
         $output['data'].='<td>'. $row['nombre'] .'</td>';
-        $output['data'].='<td>'. $row['descripcion'] .'</td>';
-        $output['data'].='<td>'. $row['estado_equipo'] .'</td>';
-        $output['data'].='<td><a href="./Editar_Equipo.php?Equipo='. $row['id_equipo'] .'">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Equipo.php?Equipo='. $row['id_equipo'] .'">Baja</a></td>';
-        $output['data'].='<td><a href="./Verciones_Equipo.php?IdEquipo='. $row['id_equipo'] .'">Ver</a></td>';
+        $output['data'].='<td>'. $row['fecha'] .'</td>';
+        $output['data'].='<td>'. $row['sanitizo'] .'</td>';
+        $output['data'].='<td>'. $row['tiempouv'] .'</td>';
+        $output['data'].='<td>'. $row['id_especes_pcr'] .'</td>';
+        $output['data'].='<td><a href="./Actualizar_Pcr.php?Registro_Pcr='. $row['id_pcr']. '">Editar</a></td>';
+        $output['data'].='<td><a href="./Editar_Registro_Pcreal.php?Registro_Pcreal='. $row['id_pcr']. '">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{
@@ -91,10 +96,10 @@ if($output['totalRegistros']>0){
 
     for($i=$numeroInicio;$i<=$numeroFin;$i++){
         if($pagina == $i){
-            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="#">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link activo" href="">' . $i . '</a></li>';
 
         }else{
-            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="#" onclick="getData('. $i .')">' . $i . '</a></li>';
+            $output['paginacion'].='<li class="Pagina"><a class="page-link" href="" onclick="getData('. $i .')">' . $i . '</a></li>';
         }
     }
 

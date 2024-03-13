@@ -1,7 +1,7 @@
-//Permite agregar nueva especie a registro de pcr
+//Permite agregar equipo a registro de pcr
 
 $(document).ready(function () {
-    $("#Agregar_Especie").on("click", function(){
+    $("#Agregar_Equipo").on("click", function(){
         if($('#Pcr_Registros').val()=="") {
             alert("Falta No. de Registro");
             return false;
@@ -12,7 +12,7 @@ $(document).ready(function () {
             var datos = new FormData($("#Pcr_Form")[0]);
             $.ajax({
                 type: "POST",
-                url: "php/Agregar_Especie.php",
+                url: "php/Agregar_Equipo.php",
                 data: datos,
                 contentType: false,
                 processData:false,
@@ -21,14 +21,14 @@ $(document).ready(function () {
                         alert("Se ha agregado correctamente.");
                         $.ajax({
                             type: "POST",
-                            url: "php/Buscar_Tabla_Especies.php",
+                            url: "php/Buscar_Tabla_Equipo.php",
                             dataType: "html",
                             success: function (response) {
-                                $("#Tabala_Especie").html(response);
+                                $("#Tabala_Equipos").html(response);
                             }
                         });
                     }else if(response==2){
-                        alert("Esta especie  ya fue agregada.");
+                        alert("Este equipo ya fue agregada.");
                         
                     }else{
                         alert(response);
@@ -37,4 +37,5 @@ $(document).ready(function () {
             });
         }
     })
+    
 });

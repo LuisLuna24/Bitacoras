@@ -47,10 +47,12 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                     <table>
                         <thead>
-                            <th>Folio</th>
+                            <th>No. Registro</th>
+                            <th>Analisis</th>
                             <th>Fecha</th>
-                            <th>Bitacora</th>
-                            <th>Reviso</th>
+                            <th>Sanitizo</th>
+                            <th>Tiempo UV</th>
+                            <th>Especies</th>
                             <th>Editar</th>
                             <th>Versiones anteriores</th>
                         </thead>

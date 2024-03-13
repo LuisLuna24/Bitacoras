@@ -57,7 +57,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <th>Versión</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
-                    <th>Area</th>
                     <th>Estado</th>
                 </thead>
                 <tbody id="content"></tbody>
