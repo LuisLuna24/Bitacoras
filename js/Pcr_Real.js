@@ -7,18 +7,7 @@ $(document).ready(function () {
     })
 
     $("#Agregar_Regitstro_Pcreal").on("click", function(){
-        $.ajax({
-            type: "POST",
-            url: "./php/Pcr_Real.php",
-            dataType: "html",
-            success: function (response) {
-                if (response==1){
-                    location.href ="./Pcr_Real/Pcr_Real.php";
-                }else{
-                    alert(response);
-                }
-            }
-        });
+        location.href ="./Pcr_Real/Pcr_Real.php";
     });
 
 

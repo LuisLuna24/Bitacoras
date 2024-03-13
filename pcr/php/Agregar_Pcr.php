@@ -1,48 +1,61 @@
 <?php
+//Coneccion y secion
 require "../../php/conexion.php";
 session_start();
 
-
-//Id del usuario
-$Usuario=$_SESSION['id_usuario'];
-//Datos a obtener de los campos
-$NoRegistro=$_POST["Pcr_Registros"];
-$Cantidad=$_POST["Pcr_Cantidad"];
-$Analisis=$_POST["Pcr_Analisis"];
-$Fecha1=$_POST['Pcr_Fecha'];
-$Fecha= date("Y-m-d", strtotime($Fecha1));
-$Agarosa=$_POST["Pcr_Agrosa"];
-$Voltaje=$_POST["Pcr_Voltage"];
-$Tiempo=$_POST["Pcr_Tiempo"];
-
-if(isset($_POST["Sanitizo"])){
-    $Sanitizo=$_POST["Sanitizo"];
+//Datos de la bitacora
+$Id_Usuario=$_SESSION['id_usuario'];
+$registro=$_POST['Pcr_Registros'];
+$Cantidad=$_POST['Pcr_Cantidad'];
+$Analisis=$_POST['Pcr_Analisis'];
+$Buscar_Version_Analisis=pg_query($conexion,"SELECT MAX(version_analisis) FROM analisis where id_analisis='$Analisis';");
+$rowAnalisis=pg_fetch_array($Buscar_Version_Analisis);
+$Version_Analisis=$rowAnalisis['max'];
+$Fecha=date("Y-m-d", strtotime($_POST['Pcr_Fecha']));
+$Agarosa=$_POST['Pcr_Agrosa'];
+$Voltage=$_POST['Pcr_Voltage'];
+$Tiempo=$_POST['Pcr_Tiempo'];
+if(isset($_POST['Sanitizo'])){
+    $Sanitizo=$_POST['Sanitizo'];
 }else{
     $Sanitizo="0";
 }
-
-if(isset($_POST["Tiempouv"])){
-    $Tiempouv=$_POST["Tiempouv"];
+if(isset($_POST['Tiempouv'])){
+    $uv=$_POST['Tiempouv'];
 }else{
-    $Tiempouv="0";
+    $uv="0";
 }
 
-$Resultado=$_POST["Pcr_Resultado"];
+if(isset($_POST['Especie_cehck'])){
+    $id_especie=$a.'0'.$registro;
+    $Version_especie='1';
+    $No_especie='1';
+}else{
+    $id_especie='';
+    $Version_especie='';
+    $No_especie='';
+}
 
-//$Imagen=addslashes(file_get_contents($_FILES['Pce_Imagen']['tmp_name']));
-//$ImagenCod=mb_convert_encoding($Imagen, 'UTF-8', mb_detect_encoding($Imagen, 'UTF-8, ISO-8859-1'));
 
-
-//Datos a insertar
+//Id_bitacora
+$a=date('Y');
+$id_pcr=$a.'0'.$registro;
 for($i=0;$i<$Cantidad;$i++){
-    $Cantidad_Dat=$i+1;
-    $Identificador=$Folio.'1';
-    $Identificador_Registro=$NoRegistro.$Cantidad_Dat.'1'.$Folio;
-    $Insertar="INSERT INTO public.bitacora_pcr(
-        id_pcr, no_registro, version_pcr, id_folio, identificador_bitacora, id_analisis, fecha, agarosa, voltage, tiempo, sanitizo, tiempouv, id_especie_pcr, identificador_especie, version_especie,resultado, id_equipo_pcr, identificador_equipo, version_equipo, id_usuario, version_folio,identificador_registro)
-        VALUES ('$NoRegistro', '$Cantidad_Dat', '1', '$Folio', '$Identificador', '$Analisis', '$Fecha', '$Agarosa','$Voltaje' ,'$Tiempo', '$Sanitizo', '$Tiempouv', '$Folio', '1', '1' ,'$Resultado', '$Folio', '1', '1', '$Usuario', '1','$Identificador_Registro');";
+    $No_registro=$registro.'_'.$i+1;
+    if(isset($_POST['Especie_cehck'])){
+        $id_especie=$registro.'_'.$i+1;
+        $Version_especie='1';
+        $No_especie='1';
+    }else{
+        $id_especie='';
+        $Version_especie='';
+        $No_especie='';
+    }
+    $id_equipo=$registro.'_'.$i+1;
+    $Insertar="INSERT INTO public.bitacoras_pcr(
+        id_pcr, no_registro, id_analisis, version_analsisi, fecha, agarosa, voltage, tiempo, sanitizo, tiempouv, id_especes_pcr, version_especies_pcr, no_especie_pcr, id_equipo_pcr, version_equipo_pcr, no_equipo_pcr, id_usuario)
+        VALUES ('$id_pcr', '$No_registro', '$Analisis', '$Version_Analisis', '$Fecha', '$Agarosa', '$Voltage', '$Tiempo', '$Sanitizo', '$uv', '$id_especie', '$Version_especie', '$No_especie', '$id_equipo', '1', '1', '$Id_Usuario');";
     pg_query($conexion,$Insertar);
+    echo 1;
 }
-
-echo 1;
 ?>

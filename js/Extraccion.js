@@ -4,23 +4,8 @@ $(document).ready(function () {
         $("#Alert_Extraccion").css("display","grid");
     })
 
-
-
     $("#Agregar_Regitstro_Extraccion").on("click", function(){
-        $.ajax({
-            type: "POST",
-            url: "./php/Extraccion.php",
-            dataType: "html",
-            success: function (response) {
-                if (response==1){
-                    location.href ="./Extraccion/Extraccion.php";
-                }else if(response==2){
-                    location.href ="./Extraccion/Extraccion.php";
-                }else{
-                    alert(response);
-                }
-            }
-        });
+        location.href ="./Extraccion/Extraccion.php";
     });
 
 

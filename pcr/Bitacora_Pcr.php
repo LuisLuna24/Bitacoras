@@ -9,7 +9,6 @@ if($id_Usuario=="" || $id_Usuario==null){
     header("location:../index.php");
 }else{ ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -57,7 +56,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 
                     <div class="Pcr_Datos">
                         <div class="Datos">
-                            <label for="Pcr_Agrosa">Agrosa:</label>
+                            <label for="Pcr_Agrosa">Agarosa:</label>
                             <input type="text" name="Pcr_Agrosa" id="Pcr_Agrosa">
                         </div>
                         <div class="Datos">
@@ -81,6 +80,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="Pcr_Especie">
                         <div class="Pcr_Especie_Titulo">
                             <h2>Especies:</h2>
+                            <input type="checkbox" name="Especie_cehck" id="Especie_cehck" value="1">
                             <div class="Linea"></div>
                         </div>
                         <div class="Pcr_Equipo_contenedor">
@@ -95,8 +95,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                                         <option value="Negativo">Negativo</option>
                                         <option value="Positivo">Positivo</option>
                                     </select>
-                        </div>
-                                
+                                </div>
                             </div>
                             <div class="Pcr_Equipo_Tabla">
                                 <table>
@@ -116,10 +115,10 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <div class="Pcr_Equipo_Boton">
                             <input type="button" id="Agregar_Especie" value="Agregar Especie">
                         </div>
-                        <div class="Datos">
+                        <!--<div class="Datos">
                             <label for="Pcr_Imagen">Imagen o Archivo:</label>
                             <input type="file" required name="Pce_Imagen" accept="image/jpg,image/png,application/pdf">
-                        </div>
+                        </div>-->
                     </div>
 
                     <div class="Pcr_Equipo">
@@ -200,11 +199,9 @@ if($id_Usuario=="" || $id_Usuario==null){
 </html>
 
 <script src="js/scripts.js"></script>
-<script src="js/Buscar_Datos.js"></script>
 <script src="js/Agregar_Pcr.js"></script>
-<script src="js/Agregar_Especies.js"></script>
-<script src="js/Agregar_Equipo.js"></script>
-<script src="js/Buscar_Tabla_Pcr.js"></script>
+<script src="js/Agregar_Especie.js"></script>
+<script src="js/Buscar_Datos.js"></script>
 <script src="../js/heder.js"></script>
 
 <?php }  ?>

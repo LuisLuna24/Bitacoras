@@ -6,20 +6,7 @@ $(document).ready(function () {
     });
 
     $("#Agregar_Regitstro_Reactivos").on("click", function(){
-        $.ajax({
-            type: "POST",
-            url: "./php/Reactivos.php",
-            dataType: "html",
-            success: function (response) {
-                if (response==1){
-                    location.href ="./Reactivos/Reactivos.php";
-                }else if(response==2){
-                    location.href ="./Reactivos/Reactivos.php";
-                }else{
-                    alert(response);
-                }
-            }
-        });
+        location.href ="./Reactivos/Reactivos.php";
     });
 
     $("#Cancelar_Regitstro_Reactivos").on("click", function(){
