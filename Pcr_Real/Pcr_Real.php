@@ -70,7 +70,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
                 <div class="Datos_Metodo_Equipo">
                         <div class="dato Agregar_Equio_div">
-                            <label>Selecciona Equipo</label>
+                            <label>Selecciona Especie</label>
                             <select name="Especie_Select" id="Especie_Select"></select>
                             <label>Resultado:</label>
                             <select name="Resultado_Select" id="Resultado_Select">
@@ -90,7 +90,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Resultado</th>
                             <th>Eliminar</th>
                         </thead>
-                        <tbody id="Equipo_Tabla"></tbody>
+                        <tbody id="Especie_Tabla"></tbody>
                     </table>
                 </div>
                 
@@ -180,6 +180,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/Buscar_Analisis.js"></script>
 <script src="./js/Buscar_Equipo.js"></script>
 <script src="./js/Agregar_Equipo.js"></script>
+<script src="js/Buscar_Especies.js"></script>
 <script src="../js/heder.js"></script>
 
 <?php } ?>

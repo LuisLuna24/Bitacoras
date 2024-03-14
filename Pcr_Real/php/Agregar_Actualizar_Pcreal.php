@@ -32,10 +32,11 @@ $identificador=$Folio.$Version;
 
 for($i=0;$i<$Cantidad;$i++){
     $No=$i+1;
+    $Id_eseciepcr=$Folio.$no_registro.$No;
     $Identificador_Registro=$no_registro.$No.$Version.$Folio;
     $Insertar="INSERT INTO public.bitacora_pcreal(
-        id_pcreal, no_registro, version_pcreal, identificador_bitacora, id_folio, id_analisi, fecha, sanitizo, tiempouv, resultado, observaciones, id_equipo_pcreal, version_equipo, identificador_equipo, id_usuaro, version_folio,version_registro, identificador_registro)
-        VALUES ('$no_registro', '$No', '$Version' ,'$identificador', '$Folio', '$Analisis', '$Fecha', '$Sanitizo', '$uv', '$Resultado', '$Obsevaciones', '$Folio', '$Version', '1', '$id_Usuario',  '$Version','1','$Identificador_Registro');";
+        id_pcreal, no_registro, version_pcreal, identificador_bitacora, id_folio, id_analisi, fecha, sanitizo, tiempouv, resultado, observaciones, id_equipo_pcreal, version_equipo, identificador_equipo, id_usuaro, version_folio,version_registro, identificador_registro,id_especie_pcreal,version_especie_pcreal,no_especie_pcreal)
+        VALUES ('$no_registro', '$No', '$Version' ,'$identificador', '$Folio', '$Analisis', '$Fecha', '$Sanitizo', '$uv', '$Resultado', '$Obsevaciones', '$Folio', '$Version', '1', '$id_Usuario',  '1','1','$Identificador_Registro','$Id_eseciepcr','$Version','1');";
         pg_query($conexion,$Insertar);
 }
 
