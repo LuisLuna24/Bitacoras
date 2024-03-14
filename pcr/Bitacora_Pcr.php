@@ -81,10 +81,10 @@ if($id_Usuario=="" || $id_Usuario==null){
 
                     <div class="Pcr_Especie">
                         <div class="Pcr_Especie_Titulo">
-                            <h2>Especies:</h2>
+                            <h2><input type="checkbox" name="Check_Espcies" id="Check_Espcies" value='1'>Especies:</h2>
                             <div class="Linea"></div>
                         </div>
-                        <div class="Pcr_Equipo_contenedor">
+                        <div class="Pcr_Especie_contenedor" id='Pcr_Especie_contenedor'>
                             <div class="Pcr_Equipo_Selecionar">
                                 <div class="Datos">
                                     <label for="Pcr_Espceie">Especie:</label>
@@ -96,8 +96,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                                         <option value="Negativo">Negativo</option>
                                         <option value="Positivo">Positivo</option>
                                     </select>
-                        </div>
-                                
+                                </div>   
                             </div>
                             <div class="Pcr_Equipo_Tabla">
                                 <table>
@@ -113,7 +112,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </div>
                     </div>
 
-                    <div class="Pcr_Datos">
+                    <div class="Pcr_Datos" id='Especie_Boton_pcr'>
                         <div class="Pcr_Equipo_Boton">
                             <input type="button" id="Agregar_Especie" value="Agregar Especie">
                         </div>

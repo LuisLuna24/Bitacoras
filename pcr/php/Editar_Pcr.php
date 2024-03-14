@@ -44,6 +44,7 @@ $Resultado=$_POST["Pcr_Resultado"];
 //$Imagen=addslashes(file_get_contents($_FILES['Pce_Imagen']['tmp_name']));
 //$ImagenCod=mb_convert_encoding($Imagen, 'UTF-8', mb_detect_encoding($Imagen, 'UTF-8, ISO-8859-1'));
 
+
 try{
     $Actualizar="UPDATE public.bitacora_pcr
 	SET  id_analisis='$Analisis', fecha='$Fecha', agarosa='$Agarosa', voltage='$Voltaje', tiempo='$Tiempo', sanitizo='$Sanitizo', tiempouv='$Tiempouv'

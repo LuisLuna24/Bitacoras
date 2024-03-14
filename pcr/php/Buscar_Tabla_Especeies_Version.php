@@ -3,8 +3,11 @@ require "../../php/conexion.php";
 session_start();
 
 
-
-$No_Regitro=$_SESSION['Pcr_Registros_Especie_Version'];
+if(isset($_SESSION['Pcr_Registros_Especie_Version'])){
+    $No_Regitro=$_SESSION['Pcr_Registros_Especie_Version'];
+}else{
+    $No_Regitro='0';
+}
 $Folio=$_SESSION["No_Folio"];
 $Version=$_SESSION['VersionMax'];
 
