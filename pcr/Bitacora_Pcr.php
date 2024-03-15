@@ -116,10 +116,10 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <div class="Pcr_Equipo_Boton">
                             <input type="button" id="Agregar_Especie" value="Agregar Especie">
                         </div>
-                        <div class="Datos">
+                        <!--<div class="Datos">
                             <label for="Pcr_Imagen">Imagen o Archivo:</label>
                             <input type="file" required name="Pce_Imagen" accept="image/jpg,image/png,application/pdf">
-                        </div>
+                        </div>-->
                     </div>
 
                     <div class="Pcr_Equipo">

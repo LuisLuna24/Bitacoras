@@ -66,11 +66,11 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                 </div>
                 <div class="dat_resul_titulo">
-                    <h2>Especie Seleccionado</h2>
+                    <h2><input type="checkbox" name="Check_Espcies" id="Check_Espcies" value='1'>Especie Seleccionada</h2>
                 </div>
-                <div class="Datos_Metodo_Equipo">
+                <div class="Datos_Metodo_Equipo" id="Pcr_Especie_contenedor">
                         <div class="dato Agregar_Equio_div">
-                            <label>Selecciona Especie</label>
+                            <label>Selecciona Especie;</label>
                             <select name="Especie_Select" id="Especie_Select"></select>
                             <label>Resultado:</label>
                             <select name="Resultado_Select" id="Resultado_Select">

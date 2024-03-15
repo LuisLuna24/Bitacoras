@@ -8,6 +8,7 @@ $(document).ready(function () {
             contentType: false,
             processData:false,
             success: function (response) {
+                alert (response);
                 alert ("Se ha agregado correctamente.");
                 //Direcciona a Actualizar_Pcreal
                 location.href ="./Pcr_Real.php";
