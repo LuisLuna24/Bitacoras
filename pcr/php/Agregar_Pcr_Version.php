@@ -33,13 +33,22 @@ if(isset($_POST["Tiempouv"])){
 $Resultado=$_POST["Pcr_Resultado"];
 //$Imagen=$_POST["Pce_Imagen"];
 
+if(isset($_POST['Check_Espcies'])){
+    $D_Especie="id_especie_pcr, identificador_especie, version_especie,";
+    $D_Campos_especie="'$Folio', '1', '1' ,";
+}else{
+    $D_Especie="";
+    $D_Campos_especie="";
+}
+
+
 //Datos a insertar
 for($i=0;$i<$Cantidad;$i++){
     $Cantidad_Dat=$i+1;
     $Identificador=$Folio.$Version;
     $Insertar="INSERT INTO public.bitacora_pcr(
-        id_pcr, no_registro, version_pcr, id_folio, identificador_bitacora, id_analisis, fecha, agarosa, voltage, tiempo, sanitizo, tiempouv, id_especie_pcr, identificador_especie, version_especie, resultado, id_equipo_pcr, identificador_equipo, version_equipo, id_usuario, version_folio)
-        VALUES ('$NoRegistro', '$Cantidad_Dat', '$Version', '$Folio', '$Identificador', '$Analisis', '$Fecha', '$Agarosa','$Voltaje' ,'$Tiempo', '$Sanitizo', '$Tiempouv', '$Folio', '1', '$Version', '$Resultado', '$Folio', '1', '$Version', '$Usuario', '$Version');";
+        id_pcr, no_registro, version_pcr, id_folio, identificador_bitacora, id_analisis, fecha, agarosa, voltage, tiempo, sanitizo, tiempouv, ".$D_Especie." resultado, id_equipo_pcr, identificador_equipo, version_equipo, id_usuario, version_folio)
+        VALUES ('$NoRegistro', '$Cantidad_Dat', '$Version', '$Folio', '$Identificador', '$Analisis', '$Fecha', '$Agarosa','$Voltaje' ,'$Tiempo', '$Sanitizo', '$Tiempouv', ".$D_Campos_especie." '$Resultado', '$Folio', '1', '$Version', '$Usuario', '$Version');";
     pg_query($conexion,$Insertar);
 }
 echo $Cantidad;

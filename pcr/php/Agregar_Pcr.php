@@ -30,6 +30,14 @@ if(isset($_POST["Tiempouv"])){
 
 $Resultado=$_POST["Pcr_Resultado"];
 
+if(isset($_POST['Check_Espcies'])){
+    $D_Especie="id_especie_pcr, identificador_especie, version_especie,";
+    $D_Campos_especie="'$Folio', '1', '1' ,";
+}else{
+    $D_Especie="";
+    $D_Campos_especie="";
+}
+
 //$Imagen=addslashes(file_get_contents($_FILES['Pce_Imagen']['tmp_name']));
 //$ImagenCod=mb_convert_encoding($Imagen, 'UTF-8', mb_detect_encoding($Imagen, 'UTF-8, ISO-8859-1'));
 
@@ -40,8 +48,8 @@ for($i=0;$i<$Cantidad;$i++){
     $Identificador=$Folio.'1';
     $Identificador_Registro=$NoRegistro.$Cantidad_Dat.'1'.$Folio;
     $Insertar="INSERT INTO public.bitacora_pcr(
-        id_pcr, no_registro, version_pcr, id_folio, identificador_bitacora, id_analisis, fecha, agarosa, voltage, tiempo, sanitizo, tiempouv, id_especie_pcr, identificador_especie, version_especie,resultado, id_equipo_pcr, identificador_equipo, version_equipo, id_usuario, version_folio,identificador_registro)
-        VALUES ('$NoRegistro', '$Cantidad_Dat', '1', '$Folio', '$Identificador', '$Analisis', '$Fecha', '$Agarosa','$Voltaje' ,'$Tiempo', '$Sanitizo', '$Tiempouv', '$Folio', '1', '1' ,'$Resultado', '$Folio', '1', '1', '$Usuario', '1','$Identificador_Registro');";
+        id_pcr, no_registro, version_pcr, id_folio, identificador_bitacora, id_analisis, fecha, agarosa, voltage, tiempo, sanitizo, tiempouv,". $D_Especie ." resultado, id_equipo_pcr, identificador_equipo, version_equipo, id_usuario, version_folio,identificador_registro)
+        VALUES ('$NoRegistro', '$Cantidad_Dat', '1', '$Folio', '$Identificador', '$Analisis', '$Fecha', '$Agarosa','$Voltaje' ,'$Tiempo', '$Sanitizo', '$Tiempouv', ".$D_Campos_especie."'$Resultado', '$Folio', '1', '1', '$Usuario', '1','$Identificador_Registro');";
     pg_query($conexion,$Insertar);
 }
 

@@ -18,7 +18,7 @@ $rowesp=pg_fetch_assoc($Especiequery);
 $versionespe=$rowesp['max'];
 
 
-$BuscarExistente="SELECT id_equipo FROM equipo_pcr where id_equipo='$Equipo'";
+$BuscarExistente="SELECT id_equipo FROM equipo_pcr where id_equipo='$Equipo' and id_equipo_pcr='$Folio'";
 $Existente=pg_query($conexion,$BuscarExistente);
 
 if(pg_num_rows($Existente)==0){

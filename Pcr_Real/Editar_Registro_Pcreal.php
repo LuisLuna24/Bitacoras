@@ -74,6 +74,34 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <textarea name="pcreal_observaciones" id="pcreal_observaciones" cols="30" rows="10"></textarea>
                     </div>
                 </div>
+                <div class="dat_resul_titulo">
+                    <h2><input type="checkbox" name="Check_Espcies" id="Check_Espcies" value='1'>Especie Seleccionado</h2>
+                </div>
+                <div class="Datos_Metodo_Equipo" id="Pcr_Especie_contenedor">
+                        <div class="dato Agregar_Equio_div">
+                            <label>Selecciona Especie</label>
+                            <select name="Especie_Select" id="Especie_Select"></select>
+                            <label>Resultado:</label>
+                            <select name="Resultado_Select" id="Resultado_Select">
+                                <option value="Negativo">Negativo</option>
+                                <option value="Positivo">Positivo</option>
+                            </select>
+                            <div class="Botones_Equipo">
+                                <input type="button" value="Agregar Especie" id="Agregar_Especie">
+                                <!--<input type="button" value="Agregar Todos los equipos" id="Agregar_Todo">-->
+                            </div>
+                            
+                        </div>
+                    <table>
+                        <thead>
+                            <th>No. Especie</th>
+                            <th>Nombre Especie</th>
+                            <th>Resultado</th>
+                            <th>Eliminar</th>
+                        </thead>
+                        <tbody id="Especie_Tabla"></tbody>
+                    </table>
+                </div>
                 <div class="botones">
                     <input type="button" value="Actualizar Registro" id="Editar_Pcr">
                     <input type="button" value="Cancelar" id="Ver_Bitacoras">
@@ -91,6 +119,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <script src="./js/scripts.js"></script>
 <script src="./js/Buscar_Analisis.js"></script>
 <script src="js/Buscar_Registro.js"></script>
+<script src="js/Buscar_Especies_Registro.js"></script>
 <script src="js/Editar_Registro.js"></script>
 <script src="../js/heder.js"></script>
 

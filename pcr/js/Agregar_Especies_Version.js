@@ -11,7 +11,7 @@ $(document).ready(function () {
             processData:false,
             success: function (response) {
                 //Mensaje de agregar especie y actualizar tabla 
-                if(response==1){
+                if(response!=null){
                     alert("Especie agregada correctamente.");
                     //Actualiza la tabla de especies 
                     $.ajax({
