@@ -16,7 +16,6 @@ if(pg_num_rows($queryBuscra)!=0){
         $html.='<tr>';
         $html.='<td>' . $row['identificador'] . '</td>';
         $html.='<td>' . $row['nombre'] . '</td>';
-        $html.='<td><a href="./php/Eliminar_equpo_seleccionado.php?Eqipo='.$row['identificador'].'">Eliminar</a></td>';
         $html.='</tr>';
     }
 }else{
