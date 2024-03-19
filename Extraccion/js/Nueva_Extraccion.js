@@ -79,7 +79,7 @@ $(document).ready(function () {
     });
     $("#Registro_Exteracion").keypress(function(e) {
         // Limitar la longitud a 10 caracteres de lote de reactivos
-        if ($("#Registro_Exteracion").val().length >= 10) {
+        if ($("#Registro_Exteracion").val().length >= 6) {
           e.preventDefault();
         }
         // Permitir solo números y el backspace
@@ -90,15 +90,26 @@ $(document).ready(function () {
 
     $("#Cantidad_Exteracion").keypress(function(e) {
         // Limitar la longitud a 10 caracteres de lote de reactivos
-        if ($("#Cantidad_Exteracion").val().length >= 10) {
-          e.preventDefault();
-        }
-        // Permitir solo números y el backspace
-        if (e.which != 8 && (e.which < 48 || e.which > 57)) {
+        if ($("#Cantidad_Exteracion").val().length >= 2) {
           e.preventDefault();
         }
     });
 
+    $("#Cantidad_Exteracion").on("input", function(){
+        var value = $(this).val();
+        // Validar que solo se introduzcan números
+        if (!/^[0-9]+$/.test(value)) {
+          // Eliminar el caracter no válido
+          $(this).val(value.substring(0, value.length - 1));
+        }
+        // Validar que el número esté dentro del rango 1 al 20
+        if (value > 15) {
+          // Restablecer el valor a 1
+          alert("No se pueden colocar mas de 15 registros");
+          $(this).val(15);
+          
+        }
+    });
 
     $("#Conc_Exteracion").keypress(function(e) {
         // Limitar la longitud a 10 caracteres de lote de reactivos

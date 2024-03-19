@@ -41,8 +41,6 @@ if(isset($_POST['Check_Espcies'])){
 //$Imagen=addslashes(file_get_contents($_FILES['Pce_Imagen']['tmp_name']));
 //$ImagenCod=mb_convert_encoding($Imagen, 'UTF-8', mb_detect_encoding($Imagen, 'UTF-8, ISO-8859-1'));
 
-
-//Datos a insertar
 for($i=0;$i<$Cantidad;$i++){
     $Cantidad_Dat=$i+1;
     $Identificador=$Folio.'1';

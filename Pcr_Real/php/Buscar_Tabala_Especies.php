@@ -10,7 +10,7 @@ if(isset($_SESSION['No_registro_Especie_pcr'])){
     $No_registro_Especie_pcr='';
 }
 
-$buscarEquipo="SELECT nombre,especies_pcreal.id_especie_pcreal, no_especie_pcr,especies_pcreal.version_especie_pcreal, especies_pcreal.id_especie, especies_pcreal.version_especie, especies_pcreal.resultado
+$buscarEquipo="SELECT DISTINCT on (id_especie) nombre,especies_pcreal.id_especie_pcreal, no_especie_pcr,especies_pcreal.version_especie_pcreal, especies_pcreal.id_especie, especies_pcreal.version_especie, especies_pcreal.resultado
 FROM public.especies_pcreal INNER JOIN especie on especie.id_especie = especies_pcreal.id_especie  where especies_pcreal.id_especie_pcreal::text ILIKE '%" . $No_registro_Especie_pcr . "%';";
 $queryBuscra=pg_query($conexion,$buscarEquipo);
 
