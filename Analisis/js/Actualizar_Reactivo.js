@@ -3,10 +3,10 @@ $(document).ready(function () {
     
     $("#Actualizarbtn_Analisis").on("click", function(){
         if($('#Editar_Nombre').val()=="") {
-            alert("Falta Nombre del Analisis");
+            alert("Falta el nombre del análisis.");
             return false;
         }else if($("#Editar_Abrebiatura").val()==""){
-            alert("Falta Abrebiatura del Analisis");
+            alert("Falta la abreviatura del Análisis.");
             return false;
         }else{
             var datos=new FormData($("#Actualizar_Form")[0]);

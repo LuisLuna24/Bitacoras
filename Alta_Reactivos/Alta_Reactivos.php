@@ -30,7 +30,7 @@ if($id_Usuario=="" || $id_Usuario==null){
         <div class="datos_alta_contenedor">
             <form class="datos_alta_form" id="Reactivo_Form">
                 <div class="datos_alta_titulo">
-                    <h1>Inventario de Reactivos</h1>
+                    <h1>Inventario de Reactivos.</h1>
                     <div class="linea_titulo"></div>
                 </div>
 
@@ -48,7 +48,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 
                     <div class="datoo">
                         <div>
-                            <label for="dat5">Descripcion: (Max 60 Caracteres )</label>
+                            <label for="dat5">Descripción: (Max 60 Caracteres)</label>
                             <input type="text" name="Reactivo_Descripcion" id="Reactivo_Descripcion">
                         </div>
                         
