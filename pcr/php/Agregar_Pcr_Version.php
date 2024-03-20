@@ -35,7 +35,7 @@ $Resultado=$_POST["Pcr_Resultado"];
 
 if(isset($_POST['Check_Espcies'])){
     $D_Especie="id_especie_pcr, identificador_especie, version_especie,";
-    $D_Campos_especie="'$Folio', '1', '1' ,";
+    $D_Campos_especie="'$Folio', '1', '$Version' ,";
 }else{
     $D_Especie="";
     $D_Campos_especie="";

@@ -25,7 +25,6 @@ if(pg_num_rows($query)!=0){
         $html.='<td>' . $row['identificador_especie'] . '</td>';
         $html.='<td>' . $row['nombre'] . '</td>';
         $html.='<td>' . $row['resultado'] . '</td>';
-        $html.='<td><a href="./php/Eliminar_equpo_seleccionado.php?Eqipo='.$row['id_especie'].'">Eliminar</a></td>';
         $html.='</tr>';
     }
 }else if(pg_num_rows($query)==0){

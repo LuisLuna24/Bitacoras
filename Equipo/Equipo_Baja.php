@@ -32,6 +32,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <div class="Datos">
                     <label for="">Mostrar:</label>
                     <select name="num_registros" id="num_registros">
+                        <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="15">15</option>
                         <option value="20">20</option>
@@ -47,10 +48,10 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <thead>
                     <th>No. Inventario</th>
                     <th>Nombre</th>
-                    <th>Descripcion</th>
-                    <th>Area</th>
+                    <th>Descripción</th>
+                    <th>Área</th>
                     <th>Estado</th>
-                    <th>Abilitar</th>
+                    <th>Habilitar</th>
                 </thead>
                 <tbody id="content"></tbody>
             </table>

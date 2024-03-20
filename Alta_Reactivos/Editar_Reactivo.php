@@ -53,7 +53,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 
                     <div class="datoo">
                         <div>
-                            <label for="dat5">Descripcion:</label>
+                            <label for="dat5">Descripción:</label>
                             <input type="text" name="Reactivo_Descripcion" id="Reactivo_Descripcion">
                         </div>
 

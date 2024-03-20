@@ -21,7 +21,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verciones Reactivo</title>
+    <title>Versiones Reactivo</title>
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../Equipo/css/equipo.css">
     <script src="../librerias/jquery/jquery-3.2.1.min.js"></script>

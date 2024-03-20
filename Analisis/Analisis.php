@@ -55,6 +55,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="Datos">
                         <label for="">Mostrar:</label>
                         <select name="num_registros" id="num_registros">
+                            <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="15">15</option>
                             <option value="20">20</option>
@@ -68,9 +69,9 @@ if($id_Usuario=="" || $id_Usuario==null){
 
                 <table>
                     <thead>
-                        <th>No Analisis</th>
+                        <th>No Análisis</th>
                         <th>Nombre</th>
-                        <th>Abrebiatura</th>
+                        <th>Abreviatura</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </thead>

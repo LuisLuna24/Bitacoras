@@ -2,19 +2,19 @@
 $(document).ready(function () {
     $("#Agregar_Reactivo").on('click',function(e){
         if($('#Reacivo_Nombre').val()=="") {
-            alert("Falta Nombre del Reactivo");
+            alert("Falta el nombre del Reactivo.");
             return false;
         }else if($("#Reactivo_Lote").val()==""){
-            alert("Falta Lote del Reactivo");
+            alert("Falta el lote del Reactivo.");
             return false;
         }else if($("#Reactivo_Descripcion").val()==""){
-            alert("Falta Descripcion del Reactivo");
+            alert("Falta descripción del Reactivo.");
             return false;
         }else if($("#Reactivo_Cantidad").val()=="0"){
-            alert("Falta Cantidad del Reactivo");
+            alert("Falta cantidad del Reactivo.");
             return false;
         }if($("#Fecha_Caducidad").val()=="0"){
-            alert("Falta Fecha de caducidad del Reactivo");
+            alert("Falta la fecha de caducidad del Reactivo.");
             return false;
         }else{
             e.preventDefault();
