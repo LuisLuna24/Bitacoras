@@ -104,7 +104,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                                         <th>No. Especie</th>
                                         <th>Nombre Especie</th>
                                         <th>Resultado</th>
-                                        <th>Eliminar</th>
                                     </thead>
                                     <tbody id="Tabala_Especie"></tbody>
                                 </table>
@@ -142,7 +141,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                                     <thead>
                                         <th>No. Equipo</th>
                                         <th>Nombre Equipo</th>
-                                        <th>Eliminar</th>
                                     </thead>
                                     <tbody id="Tabala_Equipos"></tbody>
                                 </table>

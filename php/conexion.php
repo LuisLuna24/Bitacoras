@@ -4,7 +4,7 @@
 try {
     $host = 'localhost';
     $user = 'postgres';
-    $password = 'marlenlelo04020710';
+    $password = 'Hmcnjsa1*.';
     $dbname = 'bitacoras';
 
     $conexion = pg_connect("host=$host dbname=$dbname user=$user password=$password");

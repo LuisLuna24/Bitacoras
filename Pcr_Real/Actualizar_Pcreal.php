@@ -91,7 +91,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>No. Especie</th>
                             <th>Nombre Especie</th>
                             <th>Resultado</th>
-                            <th>Eliminar</th>
                         </thead>
                         <tbody id="Especie_Tabla"></tbody>
                     </table>
