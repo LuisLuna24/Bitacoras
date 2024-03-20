@@ -10,7 +10,7 @@ $(document).ready(function () {
             processData:false,
             success: function (response) {
                 if(response!=null){
-                    alert(response);
+                    alert("Agregado correctamente");
                     $.ajax({
                         type: "POST",
                         url: "php/Buscar_Tabala_Equipos.php",
