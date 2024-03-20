@@ -14,6 +14,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +25,7 @@ if($id_Usuario=="" || $id_Usuario==null){
     <link rel="stylesheet" href="../librerias/select2/css/select2.css" />
     <script src="../librerias/select2/select2.js"></script>
 </head>
+
 <body>
     <?php require "../global/header.php" ?>
 
@@ -45,7 +47,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <input type="text" name="Pcr_Cantidad" id="Pcr_Cantidad">
                         </div>
                     </div>
-                    
+
                     <div class="Pcr_Datos">
                         <div class="Datos">
                             <label for="Pcr_Analisis">Analisis:</label>
@@ -73,19 +75,19 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                     <div class="Pcr_Espece_Check">
                         <div class="Check">
-                            <input type="checkbox" name="Sanitizo" value="1" ><label for="Canino">Sanitizo</label>
+                            <input type="checkbox" name="Sanitizo" value="1"><label for="Canino">Sanitizo</label>
                         </div>
                         <div class="Check">
-                            <input type="checkbox" name="Tiempouv" value="1" ><label for="Canino">Tiempo UV</label>
+                            <input type="checkbox" name="Tiempouv" value="1"><label for="Canino">Tiempo UV</label>
                         </div>
                     </div>
 
                     <div class="Pcr_Especie">
                         <div class="Pcr_Especie_Titulo">
-                            <h2>Especies:</h2>
+                            <h2><input type="checkbox" name="Check_Espcies" id="Check_Espcies" value='1'>Especies:</h2>
                             <div class="Linea"></div>
                         </div>
-                        <div class="Pcr_Equipo_contenedor">
+                        <div class="Pcr_Equipo_contenedor" id='Pcr_Especie_contenedor'>
                             <div class="Pcr_Equipo_Selecionar">
                                 <div class="Datos">
                                     <label for="Pcr_Espceie">Especie:</label>
@@ -97,8 +99,8 @@ if($id_Usuario=="" || $id_Usuario==null){
                                         <option value="Negativo">Negativo</option>
                                         <option value="Positivo">Positivo</option>
                                     </select>
-                        </div>
-                                
+                                </div>
+
                             </div>
                             <div class="Pcr_Equipo_Tabla">
                                 <table>
@@ -106,7 +108,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                                         <th>No. Especie</th>
                                         <th>Nombre Especie</th>
                                         <th>Resultado</th>
-                                        <th>Eliminar</th>
                                     </thead>
                                     <tbody id="Tabala_Especie"></tbody>
                                 </table>
@@ -114,14 +115,14 @@ if($id_Usuario=="" || $id_Usuario==null){
                         </div>
                     </div>
 
-                    <div class="Pcr_Datos">
+                    <div class="Pcr_Datos"id='Especie_Boton_pcr'>
                         <div class="Pcr_Equipo_Boton">
                             <input type="button" id="Agregar_Especie" value="Agregar Especie">
                         </div>
-                        <div class="Datos">
+                        <!--<div class="Datos">
                             <label for="Pcr_Imagen">Imagen o Archivo:</label>
                             <input type="file" required name="Pce_Imagen" accept="image/jpg,image/png,application/pdf">
-                        </div>
+                        </div>-->
                     </div>
 
                     <div class="Pcr_Equipo">
@@ -144,7 +145,6 @@ if($id_Usuario=="" || $id_Usuario==null){
                                     <thead>
                                         <th>No. Equipo</th>
                                         <th>Nombre Equipo</th>
-                                        <th>Eliminar</th>
                                     </thead>
                                     <tbody id="Tabala_Equipos"></tbody>
                                 </table>
@@ -198,6 +198,7 @@ if($id_Usuario=="" || $id_Usuario==null){
     <script src="../js/Script_Cerrar.js"></script>
     <?php require "../global/footer.php" ?>
 </body>
+
 </html>
 
 <script src="js/scripts.js"></script>

@@ -34,7 +34,6 @@ $(document).ready(function () {
                 processData:false,
                 success: function (response) {
                     alert("Se ha agregado correctamente."); 
-                    alert(response);
                     
                     //actualizar la tabla de Bitacora de reactivos 
                     let paginaActual = 1;

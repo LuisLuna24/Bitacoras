@@ -1,4 +1,4 @@
-//Muestra el inventario de reactivos en la tabla paginada 
+//Muestra el inventario de reactivos en la tabla paguinada 
 let paginaActual = 1;
 
 

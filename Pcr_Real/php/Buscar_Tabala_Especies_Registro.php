@@ -19,7 +19,6 @@ if(pg_num_rows($queryBuscra)!=0){
         $html.='<td>' . $row['no_especie_pcr'] . '</td>';
         $html.='<td>' . $row['nombre'] . '</td>';
         $html.='<td>' . $row['resultado'] . '</td>';
-        $html.='<td><a href="./php/Eliminar_equpo_seleccionado.php?Eqipo='.$row['id_especie_pcreal'].'">Eliminar</a></td>';
         $html.='</tr>';
     }
 }else{

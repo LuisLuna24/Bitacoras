@@ -44,12 +44,12 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
                 <div class="Dato_Equipo">
                     <div class="Dato">
-                        <label>Descripcion: (Max 60 caracteres)</label>
+                        <label>Descripción: (Max 60 caracteres)</label>
                         <input type="text" name="Descripcion_Equipo" id="Descripcion_Equipo">
                     </div>
                     
                     <div class="Dato">
-                        <label>Area:</label>
+                        <label>Área:</label>
                         <select name="Area_Equipo" id="Area_Equipo"></select>
                     </div>
                 </div>
@@ -74,6 +74,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <div class="Datos">
                     <label for="">Mostrar:</label>
                     <select name="num_registros" id="num_registros">
+                        <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="15">15</option>
                         <option value="20">20</option>
@@ -90,12 +91,12 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <th>No. Inventario</th>
                     <th>Versión</th>
                     <th>Nombre</th>
-                    <th>Descripcion</th>
-                    <th>Area</th>
+                    <th>Descripción</th>
+                    <th>Área</th>
                     <th>Estado</th>
                     <th>Actualizar</th>
                     <th>Dar de baja</th>
-                    <th>Verciones</th>
+                    <th>Versiones</th>
                 </thead>
                 <tbody id="content"></tbody>
             </table>

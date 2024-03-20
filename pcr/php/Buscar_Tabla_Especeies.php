@@ -5,9 +5,11 @@ session_start();
 
 $No_Regitro=$_POST['Pcr_Registros'];
 $Folio=$_SESSION["Pcr_Folio"];
+$Identificador_Registro=$No_Regitro.'1'.'1'.$Folio;
+
 
 //Permite ver las especies agregadas 
-$Buscar="SELECT DISTINCT on (id_especie_pcr) resultado,id_especie_pcr, identificador_especie, especie.nombre,version_especie_pcr, especie_pcr.id_especie, especie_pcr.vercion_especie, no_registro
+$Buscar="SELECT DISTINCT on (id_especie) resultado,id_especie_pcr, identificador_especie, especie.nombre,version_especie_pcr, especie_pcr.id_especie, especie_pcr.vercion_especie, no_registro
 FROM public.especie_pcr INNER JOIN especie on especie.id_especie=especie_pcr.id_especie
 where id_especie_pcr='$Folio' and registro::text='$No_Regitro';";
 $query=pg_query($conexion,$Buscar);
@@ -20,7 +22,6 @@ if(pg_num_rows($query)!=0){
         $html.='<td>' . $row['identificador_especie'] . '</td>';
         $html.='<td>' . $row['nombre'] . '</td>';
         $html.='<td>' . $row['resultado'] . '</td>';
-        $html.='<td><a href="./php/Eliminar_equpo_seleccionado.php?Eqipo='.$row['id_especie'].'">Eliminar</a></td>';
         $html.='</tr>';
     }
 }else if(pg_num_rows($query)==0){

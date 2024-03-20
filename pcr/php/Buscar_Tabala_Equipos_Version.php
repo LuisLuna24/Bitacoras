@@ -19,7 +19,6 @@ if(pg_num_rows($query)!=0){
         $html.='<tr>';
         $html.='<td>' . $row['identificador'] . '</td>';
         $html.='<td>' . $row['nombre'] . '</td>';
-        $html.='<td><a href="./php/Eliminar_equpo_seleccionado.php?Eqipo='.$row['ver_equipo_pcr'].'">Eliminar</a></td>';
         $html.='</tr>';
     }
 }else if(pg_num_rows($query)==0){

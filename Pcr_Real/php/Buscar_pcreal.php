@@ -37,10 +37,10 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT DISTINCT on (identificador_registro) " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on (id_pcreal,no_registro) " . implode(", ",$columns) . "
 FROM $table 
 $join
-$where ORDER BY identificador_registro DESC, version_registro DESC
+$where ORDER BY id_pcreal,no_registro,identificador_registro DESC, version_registro DESC
 $sLimit";
 
 

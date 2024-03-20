@@ -24,44 +24,45 @@ $(document).ready(function () {
                 contentType: false,
                 processData:false,
                 success: function (response) {
-                    alert ("Se ha agregado correctamente.");
-                    alert(response);
-                    let paginaActual = 1;
-                    getData(paginaActual);
-
-                    document.getElementById("campo").addEventListener("keyup",function(e){
-                        getData(1);
-                    },false);
-                    document.getElementById("num_registros").addEventListener("input",function(e){
+                    
+                        alert ("Se ha agregado correctamente.");
+                        let paginaActual = 1;
                         getData(paginaActual);
-                    },false);
 
-                    function getData(pagina){
-                        let input=document.getElementById("campo").value;
-                        let num_registros=document.getElementById("num_registros").value;
+                        document.getElementById("campo").addEventListener("keyup",function(e){
+                            getData(1);
+                        },false);
+                        document.getElementById("num_registros").addEventListener("input",function(e){
+                            getData(paginaActual);
+                        },false);
 
-                        let content=document.getElementById("content");
+                        function getData(pagina){
+                            let input=document.getElementById("campo").value;
+                            let num_registros=document.getElementById("num_registros").value;
 
-                    if(pagina != null){
-                        paginaActual=pagina;
-                    }
+                            let content=document.getElementById("content");
 
-                        let url="./php/Buscar_pcreal.php";
-                        let formaData = new FormData();
-                        formaData.append('campo',input);
-                        formaData.append('registros',num_registros);
-                        formaData.append('pagina',paginaActual);
+                        if(pagina != null){
+                            paginaActual=pagina;
+                        }
 
-                        fetch(url,{
-                            method:'POST',
-                            body:formaData
-                        }).then(resoponse => resoponse.json())
-                        .then(data => {
-                            content.innerHTML = data.data;
-                            document.getElementById("nav-paginacion").innerHTML = data.paginacion;
-                        }).catch(err => console.log(err))
+                            let url="./php/Buscar_pcreal.php";
+                            let formaData = new FormData();
+                            formaData.append('campo',input);
+                            formaData.append('registros',num_registros);
+                            formaData.append('pagina',paginaActual);
 
-                    }
+                            fetch(url,{
+                                method:'POST',
+                                body:formaData
+                            }).then(resoponse => resoponse.json())
+                            .then(data => {
+                                content.innerHTML = data.data;
+                                document.getElementById("nav-paginacion").innerHTML = data.paginacion;
+                            }).catch(err => console.log(err))
+
+                        }
+                    
                 }
             });
         }
@@ -70,7 +71,7 @@ $(document).ready(function () {
 
     $("#Nombre_Pcreal").keypress(function(e) {
         // Limitar la longitud a 10 caracteres de lote de reactivos
-        if ($("#Nombre_Pcreal").val().length >= 10) {
+        if ($("#Nombre_Pcreal").val().length >= 6) {
           e.preventDefault();
         }
         // Permitir solo números y el backspace
@@ -81,12 +82,23 @@ $(document).ready(function () {
 
     $("#Pcreal_Catidad").keypress(function(e) {
         // Limitar la longitud a 10 caracteres de lote de reactivos
-        if ($("#Pcreal_Catidad").val().length >= 10) {
+        if ($("#Pcreal_Catidad").val().length >= 2) {
           e.preventDefault();
         }
-        // Permitir solo números y el backspace
-        if (e.which != 8 && (e.which < 48 || e.which > 57)) {
-          e.preventDefault();
+    });
+    $("#Pcreal_Catidad").on("input", function(){
+        var value = $(this).val();
+        // Validar que solo se introduzcan números
+        if (!/^[0-9]+$/.test(value)) {
+          // Eliminar el caracter no válido
+          $(this).val(value.substring(0, value.length - 1));
+        }
+        // Validar que el número esté dentro del rango 1 al 20
+        if (value > 15) {
+          // Restablecer el valor a 1
+          alert("No se pueden colocar mas de 15 registros");
+          $(this).val(15);
+          
         }
     });
 });

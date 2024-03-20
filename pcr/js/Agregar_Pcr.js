@@ -72,7 +72,7 @@ $(document).ready(function () {
 
     $("#Pcr_Registros").keypress(function(e) {
         // Limitar la longitud a 10 caracteres de lote de reactivos
-        if ($("#Pcr_Registros").val().length >= 10) {
+        if ($("#Pcr_Registros").val().length >= 6) {
           e.preventDefault();
         }
         // Permitir solo números y el backspace
@@ -83,12 +83,24 @@ $(document).ready(function () {
 
     $("#Pcr_Cantidad").keypress(function(e) {
         // Limitar la longitud a 10 caracteres de lote de reactivos
-        if ($("#Pcr_Cantidad").val().length >= 10) {
+        if ($("#Pcr_Cantidad").val().length >= 2) {
           e.preventDefault();
         }
-        // Permitir solo números y el backspace
-        if (e.which != 8 && (e.which < 48 || e.which > 57)) {
-          e.preventDefault();
+        
+    });
+    $("#Pcr_Cantidad").on("input", function(){
+        var value = $(this).val();
+        // Validar que solo se introduzcan números
+        if (!/^[0-9]+$/.test(value)) {
+          // Eliminar el caracter no válido
+          $(this).val(value.substring(0, value.length - 1));
+        }
+        // Validar que el número esté dentro del rango 1 al 20
+        if (value > 15) {
+          // Restablecer el valor a 1
+          alert("No se pueden colocar mas de 15 registros");
+          $(this).val(15);
+          
         }
     });
 
@@ -97,17 +109,26 @@ $(document).ready(function () {
         if (e.which != 8 && (e.which < 48 || e.which > 57) && e.which != 46) {
           e.preventDefault();
         }
+        if ($("#Pcr_Agrosa").val().length >= 8) {
+            e.preventDefault();
+        }
     });
     $("#Pcr_Voltage").keypress(function(e) {
         // Permitir solo números y el backspace
         if (e.which != 8 && (e.which < 48 || e.which > 57) && e.which != 46) {
           e.preventDefault();
         }
+        if ($("#Pcr_Voltage").val().length >= 8) {
+            e.preventDefault();
+        }
     });
     $("#Pcr_Tiempo").keypress(function(e) {
         // Permitir solo números y el backspace
         if (e.which != 8 && (e.which < 48 || e.which > 57) && e.which != 46) {
           e.preventDefault();
+        }
+        if ($("#Pcr_Tiempo").val().length >= 8) {
+            e.preventDefault();
         }
     });
 });

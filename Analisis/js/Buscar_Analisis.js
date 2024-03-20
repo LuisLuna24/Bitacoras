@@ -26,7 +26,7 @@ if(pagina != null){
     let formaData = new FormData();
     formaData.append('campo',input);
     formaData.append('registros',num_registros);
-    formaData.append('pagina',paginaActual);
+    formaData.append('página',paginaActual);
 
     fetch(url,{
         method:'POST',

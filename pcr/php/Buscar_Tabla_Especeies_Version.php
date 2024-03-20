@@ -3,8 +3,11 @@ require "../../php/conexion.php";
 session_start();
 
 
-
-$No_Regitro=$_SESSION['Pcr_Registros_Especie_Version'];
+if(isset($_SESSION['Pcr_Registros_Especie_Version'])){
+    $No_Regitro=$_SESSION['Pcr_Registros_Especie_Version'];
+}else{
+    $No_Regitro='0';
+}
 $Folio=$_SESSION["No_Folio"];
 $Version=$_SESSION['VersionMax'];
 
@@ -22,7 +25,6 @@ if(pg_num_rows($query)!=0){
         $html.='<td>' . $row['identificador_especie'] . '</td>';
         $html.='<td>' . $row['nombre'] . '</td>';
         $html.='<td>' . $row['resultado'] . '</td>';
-        $html.='<td><a href="./php/Eliminar_equpo_seleccionado.php?Eqipo='.$row['id_especie'].'">Eliminar</a></td>';
         $html.='</tr>';
     }
 }else if(pg_num_rows($query)==0){

@@ -38,7 +38,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <input type="text" name="Inventario_Equipo" id="Inventario_Equipo" readonly>
                     </div>
                     <div class="Dato">
-                        <label>Descripcion: (Max 60 caracteres)</label>
+                        <label>Descripción: (Max 60 caracteres)</label>
                         <input type="text" name="Descripcion_Equipo" id="Descripcion_Equipo">
                     </div>
                     
@@ -49,7 +49,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <input type="text" name="Nombre_Equipo" id="Nombre_Equipo">
                     </div>
                     <div class="Dato">
-                        <label>Area:</label>
+                        <label>Área:</label>
                         <select name="Area_Equipo" id="Area_Equipo"></select>
                     </div>
                 </div>

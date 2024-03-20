@@ -33,7 +33,7 @@ if($id_Usuario=="" || $id_Usuario==null){
 
     <section class="Equipo">
         <div class="Equipo_Titulo">
-            <h1>Verciones de Equipo</h1>
+            <h1>Versiones de Equipo</h1>
         </div>
         <div class="Equipo_Tabla">
             <div class="Acciones_Tabla">
@@ -57,7 +57,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <th>Versión</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
-                    <th>Area</th>
+                    <th>Área</th>
                     <th>Estado</th>
                 </thead>
                 <tbody id="content"></tbody>
