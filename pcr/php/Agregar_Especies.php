@@ -24,7 +24,7 @@ $rowesp=pg_fetch_assoc($Especiequery);
 $versionespe=$rowesp['max'];
 
 //Buscar si la especie y existe en el registros
-$BuscarEspecie="SELECT * FROM public.especie_pcr where id_especie='$Especie' and no_registro::text='$Registro';";
+$BuscarEspecie="SELECT * FROM public.especie_pcr where id_especie='$Especie' and registro::text='$Registro';";
 $Espquery=pg_query($conexion,$BuscarEspecie);
 
 

@@ -27,4 +27,11 @@ $(document).ready(function () {
     $("#REgresar_Especie").on("click", function(){
         location.href = "./Especies.php"
     })
+
+    //Regresara a menu catalogos
+    $("#btn_Regresar").click(function(e) {
+      window.location.href = "../Catalogos.php";
+    });
+
+    
 });

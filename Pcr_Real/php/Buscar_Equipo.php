@@ -2,7 +2,7 @@
 require "../../php/conexion.php";
 
 
-$Buscar= "SELECT id_equipo, identificador, nombre, descripcion, id_area FROM public.equipo ";
+$Buscar= "SELECT MAX(vercion_equipo) id_equipo, identificador, nombre, descripcion, id_area FROM public.equipo ";
 $query=pg_query($conexion,$Buscar);
 
 $html='<option value="0">Seleccione un equipo</option>';

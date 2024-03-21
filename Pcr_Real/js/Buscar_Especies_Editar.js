@@ -20,7 +20,7 @@ $(document).ready(function () {
                 processData: false,
                 success: function (response) {
                     if(response==1){
-                        alert(response);
+                        alert("Especie agregada");
                         $.ajax({
                             type: "POST",
                             url: "php/Buscar_Tabala_Especies_Editar.php",
@@ -31,7 +31,7 @@ $(document).ready(function () {
                         });
                         //Actualiza la tabla de catálogo de especies
                     }else if(response==2){
-                        alert(response);
+                        alert("Especie ya agregada");
                     }else{
                         alert(response);
                     }

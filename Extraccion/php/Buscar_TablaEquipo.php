@@ -8,7 +8,7 @@ $Folio=$_SESSION['No_Foli'];
 
 
 //Consulta de la tabla equipos
-$buscarEquipo="SELECT id_equipo_extraccion, equipo_extraccion.identificador, equipo.id_equipo ,nombre FROM public.equipo_extraccion INNER JOIN equipo on equipo.id_equipo=equipo_extraccion.id_equipo  where id_equipo_extraccion ='$Folio' ;";
+$buscarEquipo="SELECT DISTINCT on (id_equipo) id_equipo_extraccion, equipo_extraccion.identificador, equipo.id_equipo ,nombre FROM public.equipo_extraccion INNER JOIN equipo on equipo.id_equipo=equipo_extraccion.id_equipo  where id_equipo_extraccion ='$Folio' ;";
 $queryBuscra=pg_query($conexion,$buscarEquipo);
 
 $html="";

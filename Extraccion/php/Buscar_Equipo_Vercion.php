@@ -9,7 +9,7 @@ $EquipoMax=$_SESSION["EquipoMax"];
 
 $Ver_equipo=$Folio.$EquipoMax;
 //Consulta de la tabla equipos
-$buscarEquipo="SELECT 	equipo.nombre,id_equipo_extraccion, equipo_extraccion.identificador, version_equipo_extraccion, equipo_extraccion.id_equipo, equipo_extraccion.version_equipo, ver_equipo_extraccion FROM equipo_extraccion
+$buscarEquipo="SELECT DISTINCT on (id_equipo)	equipo.nombre,id_equipo_extraccion, equipo_extraccion.identificador, version_equipo_extraccion, equipo_extraccion.id_equipo, equipo_extraccion.version_equipo, ver_equipo_extraccion FROM equipo_extraccion
 INNER JOIN equipo on equipo.id_equipo = equipo_extraccion.id_equipo
 where ver_equipo_extraccion='$Ver_equipo';";
 $queryBuscra=pg_query($conexion,$buscarEquipo);

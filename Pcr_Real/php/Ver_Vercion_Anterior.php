@@ -33,7 +33,7 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT DISTINCT on (identificador_registro) " . implode(", ",$columns) . "
+$sql="SELECT DISTINCT on(identificador_registro) " . implode(", ",$columns) . "
 FROM $table
 $join 
 $where GROUP BY " . implode(", ",$columns) . "

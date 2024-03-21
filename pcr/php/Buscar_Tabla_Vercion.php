@@ -37,7 +37,7 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT  DISTINCT on (id_pcr) " . implode(", ",$columns) . "
+$sql="SELECT " . implode(", ",$columns) . "
 FROM $table 
 $join
 $where GROUP BY " . implode(", ",$columns) . " ORDER BY id_pcr DESC , version_registro DESC

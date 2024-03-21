@@ -67,6 +67,7 @@ if($id_Usuario=="" || $id_Usuario==null){
             <div class="Equipo_Botones">
                 <input type="button" value="Agregar" id="Agregar_Equipo">
                 <input type="button" value="Ver Equipo Baja" id="Equipo_Baja">
+                <input type="button" value="Regresar" id="btn_Regresar">
             </div>
         </div>
         <div class="Equipo_Tabla">

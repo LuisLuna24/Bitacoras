@@ -5,7 +5,7 @@ require "../../php/conexion.php";
 
 $Area=$_POST['Area_Select'];
 
-$Buscar= "SELECT id_equipo, identificador, nombre, descripcion, id_area FROM public.equipo where id_area='$Area';";
+$Buscar= "SELECT DISTINCT on (id_equipo) id_equipo, identificador, nombre, descripcion, id_area FROM public.equipo where id_area='$Area' ORDER BY id_equipo,vercion_equipo DESC;";
 $query=pg_query($conexion,$Buscar);
 
 $html='<option vlaue="0">Seleccione un equipo</option>';
