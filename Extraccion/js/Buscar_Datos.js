@@ -56,5 +56,10 @@ $(document).ready(function () {
             $("#Equipo_Tabla").html(response);
         }
     });
+
+//REgresar a bitacoras 
+    $("#Salir_Extraccion").on('click', function(){
+        window.location.href = "./Ver_Extraccion.php";
+    })
     
 });

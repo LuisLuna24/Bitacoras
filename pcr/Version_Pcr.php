@@ -62,7 +62,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                             <th>Tiempo</th>
                             <th>Especies</th>
                             <th>Resultado</th>
-                            <th>Imagen</th>
+                            <th>Usuario</th>
                         </thead>
                         <tbody id="content"></tbody>
                     </table>

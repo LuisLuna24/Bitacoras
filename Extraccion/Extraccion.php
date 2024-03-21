@@ -116,7 +116,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
                 <div class="botones">
                     <input type="submit" value="Agregar Extraccion" id="Agregar_Extraccion">
-                    <input type="button" value="Ver Registros" id="Salir_Ectraccion">
+                    <input type="button" value="Ver Registros" id="Salir_Extraccion">
                 </div>
             </form>
             <div class="Equipo_Tabla">
