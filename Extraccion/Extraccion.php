@@ -110,6 +110,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <thead>
                             <th>No. Equipo</th>
                             <th>Nombre Equipo</th>
+                            <th>Eliminar</th>
                         </thead>
                         <tbody id="Equipo_Tabla"></tbody>
                     </table>
@@ -146,6 +147,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>Dato 260/280</th>
                         <th>Dato 260/230</th>
                         <th>Usuario</th>
+                        <th>Editar</th>
                         <th>Eliminar</th>
                     </thead>
                     <tbody id="content"></tbody>

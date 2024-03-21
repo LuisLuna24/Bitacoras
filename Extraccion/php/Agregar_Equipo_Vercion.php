@@ -8,6 +8,7 @@ session_start();
 $NoEquipo =$_SESSION['No_Folio'];
 $identificador="";
 $idEquipo=$_POST['Equipo_SelectAgregar'];
+$No_registro=$_POST['Registro_Exteracion'];
 $EquipoMax=$_SESSION["EquipoMax"];
 
 $Buscrae="SELECT * FROM equipo_extraccion where id_equipo_extraccion='$NoEquipo'";
@@ -29,9 +30,10 @@ if(pg_num_rows($queryequipo)==0){
         $row=pg_fetch_assoc($querya);
         $identificador=$row['max']+1;
         $Ver_equipo=$NoEquipo.$EquipoMax;
+        $identificador_equipo_extraccion=$No_registro.$identificador.$EquiMax;
         $crearEquipo="INSERT INTO public.equipo_extraccion(
-            id_equipo_extraccion, identificador, version_equipo_extraccion, id_equipo, version_equipo, ver_equipo_extraccion)
-            VALUES ('$NoEquipo', '$identificador', '$EquipoMax', '$idEquipo','$EquiMax' , '$Ver_equipo');";
+            id_equipo_extraccion, identificador, version_equipo_extraccion, id_equipo, version_equipo, ver_equipo_extraccion,identificador_equipo_extraccion)
+            VALUES ('$NoEquipo', '$identificador', '$EquipoMax', '$idEquipo','$EquiMax' , '$Ver_equipo','$identificador_equipo_extraccion');";
         $crear=pg_query($conexion,$crearEquipo);
         echo 1;
 }else{
