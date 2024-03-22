@@ -6,7 +6,7 @@ session_start();
 $Folio=$_SESSION["Pcr_Folio"];
 
 //Permite ver las especies agregadas 
-$Buscar="SELECT DISTINCT id_equipo_pcr, equipo_pcr.identificador, version_equipo_pcr, equipo.id_equipo, version_equipo, ver_equipo_pcr, equipo.nombre
+$Buscar="SELECT DISTINCT id_equipo_pcr, identificador_equipo_pcr,equipo_pcr.identificador, version_equipo_pcr, equipo.id_equipo, version_equipo, ver_equipo_pcr, equipo.nombre
 FROM public.equipo_pcr INNER JOIN equipo on equipo.id_equipo = equipo_pcr.id_equipo
 where id_equipo_pcr='$Folio';";
 $query=pg_query($conexion,$Buscar);
@@ -18,6 +18,7 @@ if(pg_num_rows($query)!=0){
         $html.='<tr>';
         $html.='<td>' . $row['identificador'] . '</td>';
         $html.='<td>' . $row['nombre'] . '</td>';
+        $html.='<td><a href="./php/Eliminar_Equipo_Pcr.php?EquipoPcr='. $row['identificador_equipo_pcr']. '">Eliminar</a></td>';
         $html.='</tr>';
     }
 }else if(pg_num_rows($query)==0){

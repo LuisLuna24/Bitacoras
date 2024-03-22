@@ -28,7 +28,7 @@ while($rowEspecie=pg_fetch_assoc($queryEspecie)){
 
 }
 
-$BuscarEquipo="SELECT id_equipo_pcreal, identificador, id_equipo, version_equipo FROM public.equipo_pcreal where id_equipo_pcreal='$Folio' and version_equipo_pcr='$Versiondatos';";
+$BuscarEquipo="SELECT id_equipo_pcreal, identificador_equipo_pcreal,identificador, id_equipo, version_equipo FROM public.equipo_pcreal where id_equipo_pcreal='$Folio' and version_equipo_pcr='$Versiondatos';";
 $queryEquipo=pg_query($conexion,$BuscarEquipo);
 
 while($rowEqu=pg_fetch_assoc($queryEquipo)){
@@ -39,9 +39,10 @@ while($rowEqu=pg_fetch_assoc($queryEquipo)){
     $vercionequimax=$rowequimax['max'];
 
     $Ver_Equipo=$Folio.$VersionMax;
+    $identificador_equipo_pcreal=$rowEqu['identificador_equipo_pcreal']+1;
     $InsertarEquipo="INSERT INTO public.equipo_pcreal(
-	id_equipo_pcreal, identificador, version_equipo_pcr, id_equipo, version_equipo, ver_equipo_pcreal)
-	VALUES ('$Folio', '" . $rowEqu['identificador'] . "', '$VersionMax', '" . $rowEqu['id_equipo'] . "','" . $rowEqu['version_equipo'] . "' ,'$Ver_Equipo');";
+	id_equipo_pcreal, identificador, version_equipo_pcr, id_equipo, version_equipo, ver_equipo_pcreal,identificador_equipo_pcreal)
+	VALUES ('$Folio', '" . $rowEqu['identificador'] . "', '$VersionMax', '" . $rowEqu['id_equipo'] . "','" . $rowEqu['version_equipo'] . "' ,'$Ver_Equipo','$identificador_equipo_pcreal');";
     pg_query($conexion,$InsertarEquipo);
 }
 

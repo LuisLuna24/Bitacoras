@@ -7,6 +7,7 @@ session_start();
 $NoEquipo =$_SESSION["pcreal_fol"];
 $identificador="";
 $idEquipo=$_POST['Equipo_SelectAgregar'];
+$no_registro=$_POST['Nombre'];
 
 
 $Buscarequipo="SELECT * FROM equipo_pcreal where id_equipo_pcreal='$NoEquipo' and id_equipo='$idEquipo'";
@@ -25,9 +26,10 @@ if(pg_num_rows($queryequipo)==0){
     $row=pg_fetch_assoc($querya);
     $identificador=$row['max']+1;
     $ver_equipo=$NoEquipo.'1';
+    $identificador_equipo_pcreal=$no_registro.$identificador.'1';
     $crearEquipo="INSERT INTO public.equipo_pcreal(
-        id_equipo_pcreal, identificador, version_equipo_pcr, id_equipo, version_equipo, ver_equipo_pcreal)
-        VALUES ('$NoEquipo', '$identificador', '1', '$idEquipo', '$EquipoMax', '$ver_equipo');";
+        id_equipo_pcreal, identificador, version_equipo_pcr, id_equipo, version_equipo, ver_equipo_pcreal,identificador_equipo_pcreal)
+        VALUES ('$NoEquipo', '$identificador', '1', '$idEquipo', '$EquipoMax', '$ver_equipo','$identificador_equipo_pcreal');";
     $crear=pg_query($conexion,$crearEquipo);
     echo 1;
 }else{

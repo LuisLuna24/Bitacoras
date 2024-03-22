@@ -74,7 +74,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['dato_260_230'] . '</td>';
         $output['data'].='<td>'. $row['nombre'] . ' ' . $row['apellido'] . '</td>';
         $output['data'].='<td><a href="./Editar_Registro.php?RegistroExtra='.$row['identificador_registro'].'">Editar</a></td>';
-        $output['data'].='<td><a href="./php/Eliminar_Registro.php?RegistroExtra='.$row['identificador_equipo_extraccion'].'">Eliminar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Registro.php?RegistroExtra='.$row['identificador_registro'].'">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

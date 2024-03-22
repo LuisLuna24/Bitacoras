@@ -120,6 +120,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <select name="Resultado" id="Resultado_pcreal">
                             <option value="Negativo">Negativo</option>
                             <option value="Positivo">Positivo</option>
+                            <option value="Positivo">Eliminar</option>
                         </select>
                     </div>
                     <div class="datos">
