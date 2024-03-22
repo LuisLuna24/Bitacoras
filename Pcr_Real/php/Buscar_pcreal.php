@@ -73,6 +73,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['resultado'] .'</td>';
         $output['data'].='<td>'. $row['observaciones'] .'</td>';
         $output['data'].='<td><a href="./Editar_Registro_Pcreal.php?Registro_Pcreal='. $row['identificador_registro']. '">Editar</a></td>';
+        $output['data'].='<td><a href="./php/Eliminar_Registro_Pcreal.php?Registro_Pcreal='. $row['identificador_registro']. '">Eliminar</a></td>';
         $output['data'].='</tr>';
     }
 }else{

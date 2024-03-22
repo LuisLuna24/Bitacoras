@@ -4,12 +4,12 @@
 require "../../php/conexion.php";
 session_start();
 
-$Identificador=$_GET['EquipoExtra'];
+$Identificador=$_GET['EquipoPcreal'];
 $NoEquipo =$_SESSION['No_Foli'];
 
-$Eliminr="DELETE FROM equipo_extraccion where identificador_equipo_extraccion='$Identificador';";
+$Eliminr="DELETE FROM equipo_pcreal where identificador_equipo_pcreal='$Identificador';";
 pg_query($conexion,$Eliminr);
 
 
-header('Location: ../Extraccion.php');
+header('Location: ../Pcr_Real.php');
 ?>
