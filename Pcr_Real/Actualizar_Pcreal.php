@@ -131,7 +131,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </div>
                 </div>
                 <div class="botones">
-                    <input type="button" value="Agregar PCR" id="Agregar_Actualizar_Pcreal">
+                    <input type="button" value="Actualizar" id="Agregar_Actualizar_Pcreal">
                     <input type="button" value="Ver Bitacroas" id="Ver_Bitacoras">
                 </div>
             </form>

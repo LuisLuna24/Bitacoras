@@ -154,7 +154,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="Linea"></div>
 
                     <div class="Pcr_Botones">
-                        <input type="button" value="Agregar Pcr" id="Agregar_Pcr">
+                        <input type="button" value="Actualizar" id="Agregar_Pcr">
                         <input type="button" value="Ver Bitacoras" id="Ver_Bitacoras">
                     </div>
                 </div>

@@ -113,7 +113,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                     </table>
                 </div>
                 <div class="botones">
-                    <input type="submit" value="Agregar Extraccion" id="Agregar_Extraccion_Vercion">
+                    <input type="submit" value="Actualizar" id="Agregar_Extraccion_Vercion">
                     <input type="button" value="Ver Registros" id="Salir_Ectraccion">
                 </div>
             </form>

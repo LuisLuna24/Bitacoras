@@ -74,7 +74,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
 
                 <div class="botones">
-                    <input type="button" value="Agregar" id="Nuevo_Actualizar_Reactivo">
+                    <input type="button" value="Actualizar" id="Nuevo_Actualizar_Reactivo">
                     <input type="button" value="Ver Bitacoras Reactivo" id="Ver_Vitacora_Reactivos">
                 </div>
 
