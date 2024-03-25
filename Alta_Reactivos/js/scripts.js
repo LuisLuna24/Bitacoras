@@ -67,4 +67,9 @@ $(document).ready(function () {
     $("#Regresar_Reactivo").on("click", function(){
         location.href = "./Alta_Reactivos.php";
     })
+
+     //Regresara a menu catalogos
+     $("#btn_Regresar").click(function(e) {
+      window.location.href = "../Inventarios.php";
+    });
 });

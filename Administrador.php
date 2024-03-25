@@ -97,7 +97,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 <div class="Card_Boton">
                     <input type="button" value="Activar usuario" id="Alta_Usuario">
                 </div>
-            </div>
+            </div><!--
             <?php if($id_Usuario=='11111111'){ ?>
                 <div class="Opciones_Card">
                     <div class="Card_Titulo">
@@ -110,7 +110,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                 </div>
 
             <?php } ?>
-        </div>
+        </div>-->
     </section>
 <!--========================Recuperer Contraseña=====================================-->
     <section class="Cotraseña" id="Contraseña">

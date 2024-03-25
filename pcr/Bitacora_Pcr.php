@@ -141,6 +141,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                                     <thead>
                                         <th>No. Equipo</th>
                                         <th>Nombre Equipo</th>
+                                        <th>Eliminar</th>
                                     </thead>
                                     <tbody id="Tabala_Equipos"></tbody>
                                 </table>

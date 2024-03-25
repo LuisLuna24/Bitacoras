@@ -110,13 +110,14 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <thead>
                             <th>No. Equipo</th>
                             <th>Nombre Equipo</th>
+                            <th>Eliminar</th>
                         </thead>
                         <tbody id="Equipo_Tabla"></tbody>
                     </table>
                 </div>
                 <div class="botones">
                     <input type="submit" value="Agregar Extraccion" id="Agregar_Extraccion">
-                    <input type="button" value="Ver Registros" id="Salir_Ectraccion">
+                    <input type="button" value="Ver Registros" id="Salir_Extraccion">
                 </div>
             </form>
             <div class="Equipo_Tabla">
@@ -146,6 +147,7 @@ if($id_Usuario=="" || $id_Usuario==null){
                         <th>Dato 260/280</th>
                         <th>Dato 260/230</th>
                         <th>Usuario</th>
+                        <th>Editar</th>
                         <th>Eliminar</th>
                     </thead>
                     <tbody id="content"></tbody>

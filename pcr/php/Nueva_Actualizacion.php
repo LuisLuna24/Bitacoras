@@ -45,9 +45,10 @@ $queryEspecie=pg_query($conexion,$BuscarEspecie);
 while($rowEspecie=pg_fetch_assoc($queryEspecie)){
     $IdentificadorEspecie=$Folio.$VersionMax;
     $IdentificadorRegistro=$rowEspecie['registro'].$rowEspecie['no_registro'].$VersionMax.$Folio;
+    $identificador_equipo_pcr=$rowEspecie['identificador_equipo_pcr']+1;
     $InsertarEspecie="INSERT INTO public.especie_pcr(
-        id_especie_pcr, identificador_especie, version_especie_pcr, registro, no_registro, id_especie, vercion_especie, resultado, identificador_registro)
-        VALUES ('".$rowEspecie['id_especie_pcr']."', '".$rowEspecie['identificador_especie']."', '$VersionMax', '".$rowEspecie['registro']."', '".$rowEspecie['no_registro']."','".$rowEspecie['id_especie']."', '".$rowEspecie['vercion_especie']."', '".$rowEspecie['resultado']."','$IdentificadorRegistro');";
+        id_especie_pcr, identificador_especie, version_especie_pcr, registro, no_registro, id_especie, vercion_especie, resultado, identificador_registro,identificador_equipo_pcr)
+        VALUES ('".$rowEspecie['id_especie_pcr']."', '".$rowEspecie['identificador_especie']."', '$VersionMax', '".$rowEspecie['registro']."', '".$rowEspecie['no_registro']."','".$rowEspecie['id_especie']."', '".$rowEspecie['vercion_especie']."', '".$rowEspecie['resultado']."','$IdentificadorRegistro','$identificador_equipo_pcr');";
     pg_query($conexion,$InsertarEspecie);
 
 }

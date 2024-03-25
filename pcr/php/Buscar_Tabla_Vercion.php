@@ -9,7 +9,7 @@ $RegistroPcr=$_SESSION['RegistroPcr'];
 
 
 
-$columns=['version_registro','id_pcr','analisis.nombre','id_especie_pcr','archivo','id_pcr', 'no_registro', 'version_pcr', 'identificador_bitacora', 'id_folio', 'bitacora_pcr.id_analisis', 'fecha', 'agarosa', 'voltage', 'tiempo', 'sanitizo',' tiempouv',  'resultado', 'id_equipo_pcr', 'id_usuario', 'id_admin'];
+$columns=['nombre_usuario','apellido','version_registro','id_pcr','analisis.nombre','id_especie_pcr','archivo','id_pcr', 'no_registro', 'version_pcr', 'identificador_bitacora', 'id_folio', 'bitacora_pcr.id_analisis', 'fecha', 'agarosa', 'voltage', 'tiempo', 'sanitizo',' tiempouv',  'resultado', 'id_equipo_pcr', 'bitacora_pcr.id_usuario', 'id_admin'];
 
 $table="bitacora_pcr ";
 
@@ -17,7 +17,8 @@ $id= 'id_pcr';
 
 $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): null;
 
-$join="INNER JOIN analisis on analisis.id_analisis=bitacora_pcr.id_analisis";
+$join="INNER JOIN analisis on analisis.id_analisis=bitacora_pcr.id_analisis
+INNER JOIN usuario on usuario.id_usuario = bitacora_pcr.id_usuario";
 
 $where = "WHERE id_pcr::text ILIKE '%" . $campo . "%' and identificador_bitacora='$RegistroPcr'";
 
@@ -37,7 +38,7 @@ if(!$pagina){
 $sLimit="LIMIT $limit OFFSET $inicio";
 
 
-$sql="SELECT  DISTINCT on (id_pcr) " . implode(", ",$columns) . "
+$sql="SELECT usuario.nombre AS " . implode(", ",$columns) . "
 FROM $table 
 $join
 $where GROUP BY " . implode(", ",$columns) . " ORDER BY id_pcr DESC , version_registro DESC
@@ -71,7 +72,7 @@ if($num_rows>0){
         $output['data'].='<td>'. $row['tiempo'] .'</td>';
         $output['data'].='<td>'. $row['id_especie_pcr'] .'</td>';
         $output['data'].='<td>'. $row['resultado'] .'</td>';
-        $output['data'].='<td>'. $row['archivo'] .'</td>';
+        $output['data'].='<td>'. $row['nombre_usuario'] . $row['apellido'] .'</td>';
         $output['data'].='</tr>';
     }
 }else{

@@ -51,15 +51,6 @@ if($id_Usuario=="" || $id_Usuario==null){
             <div class="Menu_Cards">
                 <div class="Card">
                     <div class="Card_Titulo">
-                        <h2>Bitácoras de Reactivos</h2>
-                    </div>
-                    <div class="Card_Contenido">
-                        <input type="button" value="Agregar Registros" id="Reactivo">
-                        <input type="button" value="Ver Registros" id="Ver_Reactivos">
-                    </div>
-                </div>
-                <div class="Card">
-                    <div class="Card_Titulo">
                         <h2>Bitácoras de Extracción</h2>
                     </div>
                     <div class="Card_Contenido">
@@ -84,6 +75,15 @@ if($id_Usuario=="" || $id_Usuario==null){
                     <div class="Card_Contenido">
                         <input type="button" value="Agregar Registros" id="Pcr_Real">
                         <input type="button" value="Ver Registros" id="ver_pcreal">
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="Card_Titulo">
+                        <h2>Bitácoras de Reactivos</h2>
+                    </div>
+                    <div class="Card_Contenido">
+                        <input type="button" value="Agregar Registros" id="Reactivo">
+                        <input type="button" value="Ver Registros" id="Ver_Reactivos">
                     </div>
                 </div>
             </div>

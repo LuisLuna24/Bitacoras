@@ -10,6 +10,7 @@ $Canmax="SELECT MAX(identificador) FROM equipo_pcr where id_equipo_pcr='$Folio';
 $Canquery=pg_query($conexion,$Canmax);
 $rowcan=pg_fetch_assoc($Canquery);
 $Identificador=$rowcan['max']+1;
+$no_registro=$_POST['Pcr_Registros'];
 
 //Bucar Version de especie maxima
 $Especiemax="SELECT MAX(vercion_equipo) FROM public.equipo where id_equipo = '$Equipo';";
@@ -25,9 +26,10 @@ if(pg_num_rows($Existente)==0){
     //Realiza la insercion en caso de no manda error 
     try{
         $Ver_equipo=$Folio.'1';
+        $identificador_equipo_pcr=$no_registro.$Identificador.'1';
         $Insertar="INSERT INTO public.equipo_pcr(
-            id_equipo_pcr, identificador, version_equipo_pcr, id_equipo, version_equipo, ver_equipo_pcr)
-            VALUES ('$Folio', '$Identificador', '1', '$Equipo', '$versionespe', '$Ver_equipo');";
+            id_equipo_pcr, identificador, version_equipo_pcr, id_equipo, version_equipo, ver_equipo_pcr,identificador_equipo_pcr)
+            VALUES ('$Folio', '$Identificador', '1', '$Equipo', '$versionespe', '$Ver_equipo','$identificador_equipo_pcr');";
         pg_query($conexion,$Insertar);
         echo 1;
     }catch(Exception $e){

@@ -15,7 +15,7 @@ $(document).ready(function () {
                 processData:false,
                 success: function (response) {
                     //Mensaje de agregar especie y actualizar tabla 
-                    if(response!=null){
+                    if(response==1){
                         alert("Especie agregada correctamente.");
                         //Actualiza la tabla de especies 
                         var datos=new FormData($("#Pcr_Form")[0]);

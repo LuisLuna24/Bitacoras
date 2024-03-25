@@ -29,7 +29,7 @@ $(document).ready(function () {
                         });
                         //Actualiza la tabla de catálogo de especies
                     }else if(response==2){
-                        alert(response);
+                        alert("Especie ya agregada");
                     }else{
                         alert(response);
                     }

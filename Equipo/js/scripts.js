@@ -47,4 +47,9 @@ $(document).ready(function () {
       //Permite hacer que solo escriba en mayusculas
       $(this).val($(this).val().toUpperCase());
     });
+
+     //Regresara a menu catalogos
+     $("#btn_Regresar").click(function(e) {
+      window.location.href = "../Inventarios.php";
+    });
 });

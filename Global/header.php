@@ -18,7 +18,7 @@ if($_SESSION['Nivel']==2){
         <a id="Bitacoras_Global" href="Bitacoras.php">Bitácoras</a>
         <a id="Catalogos_Global" href="Catalogos.php">Catalogos</a>
         <a id="Inventario_Global" href="Inventarios.php">Inventarios</a>
-        <a id="Administrador_Global" href="Administrador.php">Menu Administrador</a>
+        <a id="Administrador_Global" href="Administrador.php">Configuracion</a>
         <a id="Salir_Global" href="#">Salir</a>
         <script src="js/Script_Cerrar.js"></script>
     </nav>

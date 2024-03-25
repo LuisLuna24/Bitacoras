@@ -5,7 +5,6 @@ $host = 'localhost';
 $user = 'postgres';
 $password = 'Hmcnjsa1*.';
 $dbname = 'bitacoras';
-
 $conexion = pg_connect("host=$host dbname=$dbname user=$user password=$password");
 if (!$conexion) {
     $host = 'localhost';

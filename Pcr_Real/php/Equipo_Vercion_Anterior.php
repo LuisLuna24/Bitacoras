@@ -8,7 +8,7 @@ $Folio=$_SESSION['Folio_VercionPcreal'];
 
 
 
-$Equipobit="SELECT equipo.identificador, nombre FROM equipo_pcreal INNER JOIN equipo on equipo.id_equipo = equipo_pcreal.id_equipo where ver_equipo_pcreal='$VersionPcr'";
+$Equipobit="SELECT DISTINCT on (equipo_pcreal.id_equipo) equipo.identificador, nombre FROM equipo_pcreal INNER JOIN equipo on equipo.id_equipo = equipo_pcreal.id_equipo where ver_equipo_pcreal='$VersionPcr'";
 $queryEquipo=pg_query($conexion,$Equipobit);
 
 $html="";

@@ -15,7 +15,7 @@ $campo=isset($_POST['campo']) ? pg_escape_string($conexion ,$_POST['campo']): nu
 //Consulta JOIN
 $join="INNER JOIN area on area.id_area=equipo.id_area";
 //Consulta Where 
-$where = "WHERE equipo.nombre ILIKE '%" . $campo . "%' and estado_equipo='Activo' or estado_equipo = 'Inactivo'";
+$where = "WHERE equipo.nombre ILIKE '%" . $campo . "%' and estado_equipo='Activo'";
 
 //Limita la cantidad de datos que se va a ver (no mover)
 $limit=  isset($_POST["registros"]) ? pg_escape_string($conexion ,$_POST["registros"]): 10;

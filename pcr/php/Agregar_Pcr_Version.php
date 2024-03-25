@@ -51,6 +51,6 @@ for($i=0;$i<$Cantidad;$i++){
         VALUES ('$NoRegistro', '$Cantidad_Dat', '$Version', '$Folio', '$Identificador', '$Analisis', '$Fecha', '$Agarosa','$Voltaje' ,'$Tiempo', '$Sanitizo', '$Tiempouv', ".$D_Campos_especie." '$Resultado', '$Folio', '1', '$Version', '$Usuario', '$Version');";
     pg_query($conexion,$Insertar);
 }
-echo $Cantidad;
+echo 1;
 
 ?>
